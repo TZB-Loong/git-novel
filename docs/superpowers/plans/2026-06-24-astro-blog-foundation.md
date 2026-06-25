@@ -328,7 +328,7 @@ git commit -m "test: configure Vitest with v8 coverage, exclude .astro component
   ```
 - Consumed by: Task 19 (Giscus), Task 8 (BaseHead for title/description), Task 20 (RSS).
 
-- [ ] **Step 1: Write failing test**
+- [x] **Step 1: Write failing test**
 
 ```typescript
 // src/lib/config.test.ts
@@ -376,12 +376,12 @@ describe('isGiscusConfigured', () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `npm test -- src/lib/config.test.ts`
 Expected: FAIL with "Cannot find module './config'".
 
-- [ ] **Step 3: Implement config.ts**
+- [x] **Step 3: Implement config.ts**
 
 ```typescript
 // src/lib/config.ts
@@ -432,16 +432,16 @@ export function isGiscusConfigured(g: GiscusConfig | null): boolean {
 }
 ```
 
-- [ ] **Step 4: Run test to verify it passes**
+- [x] **Step 4: Run test to verify it passes**
 
 Run: `npm test -- src/lib/config.test.ts`
 Expected: PASS (5 tests).
 
-- [ ] **Step 5: Remove sanity test**
+- [x] **Step 5: Remove sanity test**
 
 Run: `rm src/lib/__tests__/sanity.test.ts && rmdir src/lib/__tests__`
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add src/lib/config.ts src/lib/config.test.ts
