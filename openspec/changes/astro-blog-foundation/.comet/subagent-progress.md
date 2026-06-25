@@ -16,8 +16,8 @@
 | 1. Astro Project Skeleton | done | d93af12 | done |
 | 2. Vitest Configuration | done | 8247a45 | done |
 | 3. Site Config Module (TDD) | done | 4a4cc20 | done |
-| 4. Slug Utility (TDD) | in_progress | — | implementing |
-| 5. Date Utility (TDD) | pending | — | — |
+| 4. Slug Utility (TDD) | done | 015a226 | done |
+| 5. Date Utility (TDD) | in_progress | — | implementing |
 | 6. Content Collection Schema (TDD) | pending | — | — |
 | 7. Gallery Utility (TDD) | pending | — | — |
 | 8. Global Styles and BaseHead | pending | — | — |
@@ -39,7 +39,7 @@
 
 ## Current Task
 
-Task 4: Slug Utility (TDD) (implementing)
+Task 5: Date Utility (TDD) (implementing)
 
 ## Final Review
 

@@ -462,7 +462,7 @@ git commit -m "feat(lib): add SITE_CONFIG with optional Giscus section"
 - Produces: `assertUniqueSlugs(slugs: Array<{ slug: string; file: string }>): void` — throws listing conflicting files on duplicate.
 - Consumed by: content collection slug customization (Task 6, via `slug` field in collection config).
 
-- [ ] **Step 1: Write failing test**
+- [x] **Step 1: Write failing test**
 
 ```typescript
 // src/lib/slug.test.ts
@@ -534,12 +534,12 @@ describe('assertUniqueSlugs', () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `npm test -- src/lib/slug.test.ts`
 Expected: FAIL with "Cannot find module './slug'".
 
-- [ ] **Step 3: Implement slug.ts**
+- [x] **Step 3: Implement slug.ts**
 
 ```typescript
 // src/lib/slug.ts
@@ -590,14 +590,14 @@ export function assertUniqueSlugs(
 
 Note: if `pinyin-pro` API differs in installed version, the implementer adjusts the options object to satisfy the test expectations. The test is the source of truth.
 
-- [ ] **Step 4: Run test to verify it passes**
+- [x] **Step 4: Run test to verify it passes**
 
 Run: `npm test -- src/lib/slug.test.ts`
 Expected: PASS (10 tests).
 
 If pinyin output doesn't match assertions, check `pinyin-pro` README via `node -e "const {pinyin}=require('pinyin-pro'); console.log(pinyin('我的第一篇文章',{toneType:'none',type:'array'}))"` and adjust options until test passes.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/lib/slug.ts src/lib/slug.test.ts
