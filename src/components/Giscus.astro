@@ -1,0 +1,23 @@
+---
+// src/components/Giscus.astro
+import GiscusComments from './Giscus';
+import { SITE_CONFIG, isGiscusConfigured } from '../lib/config';
+
+const giscus = SITE_CONFIG.giscus;
+const configured = isGiscusConfigured(giscus);
+---
+{configured && giscus ? (
+  <GiscusComments
+    client:idle
+    repo={giscus.repo}
+    repoId={giscus.repoId}
+    category={giscus.category}
+    categoryId={giscus.categoryId}
+    mapping={giscus.mapping}
+    theme={giscus.theme}
+  />
+) : (
+  <p style="color:var(--color-muted);padding:1rem;border:1px dashed var(--color-border);border-radius:6px;">
+    Giscus 未配置。请在 <code>src/lib/config.ts</code> 填入 repo / repoId / categoryId 后重新部署。
+  </p>
+)}

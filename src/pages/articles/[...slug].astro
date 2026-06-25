@@ -4,6 +4,7 @@ import { getCollection, render, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import TOC from '../../components/TOC.astro';
 import { formatDate, prevNextByDate, sortByDateDesc } from '../../lib/date';
+import Giscus from '../../components/Giscus.astro';
 
 export async function getStaticPaths() {
   const articles = await getCollection('articles');
@@ -61,10 +62,9 @@ const baseURL = import.meta.env.BASE_URL;
       {next && <a href={`${baseURL}articles/${next.id}/`}>{next.data.title} →</a>}
     </nav>
 
-    <!-- Giscus placeholder; replaced by component in Task 19 -->
     <section id="comments" style="margin-top:3rem;">
       <h2>评论</h2>
-      <p style="color:var(--color-muted);">评论系统配置中。</p>
+      <Giscus />
     </section>
   </article>
 </BaseLayout>
