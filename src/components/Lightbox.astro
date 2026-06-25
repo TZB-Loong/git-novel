@@ -1,0 +1,16 @@
+---
+// src/components/Lightbox.astro
+// Renders inline script that initializes GLightbox on the album page.
+// Must be placed after the gallery markup in the page so DOM exists.
+---
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/css/glightbox.min.css" />
+<script is:inline>
+  import('https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/js/glightbox.min.js').then((mod) => {
+    const GLightbox = mod.default;
+    new GLightbox({
+      selector: '.glightbox',
+      touchNavigation: true,
+      loop: true,
+    });
+  });
+</script>
