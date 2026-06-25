@@ -3,7 +3,7 @@
 import { formatDate } from '../lib/date';
 interface Props {
   entry: {
-    slug: string;
+    id: string;
     data: { title: string; pubDate: Date; description: string };
   };
 }
@@ -12,7 +12,7 @@ const baseURL = import.meta.env.BASE_URL;
 ---
 <article style="border:1px solid var(--color-border);border-radius:8px;padding:1.2rem;background:var(--color-card-bg);">
   <h3 style="margin:0 0 0.4rem;">
-    <a href={`${baseURL}articles/${entry.slug}/`} style="color:var(--color-fg);">{entry.data.title}</a>
+    <a href={`${baseURL}articles/${entry.id}/`} style="color:var(--color-fg);">{entry.data.title}</a>
   </h3>
   <small style="color:var(--color-muted);">{formatDate(entry.data.pubDate)}</small>
   <p style="margin:0.6rem 0 0;">{entry.data.description}</p>

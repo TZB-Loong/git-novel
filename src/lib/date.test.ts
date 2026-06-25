@@ -22,45 +22,45 @@ describe('formatDate', () => {
 
 describe('sortByDateDesc', () => {
   const items = [
-    { slug: 'a', data: { pubDate: new Date('2024-01-01') } },
-    { slug: 'b', data: { pubDate: new Date('2024-03-01') } },
-    { slug: 'c', data: { pubDate: new Date('2024-02-01') } },
+    { id: 'a', data: { pubDate: new Date('2024-01-01') } },
+    { id: 'b', data: { pubDate: new Date('2024-03-01') } },
+    { id: 'c', data: { pubDate: new Date('2024-02-01') } },
   ];
 
   it('sorts newest first', () => {
     const sorted = sortByDateDesc(items);
-    expect(sorted.map((i) => i.slug)).toEqual(['b', 'c', 'a']);
+    expect(sorted.map((i) => i.id)).toEqual(['b', 'c', 'a']);
   });
 
   it('does not mutate the input array', () => {
     const copy = [...items];
     sortByDateDesc(items);
-    expect(items.map((i) => i.slug)).toEqual(copy.map((i) => i.slug));
+    expect(items.map((i) => i.id)).toEqual(copy.map((i) => i.id));
   });
 });
 
 describe('prevNextByDate', () => {
   const items = [
-    { slug: 'a', data: { pubDate: new Date('2024-01-01') } },
-    { slug: 'b', data: { pubDate: new Date('2024-03-01') } },
-    { slug: 'c', data: { pubDate: new Date('2024-02-01') } },
+    { id: 'a', data: { pubDate: new Date('2024-01-01') } },
+    { id: 'b', data: { pubDate: new Date('2024-03-01') } },
+    { id: 'c', data: { pubDate: new Date('2024-02-01') } },
   ];
 
   it('returns prev (older) and next (newer) for middle item', () => {
     const { prev, next } = prevNextByDate(items, 'c');
-    expect(prev?.slug).toBe('a');
-    expect(next?.slug).toBe('b');
+    expect(prev?.id).toBe('a');
+    expect(next?.id).toBe('b');
   });
 
   it('returns null prev for oldest item', () => {
     const { prev, next } = prevNextByDate(items, 'a');
     expect(prev).toBeNull();
-    expect(next?.slug).toBe('c');
+    expect(next?.id).toBe('c');
   });
 
   it('returns null next for newest item', () => {
     const { prev, next } = prevNextByDate(items, 'b');
-    expect(prev?.slug).toBe('c');
+    expect(prev?.id).toBe('c');
     expect(next).toBeNull();
   });
 });

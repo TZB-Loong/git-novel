@@ -17,7 +17,7 @@ export function formatDate(
 }
 
 interface DatedEntry {
-  slug: string;
+  id: string;
   data: { pubDate: Date };
 }
 
@@ -29,12 +29,12 @@ export function sortByDateDesc<T extends DatedEntry>(items: T[]): T[] {
 
 export function prevNextByDate<T extends DatedEntry>(
   items: T[],
-  currentSlug: string,
+  currentId: string,
 ): { prev: T | null; next: T | null } {
   const sorted = [...items].sort(
     (a, b) => a.data.pubDate.getTime() - b.data.pubDate.getTime(),
   );
-  const idx = sorted.findIndex((i) => i.slug === currentSlug);
+  const idx = sorted.findIndex((i) => i.id === currentId);
   if (idx === -1) return { prev: null, next: null };
   return {
     prev: idx > 0 ? sorted[idx - 1] : null,
