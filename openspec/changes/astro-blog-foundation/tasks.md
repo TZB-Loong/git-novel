@@ -1,10 +1,10 @@
 ## 1. 项目初始化
 
-- [ ] 1.1 在仓库根目录 `git init`，配置 `.gitignore`（node_modules、dist、.astro、.DS_Store）
-- [ ] 1.2 初始化 Astro 5 项目（`npm create astro@latest`，选 Empty + TypeScript strict）
-- [ ] 1.3 配置 `astro.config.ts`（`site`、`base`、`integrations: [mdx, sitemap]`）
-- [ ] 1.4 配置 `tsconfig.json` strict 模式
-- [ ] 1.5 安装核心依赖：`@astrojs/rss`、`@astrojs/sitemap`、`@astrojs/mdx`
+- [x] 1.1 在仓库根目录 `git init`，配置 `.gitignore`（node_modules、dist、.astro、.DS_Store）
+- [x] 1.2 初始化 Astro 5 项目（`npm create astro@latest`，选 Empty + TypeScript strict）
+- [x] 1.3 配置 `astro.config.ts`（`site`、`base`、`integrations: [mdx, sitemap]`）
+- [x] 1.4 配置 `tsconfig.json` strict 模式
+- [x] 1.5 安装核心依赖：`@astrojs/rss`、`@astrojs/sitemap`、`@astrojs/mdx`
 
 ## 2. 内容集合与 Schema
 

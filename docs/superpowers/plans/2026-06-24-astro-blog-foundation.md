@@ -98,7 +98,7 @@ README.md
 - Produces: `astro.config.ts` exporting default `defineConfig({ site, base, integrations, markdown })` — consumed by all later tasks.
 - Produces: npm scripts `dev`, `build`, `preview`, `test`, `test:coverage`.
 
-- [ ] **Step 1: Add dependencies to package.json**
+- [x] **Step 1: Add dependencies to package.json**
 
 Replace `package.json` contents with:
 
@@ -136,12 +136,12 @@ Replace `package.json` contents with:
 }
 ```
 
-- [ ] **Step 2: Install dependencies**
+- [x] **Step 2: Install dependencies**
 
 Run: `npm install`
 Expected: installs without errors; `node_modules/astro` exists.
 
-- [ ] **Step 3: Create astro.config.ts**
+- [x] **Step 3: Create astro.config.ts**
 
 ```typescript
 import { defineConfig } from 'astro/config';
@@ -175,7 +175,7 @@ export default defineConfig({
 });
 ```
 
-- [ ] **Step 4: Create tsconfig.json**
+- [x] **Step 4: Create tsconfig.json**
 
 ```json
 {
@@ -190,7 +190,7 @@ export default defineConfig({
 }
 ```
 
-- [ ] **Step 5: Create src/pages/index.astro placeholder**
+- [x] **Step 5: Create src/pages/index.astro placeholder**
 
 ```astro
 ---
@@ -206,23 +206,23 @@ export default defineConfig({
 </html>
 ```
 
-- [ ] **Step 6: Create public/favicon.svg**
+- [x] **Step 6: Create public/favicon.svg**
 
 ```xml
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" fill="#333"/><text x="16" y="22" font-size="18" text-anchor="middle" fill="#fff">N</text></svg>
 ```
 
-- [ ] **Step 7: Verify dev server boots**
+- [x] **Step 7: Verify dev server boots**
 
 Run: `npm run dev` (then Ctrl+C after seeing "ready")
 Expected: server starts on http://localhost:4321/git-novel/ with no errors.
 
-- [ ] **Step 8: Verify build**
+- [x] **Step 8: Verify build**
 
 Run: `npm run build`
 Expected: `dist/` generated; `dist/index.html` exists.
 
-- [ ] **Step 9: Commit**
+- [x] **Step 9: Commit**
 
 ```bash
 git add package.json package-lock.json astro.config.ts tsconfig.json src/pages/index.astro public/favicon.svg
