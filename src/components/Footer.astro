@@ -1,0 +1,13 @@
+---
+// src/components/Footer.astro
+import { SITE_CONFIG } from '../lib/config';
+const baseURL = import.meta.env.BASE_URL;
+const year = new Date().getUTCFullYear();
+---
+<footer style="border-top:1px solid var(--color-border);padding:1.5rem;text-align:center;color:var(--color-muted);">
+  <div style="display:flex;justify-content:center;gap:1.5rem;margin-bottom:0.5rem;">
+    <a href={`${baseURL}rss.xml`}>RSS</a>
+    <a href={`https://github.com/${SITE_CONFIG.author}`} target="_blank" rel="noopener">GitHub</a>
+  </div>
+  <small>&copy; {year} {SITE_CONFIG.author}. All rights reserved.</small>
+</footer>

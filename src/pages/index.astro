@@ -1,11 +1,9 @@
 ---
+// src/pages/index.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE_CONFIG } from '../lib/config';
 ---
-<html lang="zh-CN">
-  <head>
-    <meta charset="utf-8" />
-    <title>git-novel</title>
-  </head>
-  <body>
-    <h1>Astro blog skeleton OK</h1>
-  </body>
-</html>
+<BaseLayout title={SITE_CONFIG.title}>
+  <h1>{SITE_CONFIG.title}</h1>
+  <p>{SITE_CONFIG.description}</p>
+</BaseLayout>

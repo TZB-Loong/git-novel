@@ -1,0 +1,32 @@
+---
+// src/components/Header.astro
+import { SITE_CONFIG } from '../lib/config';
+
+const baseURL = import.meta.env.BASE_URL;
+const path = Astro.url.pathname.replace(baseURL, '/');
+const navItems = [
+  { href: '/', label: '首页' },
+  { href: '/articles/', label: '文章' },
+  { href: '/notes/', label: '笔记' },
+  { href: '/gallery/', label: '相册' },
+];
+const isActive = (href: string) =>
+  href === '/' ? path === '/' : path.startsWith(href);
+---
+<header
+  style="border-bottom:1px solid var(--color-border);padding:1rem;background:var(--color-bg);position:sticky;top:0;z-index:10;"
+>
+  <nav style="max-width:var(--max-width);margin:0 auto;display:flex;gap:1.5rem;align-items:center;">
+    <a href={`${baseURL}`} style="font-weight:bold;font-size:1.2rem;color:var(--color-fg);">{SITE_CONFIG.title}</a>
+    <div style="display:flex;gap:1.2rem;margin-left:auto;">
+      {navItems.map((item) => (
+        <a
+          href={`${baseURL}${item.href.replace(/^\//, '')}`}
+          style={isActive(item.href) ? 'color:var(--color-accent);font-weight:600;' : 'color:var(--color-muted);'}
+        >
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </nav>
+</header>
