@@ -63,7 +63,7 @@
 
 ## 9. 测试
 
-- [ ] 9.1 安装 Vitest + @vitest/coverage-v8，配置 `vitest.config.ts`（coverage glob 排除 .astro）
+- [x] 9.1 安装 Vitest + @vitest/coverage-v8，配置 `vitest.config.ts`（coverage glob 排除 .astro）
 - [ ] 9.2 编写 `src/lib/slug.test.ts`：中文→pinyin、特殊字符、重复 slug 检测
 - [ ] 9.3 编写 `src/lib/date.test.ts`：ISO 解析、格式化、时区处理
 - [ ] 9.4 编写 `src/content/config.test.ts`：articles/notes/albums schema 校验（必填、类型、draft 默认值）

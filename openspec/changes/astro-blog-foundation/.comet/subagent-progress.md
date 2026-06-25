@@ -14,8 +14,8 @@
 | Task | Status | Commits | Stage |
 |------|--------|---------|-------|
 | 1. Astro Project Skeleton | done | d93af12 | done |
-| 2. Vitest Configuration | in_progress | — | implementing |
-| 3. Site Config Module (TDD) | pending | — | — |
+| 2. Vitest Configuration | done | 8247a45 | done |
+| 3. Site Config Module (TDD) | in_progress | — | implementing |
 | 4. Slug Utility (TDD) | pending | — | — |
 | 5. Date Utility (TDD) | pending | — | — |
 | 6. Content Collection Schema (TDD) | pending | — | — |
@@ -39,7 +39,7 @@
 
 ## Current Task
 
-Task 2: Vitest Configuration (implementing)
+Task 3: Site Config Module (TDD) (implementing)
 
 ## Final Review
 

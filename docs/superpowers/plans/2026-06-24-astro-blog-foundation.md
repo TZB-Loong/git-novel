@@ -242,7 +242,7 @@ git commit -m "feat: scaffold Astro 5 project with mdx, sitemap, react integrati
 - Produces: `vitest.config.ts` with coverage glob excluding `**/*.astro`, `dist`, `node_modules`.
 - Produces: `npm test` and `npm run test:coverage` commands.
 
-- [ ] **Step 1: Create vitest.config.ts**
+- [x] **Step 1: Create vitest.config.ts**
 
 ```typescript
 import { defineConfig } from 'vitest/config';
@@ -268,7 +268,7 @@ export default defineConfig({
 
 Note: `src/lib/config.ts` excluded because it is a plain constant export (no logic to test); configuration correctness verified by build.
 
-- [ ] **Step 2: Create sanity test**
+- [x] **Step 2: Create sanity test**
 
 ```typescript
 // src/lib/__tests__/sanity.test.ts
@@ -281,17 +281,17 @@ describe('vitest sanity', () => {
 });
 ```
 
-- [ ] **Step 3: Run tests**
+- [x] **Step 3: Run tests**
 
 Run: `npm test`
 Expected: 1 test passes.
 
-- [ ] **Step 4: Run coverage (will warn — no real lib files yet)**
+- [x] **Step 4: Run coverage (will warn — no real lib files yet)**
 
 Run: `npm run test:coverage`
 Expected: completes; coverage report shows 0% for lib (acceptable for now — real targets come in Tasks 3-7).
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add vitest.config.ts src/lib/__tests__/sanity.test.ts
