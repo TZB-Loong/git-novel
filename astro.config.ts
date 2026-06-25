@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 import react from '@astrojs/react';
 
 // TODO(user): replace `username` with real GitHub username before first deploy.
-const site = 'https://username.github.io';
+const site = 'https://TZB-Loong.github.io';
 
 export default defineConfig({
   site,

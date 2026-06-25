@@ -31,3 +31,12 @@ openspec/changes/*/.comet/handoff/*.json
 
 # test coverage
 coverage/
+
+# superpowers generated reports
+docs/superpowers/reports/
+
+# archived OpenSpec changes
+openspec/changes/archive/
+
+# OpenSpec main specs
+openspec/specs/

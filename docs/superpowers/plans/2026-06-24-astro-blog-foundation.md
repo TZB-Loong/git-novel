@@ -2,6 +2,7 @@
 change: astro-blog-foundation
 design-doc: docs/superpowers/specs/2026-06-24-astro-blog-foundation-design.md
 base-ref: fe2e0cbe2f9b40623f6c3e24005620afb18c0ece
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 
 # Astro Blog Foundation Implementation Plan
@@ -27,6 +28,7 @@ base-ref: fe2e0cbe2f9b40623f6c3e24005620afb18c0ece
 - `npm test -- --coverage` MUST pass before `npm run build` in CI.
 - tasks.md 1.1 (git init + .gitignore) already complete — skip.
 
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 
 ## File Structure
@@ -83,6 +85,7 @@ vitest.config.ts
 README.md
 ```
 
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 
 ## Task 1: Astro Project Skeleton
@@ -193,7 +196,9 @@ export default defineConfig({
 - [x] **Step 5: Create src/pages/index.astro placeholder**
 
 ```astro
+archived-with: 2026-06-25-astro-blog-foundation
 ---
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 <html lang="zh-CN">
   <head>
@@ -229,6 +234,7 @@ git add package.json package-lock.json astro.config.ts tsconfig.json src/pages/i
 git commit -m "feat: scaffold Astro 5 project with mdx, sitemap, react integrations"
 ```
 
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 
 ## Task 2: Vitest Configuration
@@ -298,6 +304,7 @@ git add vitest.config.ts src/lib/__tests__/sanity.test.ts
 git commit -m "test: configure Vitest with v8 coverage, exclude .astro components"
 ```
 
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 
 ## Task 3: Site Config Module (TDD)
@@ -449,6 +456,7 @@ git rm src/lib/__tests__/sanity.test.ts
 git commit -m "feat(lib): add SITE_CONFIG with optional Giscus section"
 ```
 
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 
 ## Task 4: Slug Utility (TDD)
@@ -604,6 +612,7 @@ git add src/lib/slug.ts src/lib/slug.test.ts
 git commit -m "feat(lib): add toSlug with Chinese-to-pinyin conversion and uniqueness check"
 ```
 
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 
 ## Task 5: Date Utility (TDD)
@@ -754,6 +763,7 @@ git add src/lib/date.ts src/lib/date.test.ts
 git commit -m "feat(lib): add formatDate (zh/en) and date-based sort/prevNext helpers"
 ```
 
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 
 ## Task 6: Content Collection Schema (TDD)
@@ -995,12 +1005,14 @@ Note: Astro 5's Content Layer API uses `glob()` loader. The slug derived from fi
 
 ```markdown
 <!-- src/content/articles/hello.md -->
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 title: 你好，世界
 pubDate: 2024-03-15
 description: 第一篇示例文章，验证中文标题与 slug 生成。
 tags: [示例, astro]
 category: tech
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 
 ## 简介
@@ -1021,11 +1033,13 @@ console.log(greeting);
 
 ```markdown
 <!-- src/content/notes/sample.md -->
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 title: 示例笔记
 pubDate: 2024-03-20
 cover: notes/sample-cover.jpg
 tags: [示例]
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 
 这是一条带封面的示例笔记。
@@ -1033,9 +1047,11 @@ tags: [示例]
 
 ```markdown
 <!-- src/content/notes/text-only.md -->
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 title: 纯文本笔记
 pubDate: 2024-03-18
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 
 这是一条没有封面的笔记，不会出现在卡片流中。
@@ -1043,11 +1059,13 @@ pubDate: 2024-03-18
 
 ```markdown
 <!-- src/content/albums/demo.md -->
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 title: 示例相册
 date: 2024-03-22
 description: 用来验证相册网格与 Lightbox。
 images: [1.svg, 2.svg, 3.svg]
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 ```
 
@@ -1110,6 +1128,7 @@ git add src/content/config.ts src/content/config.test.ts src/content/articles sr
 git commit -m "feat(content): define articles/notes/albums schemas with sample entries"
 ```
 
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 
 ## Task 7: Gallery Utility (TDD)
@@ -1235,6 +1254,7 @@ git add src/lib/gallery.ts src/lib/gallery.test.ts
 git commit -m "feat(lib): add gallery image collection and album sort helpers"
 ```
 
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 
 ## Task 8: Global Styles and BaseHead
@@ -1333,6 +1353,7 @@ pre {
 - [x] **Step 2: Create BaseHead.astro**
 
 ```astro
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 // src/components/BaseHead.astro
 import { SITE_CONFIG } from '../lib/config';
@@ -1351,6 +1372,7 @@ const ogImage = image
   ? new URL(image, Astro.site)
   : new URL('favicon.svg', Astro.site);
 const baseURL = import.meta.env.BASE_URL;
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -1374,6 +1396,7 @@ const baseURL = import.meta.env.BASE_URL;
 - [x] **Step 3: Create BaseLayout.astro**
 
 ```astro
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 // src/layouts/BaseLayout.astro
 import BaseHead from '../components/BaseHead.astro';
@@ -1388,6 +1411,7 @@ interface Props {
 }
 
 const { title, description, image, pubDate } = Astro.props;
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 <!doctype html>
 <html lang="zh-CN">
@@ -1408,6 +1432,7 @@ const { title, description, image, pubDate } = Astro.props;
 
 Hold commit until Task 9 to keep build green. Proceed to Task 9.
 
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 
 ## Task 9: Header and Footer
@@ -1424,6 +1449,7 @@ Hold commit until Task 9 to keep build green. Proceed to Task 9.
 - [x] **Step 1: Create Header.astro**
 
 ```astro
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 // src/components/Header.astro
 import { SITE_CONFIG } from '../lib/config';
@@ -1438,6 +1464,7 @@ const navItems = [
 ];
 const isActive = (href: string) =>
   href === '/' ? path === '/' : path.startsWith(href);
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 <header
   style="border-bottom:1px solid var(--color-border);padding:1rem;background:var(--color-bg);position:sticky;top:0;z-index:10;"
@@ -1461,11 +1488,13 @@ const isActive = (href: string) =>
 - [x] **Step 2: Create Footer.astro**
 
 ```astro
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 // src/components/Footer.astro
 import { SITE_CONFIG } from '../lib/config';
 const baseURL = import.meta.env.BASE_URL;
 const year = new Date().getUTCFullYear();
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 <footer style="border-top:1px solid var(--color-border);padding:1.5rem;text-align:center;color:var(--color-muted);">
   <div style="display:flex;justify-content:center;gap:1.5rem;margin-bottom:0.5rem;">
@@ -1479,10 +1508,12 @@ const year = new Date().getUTCFullYear();
 - [x] **Step 3: Update src/pages/index.astro to use BaseLayout**
 
 ```astro
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 // src/pages/index.astro
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { SITE_CONFIG } from '../lib/config';
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 <BaseLayout title={SITE_CONFIG.title}>
   <h1>{SITE_CONFIG.title}</h1>
@@ -1507,6 +1538,7 @@ git add src/styles/global.css src/components/BaseHead.astro src/components/Heade
 git commit -m "feat(layout): add BaseLayout, BaseHead, Header, Footer, global styles"
 ```
 
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 
 ## Task 10: ArticleCard, NoteCard, TOC Components
@@ -1525,6 +1557,7 @@ git commit -m "feat(layout): add BaseLayout, BaseHead, Header, Footer, global st
 - [x] **Step 1: Create ArticleCard.astro**
 
 ```astro
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 // src/components/ArticleCard.astro
 import { formatDate } from '../lib/date';
@@ -1536,6 +1569,7 @@ interface Props {
 }
 const { entry } = Astro.props;
 const baseURL = import.meta.env.BASE_URL;
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 <article style="border:1px solid var(--color-border);border-radius:8px;padding:1.2rem;background:var(--color-card-bg);">
   <h3 style="margin:0 0 0.4rem;">
@@ -1549,6 +1583,7 @@ const baseURL = import.meta.env.BASE_URL;
 - [x] **Step 2: Create NoteCard.astro**
 
 ```astro
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 // src/components/NoteCard.astro
 import { formatDate } from '../lib/date';
@@ -1564,6 +1599,7 @@ const { entry } = Astro.props;
 const baseURL = import.meta.env.BASE_URL;
 // cover is relative to src/assets/, import for astro:assets optimization
 const coverModule = await import(`../assets/${entry.data.cover}`);
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 <a href={`${baseURL}notes/${entry.slug}/`} style="display:block;color:inherit;">
   <article style="border:1px solid var(--color-border);border-radius:8px;overflow:hidden;background:var(--color-card-bg);">
@@ -1581,12 +1617,14 @@ Note: dynamic `import()` of asset paths is supported by Vite. If it fails at bui
 - [x] **Step 3: Create TOC.astro**
 
 ```astro
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 // src/components/TOC.astro
 interface Heading { depth: number; slug: string; text: string; }
 interface Props { headings: Heading[]; }
 const { headings } = Astro.props;
 const tocItems = headings.filter((h) => h.depth === 2 || h.depth === 3);
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 {tocItems.length > 0 && (
   <nav aria-label="目录" style="border-left:3px solid var(--color-accent);padding-left:1rem;margin:1.5rem 0;">
@@ -1614,6 +1652,7 @@ git add src/components/ArticleCard.astro src/components/NoteCard.astro src/compo
 git commit -m "feat(components): add ArticleCard, NoteCard, TOC components"
 ```
 
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 
 ## Task 11: Article Detail Page
@@ -1628,6 +1667,7 @@ git commit -m "feat(components): add ArticleCard, NoteCard, TOC components"
 - [x] **Step 1: Create articles/[...slug].astro**
 
 ```astro
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 // src/pages/articles/[...slug].astro
 import { getCollection, render, type CollectionEntry } from 'astro:content';
@@ -1656,6 +1696,7 @@ const visibleArticles = allArticles.filter(
 const sorted = sortByDateDesc(visibleArticles);
 const { prev, next } = prevNextByDate(sorted, entry.id);
 const baseURL = import.meta.env.BASE_URL;
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 <BaseLayout
   title={entry.data.title}
@@ -1718,6 +1759,7 @@ git add src/pages/articles/[...slug].astro
 git commit -m "feat(articles): add article detail page with TOC and prev/next navigation"
 ```
 
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 
 ## Task 12: Note Detail Page
@@ -1732,6 +1774,7 @@ git commit -m "feat(articles): add article detail page with TOC and prev/next na
 - [x] **Step 1: Create notes/[...slug].astro**
 
 ```astro
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 // src/pages/notes/[...slug].astro
 import { getCollection, render, type CollectionEntry } from 'astro:content';
@@ -1770,6 +1813,7 @@ if (entry.data.cover) {
 }
 
 const baseURL = import.meta.env.BASE_URL;
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 <BaseLayout
   title={entry.data.title}
@@ -1826,6 +1870,7 @@ git add src/pages/notes/[...slug].astro
 git commit -m "feat(notes): add note detail page with optional cover image"
 ```
 
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 
 ## Task 13: Articles Index Page
@@ -1840,6 +1885,7 @@ git commit -m "feat(notes): add note detail page with optional cover image"
 - [x] **Step 1: Create articles/index.astro**
 
 ```astro
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 // src/pages/articles/index.astro
 import { getCollection, type CollectionEntry } from 'astro:content';
@@ -1854,6 +1900,7 @@ const sorted = sortByDateDesc(visible);
 // pre-compute unique tags and categories for filter UI
 const allTags = [...new Set(sorted.flatMap((a) => a.data.tags ?? []))].sort();
 const allCategories = [...new Set(sorted.map((a) => a.data.category).filter(Boolean) as string[])].sort();
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 <BaseLayout title="文章">
   <h1>文章</h1>
@@ -1925,6 +1972,7 @@ git add src/pages/articles/index.astro
 git commit -m "feat(articles): add articles index with tag/category client-side filtering"
 ```
 
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 
 ## Task 14: Notes Card Stream Page
@@ -1939,6 +1987,7 @@ git commit -m "feat(articles): add articles index with tag/category client-side 
 - [x] **Step 1: Create notes/index.astro**
 
 ```astro
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 // src/pages/notes/index.astro
 import { getCollection, type CollectionEntry } from 'astro:content';
@@ -1950,6 +1999,7 @@ const notes = await getCollection('notes');
 const visible = notes.filter((n) => !n.data.draft || import.meta.env.DEV);
 const withCover = visible.filter((n) => Boolean(n.data.cover));
 const sorted = sortByDateDesc(withCover);
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 <BaseLayout title="笔记">
   <h1>图片笔记</h1>
@@ -1982,6 +2032,7 @@ git add src/pages/notes/index.astro
 git commit -m "feat(notes): add notes card stream page filtering to cover-only entries"
 ```
 
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 
 ## Task 15: Home Page
@@ -1996,6 +2047,7 @@ git commit -m "feat(notes): add notes card stream page filtering to cover-only e
 - [x] **Step 1: Replace src/pages/index.astro**
 
 ```astro
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 // src/pages/index.astro
 import { getCollection, type CollectionEntry } from 'astro:content';
@@ -2016,6 +2068,7 @@ const latestNoteCards = sortByDateDesc(
 ).slice(0, 6);
 
 const baseURL = import.meta.env.BASE_URL;
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 <BaseLayout title={SITE_CONFIG.title} description={SITE_CONFIG.description}>
   <section style="margin-bottom:2.5rem;">
@@ -2064,6 +2117,7 @@ git add src/pages/index.astro
 git commit -m "feat(home): add home page with latest 5 articles and 6 note cards"
 ```
 
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 
 ## Task 16: Gallery Index Page
@@ -2078,6 +2132,7 @@ git commit -m "feat(home): add home page with latest 5 articles and 6 note cards
 - [x] **Step 1: Create gallery/index.astro**
 
 ```astro
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 // src/pages/gallery/index.astro
 import { getCollection, type CollectionEntry } from 'astro:content';
@@ -2108,6 +2163,7 @@ const albumsWithCovers = sorted.map(album => {
   const key = cover ? `/src/assets/${cover}` : null;
   return { album, coverModule: key ? (coverImages[key]?.default ?? null) : null };
 });
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 <BaseLayout title="相册">
   <h1>相册</h1>
@@ -2147,6 +2203,7 @@ git add src/pages/gallery/index.astro
 git commit -m "feat(gallery): add album index page with cover thumbnails"
 ```
 
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 
 ## Task 17: Lightbox Component
@@ -2161,10 +2218,12 @@ git commit -m "feat(gallery): add album index page with cover thumbnails"
 - [x] **Step 1: Create Lightbox.astro**
 
 ```astro
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 // src/components/Lightbox.astro
 // Renders inline script that initializes GLightbox on the album page.
 // Must be placed after the gallery markup in the page so DOM exists.
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/css/glightbox.min.css" />
 <script is:inline>
@@ -2193,6 +2252,7 @@ git add src/components/Lightbox.astro
 git commit -m "feat(components): add Lightbox wrapper using GLightbox via dynamic import"
 ```
 
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 
 ## Task 18: Single Album Page
@@ -2207,6 +2267,7 @@ git commit -m "feat(components): add Lightbox wrapper using GLightbox via dynami
 - [x] **Step 1: Create gallery/[album].astro**
 
 ```astro
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 // src/pages/gallery/[album].astro
 import { getCollection, type CollectionEntry } from 'astro:content';
@@ -2251,6 +2312,7 @@ const resolved = await Promise.all(
     };
   }),
 );
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 <BaseLayout title={entry.data.title} description={entry.data.description ?? entry.data.title}>
   <h1>{entry.data.title}</h1>
@@ -2287,6 +2349,7 @@ git add src/pages/gallery/[album].astro
 git commit -m "feat(gallery): add single album page with CSS grid and GLightbox integration"
 ```
 
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 
 ## Task 19: Giscus Comments Component
@@ -2339,6 +2402,7 @@ export default function GiscusComments(props: GiscusProps) {
 - [x] **Step 2: Create Giscus.astro**
 
 ```astro
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 // src/components/Giscus.astro
 import GiscusComments from './Giscus';
@@ -2346,6 +2410,7 @@ import { SITE_CONFIG, isGiscusConfigured } from '../lib/config';
 
 const giscus = SITE_CONFIG.giscus;
 const configured = isGiscusConfigured(giscus);
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 {configured && giscus ? (
   <GiscusComments
@@ -2435,6 +2500,7 @@ git add src/components/Giscus.tsx src/components/Giscus.astro src/pages/articles
 git commit -m "feat(comments): add Giscus React component with client:idle lazy load and placeholder fallback"
 ```
 
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 
 ## Task 20: RSS Feed and Sitemap
@@ -2494,6 +2560,7 @@ git add src/pages/rss.xml.ts
 git commit -m "feat(rss): add RSS endpoint serving latest 20 non-draft articles"
 ```
 
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 
 ## Task 21: README and Schema Contract
@@ -2531,6 +2598,7 @@ npm run test:coverage
 在 `src/content/articles/` 新建 `.md` 文件：
 
 ```yaml
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 title: 文章标题
 pubDate: 2024-03-15
@@ -2538,6 +2606,7 @@ description: 一句话描述
 tags: [标签1, 标签2]
 category: 分类
 draft: false
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 
 正文（Markdown）...
@@ -2548,10 +2617,12 @@ draft: false
 在 `src/content/notes/` 新建 `.md` 文件。带 `cover` 字段的笔记会出现在首页与 `/notes/` 卡片流：
 
 ```yaml
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 title: 笔记标题
 pubDate: 2024-03-20
 cover: notes/my-cover.jpg   # 相对 src/assets/ 的路径
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 
 正文...
@@ -2564,11 +2635,13 @@ cover: notes/my-cover.jpg   # 相对 src/assets/ 的路径
 在 `src/content/albums/` 新建 `.md` 文件，图片放在 `src/assets/gallery/<album-slug>/`：
 
 ```yaml
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 title: 相册标题
 date: 2024-03-22
 description: 可选描述
 images: [1.jpg, 2.jpg, 3.jpg]   # 相对 src/assets/gallery/<album-slug>/ 的文件名
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 ```
 
@@ -2690,6 +2763,7 @@ git add README.md docs/superpowers/specs/astro-blog-foundation-schema-contract.m
 git commit -m "docs: add README and frontmatter schema contract for obsidian-migration change"
 ```
 
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 
 ## Task 22: CI/CD Workflow
@@ -2781,6 +2855,7 @@ git add .github/workflows/deploy.yml
 git commit -m "ci: add GitHub Pages deploy workflow with pre-build test gate"
 ```
 
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 
 ## Task 23: Final Local Validation
@@ -2849,6 +2924,7 @@ git commit -m "fix: address issues found during final validation"
 
 If no fixes needed, skip this step — the change is complete.
 
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 
 ## Self-Review
@@ -2897,6 +2973,7 @@ All spec requirements covered. tasks.md 1.1 already complete (skipped per Global
 
 One discrepancy found and fixed inline: Task 10 NoteCard uses `entry.slug` in the interface comment but Astro 5 entries use `entry.id`. The component receives the entry prop as-is from the page, and pages pass `entry` directly (not `entry.slug`), so the component accesses `entry.id` via the route param. The interface documentation in Task 10 says `slug: string` — this is the conceptual slug, which in Astro 5 is `entry.id`. Implementers should treat `entry.id` as the slug. This is consistent across all page tasks (11-18 use `entry.id`).
 
+archived-with: 2026-06-25-astro-blog-foundation
 ---
 
 ## Execution Handoff

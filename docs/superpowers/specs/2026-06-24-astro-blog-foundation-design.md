@@ -2,6 +2,8 @@
 comet_change: astro-blog-foundation
 role: technical-design
 canonical_spec: openspec
+archived-with: 2026-06-25-astro-blog-foundation
+status: final
 ---
 
 # Astro Blog Foundation — Technical Design
