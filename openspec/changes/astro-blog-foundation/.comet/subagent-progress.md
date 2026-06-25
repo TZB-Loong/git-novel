@@ -18,7 +18,7 @@
 | 3. Site Config Module (TDD) | done | 4a4cc20 | done |
 | 4. Slug Utility (TDD) | done | 015a226 | done |
 | 5. Date Utility (TDD) | done | 5cfa89a | done |
-| 6. Content Collection Schema (TDD) | in_progress | — | implementing |
+| 6. Content Collection Schema (TDD) | done | b63995b | done |
 | 7. Gallery Utility (TDD) | pending | — | — |
 | 8. Global Styles and BaseHead | pending | — | — |
 | 9. Header and Footer | pending | — | — |
@@ -39,7 +39,14 @@
 
 ## Current Task
 
-Task 6: Content Collection Schema (TDD) (implementing)
+Task 6 complete (commit b63995b, 41/41 tests pass, build OK, schema matches Design Doc §3).
+Next: Task 7 (Gallery Utility TDD) — pending user resume.
+
+## Notes
+
+- Task 6 implementer added `vitest/stubs/` + `resolve.alias` for `astro:content`/`astro:loaders` virtual modules (standard Astro testing pattern, no production impact).
+- `generateId` extracted as named export for 80% function coverage threshold.
+- Task 6 plan checkoff (Task 6 steps + OpenSpec 2.1-2.4) NOT yet applied — interrupted by user before edits. Resume by applying those checkoffs then dispatching Task 7.
 
 ## Final Review
 
