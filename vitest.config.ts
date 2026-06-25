@@ -1,6 +1,16 @@
 import { defineConfig } from 'vitest/config';
+import { fileURLToPath, URL } from 'node:url';
+
+const stub = (name: string) =>
+  fileURLToPath(new URL(`./vitest/stubs/${name}`, import.meta.url));
 
 export default defineConfig({
+  resolve: {
+    alias: [
+      { find: /^astro:content$/, replacement: stub('astro-content.ts') },
+      { find: /^astro\/loaders$/, replacement: stub('astro-loaders.ts') },
+    ],
+  },
   test: {
     include: ['src/**/*.test.ts'],
     coverage: {
