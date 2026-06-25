@@ -31,7 +31,7 @@ const rawGiscus = {
 export const SITE_CONFIG: SiteConfig = {
   site: 'https://TZB-Loong.github.io',
   base: '/git-novel',
-  title: '随记',
+  title: '夏目友人懒人帐',
   description: '个人博客 — 文章、笔记、相册',
   author: 'loong',
   giscus:
