@@ -58,9 +58,32 @@ const baseURL = import.meta.env.BASE_URL;
     {coverModule && (
       <Image src={coverModule.default} alt={entry.data.title} width={800} />
     )}
-    <div class="prose">
+    <div class="prose" id="note-content">
       <Content />
     </div>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/css/glightbox.min.css" />
+    <script>
+      import('https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/js/glightbox.min.js').then((mod) => {
+        const GLightbox = mod.default;
+        const prose = document.getElementById('note-content');
+        if (!prose) return;
+        const imgs = prose.querySelectorAll('img');
+        imgs.forEach((img) => {
+          const a = document.createElement('a');
+          a.href = img.src;
+          a.className = 'glightbox';
+          a.setAttribute('data-gallery', 'note-gallery');
+          img.parentNode.insertBefore(a, img);
+          a.appendChild(img);
+        });
+        new GLightbox({
+          selector: '.glightbox',
+          touchNavigation: true,
+          loop: false,
+        });
+      });
+    </script>
 
     <nav style="margin-top:2rem;">
       <a href={`${baseURL}notes/`}>&larr; 返回笔记列表</a>
