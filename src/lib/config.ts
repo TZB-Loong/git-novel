@@ -20,16 +20,16 @@ export interface SiteConfig {
 // Placeholder Giscus values — user fills after running giscus.app wizard.
 // When any required field is empty, giscus is null so build does not break.
 const rawGiscus = {
-  repo: '',
-  repoId: '',
+  repo: 'TZB-Loong/git-novel',
+  repoId: 'R_kgDOTE0iKQ',
   category: 'Announcements',
-  categoryId: '',
+  categoryId: 'DIC_kwDOTE0iKc4C_3He',
   mapping: 'pathname' as const,
   theme: 'light' as const,
 };
 
 export const SITE_CONFIG: SiteConfig = {
-  site: 'https://username.github.io',
+  site: 'https://TZB-Loong.github.io',
   base: '/git-novel',
   title: 'git-novel',
   description: '个人博客 — 文章、笔记、相册',
