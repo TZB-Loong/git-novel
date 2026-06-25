@@ -1,9 +1,48 @@
 ---
 // src/pages/index.astro
+import { getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import NoteCard from '../components/NoteCard.astro';
+import { sortByDateDesc } from '../lib/date';
 import { SITE_CONFIG } from '../lib/config';
+
+const articles = await getCollection('articles');
+const notes = await getCollection('notes');
+const visibleArticles = articles.filter((a) => !a.data.draft || import.meta.env.DEV);
+const visibleNotes = notes.filter((n) => !n.data.draft || import.meta.env.DEV);
+
+const latestArticles = sortByDateDesc(visibleArticles).slice(0, 5);
+const latestNoteCards = sortByDateDesc(
+  visibleNotes.filter((n) => Boolean(n.data.cover)),
+).slice(0, 6);
+
+const baseURL = import.meta.env.BASE_URL;
 ---
-<BaseLayout title={SITE_CONFIG.title}>
-  <h1>{SITE_CONFIG.title}</h1>
-  <p>{SITE_CONFIG.description}</p>
+<BaseLayout title={SITE_CONFIG.title} description={SITE_CONFIG.description}>
+  <section style="margin-bottom:2.5rem;">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;">
+      <h2 style="margin:0;">最新文章</h2>
+      <a href={`${baseURL}articles/`}>全部 →</a>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:1rem;margin-top:1rem;">
+      {latestArticles.map((entry: CollectionEntry<'articles'>) => (
+        <ArticleCard entry={entry} />
+      ))}
+      {latestArticles.length === 0 && <p style="color:var(--color-muted);">暂无文章。</p>}
+    </div>
+  </section>
+
+  <section>
+    <div style="display:flex;justify-content:space-between;align-items:baseline;">
+      <h2 style="margin:0;">图片笔记</h2>
+      <a href={`${baseURL}notes/`}>全部 →</a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1rem;margin-top:1rem;">
+      {latestNoteCards.map((entry: CollectionEntry<'notes'>) => (
+        <NoteCard entry={entry} />
+      ))}
+      {latestNoteCards.length === 0 && <p style="color:var(--color-muted);">暂无图片笔记。</p>}
+    </div>
+  </section>
 </BaseLayout>
