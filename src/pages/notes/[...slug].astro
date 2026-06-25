@@ -1,0 +1,74 @@
+---
+// src/pages/notes/[...slug].astro
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { formatDate } from '../../lib/date';
+import { Image } from 'astro:assets';
+
+export async function getStaticPaths() {
+  const notes = await getCollection('notes');
+  return notes.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+interface Props {
+  entry: CollectionEntry<'notes'>;
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+// Load cover images via Vite's glob (handles asset hashing at build time)
+const coverImages = import.meta.glob<{ default: import('astro/assets').ImageMetadata }>(
+  '/src/assets/**/*.{svg,png,jpg,jpeg,gif,webp}',
+  { eager: true },
+);
+
+let coverModule: { default: import('astro/assets').ImageMetadata } | null = null;
+if (entry.data.cover) {
+  const key = `/src/assets/${entry.data.cover}`;
+  const matched = coverImages[key];
+  if (matched) {
+    coverModule = matched;
+  }
+}
+
+const baseURL = import.meta.env.BASE_URL;
+---
+<BaseLayout
+  title={entry.data.title}
+  description={entry.data.title}
+  pubDate={entry.data.pubDate}
+>
+  <article>
+    <header style="margin-bottom:2rem;">
+      <h1 style="margin:0 0 0.5rem;">{entry.data.title}</h1>
+      <small style="color:var(--color-muted);">{formatDate(entry.data.pubDate)}</small>
+      {entry.data.tags && (
+        <div style="margin-top:0.5rem;">
+          {entry.data.tags.map((t) => (
+            <span style="background:var(--color-card-bg);padding:0.2rem 0.6rem;border-radius:4px;font-size:0.8rem;margin-right:0.4rem;">#{t}</span>
+          ))}
+        </div>
+      )}
+    </header>
+    {coverModule && (
+      <Image src={coverModule.default} alt={entry.data.title} width={800} />
+    )}
+    <div class="prose">
+      <Content />
+    </div>
+
+    <nav style="margin-top:2rem;">
+      <a href={`${baseURL}notes/`}>&larr; 返回笔记列表</a>
+    </nav>
+
+    <!-- Giscus placeholder; replaced by component in Task 19 -->
+    <section id="comments" style="margin-top:3rem;">
+      <h2>评论</h2>
+      <p style="color:var(--color-muted);">评论系统配置中。</p>
+    </section>
+  </article>
+</BaseLayout>
