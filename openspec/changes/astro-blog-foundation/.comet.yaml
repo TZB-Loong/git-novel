@@ -1,5 +1,5 @@
 workflow: full
-phase: build
+phase: verify
 context_compression: off
 build_mode: subagent-driven-development
 build_pause: null
@@ -7,13 +7,13 @@ subagent_dispatch: confirmed
 tdd_mode: tdd
 review_mode: standard
 isolation: branch
-verify_mode: null
+verify_mode: full
 auto_transition: true
 base_ref: faee8ab2b211518f589560627a676686732a9ffd
 design_doc: docs/superpowers/specs/2026-06-24-astro-blog-foundation-design.md
 plan: docs/superpowers/plans/2026-06-24-astro-blog-foundation.md
 verify_result: pending
-verification_report: null
+verification_report: docs/superpowers/reports/2026-06-25-astro-blog-foundation-verify.md
 branch_status: pending
 created_at: 2026-06-24
 verified_at: null

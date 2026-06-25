@@ -1522,7 +1522,7 @@ git commit -m "feat(layout): add BaseLayout, BaseHead, Header, Footer, global st
 - Produces `TOC.astro` props: `{ headings: Array<{ depth: number; slug: string; text: string }> }` — renders h2/h3 only.
 - Consumes: `formatDate` from Task 5; `import.meta.env.BASE_URL`.
 
-- [ ] **Step 1: Create ArticleCard.astro**
+- [x] **Step 1: Create ArticleCard.astro**
 
 ```astro
 ---
@@ -1546,7 +1546,7 @@ const baseURL = import.meta.env.BASE_URL;
 </article>
 ```
 
-- [ ] **Step 2: Create NoteCard.astro**
+- [x] **Step 2: Create NoteCard.astro**
 
 ```astro
 ---
@@ -1578,7 +1578,7 @@ const coverModule = await import(`../assets/${entry.data.cover}`);
 
 Note: dynamic `import()` of asset paths is supported by Vite. If it fails at build time, fall back to a static helper that maps known cover paths to static imports. The test for gallery (Task 7) covers path resolution; this component is verified via build.
 
-- [ ] **Step 3: Create TOC.astro**
+- [x] **Step 3: Create TOC.astro**
 
 ```astro
 ---
@@ -1602,12 +1602,12 @@ const tocItems = headings.filter((h) => h.depth === 2 || h.depth === 3);
 )}
 ```
 
-- [ ] **Step 4: Verify build (components not yet used; verify they compile)**
+- [x] **Step 4: Verify build (components not yet used; verify they compile)**
 
 Run: `npm run build`
 Expected: build succeeds (components are imported nowhere yet, so Astro tree-shakes them; no errors).
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/components/ArticleCard.astro src/components/NoteCard.astro src/components/TOC.astro
@@ -1625,12 +1625,12 @@ git commit -m "feat(components): add ArticleCard, NoteCard, TOC components"
 - Consumes: `articles` collection (Task 6), `formatDate`, `prevNextByDate` (Task 5), `BaseLayout` (Task 8), `TOC` (Task 10).
 - Produces: `/articles/<slug>/` route rendering article + TOC + prev/next + Giscus placeholder (Giscus wired in Task 19).
 
-- [ ] **Step 1: Create articles/[...slug].astro**
+- [x] **Step 1: Create articles/[...slug].astro**
 
 ```astro
 ---
 // src/pages/articles/[...slug].astro
-import { getCollection, type CollectionEntry } from 'astro:content';
+import { getCollection, render, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import TOC from '../../components/TOC.astro';
 import { formatDate, prevNextByDate, sortByDateDesc } from '../../lib/date';
@@ -1649,7 +1649,7 @@ interface Props {
 }
 
 const { entry, allArticles } = Astro.props;
-const { Content, headings } = await entry.render();
+const { Content, headings } = await render(entry);
 const visibleArticles = allArticles.filter(
   (a) => !a.data.draft || import.meta.env.DEV,
 );
@@ -1700,18 +1700,18 @@ const baseURL = import.meta.env.BASE_URL;
 </BaseLayout>
 ```
 
-- [ ] **Step 2: Verify dev server renders the sample article**
+- [x] **Step 2: Verify dev server renders the sample article**
 
 Run: `npm run dev`
 Visit: `http://localhost:4321/git-novel/articles/hello/` (or the pinyin slug if `toSlug` was wired into the loader).
 Expected: article renders with title, date, TOC, code block with Shiki highlighting, and a comments placeholder.
 
-- [ ] **Step 3: Verify build**
+- [x] **Step 3: Verify build**
 
 Run: `npm run build`
 Expected: build succeeds; `dist/articles/<slug>/index.html` exists.
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add src/pages/articles/[...slug].astro
@@ -1729,12 +1729,12 @@ git commit -m "feat(articles): add article detail page with TOC and prev/next na
 - Consumes: `notes` collection (Task 6), `formatDate` (Task 5), `BaseLayout` (Task 8).
 - Produces: `/notes/<slug>/` route rendering note + Giscus placeholder.
 
-- [ ] **Step 1: Create notes/[...slug].astro**
+- [x] **Step 1: Create notes/[...slug].astro**
 
 ```astro
 ---
 // src/pages/notes/[...slug].astro
-import { getCollection, type CollectionEntry } from 'astro:content';
+import { getCollection, render, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { formatDate } from '../../lib/date';
 import { Image } from 'astro:assets';
@@ -1747,13 +1747,29 @@ export async function getStaticPaths() {
   }));
 }
 
-interface Props { entry: CollectionEntry<'notes'>; }
-const { entry } = Astro.props;
-const { Content } = await entry.render();
-let coverModule: { default: ImageMetadata } | null = null;
-if (entry.data.cover) {
-  coverModule = await import(`../../assets/${entry.data.cover}`);
+interface Props {
+  entry: CollectionEntry<'notes'>;
 }
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+// Load cover images via Vite's glob (handles asset hashing at build time)
+const coverImages = import.meta.glob<{ default: import('astro/assets').ImageMetadata }>(
+  '/src/assets/**/*.{svg,png,jpg,jpeg,gif,webp}',
+  { eager: true },
+);
+
+let coverModule: { default: import('astro/assets').ImageMetadata } | null = null;
+if (entry.data.cover) {
+  const key = `/src/assets/${entry.data.cover}`;
+  const matched = coverImages[key];
+  if (matched) {
+    coverModule = matched;
+  }
+}
+
+const baseURL = import.meta.env.BASE_URL;
 ---
 <BaseLayout
   title={entry.data.title}
@@ -1764,14 +1780,26 @@ if (entry.data.cover) {
     <header style="margin-bottom:2rem;">
       <h1 style="margin:0 0 0.5rem;">{entry.data.title}</h1>
       <small style="color:var(--color-muted);">{formatDate(entry.data.pubDate)}</small>
+      {entry.data.tags && (
+        <div style="margin-top:0.5rem;">
+          {entry.data.tags.map((t) => (
+            <span style="background:var(--color-card-bg);padding:0.2rem 0.6rem;border-radius:4px;font-size:0.8rem;margin-right:0.4rem;">#{t}</span>
+          ))}
+        </div>
+      )}
     </header>
     {coverModule && (
-      <Image src={coverModule.default} alt={entry.data.title} width={800} heights={[200, 400]} />
+      <Image src={coverModule.default} alt={entry.data.title} width={800} />
     )}
     <div class="prose">
       <Content />
     </div>
 
+    <nav style="margin-top:2rem;">
+      <a href={`${baseURL}notes/`}>&larr; 返回笔记列表</a>
+    </nav>
+
+    <!-- Giscus placeholder; replaced by component in Task 19 -->
     <section id="comments" style="margin-top:3rem;">
       <h2>评论</h2>
       <p style="color:var(--color-muted);">评论系统配置中。</p>
@@ -1780,18 +1808,18 @@ if (entry.data.cover) {
 </BaseLayout>
 ```
 
-- [ ] **Step 2: Verify dev server renders the sample note**
+- [x] **Step 2: Verify dev server renders the sample note**
 
 Run: `npm run dev`
 Visit: `http://localhost:4321/git-novel/notes/sample/`
 Expected: note renders with cover image and date.
 
-- [ ] **Step 3: Verify build**
+- [x] **Step 3: Verify build**
 
 Run: `npm run build`
 Expected: build succeeds; `dist/notes/<slug>/index.html` exists.
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add src/pages/notes/[...slug].astro
@@ -1809,7 +1837,7 @@ git commit -m "feat(notes): add note detail page with optional cover image"
 - Consumes: `articles` collection (Task 6), `sortByDateDesc` (Task 5), `BaseLayout` (Task 8), `ArticleCard` (Task 10).
 - Produces: `/articles/` route listing all non-draft articles sorted by pubDate desc, with `?tag=` and `?category=` query filtering (client-side).
 
-- [ ] **Step 1: Create articles/index.astro**
+- [x] **Step 1: Create articles/index.astro**
 
 ```astro
 ---
@@ -1879,18 +1907,18 @@ const allCategories = [...new Set(sorted.map((a) => a.data.category).filter(Bool
 </script>
 ```
 
-- [ ] **Step 2: Verify dev server**
+- [x] **Step 2: Verify dev server**
 
 Run: `npm run dev`
 Visit: `http://localhost:4321/git-novel/articles/`
 Expected: list shows the sample article; filter buttons appear; clicking a tag filters correctly.
 
-- [ ] **Step 3: Verify build**
+- [x] **Step 3: Verify build**
 
 Run: `npm run build`
 Expected: build succeeds; `dist/articles/index.html` exists.
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add src/pages/articles/index.astro
@@ -1908,7 +1936,7 @@ git commit -m "feat(articles): add articles index with tag/category client-side 
 - Consumes: `notes` collection (Task 6), `sortByDateDesc` (Task 5), `BaseLayout` (Task 8), `NoteCard` (Task 10).
 - Produces: `/notes/` route showing only notes with `cover`, sorted by pubDate desc, as a grid.
 
-- [ ] **Step 1: Create notes/index.astro**
+- [x] **Step 1: Create notes/index.astro**
 
 ```astro
 ---
@@ -1936,18 +1964,18 @@ const sorted = sortByDateDesc(withCover);
 </BaseLayout>
 ```
 
-- [ ] **Step 2: Verify dev server**
+- [x] **Step 2: Verify dev server**
 
 Run: `npm run dev`
 Visit: `http://localhost:4321/git-novel/notes/`
 Expected: grid shows `sample` note card; `text-only` note does NOT appear (no cover).
 
-- [ ] **Step 3: Verify build**
+- [x] **Step 3: Verify build**
 
 Run: `npm run build`
 Expected: build succeeds; `dist/notes/index.html` exists and lists only `sample`.
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add src/pages/notes/index.astro
@@ -1965,7 +1993,7 @@ git commit -m "feat(notes): add notes card stream page filtering to cover-only e
 - Consumes: `articles` and `notes` collections, `sortByDateDesc` (Task 5), `BaseLayout` (Task 8), `ArticleCard` (Task 10), `NoteCard` (Task 10).
 - Produces: `/` showing latest 5 articles + latest 6 cover-notes.
 
-- [ ] **Step 1: Replace src/pages/index.astro**
+- [x] **Step 1: Replace src/pages/index.astro**
 
 ```astro
 ---
@@ -2018,18 +2046,18 @@ const baseURL = import.meta.env.BASE_URL;
 </BaseLayout>
 ```
 
-- [ ] **Step 2: Verify dev server**
+- [x] **Step 2: Verify dev server**
 
 Run: `npm run dev`
 Visit: `http://localhost:4321/git-novel/`
 Expected: home shows "最新文章" section with `hello` article and "图片笔记" section with `sample` note card.
 
-- [ ] **Step 3: Verify build**
+- [x] **Step 3: Verify build**
 
 Run: `npm run build`
 Expected: build succeeds; `dist/index.html` contains both sections.
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add src/pages/index.astro
@@ -2047,7 +2075,7 @@ git commit -m "feat(home): add home page with latest 5 articles and 6 note cards
 - Consumes: `albums` collection (Task 6), `sortAlbumsByDateDesc` (Task 7), `formatDate` (Task 5), `BaseLayout` (Task 8).
 - Produces: `/gallery/` route listing all albums sorted by date desc.
 
-- [ ] **Step 1: Create gallery/index.astro**
+- [x] **Step 1: Create gallery/index.astro**
 
 ```astro
 ---
@@ -2062,49 +2090,57 @@ const albums = await getCollection('albums');
 const sorted = sortAlbumsByDateDesc(albums);
 const baseURL = import.meta.env.BASE_URL;
 
-// resolve cover image: if album.data.cover is set, use it; else fall back to first image
+// Resolve cover images via eager glob (avoids Vite dynamic import limitations)
+const coverImages = import.meta.glob<{ default: import('astro/assets').ImageMetadata }>(
+  '/src/assets/**/*.{svg,png,jpg,jpeg,gif,webp}',
+  { eager: true },
+);
+
 function coverPath(album: CollectionEntry<'albums'>): string | null {
   if (album.data.cover) return album.data.cover;
   if (album.data.images.length > 0) return `gallery/${album.id}/${album.data.images[0]}`;
   return null;
 }
+
+// Pre-resolve covers outside template (not async map, template can't await)
+const albumsWithCovers = sorted.map(album => {
+  const cover = coverPath(album);
+  const key = cover ? `/src/assets/${cover}` : null;
+  return { album, coverModule: key ? (coverImages[key]?.default ?? null) : null };
+});
 ---
 <BaseLayout title="相册">
   <h1>相册</h1>
   <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.5rem;margin-top:1.5rem;">
-    {sorted.map(async (album: CollectionEntry<'albums'>) => {
-      const cover = coverPath(album);
-      const coverModule = cover ? (await import(`../../assets/${cover}`)).default : null;
-      return (
-        <a href={`${baseURL}gallery/${album.id}/`} style="color:inherit;">
-          <article style="border:1px solid var(--color-border);border-radius:8px;overflow:hidden;background:var(--color-card-bg);">
-            {coverModule && (
-              <Image src={coverModule} alt={album.data.title} width={400} height={300} />
-            )}
-            <div style="padding:0.8rem;">
-              <h3 style="margin:0 0 0.3rem;font-size:1.05rem;">{album.data.title}</h3>
-              <small style="color:var(--color-muted);">{formatDate(album.data.date)}</small>
-            </div>
-          </article>
-        </a>
-      );
-    })}
+    {albumsWithCovers.map(({ album, coverModule }) => (
+      <a href={`${baseURL}gallery/${album.id}/`} style="color:inherit;">
+        <article style="border:1px solid var(--color-border);border-radius:8px;overflow:hidden;background:var(--color-card-bg);">
+          {coverModule && (
+            <Image src={coverModule} alt={album.data.title} width={400} height={300} />
+          )}
+          <div style="padding:0.8rem;">
+            <h3 style="margin:0 0 0.3rem;font-size:1.05rem;">{album.data.title}</h3>
+            <small style="color:var(--color-muted);">{formatDate(album.data.date)}</small>
+          </div>
+        </article>
+      </a>
+    ))}
   </div>
 </BaseLayout>
 ```
 
-- [ ] **Step 2: Verify dev server**
+- [x] **Step 2: Verify dev server**
 
 Run: `npm run dev`
 Visit: `http://localhost:4321/git-novel/gallery/`
 Expected: shows the `demo` album card with first image as cover.
 
-- [ ] **Step 3: Verify build**
+- [x] **Step 3: Verify build**
 
 Run: `npm run build`
 Expected: build succeeds; `dist/gallery/index.html` exists.
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add src/pages/gallery/index.astro
@@ -2122,7 +2158,7 @@ git commit -m "feat(gallery): add album index page with cover thumbnails"
 - Produces: `Lightbox.astro` rendering nothing server-side but injecting GLightbox CSS + JS init script (client-side only). Used with `client:load` directive by the album page (Task 18).
 - Consumes: `glightbox` npm package.
 
-- [ ] **Step 1: Create Lightbox.astro**
+- [x] **Step 1: Create Lightbox.astro**
 
 ```astro
 ---
@@ -2145,12 +2181,12 @@ git commit -m "feat(gallery): add album index page with cover thumbnails"
 
 Note: Using CDN for GLightbox avoids bundler config complexity; the lib is small and only loaded on album pages. If offline build is required, switch to `import GLightbox from 'glightbox'` and `import 'glightbox/dist/css/glightbox.min.css'` inside an Astro `<script>` — verify `npm run build` succeeds with that approach.
 
-- [ ] **Step 2: Verify build (component not yet used)**
+- [x] **Step 2: Verify build (component not yet used)**
 
 Run: `npm run build`
 Expected: build succeeds.
 
-- [ ] **Step 3: Commit**
+- [x] **Step 3: Commit**
 
 ```bash
 git add src/components/Lightbox.astro
@@ -2168,7 +2204,7 @@ git commit -m "feat(components): add Lightbox wrapper using GLightbox via dynami
 - Consumes: `albums` collection (Task 6), `collectAlbumImages` (Task 7), `BaseLayout` (Task 8), `Lightbox` (Task 17), `Image` and `getImage` from `astro:assets`.
 - Produces: `/gallery/<album>/` route rendering CSS Grid of thumbnails with GLightbox links to full-size images.
 
-- [ ] **Step 1: Create gallery/[album].astro**
+- [x] **Step 1: Create gallery/[album].astro**
 
 ```astro
 ---
@@ -2190,12 +2226,19 @@ export async function getStaticPaths() {
 
 interface Props { entry: CollectionEntry<'albums'>; }
 const { entry } = Astro.props;
-const images = collectAlbumImages(entry);
+const images = collectAlbumImages({ slug: entry.id, data: entry.data });
 
-// Resolve each image: thumbnail via <Image>, full URL via getImage() for GLightbox href.
+// Resolve images via eager glob (avoids Vite dynamic import limitations)
+const coverImages = import.meta.glob<{ default: import('astro/assets').ImageMetadata }>(
+  '/src/assets/**/*.{svg,png,jpg,jpeg,gif,webp}',
+  { eager: true },
+);
+
 const resolved = await Promise.all(
   images.map(async (img) => {
-    const mod = await import(`../../assets/${img.src}`);
+    const key = `/src/assets/${img.src}`;
+    const mod = coverImages[key];
+    if (!mod) return null;
     const optimizedFull = await getImage({
       src: mod.default,
       width: 1600,
@@ -2215,9 +2258,9 @@ const resolved = await Promise.all(
   {entry.data.description && <p style="margin-top:0.8rem;">{entry.data.description}</p>}
 
   <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:0.8rem;margin-top:1.5rem;">
-    {resolved.map((img) => (
-      <a href={img.fullURL} class="glightbox" data-gallery={entry.id} data-alt={img.alt}>
-        <Image src={img.thumb} alt={img.alt} width={300} height={225} />
+    {resolved.filter(Boolean).map((img) => (
+      <a href={img!.fullURL} class="glightbox" data-gallery={entry.id} data-alt={img!.alt}>
+        <Image src={img!.thumb} alt={img!.alt} width={300} height={225} />
       </a>
     ))}
   </div>
@@ -2226,18 +2269,18 @@ const resolved = await Promise.all(
 </BaseLayout>
 ```
 
-- [ ] **Step 2: Verify dev server**
+- [x] **Step 2: Verify dev server**
 
 Run: `npm run dev`
 Visit: `http://localhost:4321/git-novel/gallery/demo/`
 Expected: page shows 3 image thumbnails in a grid; clicking one opens GLightbox full-screen with arrow navigation.
 
-- [ ] **Step 3: Verify build**
+- [x] **Step 3: Verify build**
 
 Run: `npm run build`
 Expected: build succeeds; `dist/gallery/demo/index.html` exists; optimized WebP images generated under `dist/_astro/`.
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add src/pages/gallery/[album].astro
@@ -2258,7 +2301,7 @@ git commit -m "feat(gallery): add single album page with CSS grid and GLightbox 
 - Consumes: `SITE_CONFIG.giscus` and `isGiscusConfigured` from Task 3, `@giscus/react` package.
 - Produces: `Giscus.astro` rendering either the React `<Giscus client:idle>` or a "未配置" placeholder.
 
-- [ ] **Step 1: Create Giscus.tsx**
+- [x] **Step 1: Create Giscus.tsx**
 
 ```tsx
 // src/components/Giscus.tsx
@@ -2293,7 +2336,7 @@ export default function GiscusComments(props: GiscusProps) {
 }
 ```
 
-- [ ] **Step 2: Create Giscus.astro**
+- [x] **Step 2: Create Giscus.astro**
 
 ```astro
 ---
@@ -2321,7 +2364,7 @@ const configured = isGiscusConfigured(giscus);
 )}
 ```
 
-- [ ] **Step 3: Replace comments placeholder in articles/[...slug].astro**
+- [x] **Step 3: Replace comments placeholder in articles/[...slug].astro**
 
 Find the comments section block:
 
@@ -2348,7 +2391,7 @@ Add the import at the top of the frontmatter:
 import Giscus from '../../components/Giscus.astro';
 ```
 
-- [ ] **Step 4: Replace comments placeholder in notes/[...slug].astro**
+- [x] **Step 4: Replace comments placeholder in notes/[...slug].astro**
 
 Find:
 
@@ -2374,18 +2417,18 @@ Add the import at the top of the frontmatter:
 import Giscus from '../../components/Giscus.astro';
 ```
 
-- [ ] **Step 5: Verify build with unconfigured Giscus**
+- [x] **Step 5: Verify build with unconfigured Giscus**
 
 Run: `npm run build`
 Expected: build succeeds; article and note detail HTML contain "Giscus 未配置" placeholder (since `SITE_CONFIG.giscus` is null).
 
-- [ ] **Step 6: Verify dev server renders placeholder**
+- [x] **Step 6: Verify dev server renders placeholder**
 
 Run: `npm run dev`
 Visit: `http://localhost:4321/git-novel/articles/hello/`
 Expected: comments section shows the "Giscus 未配置" dashed-border box.
 
-- [ ] **Step 7: Commit**
+- [x] **Step 7: Commit**
 
 ```bash
 git add src/components/Giscus.tsx src/components/Giscus.astro src/pages/articles/[...slug].astro src/pages/notes/[...slug].astro
@@ -2404,7 +2447,7 @@ git commit -m "feat(comments): add Giscus React component with client:idle lazy 
 - Produces: `/rss.xml` endpoint returning 20 latest non-draft articles.
 - Sitemap already auto-generated by `@astrojs/sitemap` integration configured in Task 1.
 
-- [ ] **Step 1: Create rss.xml.ts**
+- [x] **Step 1: Create rss.xml.ts**
 
 ```typescript
 // src/pages/rss.xml.ts
@@ -2433,18 +2476,18 @@ export async function GET(context: APIContext) {
 }
 ```
 
-- [ ] **Step 2: Verify dev server**
+- [x] **Step 2: Verify dev server**
 
 Run: `npm run dev`
 Visit: `http://localhost:4321/git-novel/rss.xml`
 Expected: valid RSS XML; contains the `hello` article; `<language>zh-CN</language>` present.
 
-- [ ] **Step 3: Verify build generates RSS and sitemap**
+- [x] **Step 3: Verify build generates RSS and sitemap**
 
 Run: `npm run build`
 Expected: `dist/rss.xml` and `dist/sitemap-index.xml` both exist; sitemap contains home, articles list, sample article, notes list, sample note, gallery index, demo album URLs.
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add src/pages/rss.xml.ts
@@ -2463,7 +2506,7 @@ git commit -m "feat(rss): add RSS endpoint serving latest 20 non-draft articles"
 - Produces: `README.md` with local dev, content adding, and deploy instructions.
 - Produces: schema contract doc for change 2 (obsidian-migration) — this is the formal handoff artifact referenced in Design Doc §10 and tasks.md 10.6.
 
-- [ ] **Step 1: Create README.md**
+- [x] **Step 1: Create README.md**
 
 ```markdown
 # git-novel
@@ -2554,7 +2597,7 @@ images: [1.jpg, 2.jpg, 3.jpg]   # 相对 src/assets/gallery/<album-slug>/ 的文
 frontmatter schema 是 change 2（obsidian-migration）的稳定接口，详见 `docs/superpowers/specs/astro-blog-foundation-schema-contract.md`。修改 schema 需双方协调。
 ```
 
-- [ ] **Step 2: Create schema contract doc**
+- [x] **Step 2: Create schema contract doc**
 
 ```markdown
 # Astro Blog Foundation — Frontmatter Schema Contract
@@ -2640,7 +2683,7 @@ Slug 生成：文件名经 `toSlug()` 转 pinyin；重复 slug 构建期报错�
 5. 通知 change 2 负责人评估迁移脚本影响
 ```
 
-- [ ] **Step 3: Commit**
+- [x] **Step 3: Commit**
 
 ```bash
 git add README.md docs/superpowers/specs/astro-blog-foundation-schema-contract.md
@@ -2658,7 +2701,7 @@ git commit -m "docs: add README and frontmatter schema contract for obsidian-mig
 - Produces: GitHub Actions workflow triggered on push to main + workflow_dispatch.
 - Consumes: `npm test`, `npm run build` scripts (Task 1).
 
-- [ ] **Step 1: Create directory and workflow file**
+- [x] **Step 1: Create directory and workflow file**
 
 ```bash
 mkdir -p .github/workflows
@@ -2721,17 +2764,17 @@ jobs:
         uses: actions/deploy-pages@v4
 ```
 
-- [ ] **Step 2: Verify workflow YAML syntax**
+- [x] **Step 2: Verify workflow YAML syntax**
 
 Run: `node -e "const yaml=require('fs').readFileSync('.github/workflows/deploy.yml','utf8'); console.log('OK, length='+yaml.length)"`
 Expected: prints OK with non-zero length.
 
-- [ ] **Step 3: Verify full local pipeline mirrors CI**
+- [x] **Step 3: Verify full local pipeline mirrors CI**
 
 Run: `npm ci && npm test -- --coverage && npm run build`
 Expected: install succeeds, all tests pass, coverage ≥ 80% for lib/, build succeeds with `dist/` populated.
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add .github/workflows/deploy.yml
@@ -2748,38 +2791,38 @@ git commit -m "ci: add GitHub Pages deploy workflow with pre-build test gate"
 **Interfaces:**
 - N/A — this task verifies the full system end-to-end locally before marking the change ready for `/comet-verify`.
 
-- [ ] **Step 1: Run full test suite with coverage**
+- [x] **Step 1: Run full test suite with coverage**
 
 Run: `npm run test:coverage`
 Expected: all tests pass; lib/ and content/config.ts coverage ≥ 80%; no threshold violations.
 
-- [ ] **Step 2: Run production build**
+- [x] **Step 2: Run production build**
 
 Run: `npm run build`
 Expected: build completes with no errors; warnings only (if any).
 
-- [ ] **Step 3: Verify dist output structure**
+- [x] **Step 3: Verify dist output structure**
 
 Run: `ls dist/ && ls dist/articles/ && ls dist/notes/ && ls dist/gallery/ && ls dist/_astro/ | head -5`
 Expected: `dist/` contains `index.html`, `articles/`, `notes/`, `gallery/`, `rss.xml`, `sitemap-index.xml`, `_astro/` (optimized assets).
 
-- [ ] **Step 4: Preview production build**
+- [x] **Step 4: Preview production build**
 
 Run: `npm run preview` (then Ctrl+C after verifying)
 Visit: `http://localhost:4321/git-novel/`
 Expected: home, articles list, article detail, notes list, note detail, gallery index, demo album all load without 404s; images optimized (WebP in `_astro/`).
 
-- [ ] **Step 5: Verify SEO output in built HTML**
+- [x] **Step 5: Verify SEO output in built HTML**
 
 Run: `grep -l 'rel="canonical"' dist/articles/*/index.html && grep -l 'og:url' dist/index.html`
 Expected: both grep commands find matches (canonical and OG tags present).
 
-- [ ] **Step 6: Verify RSS and sitemap content**
+- [x] **Step 6: Verify RSS and sitemap content**
 
 Run: `head -20 dist/rss.xml && echo '---' && head -20 dist/sitemap-index.xml`
 Expected: RSS contains `<item>` entries for the sample article; sitemap contains URLs prefixed with `/git-novel/`.
 
-- [ ] **Step 7: Verify draft filtering in prod build**
+- [x] **Step 7: Verify draft filtering in prod build**
 
 Temporarily set `draft: true` in `src/content/articles/hello.md`, run `npm run build`, verify `dist/articles/hello/` does NOT exist, then revert.
 
@@ -2790,12 +2833,12 @@ git diff --exit-code src/content/articles/hello.md
 
 Expected: `git diff --exit-code` exits 0 (no changes after revert).
 
-- [ ] **Step 8: Verify Giscus placeholder in prod build**
+- [x] **Step 8: Verify Giscus placeholder in prod build**
 
 Run: `grep -l 'Giscus 未配置' dist/articles/*/index.html`
 Expected: match found (since config is unconfigured).
 
-- [ ] **Step 9: Run final commit if any fixups were made**
+- [x] **Step 9: Run final commit if any fixups were made**
 
 If any verification step required a code fix, commit those fixes:
 
