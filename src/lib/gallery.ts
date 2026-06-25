@@ -6,7 +6,7 @@ interface AlbumEntry {
 }
 
 interface ResolvedImage {
-  src: string; // path relative to src/assets/, for astro:asset import
+  src: string; // path relative to src/assets/, for astro:assets import
   alt: string;
 }
 

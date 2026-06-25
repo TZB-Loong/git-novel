@@ -8,18 +8,18 @@
 
 ## 2. 内容集合与 Schema
 
-- [ ] 2.1 创建 `src/content/config.ts`，定义 `articles` 集合（title、pubDate、updateDate、description、tags、category、draft）
-- [ ] 2.2 定义 `notes` 集合（title、pubDate、cover、tags、draft）
-- [ ] 2.3 定义 `albums` 集合（title、date、cover、images[]、description）
-- [ ] 2.4 创建示例文章 `src/content/articles/hello.md` 与示例笔记 `src/content/notes/sample.md`
+- [x] 2.1 创建 `src/content/config.ts`，定义 `articles` 集合（title、pubDate、updateDate、description、tags、category、draft）
+- [x] 2.2 定义 `notes` 集合（title、pubDate、cover、tags、draft）
+- [x] 2.3 定义 `albums` 集合（title、date、cover、images[]、description）
+- [x] 2.4 创建示例文章 `src/content/articles/hello.md` 与示例笔记 `src/content/notes/sample.md`
 
 ## 3. 布局与公共组件
 
-- [ ] 3.1 创建 `BaseLayout.astro`（HTML 骨架、meta、SEO、Open Graph、sitemap link）
-- [ ] 3.2 创建 `BaseHead.astro`（favicon、canonical、RSS link、社交卡片）
-- [ ] 3.3 创建导航/Header 组件（首页、文章、笔记、相册）
-- [ ] 3.4 创建 Footer 组件
-- [ ] 3.5 配置全局样式（CSS 变量、暗色模式、响应式断点）
+- [x] 3.1 创建 `BaseLayout.astro`（HTML 骨架、meta、SEO、Open Graph、sitemap link）
+- [x] 3.2 创建 `BaseHead.astro`（favicon、canonical、RSS link、社交卡片）
+- [x] 3.3 创建导航/Header 组件（首页、文章、笔记、相册）
+- [x] 3.4 创建 Footer 组件
+- [x] 3.5 配置全局样式（CSS 变量、暗色模式、响应式断点）
 
 ## 4. 文章/笔记发布管线
 

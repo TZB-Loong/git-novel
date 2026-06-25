@@ -10,7 +10,7 @@ base-ref: fe2e0cbe2f9b40623f6c3e24005620afb18c0ece
 
 **Goal:** Build a static Astro 5 blog on GitHub Pages serving Markdown articles, image-rich notes, and photo albums with Giscus comments, RSS, sitemap, and CI/CD.
 
-**Architecture:** Static site generated at build time via Astro Content Collections. Three collections (articles/notes/albums) with zod-validated frontmatter. Images live under `src/assets/` for astro:asset optimization. base path `/git-novel` for GitHub Pages project site. Vitest covers pure utility functions; `.astro` components are exempt (verified via `npm run build`).
+**Architecture:** Static site generated at build time via Astro Content Collections. Three collections (articles/notes/albums) with zod-validated frontmatter. Images live under `src/assets/` for astro:assets optimization. base path `/git-novel` for GitHub Pages project site. Vitest covers pure utility functions; `.astro` components are exempt (verified via `npm run build`).
 
 **Tech Stack:** Astro 5, TypeScript (strict), Content Collections, @astrojs/mdx, @astrojs/rss, @astrojs/sitemap, @astrojs/react + @giscus/react, glightbox, pinyin-pro, Vitest + @vitest/coverage-v8, Shiki (built-in), GitHub Actions (withastro/action@v3, deploy-pages@v4).
 
@@ -804,7 +804,7 @@ Schema contract (DO NOT mutate without coordinating with change 2 — Design Doc
 }
 ```
 
-- [ ] **Step 1: Write failing test**
+- [x] **Step 1: Write failing test**
 
 ```typescript
 // src/content/config.test.ts
@@ -929,12 +929,12 @@ describe('albumsSchema', () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `npm test -- src/content/config.test.ts`
 Expected: FAIL with "Cannot find module './config'".
 
-- [ ] **Step 3: Implement config.ts**
+- [x] **Step 3: Implement config.ts**
 
 ```typescript
 // src/content/config.ts
@@ -991,7 +991,7 @@ export const collections = { articles, notes, albums };
 
 Note: Astro 5's Content Layer API uses `glob()` loader. The slug derived from filename is the entry `id` by default; to apply pinyin conversion, override via the `slug` field returned by a custom `generateId` option — see Astro docs. If the default `id` already satisfies the URL contract (filenames are ASCII), the `toSlug` import is used in Task 11's route to compute the display slug. The implementer confirms behavior by running `npm run build` in Step 6; if Chinese filenames produce non-ASCII URLs, wire `toSlug` into the loader's `generateId`.
 
-- [ ] **Step 4: Create sample articles**
+- [x] **Step 4: Create sample articles**
 
 ```markdown
 <!-- src/content/articles/hello.md -->
@@ -1051,7 +1051,7 @@ images: [1.svg, 2.svg, 3.svg]
 ---
 ```
 
-- [ ] **Step 5: Create placeholder album images**
+- [x] **Step 5: Create placeholder album images**
 
 Create three minimal SVGs:
 
@@ -1070,7 +1070,7 @@ Create three minimal SVGs:
 <svg xmlns="http://www.w3.org/2000/svg" width="400" height="300"><rect width="400" height="300" fill="#2ecc71"/><text x="200" y="150" font-size="48" text-anchor="middle" fill="#fff">3</text></svg>
 ```
 
-- [ ] **Step 6: Create placeholder note cover**
+- [x] **Step 6: Create placeholder note cover**
 
 ```xml
 <!-- src/assets/notes/sample-cover.svg -->
@@ -1079,12 +1079,12 @@ Create three minimal SVGs:
 
 Update `src/content/notes/sample.md` cover to `notes/sample-cover.svg` (SVG is acceptable for placeholder; real covers should be JPG/PNG < 2MB).
 
-- [ ] **Step 7: Run test to verify it passes**
+- [x] **Step 7: Run test to verify it passes**
 
 Run: `npm test -- src/content/config.test.ts`
 Expected: PASS (12 tests).
 
-- [ ] **Step 8: Verify build picks up collections**
+- [x] **Step 8: Verify build picks up collections**
 
 Run: `npm run build`
 Expected: build succeeds; no schema errors; `dist/` regenerated.
@@ -1103,7 +1103,7 @@ const articles = defineCollection({
 });
 ```
 
-- [ ] **Step 9: Commit**
+- [x] **Step 9: Commit**
 
 ```bash
 git add src/content/config.ts src/content/config.test.ts src/content/articles src/content/notes src/content/albums src/assets/gallery src/assets/notes
@@ -1123,7 +1123,7 @@ git commit -m "feat(content): define articles/notes/albums schemas with sample e
 - Produces: `sortAlbumsByDateDesc<T extends { data: { date: Date } }>(items: T[]): T[]`.
 - Consumed by: Task 18 (single album page), Task 17 (album index).
 
-- [ ] **Step 1: Write failing test**
+- [x] **Step 1: Write failing test**
 
 ```typescript
 // src/lib/gallery.test.ts
@@ -1177,12 +1177,12 @@ describe('sortAlbumsByDateDesc', () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `npm test -- src/lib/gallery.test.ts`
 Expected: FAIL with "Cannot find module './gallery'".
 
-- [ ] **Step 3: Implement gallery.ts**
+- [x] **Step 3: Implement gallery.ts**
 
 ```typescript
 // src/lib/gallery.ts
@@ -1192,7 +1192,7 @@ interface AlbumEntry {
 }
 
 interface ResolvedImage {
-  src: string; // path relative to src/assets/, for astro:asset import
+  src: string; // path relative to src/assets/, for astro:assets import
   alt: string;
 }
 
@@ -1218,17 +1218,17 @@ export function sortAlbumsByDateDesc<T extends DatedAlbum>(items: T[]): T[] {
 }
 ```
 
-- [ ] **Step 4: Run test to verify it passes**
+- [x] **Step 4: Run test to verify it passes**
 
 Run: `npm test -- src/lib/gallery.test.ts`
 Expected: PASS (5 tests).
 
-- [ ] **Step 5: Run full coverage to verify lib threshold**
+- [x] **Step 5: Run full coverage to verify lib threshold**
 
 Run: `npm run test:coverage`
 Expected: all `src/lib/*.ts` and `src/content/config.ts` coverage ≥ 80%.
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add src/lib/gallery.ts src/lib/gallery.test.ts
@@ -1248,7 +1248,7 @@ git commit -m "feat(lib): add gallery image collection and album sort helpers"
 - Produces: `BaseLayout.astro` accepting props `{ title: string; description?: string; image?: string; pubDate?: Date }` and rendering `<html>...<head>...<body><slot/></body>`.
 - Consumes: `SITE_CONFIG` from Task 3.
 
-- [ ] **Step 1: Create global.css**
+- [x] **Step 1: Create global.css**
 
 ```css
 /* src/styles/global.css */
@@ -1330,7 +1330,7 @@ pre {
 }
 ```
 
-- [ ] **Step 2: Create BaseHead.astro**
+- [x] **Step 2: Create BaseHead.astro**
 
 ```astro
 ---
@@ -1371,7 +1371,7 @@ const baseURL = import.meta.env.BASE_URL;
 {pubDate && <meta property="article:published_time" content={pubDate.toISOString()} />}
 ```
 
-- [ ] **Step 3: Create BaseLayout.astro**
+- [x] **Step 3: Create BaseLayout.astro**
 
 ```astro
 ---
@@ -1404,7 +1404,7 @@ const { title, description, image, pubDate } = Astro.props;
 </html>
 ```
 
-- [ ] **Step 4: Commit (Header/Footer referenced but not yet created — build will fail until Task 9)**
+- [x] **Step 4: Commit (Header/Footer referenced but not yet created — build will fail until Task 9)**
 
 Hold commit until Task 9 to keep build green. Proceed to Task 9.
 
@@ -1421,7 +1421,7 @@ Hold commit until Task 9 to keep build green. Proceed to Task 9.
 - Produces: `Footer.astro` rendering copyright + RSS + GitHub links.
 - Consumes: `SITE_CONFIG` from Task 3.
 
-- [ ] **Step 1: Create Header.astro**
+- [x] **Step 1: Create Header.astro**
 
 ```astro
 ---
@@ -1458,7 +1458,7 @@ const isActive = (href: string) =>
 </header>
 ```
 
-- [ ] **Step 2: Create Footer.astro**
+- [x] **Step 2: Create Footer.astro**
 
 ```astro
 ---
@@ -1476,7 +1476,7 @@ const year = new Date().getUTCFullYear();
 </footer>
 ```
 
-- [ ] **Step 3: Update src/pages/index.astro to use BaseLayout**
+- [x] **Step 3: Update src/pages/index.astro to use BaseLayout**
 
 ```astro
 ---
@@ -1490,17 +1490,17 @@ import { SITE_CONFIG } from '../lib/config';
 </BaseLayout>
 ```
 
-- [ ] **Step 4: Verify dev server**
+- [x] **Step 4: Verify dev server**
 
 Run: `npm run dev`
 Expected: http://localhost:4321/git-novel/ shows header, footer, and content with no console errors.
 
-- [ ] **Step 5: Verify build**
+- [x] **Step 5: Verify build**
 
 Run: `npm run build`
 Expected: build succeeds; `dist/index.html` contains header/footer markup.
 
-- [ ] **Step 6: Commit (Task 8 + Task 9 together)**
+- [x] **Step 6: Commit (Task 8 + Task 9 together)**
 
 ```bash
 git add src/styles/global.css src/components/BaseHead.astro src/components/Header.astro src/components/Footer.astro src/layouts/BaseLayout.astro src/pages/index.astro
@@ -1552,7 +1552,7 @@ const baseURL = import.meta.env.BASE_URL;
 ---
 // src/components/NoteCard.astro
 import { formatDate } from '../lib/date';
-import { Image } from 'astro:asset';
+import { Image } from 'astro:assets';
 
 interface Props {
   entry: {
@@ -1562,7 +1562,7 @@ interface Props {
 }
 const { entry } = Astro.props;
 const baseURL = import.meta.env.BASE_URL;
-// cover is relative to src/assets/, import for astro:asset optimization
+// cover is relative to src/assets/, import for astro:assets optimization
 const coverModule = await import(`../assets/${entry.data.cover}`);
 ---
 <a href={`${baseURL}notes/${entry.slug}/`} style="display:block;color:inherit;">
@@ -1737,7 +1737,7 @@ git commit -m "feat(articles): add article detail page with TOC and prev/next na
 import { getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { formatDate } from '../../lib/date';
-import { Image } from 'astro:asset';
+import { Image } from 'astro:assets';
 
 export async function getStaticPaths() {
   const notes = await getCollection('notes');
@@ -2056,7 +2056,7 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { formatDate } from '../../lib/date';
 import { sortAlbumsByDateDesc } from '../../lib/gallery';
-import { Image } from 'astro:asset';
+import { Image } from 'astro:assets';
 
 const albums = await getCollection('albums');
 const sorted = sortAlbumsByDateDesc(albums);
@@ -2165,7 +2165,7 @@ git commit -m "feat(components): add Lightbox wrapper using GLightbox via dynami
 - Create: `src/pages/gallery/[album].astro`
 
 **Interfaces:**
-- Consumes: `albums` collection (Task 6), `collectAlbumImages` (Task 7), `BaseLayout` (Task 8), `Lightbox` (Task 17), `Image` and `getImage` from `astro:asset`.
+- Consumes: `albums` collection (Task 6), `collectAlbumImages` (Task 7), `BaseLayout` (Task 8), `Lightbox` (Task 17), `Image` and `getImage` from `astro:assets`.
 - Produces: `/gallery/<album>/` route rendering CSS Grid of thumbnails with GLightbox links to full-size images.
 
 - [ ] **Step 1: Create gallery/[album].astro**
@@ -2178,7 +2178,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Lightbox from '../../components/Lightbox.astro';
 import { collectAlbumImages } from '../../lib/gallery';
 import { formatDate } from '../../lib/date';
-import { Image, getImage } from 'astro:asset';
+import { Image, getImage } from 'astro:assets';
 
 export async function getStaticPaths() {
   const albums = await getCollection('albums');
