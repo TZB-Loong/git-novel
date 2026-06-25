@@ -5,7 +5,7 @@ import { Image } from 'astro:assets';
 
 interface Props {
   entry: {
-    slug: string;
+    id: string;
     data: { title: string; pubDate: Date; cover: string };
   };
 }
@@ -20,7 +20,7 @@ const coverImages = import.meta.glob<{ default: import('astro/assets').ImageMeta
 const coverKey = `/src/assets/${entry.data.cover}`;
 const coverModule = coverImages[coverKey] ?? null;
 ---
-<a href={`${baseURL}notes/${entry.slug}/`} style="display:block;color:inherit;">
+<a href={`${baseURL}notes/${entry.id}/`} style="display:block;color:inherit;">
   <article style="border:1px solid var(--color-border);border-radius:8px;overflow:hidden;background:var(--color-card-bg);">
     {coverModule ? (
       <Image src={coverModule.default} alt={entry.data.title} width={400} height={225} />
