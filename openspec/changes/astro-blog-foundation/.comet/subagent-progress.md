@@ -17,8 +17,8 @@
 | 2. Vitest Configuration | done | 8247a45 | done |
 | 3. Site Config Module (TDD) | done | 4a4cc20 | done |
 | 4. Slug Utility (TDD) | done | 015a226 | done |
-| 5. Date Utility (TDD) | in_progress | — | implementing |
-| 6. Content Collection Schema (TDD) | pending | — | — |
+| 5. Date Utility (TDD) | done | 5cfa89a | done |
+| 6. Content Collection Schema (TDD) | in_progress | — | implementing |
 | 7. Gallery Utility (TDD) | pending | — | — |
 | 8. Global Styles and BaseHead | pending | — | — |
 | 9. Header and Footer | pending | — | — |
@@ -39,7 +39,7 @@
 
 ## Current Task
 
-Task 5: Date Utility (TDD) (implementing)
+Task 6: Content Collection Schema (TDD) (implementing)
 
 ## Final Review
 

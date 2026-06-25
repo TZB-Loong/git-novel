@@ -618,7 +618,7 @@ git commit -m "feat(lib): add toSlug with Chinese-to-pinyin conversion and uniqu
 - Produces: `prevNextByDate<T extends { data: { pubDate: Date } }>(items: T[], currentSlug: string): { prev: T | null; next: T | null }`
 - Consumed by: Task 11 (article detail prev/next), Task 13 (article list sort), Task 14 (notes sort), Task 15 (home latest), Task 20 (RSS sort).
 
-- [ ] **Step 1: Write failing test**
+- [x] **Step 1: Write failing test**
 
 ```typescript
 // src/lib/date.test.ts
@@ -689,12 +689,12 @@ describe('prevNextByDate', () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `npm test -- src/lib/date.test.ts`
 Expected: FAIL with "Cannot find module './date'".
 
-- [ ] **Step 3: Implement date.ts**
+- [x] **Step 3: Implement date.ts**
 
 ```typescript
 // src/lib/date.ts
@@ -742,12 +742,12 @@ export function prevNextByDate<T extends DatedEntry>(
 }
 ```
 
-- [ ] **Step 4: Run test to verify it passes**
+- [x] **Step 4: Run test to verify it passes**
 
 Run: `npm test -- src/lib/date.test.ts`
 Expected: PASS (9 tests).
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/lib/date.ts src/lib/date.test.ts
