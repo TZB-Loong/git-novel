@@ -1,7 +1,7 @@
 ---
 title: AI Software Factory — 工业化 AI 编程流水线
 pubDate: 2026-06-26
-cover: notes/claude-permission-cover.svg
+cover: notes/ai-factory/cover.png
 tags: [AI, Agent, Comet, OpenSpec, Superpowers, TDD, 架构]
 ---
 
@@ -35,6 +35,10 @@ Comet 内置阶段守卫机制，在关键入口扫描 `.comet.yaml` 状态文�
 ![Phase Guard](./_ai-factory/page-05.png)
 
 ## 环境搭建
+
+```bash
+npm install -g @rpamis/comet
+```
 
 `comet init` 一键初始化工厂环境，自动扫描并激活 OpenSpec 与 Superpowers 插件，几分钟即可完成数字化工厂装配。
 
