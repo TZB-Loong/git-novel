@@ -56,7 +56,9 @@ const baseURL = import.meta.env.BASE_URL;
       )}
     </header>
     {coverModule && (
-      <Image src={coverModule.default} alt={entry.data.title} width={800} />
+      <a href={coverModule.default.src} class="glightbox" data-gallery="note-gallery">
+        <Image src={coverModule.default} alt={entry.data.title} width={800} />
+      </a>
     )}
     <div class="prose" id="note-content">
       <Content />
@@ -67,20 +69,32 @@ const baseURL = import.meta.env.BASE_URL;
       import('https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/js/glightbox.min.js').then((mod) => {
         const GLightbox = mod.default;
         const prose = document.getElementById('note-content');
-        if (!prose) return;
-        const imgs = prose.querySelectorAll('img');
-        imgs.forEach((img) => {
-          const a = document.createElement('a');
-          a.href = img.src;
-          a.className = 'glightbox';
-          a.setAttribute('data-gallery', 'note-gallery');
-          img.parentNode.insertBefore(a, img);
-          a.appendChild(img);
-        });
-        new GLightbox({
+        if (prose) {
+          const imgs = prose.querySelectorAll('img');
+          imgs.forEach((img) => {
+            const a = document.createElement('a');
+            a.href = img.src;
+            a.className = 'glightbox';
+            a.setAttribute('data-gallery', 'note-gallery');
+            img.parentNode.insertBefore(a, img);
+            a.appendChild(img);
+          });
+        }
+        const lightbox = new GLightbox({
           selector: '.glightbox',
           touchNavigation: true,
+          closeOnTouch: true,
           loop: false,
+          onOpen: () => {
+            const checkExist = setInterval(() => {
+              const slideImage = document.querySelector('.gslide-image');
+              if (slideImage) {
+                clearInterval(checkExist);
+                slideImage.style.cursor = 'pointer';
+                slideImage.addEventListener('click', () => lightbox.close());
+              }
+            }, 100);
+          },
         });
       });
     </script>
