@@ -11,7 +11,7 @@ tags: [AI, Agent, 架构, Claude, ACP, 权限]
 
 ### 架构图
 
-![LLM 网关 + Claude CLI 架构](./_image/permission-relay-flow-handdrawn.svg)
+![LLM 网关 + Claude CLI 架构](./_image/llm-gateway-arch-handdrawn.svg)
 
 ---
 
