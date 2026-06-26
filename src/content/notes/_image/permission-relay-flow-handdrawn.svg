@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <marker id="arrowRight" markerWidth="12" markerHeight="8" refX="10" refY="4" orient="auto">
+      <path d="M0,0 L12,4 L0,8 Z" fill="#e94560"/>
+    </marker>
+    <marker id="arrowLeft" markerWidth="12" markerHeight="8" refX="2" refY="4" orient="auto">
+      <path d="M12,0 L0,4 L12,8 Z" fill="#e94560"/>
+    </marker>
+    <marker id="arrowRightW" markerWidth="12" markerHeight="8" refX="10" refY="4" orient="auto">
+      <path d="M0,0 L12,4 L0,8 Z" fill="#ffffff"/>
+    </marker>
+  </defs>
+  <!-- Background -->
+  <rect width="1920" height="1080" fill="#1a1a2e"/>
+  <rect x="60" y="60" width="1800" height="960" rx="16" fill="none" stroke="#e94560" stroke-width="2" stroke-dasharray="10,5" opacity="0.4"/>
+
+  <!-- Title -->
+  <text x="960" y="130" font-family="'PingFang SC','Microsoft YaHei',sans-serif" font-size="36" fill="#e94560" text-anchor="middle" font-weight="bold">PTY 权限透传交互流程</text>
+
+  <!-- Column backgrounds -->
+  <rect x="120" y="200" width="420" height="700" rx="12" fill="#16213e" stroke="#e94560" stroke-width="1.5" opacity="0.6"/>
+  <rect x="750" y="200" width="420" height="700" rx="12" fill="#16213e" stroke="#e94560" stroke-width="1.5" opacity="0.6"/>
+  <rect x="1380" y="200" width="420" height="700" rx="12" fill="#16213e" stroke="#e94560" stroke-width="1.5" opacity="0.6"/>
+
+  <!-- Column headers -->
+  <text x="330" y="260" font-family="'PingFang SC','Microsoft YaHei',sans-serif" font-size="24" fill="#ffffff" text-anchor="middle" font-weight="bold">前端</text>
+  <text x="330" y="285" font-family="'PingFang SC','Microsoft YaHei',sans-serif" font-size="16" fill="#888" text-anchor="middle">Web/CLI</text>
+
+  <text x="960" y="260" font-family="'PingFang SC','Microsoft YaHei',sans-serif" font-size="24" fill="#ffffff" text-anchor="middle" font-weight="bold">中间调度层</text>
+  <text x="960" y="285" font-family="'PingFang SC','Microsoft YaHei',sans-serif" font-size="16" fill="#888" text-anchor="middle">Hermes / Node</text>
+
+  <text x="1590" y="260" font-family="'PingFang SC','Microsoft YaHei',sans-serif" font-size="24" fill="#ffffff" text-anchor="middle" font-weight="bold">Claude CLI</text>
+  <text x="1590" y="285" font-family="'PingFang SC','Microsoft YaHei',sans-serif" font-size="16" fill="#888" text-anchor="middle">PTY 子进程</text>
+
+  <!-- Step 1: Send task -->
+  <line x1="540" y1="340" x2="730" y2="340" stroke="#e94560" stroke-width="2.5" marker-end="url(#arrowRight)"/>
+  <text x="635" y="330" font-family="'PingFang SC','Microsoft YaHei',sans-serif" font-size="15" fill="#e94560" text-anchor="middle">发送任务</text>
+
+  <!-- Step 2: Spawn PTY -->
+  <line x1="1170" y1="400" x2="1360" y2="400" stroke="#e94560" stroke-width="2.5" marker-end="url(#arrowRight)"/>
+  <text x="1265" y="390" font-family="'PingFang SC','Microsoft YaHei',sans-serif" font-size="15" fill="#e94560" text-anchor="middle">spawn PTY 进程</text>
+
+  <!-- Step 3: Permission prompt -->
+  <line x1="1360" y1="460" x2="1170" y2="460" stroke="#ffffff" stroke-width="2.5" marker-end="url(#arrowLeft)" stroke-dasharray="6,3"/>
+  <text x="1265" y="450" font-family="'PingFang SC','Microsoft YaHei',sans-serif" font-size="15" fill="#ffffff" text-anchor="middle">Allow command?</text>
+
+  <!-- Step 4: Forward to frontend -->
+  <line x1="730" y1="520" x2="540" y2="520" stroke="#ffffff" stroke-width="2.5" marker-end="url(#arrowLeft)" stroke-dasharray="6,3"/>
+  <text x="635" y="510" font-family="'PingFang SC','Microsoft YaHei',sans-serif" font-size="15" fill="#ffffff" text-anchor="middle">转发权限提示</text>
+
+  <!-- Step 5: User allows -->
+  <line x1="540" y1="580" x2="730" y2="580" stroke="#e94560" stroke-width="2.5" marker-end="url(#arrowRight)"/>
+  <text x="635" y="570" font-family="'PingFang SC','Microsoft YaHei',sans-serif" font-size="15" fill="#e94560" text-anchor="middle">用户点击允许</text>
+
+  <!-- Step 6: Inject decision -->
+  <line x1="1170" y1="640" x2="1360" y2="640" stroke="#e94560" stroke-width="2.5" marker-end="url(#arrowRight)"/>
+  <text x="1265" y="630" font-family="'PingFang SC','Microsoft YaHei',sans-serif" font-size="15" fill="#e94560" text-anchor="middle">注入 Y/n</text>
+
+  <!-- Step 7: Continue -->
+  <line x1="1360" y1="700" x2="1170" y2="700" stroke="#ffffff" stroke-width="2.5" marker-end="url(#arrowLeft)"/>
+  <text x="1265" y="690" font-family="'PingFang SC','Microsoft YaHei',sans-serif" font-size="15" fill="#ffffff" text-anchor="middle">继续执行</text>
+
+  <!-- Step numbers -->
+  <circle cx="200" cy="340" r="14" fill="#e94560" opacity="0.8"/>
+  <text x="200" y="345" font-family="sans-serif" font-size="14" fill="#fff" text-anchor="middle" font-weight="bold">1</text>
+  <circle cx="200" cy="400" r="14" fill="#e94560" opacity="0.8"/>
+  <text x="200" y="405" font-family="sans-serif" font-size="14" fill="#fff" text-anchor="middle" font-weight="bold">2</text>
+  <circle cx="200" cy="460" r="14" fill="#e94560" opacity="0.8"/>
+  <text x="200" y="465" font-family="sans-serif" font-size="14" fill="#fff" text-anchor="middle" font-weight="bold">3</text>
+  <circle cx="200" cy="520" r="14" fill="#e94560" opacity="0.8"/>
+  <text x="200" y="525" font-family="sans-serif" font-size="14" fill="#fff" text-anchor="middle" font-weight="bold">4</text>
+  <circle cx="200" cy="580" r="14" fill="#e94560" opacity="0.8"/>
+  <text x="200" y="585" font-family="sans-serif" font-size="14" fill="#fff" text-anchor="middle" font-weight="bold">5</text>
+  <circle cx="200" cy="640" r="14" fill="#e94560" opacity="0.8"/>
+  <text x="200" y="645" font-family="sans-serif" font-size="14" fill="#fff" text-anchor="middle" font-weight="bold">6</text>
+  <circle cx="200" cy="700" r="14" fill="#e94560" opacity="0.8"/>
+  <text x="200" y="705" font-family="sans-serif" font-size="14" fill="#fff" text-anchor="middle" font-weight="bold">7</text>
+
+  <!-- Hand-drawn style decorative marks -->
+  <path d="M80,80 Q90,75 100,82" fill="none" stroke="#e94560" stroke-width="1" opacity="0.3"/>
+  <path d="M1840,80 Q1850,75 1860,82" fill="none" stroke="#e94560" stroke-width="1" opacity="0.3"/>
+  <path d="M80,1000 Q90,995 100,1002" fill="none" stroke="#e94560" stroke-width="1" opacity="0.3"/>
+  <path d="M1840,1000 Q1850,995 1860,1002" fill="none" stroke="#e94560" stroke-width="1" opacity="0.3"/>
+</svg>

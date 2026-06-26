@@ -17,7 +17,7 @@ tags: [AI, Agent, 架构, Claude, PTY, 自动化]
 
 实现流程分为五个步骤：
 
-![PTY 子进程交互流程](./_image/permission-relay-flow.png)
+![PTY 子进程交互流程](./_image/permission-relay-flow-handdrawn.svg)
 
 ---
 
@@ -91,9 +91,8 @@ process(action="write", data="这个权限可以允许\n")
 
 最完善的架构，适合需要嵌入 Web UI 的场景：
 
-![前端调度器架构](./_image/permission-relay-arch.png)
-```
-
+![前端调度器架构](./_image/permission-relay-arch-handdrawn.svg)
+	
 #### 关键实现要点
 
 | 组件 | 技术选型 | 说明 |
