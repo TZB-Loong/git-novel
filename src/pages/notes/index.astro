@@ -7,17 +7,16 @@ import { sortByDateDesc } from '../../lib/date';
 
 const notes = await getCollection('notes');
 const visible = notes.filter((n) => !n.data.draft || import.meta.env.DEV);
-const withCover = visible.filter((n) => Boolean(n.data.cover));
-const sorted = sortByDateDesc(withCover);
+const sorted = sortByDateDesc(visible);
 ---
 <BaseLayout title="笔记">
-  <h1>图片笔记</h1>
+  <h1>笔记</h1>
   <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem;margin-top:1.5rem;">
     {sorted.map((entry: CollectionEntry<'notes'>) => (
       <NoteCard entry={entry} />
     ))}
   </div>
   {sorted.length === 0 && (
-    <p style="color:var(--color-muted);">还没有带封面的笔记。</p>
+    <p style="color:var(--color-muted);">还没有笔记。</p>
   )}
 </BaseLayout>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
+  <rect width="800" height="450" fill="#1a1a2e"/>
+  <rect x="40" y="40" width="720" height="370" rx="12" fill="none" stroke="#e94560" stroke-width="2" stroke-dasharray="8,4"/>
+  <text x="400" y="170" font-family="system-ui,-apple-system,sans-serif" font-size="28" fill="#e94560" text-anchor="middle" font-weight="bold">Agent-as-a-Platform</text>
+  <text x="400" y="210" font-family="system-ui,-apple-system,sans-serif" font-size="16" fill="#ffffff" text-anchor="middle">构建 Claude CLI 权限透传架构</text>
+  <text x="400" y="260" font-family="system-ui,-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">PTY 子进程 · 事件捕获 · 权限透传 · 输入注入</text>
+  <circle cx="400" cy="320" r="30" fill="none" stroke="#e94560" stroke-width="1.5"/>
+  <path d="M388 320 L400 308 L412 320" fill="none" stroke="#e94560" stroke-width="2"/>
+</svg>
