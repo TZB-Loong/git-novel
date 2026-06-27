@@ -1,6 +1,8 @@
 ---
+title: AI Agent "Skill" 是什么？——给小白的完整科普
+pubDate: 2026-06-26
+cover: notes/claude-permission-cover.svg
 tags: [ai-agent, skills, 入门指南, 论文综述]
-created: 2026-06-26
 ---
 
 # AI Agent "Skill" 是什么？——给小白的完整科普
