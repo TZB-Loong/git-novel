@@ -1,12 +1,12 @@
 ---
 title: 认知之塔 × AI Agent Skill——图文笔记
+pubDate: 2026-06-29
 tags:
   - ai-agent
   - skills
   - 图文笔记
   - cognitive-ascent
   - llm-fundamentals
-created: 2026-06-29
 aliases:
   - 认知之塔图文笔记
   - Cognitive Ascent Visual Notes
