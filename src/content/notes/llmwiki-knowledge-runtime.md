@@ -1,7 +1,7 @@
 ---
 title: LLMWiki 知识运行时：从 RAG 到"越用越值钱"的知识资产引擎
 pubDate: 2026-07-13
-cover: notes/_llmwiki/cover.png
+cover: notes/llmwiki/cover.png
 tags: [LLMWiki, RAG, GraphRAG, 知识管理, AI架构, 知识工程]
 ---
 
