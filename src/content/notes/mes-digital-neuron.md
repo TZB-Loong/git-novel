@@ -1,7 +1,7 @@
 ---
 title: "MES 数字神经元：基于 BFO 本体的全生命周期动态知识图谱架构"
 pubDate: 2026-07-15
-cover: notes/_mes-digital-neuron/cover.png
+cover: notes/mes-digital-neuron/cover.png
 tags: [MES, 知识图谱, BFO本体, 数字孪生, 工业4.0, GraphRAG, 数据血缘, ISA-95]
 ---
 
