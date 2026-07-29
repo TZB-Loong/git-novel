@@ -1,48 +1,42 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 420" width="1100" height="420">
-<rect width="1100" height="420" fill="transparent"/>
-<text x="550" y="28" font-family="sans-serif" font-size="17" fill="#222" text-anchor="middle" font-weight="bold">Ego 发展八阶段</text>
-<rect x="20" y="45" width="340" height="355" rx="12" ry="12" fill="#f8f9fa" stroke="#ddd" stroke-width="1"/>
-<rect x="28" y="50" width="324" height="32" rx="6" ry="6" fill="#ffd93d" opacity="0.3"/>
-<text x="190.0" y="73" font-family="sans-serif" font-size="13" fill="#333" text-anchor="middle" font-weight="bold">🧒 早期——被环境塑造</text>
-<rect x="35" y="100" width="310" height="82" rx="8" ry="8" fill="#ffd93d" stroke="#ccc" stroke-width="1"/>
-<text x="185.0" y="122" font-family="sans-serif" font-size="13" fill="#333" text-anchor="middle" font-weight="bold">  1 冲动期</text>
-<text x="185.0" y="142" font-family="sans-serif" font-size="12" fill="#333" text-anchor="middle" font-weight="normal">  冲动即行动</text>
-<text x="185.0" y="162" font-family="sans-serif" font-size="12" fill="#333" text-anchor="middle" font-weight="normal">  非黑即白</text>
-<rect x="35" y="200" width="310" height="82" rx="8" ry="8" fill="#ffd93d" stroke="#ccc" stroke-width="1"/>
-<text x="185.0" y="222" font-family="sans-serif" font-size="13" fill="#333" text-anchor="middle" font-weight="bold">  2 自我保护期</text>
-<text x="185.0" y="242" font-family="sans-serif" font-size="12" fill="#333" text-anchor="middle" font-weight="normal">  世界很危险</text>
-<text x="185.0" y="262" font-family="sans-serif" font-size="12" fill="#333" text-anchor="middle" font-weight="normal">  先顾好自己</text>
-<rect x="35" y="300" width="310" height="82" rx="8" ry="8" fill="#ffd93d" stroke="#ccc" stroke-width="1"/>
-<text x="185.0" y="322" font-family="sans-serif" font-size="13" fill="#333" text-anchor="middle" font-weight="bold">  3 从众期</text>
-<text x="185.0" y="342" font-family="sans-serif" font-size="12" fill="#333" text-anchor="middle" font-weight="normal">  群体规则即真理</text>
-<text x="185.0" y="362" font-family="sans-serif" font-size="12" fill="#333" text-anchor="middle" font-weight="normal">  我就是我的群体</text>
-<line x1="362" y1="222.5" x2="398" y2="222.5" stroke="#999" stroke-width="2" marker-end="url(#arrow-999)"/>
-<rect x="380" y="45" width="340" height="355" rx="12" ry="12" fill="#f8f9fa" stroke="#ddd" stroke-width="1"/>
-<rect x="388" y="50" width="324" height="32" rx="6" ry="6" fill="#6bcb77" opacity="0.3"/>
-<text x="550.0" y="73" font-family="sans-serif" font-size="13" fill="#333" text-anchor="middle" font-weight="bold">🧑 中期——自我觉醒</text>
-<rect x="395" y="100" width="310" height="82" rx="8" ry="8" fill="#6bcb77" stroke="#ccc" stroke-width="1"/>
-<text x="545.0" y="122" font-family="sans-serif" font-size="13" fill="#000" text-anchor="middle" font-weight="bold">  4 自我觉察期</text>
-<text x="545.0" y="142" font-family="sans-serif" font-size="12" fill="#000" text-anchor="middle" font-weight="normal">  内心与外在不一致</text>
-<text x="545.0" y="162" font-family="sans-serif" font-size="12" fill="#000" text-anchor="middle" font-weight="normal">  开始怀疑默认信念</text>
-<rect x="395" y="200" width="310" height="82" rx="8" ry="8" fill="#6bcb77" stroke="#ccc" stroke-width="1"/>
-<text x="545.0" y="222" font-family="sans-serif" font-size="13" fill="#000" text-anchor="middle" font-weight="bold">  5 尽责期</text>
-<text x="545.0" y="242" font-family="sans-serif" font-size="12" fill="#000" text-anchor="middle" font-weight="normal">  建立个人原则体系</text>
-<text x="545.0" y="262" font-family="sans-serif" font-size="12" fill="#000" text-anchor="middle" font-weight="normal">  相信努力有回报</text>
-<rect x="395" y="300" width="310" height="82" rx="8" ry="8" fill="#6bcb77" stroke="#ccc" stroke-width="1"/>
-<text x="545.0" y="322" font-family="sans-serif" font-size="13" fill="#000" text-anchor="middle" font-weight="bold">  6 策略家期</text>
-<text x="545.0" y="342" font-family="sans-serif" font-size="12" fill="#000" text-anchor="middle" font-weight="normal">  自己也是系统的一部分</text>
-<text x="545.0" y="362" font-family="sans-serif" font-size="12" fill="#000" text-anchor="middle" font-weight="normal">  主动反思盲区</text>
-<line x1="722" y1="222.5" x2="758" y2="222.5" stroke="#999" stroke-width="2" marker-end="url(#arrow-999)"/>
-<rect x="740" y="45" width="320" height="355" rx="12" ry="12" fill="#f8f9fa" stroke="#ddd" stroke-width="1"/>
-<rect x="748" y="50" width="304" height="32" rx="6" ry="6" fill="#4d96ff" opacity="0.3"/>
-<text x="900.0" y="73" font-family="sans-serif" font-size="13" fill="#333" text-anchor="middle" font-weight="bold">🧙 晚期——超越自我</text>
-<rect x="755" y="100" width="290" height="82" rx="8" ry="8" fill="#4d96ff" stroke="#ccc" stroke-width="1"/>
-<text x="895.0" y="122" font-family="sans-serif" font-size="13" fill="#fff" text-anchor="middle" font-weight="bold">  7 建构觉知期</text>
-<text x="895.0" y="142" font-family="sans-serif" font-size="12" fill="#fff" text-anchor="middle" font-weight="normal">  所有框架都是有用的虚构</text>
-<text x="895.0" y="162" font-family="sans-serif" font-size="12" fill="#fff" text-anchor="middle" font-weight="normal">  地图不是疆域</text>
-<rect x="755" y="200" width="290" height="82" rx="8" ry="8" fill="#4d96ff" stroke="#ccc" stroke-width="1"/>
-<text x="895.0" y="222" font-family="sans-serif" font-size="13" fill="#fff" text-anchor="middle" font-weight="bold">  8 合一期</text>
-<text x="895.0" y="242" font-family="sans-serif" font-size="12" fill="#fff" text-anchor="middle" font-weight="normal">  工作·休息·娱乐</text>
-<text x="895.0" y="262" font-family="sans-serif" font-size="12" fill="#fff" text-anchor="middle" font-weight="normal">  成了一回事</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1050 500" width="1050" height="500">
+<defs>
+<marker id="a-999" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#999"/></marker>
+</defs>
+<rect width="100%" height="100%" fill="#fcfcfc"/>
+<text x="525.0" y="28" font-family="sans-serif" font-size="18" fill="#222" text-anchor="middle" font-weight="bold">Ego 发展八阶段</text>
+<rect x="15.0" y="48" width="320" height="420" rx="10" ry="10" fill="#f8f9fa" stroke="#ddd" stroke-width="1"/>
+<text x="175.0" y="72" font-family="sans-serif" font-size="14" fill="#333" text-anchor="middle" font-weight="bold">🧒 早期—被环境塑造</text>
+<line x1="35.0" y1="80" x2="315.0" y2="80" stroke="#ffd93d" stroke-width="2"/>
+<rect x="27.0" y="100" width="296" height="90" rx="8" ry="8" fill="#ffd93d" stroke="#ccc" stroke-width="1"/>
+<text x="175.0" y="128" font-family="sans-serif" font-size="13" fill="#000" text-anchor="middle" font-weight="bold">1️⃣ 冲动期</text>
+<text x="175.0" y="155" font-family="sans-serif" font-size="11" fill="#333" text-anchor="middle" font-weight="normal">冲动即行动·非黑即白</text>
+<rect x="27.0" y="210" width="296" height="90" rx="8" ry="8" fill="#ffd93d" stroke="#ccc" stroke-width="1"/>
+<text x="175.0" y="238" font-family="sans-serif" font-size="13" fill="#000" text-anchor="middle" font-weight="bold">2️⃣ 自我保护期</text>
+<text x="175.0" y="265" font-family="sans-serif" font-size="11" fill="#333" text-anchor="middle" font-weight="normal">世界很危险·先顾好自己</text>
+<rect x="27.0" y="320" width="296" height="90" rx="8" ry="8" fill="#ffd93d" stroke="#ccc" stroke-width="1"/>
+<text x="175.0" y="348" font-family="sans-serif" font-size="13" fill="#000" text-anchor="middle" font-weight="bold">3️⃣ 从众期</text>
+<text x="175.0" y="375" font-family="sans-serif" font-size="11" fill="#333" text-anchor="middle" font-weight="normal">群体规则即真理·我就是我的群体</text>
+<line x1="340.0" y1="258.0" x2="365.0" y2="258.0" stroke="#999" stroke-width="2" marker-end="url(#a-999)"/>
+<rect x="365.0" y="48" width="320" height="420" rx="10" ry="10" fill="#f8f9fa" stroke="#ddd" stroke-width="1"/>
+<text x="525.0" y="72" font-family="sans-serif" font-size="14" fill="#333" text-anchor="middle" font-weight="bold">🧑 中期—自我觉醒</text>
+<line x1="385.0" y1="80" x2="665.0" y2="80" stroke="#6bcb77" stroke-width="2"/>
+<rect x="377.0" y="100" width="296" height="90" rx="8" ry="8" fill="#6bcb77" stroke="#ccc" stroke-width="1"/>
+<text x="525.0" y="128" font-family="sans-serif" font-size="13" fill="#000" text-anchor="middle" font-weight="bold">4️⃣ 自我觉察期</text>
+<text x="525.0" y="155" font-family="sans-serif" font-size="11" fill="#333" text-anchor="middle" font-weight="normal">内心与外在不一致·怀疑默认信念</text>
+<rect x="377.0" y="210" width="296" height="90" rx="8" ry="8" fill="#6bcb77" stroke="#ccc" stroke-width="1"/>
+<text x="525.0" y="238" font-family="sans-serif" font-size="13" fill="#000" text-anchor="middle" font-weight="bold">5️⃣ 尽责期</text>
+<text x="525.0" y="265" font-family="sans-serif" font-size="11" fill="#333" text-anchor="middle" font-weight="normal">建立个人原则·相信努力有回报</text>
+<rect x="377.0" y="320" width="296" height="90" rx="8" ry="8" fill="#6bcb77" stroke="#ccc" stroke-width="1"/>
+<text x="525.0" y="348" font-family="sans-serif" font-size="13" fill="#000" text-anchor="middle" font-weight="bold">6️⃣ 策略家期</text>
+<text x="525.0" y="375" font-family="sans-serif" font-size="11" fill="#333" text-anchor="middle" font-weight="normal">自己也是系统的一部分·反思盲区</text>
+<line x1="690.0" y1="258.0" x2="715.0" y2="258.0" stroke="#999" stroke-width="2" marker-end="url(#a-999)"/>
+<rect x="715.0" y="48" width="320" height="420" rx="10" ry="10" fill="#f8f9fa" stroke="#ddd" stroke-width="1"/>
+<text x="875.0" y="72" font-family="sans-serif" font-size="14" fill="#333" text-anchor="middle" font-weight="bold">🧙 晚期—超越自我</text>
+<line x1="735.0" y1="80" x2="1015.0" y2="80" stroke="#4d96ff" stroke-width="2"/>
+<rect x="727.0" y="100" width="296" height="90" rx="8" ry="8" fill="#4d96ff" stroke="#ccc" stroke-width="1"/>
+<text x="875.0" y="128" font-family="sans-serif" font-size="13" fill="#fff" text-anchor="middle" font-weight="bold">7️⃣ 建构觉知期</text>
+<text x="875.0" y="155" font-family="sans-serif" font-size="11" fill="#ddd" text-anchor="middle" font-weight="normal">所有框架都是有用的虚构·地图非疆域</text>
+<rect x="727.0" y="210" width="296" height="90" rx="8" ry="8" fill="#4d96ff" stroke="#ccc" stroke-width="1"/>
+<text x="875.0" y="238" font-family="sans-serif" font-size="13" fill="#fff" text-anchor="middle" font-weight="bold">8️⃣ 合一期</text>
+<text x="875.0" y="265" font-family="sans-serif" font-size="11" fill="#ddd" text-anchor="middle" font-weight="normal">工作·休息·娱乐成一体·无需再成为</text>
 </svg>
