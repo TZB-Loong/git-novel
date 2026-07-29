@@ -1,23 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 520" width="650" height="520">
-<defs>
-<marker id="a-999" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#999"/></marker>
-<marker id="a-4d96ff" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#4d96ff"/></marker>
-<marker id="a-ff6b6b" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#ff6b6b"/></marker>
-</defs><rect width="100%" height="100%" fill="#fcfcfc"/>
-<text x="325.0" y="28" font-family="sans-serif" font-size="17" fill="#222" text-anchor="middle" font-weight="bold">控制论闭环：智能系统的运行方式</text>
-<rect x="255.0" y="55.0" width="140" height="50" rx="10" ry="10" fill="#4d96ff" stroke="#333" stroke-width="1.5"/>
-<text x="325.0" y="85" font-family="sans-serif" font-size="14" fill="#fff" text-anchor="middle" font-weight="bold">🎯 定目标</text>
-<rect x="435.0" y="205.0" width="140" height="50" rx="10" ry="10" fill="#4d96ff" stroke="#333" stroke-width="1.5"/>
-<text x="505.0" y="235" font-family="sans-serif" font-size="14" fill="#fff" text-anchor="middle" font-weight="bold">🏃 行动</text>
-<rect x="255.0" y="415.0" width="140" height="50" rx="10" ry="10" fill="#ff6b6b" stroke="#333" stroke-width="1.5"/>
-<text x="325.0" y="445" font-family="sans-serif" font-size="14" fill="#fff" text-anchor="middle" font-weight="bold">🔧 纠偏</text>
-<rect x="75.0" y="205.0" width="140" height="50" rx="10" ry="10" fill="#4d96ff" stroke="#333" stroke-width="1.5"/>
-<text x="145.0" y="235" font-family="sans-serif" font-size="14" fill="#fff" text-anchor="middle" font-weight="bold">👁️ 感知结果</text>
-<line x1="355.0" y1="105" x2="495.0" y2="205" stroke="#4d96ff" stroke-width="2" marker-end="url(#a-4d96ff)"/>
-<line x1="505.0" y1="255" x2="355.0" y2="415" stroke="#4d96ff" stroke-width="2" marker-end="url(#a-4d96ff)"/>
-<line x1="295.0" y1="415" x2="155.0" y2="255" stroke="#4d96ff" stroke-width="2" marker-end="url(#a-4d96ff)"/>
-<line x1="155.0" y1="205" x2="295.0" y2="105" stroke="#4d96ff" stroke-width="2" marker-end="url(#a-4d96ff)"/>
-<line x1="250.0" y1="230" x2="400.0" y2="230" stroke="#ff6b6b" stroke-width="2.5" marker-end="url(#a-ff6b6b)" stroke-dasharray="6,3"/>
-<text x="325.0" y="222" font-family="sans-serif" font-size="11" fill="#ff6b6b" text-anchor="middle" font-weight="normal">有偏差</text>
-<text x="325.0" y="270" font-family="sans-serif" font-size="11" fill="#4d96ff" text-anchor="middle" font-weight="normal">达成目标</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 580"><rect width="100%" height="100%" fill="#fcfcfc"/>
+<text x="350.0" y="35" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="20" fill="#222" text-anchor="middle" font-weight="bold">控制论闭环：智能系统的运行方式</text>
+<defs><marker id="a" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#4d96ff"/></marker><marker id="b" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#e74c3c"/></marker></defs>
+<rect x="270.0" y="71" width="160" height="38" rx="12" fill="#4d96ff" stroke="#333" stroke-width="1.5"/>
+<text x="350.0" y="95" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="15" fill="#fff" text-anchor="middle" font-weight="bold">🎯 定目标</text>
+<rect x="470.0" y="241" width="160" height="38" rx="12" fill="#4d96ff" stroke="#333" stroke-width="1.5"/>
+<text x="550.0" y="265" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="15" fill="#fff" text-anchor="middle" font-weight="bold">🏃 行动</text>
+<rect x="270.0" y="430" width="160" height="60" rx="12" fill="#ff6b6b" stroke="#333" stroke-width="1.5"/>
+<text x="350.0" y="454" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="15" fill="#fff" text-anchor="middle" font-weight="bold">🔧 纠偏</text>
+<text x="350.0" y="476" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="15" fill="#fff" text-anchor="middle" font-weight="bold">（比较实际与目标）</text>
+<rect x="70.0" y="241" width="160" height="38" rx="12" fill="#4d96ff" stroke="#333" stroke-width="1.5"/>
+<text x="150.0" y="265" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="15" fill="#fff" text-anchor="middle" font-weight="bold">👁 感知结果</text>
+<line x1="370.0" y1="115" x2="530.0" y2="235" stroke="#4d96ff" stroke-width="2" marker-end="url(#a)"/>
+<line x1="530.0" y1="280" x2="370.0" y2="435" stroke="#4d96ff" stroke-width="2" marker-end="url(#a)"/>
+<line x1="330.0" y1="435" x2="170.0" y2="280" stroke="#4d96ff" stroke-width="2" marker-end="url(#a)"/>
+<line x1="170.0" y1="235" x2="330.0" y2="115" stroke="#4d96ff" stroke-width="2" marker-end="url(#a)"/>
+<line x1="270.0" y1="260" x2="430.0" y2="260" stroke="#e74c3c" stroke-width="2.5" stroke-dasharray="6,4" marker-end="url(#b)"/>
+<text x="350.0" y="248" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="12" fill="#e74c3c" text-anchor="middle" font-weight="normal">有偏差（红色回路）</text>
+<text x="350.0" y="285" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="13" fill="#4d96ff" text-anchor="middle" font-weight="normal">达成目标</text>
 </svg>

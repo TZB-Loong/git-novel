@@ -1,36 +1,39 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 520" width="750" height="520">
-<defs>
-<marker id="a-999" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#999"/></marker>
-</defs>
-<rect width="100%" height="100%" fill="#fcfcfc"/>
-<text x="375.0" y="30" font-family="sans-serif" font-size="17" fill="#222" text-anchor="middle" font-weight="bold">一天重启人生：方法论框架</text>
-<line x1="90" y1="55" x2="90" y2="470" stroke="#4d96ff" stroke-width="3"/>
-<circle cx="90" cy="87" r="10" fill="#4d96ff" stroke="#fff" stroke-width="2"/>
-<rect x="118" y="55" width="620" height="100" rx="10" ry="10" fill="#f8f9fa" stroke="#e0e0e0" stroke-width="1.5"/>
-<rect x="118" y="55" width="110" height="100" rx="10" ry="10" fill="#4d96ff" stroke="none" stroke-width="1.5" opacity="0.12"/>
-<text x="173" y="77" font-family="sans-serif" font-size="14" fill="#333" text-anchor="middle" font-weight="normal">🌅</text>
-<text x="173" y="100" font-family="sans-serif" font-size="15" fill="#222" text-anchor="middle" font-weight="bold">早晨</text>
-<text x="173" y="120" font-family="sans-serif" font-size="12" fill="#888" text-anchor="middle" font-weight="normal">心理考古</text>
-<text x="243" y="93" font-family="sans-serif" font-size="13" fill="#333" text-anchor="start" font-weight="normal">挖痛点→构建反愿景→</text>
-<text x="243" y="117" font-family="sans-serif" font-size="13" fill="#333" text-anchor="start" font-weight="normal">勾勒最小可行愿景</text>
-<circle cx="90" cy="217" r="10" fill="#f0a500" stroke="#fff" stroke-width="2"/>
-<rect x="118" y="185" width="620" height="100" rx="10" ry="10" fill="#f8f9fa" stroke="#e0e0e0" stroke-width="1.5"/>
-<rect x="118" y="185" width="110" height="100" rx="10" ry="10" fill="#f0a500" stroke="none" stroke-width="1.5" opacity="0.12"/>
-<text x="173" y="207" font-family="sans-serif" font-size="14" fill="#333" text-anchor="middle" font-weight="normal">☀️</text>
-<text x="173" y="230" font-family="sans-serif" font-size="15" fill="#222" text-anchor="middle" font-weight="bold">白天</text>
-<text x="173" y="250" font-family="sans-serif" font-size="12" fill="#888" text-anchor="middle" font-weight="normal">打断自动驾驶</text>
-<text x="243" y="223" font-family="sans-serif" font-size="13" fill="#333" text-anchor="start" font-weight="normal">6个随机提醒问题</text>
-<text x="243" y="247" font-family="sans-serif" font-size="13" fill="#333" text-anchor="start" font-weight="normal">跳出无意识模式</text>
-<circle cx="90" cy="347" r="10" fill="#6bcb77" stroke="#fff" stroke-width="2"/>
-<rect x="118" y="315" width="620" height="100" rx="10" ry="10" fill="#f8f9fa" stroke="#e0e0e0" stroke-width="1.5"/>
-<rect x="118" y="315" width="110" height="100" rx="10" ry="10" fill="#6bcb77" stroke="none" stroke-width="1.5" opacity="0.12"/>
-<text x="173" y="337" font-family="sans-serif" font-size="14" fill="#333" text-anchor="middle" font-weight="normal">🌙</text>
-<text x="173" y="360" font-family="sans-serif" font-size="15" fill="#222" text-anchor="middle" font-weight="bold">晚上</text>
-<text x="173" y="380" font-family="sans-serif" font-size="12" fill="#888" text-anchor="middle" font-weight="normal">整合洞察</text>
-<text x="243" y="353" font-family="sans-serif" font-size="13" fill="#333" text-anchor="start" font-weight="normal">找到真正敌人</text>
-<text x="243" y="377" font-family="sans-serif" font-size="13" fill="#333" text-anchor="start" font-weight="normal">反愿景浓缩→愿景MVP</text>
-<text x="80" y="55" font-family="sans-serif" font-size="10" fill="#888" text-anchor="middle" font-weight="end">06:00</text>
-<text x="80" y="195" font-family="sans-serif" font-size="10" fill="#888" text-anchor="middle" font-weight="end">12:00</text>
-<text x="80" y="325" font-family="sans-serif" font-size="10" fill="#888" text-anchor="middle" font-weight="end">18:00</text>
-<text x="80" y="470" font-family="sans-serif" font-size="10" fill="#888" text-anchor="middle" font-weight="end">24:00</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 660">
+<rect width="100%" height="100%" fill="#fcfcfc" rx="0"/>
+<text x="480.0" y="40" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="22" fill="#222" text-anchor="middle" font-weight="bold">一天重启人生：方法论框架</text>
+<line x1="140" y1="70" x2="140" y2="600" stroke="#4d96ff" stroke-width="3"/>
+<text x="126" y="74" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="13" fill="#999" text-anchor="end" font-weight="normal">06:00</text>
+<text x="126" y="234" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="13" fill="#999" text-anchor="end" font-weight="normal">12:00</text>
+<text x="126" y="394" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="13" fill="#999" text-anchor="end" font-weight="normal">18:00</text>
+<text x="126" y="604" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="13" fill="#999" text-anchor="end" font-weight="normal">24:00</text>
+<rect x="160" y="70" width="740" height="120" rx="14" fill="#e3f0ff" stroke="#ddd" stroke-width="1"/>
+<rect x="160" y="70" width="8" height="120" rx="4" fill="#4d96ff"/>
+<circle cx="140" cy="130" r="12" fill="#4d96ff" stroke="#fff" stroke-width="3"/>
+<text x="190" y="108" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="18" fill="#333" text-anchor="middle" font-weight="normal">🌅</text>
+<text x="220" y="108" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="18" fill="#222" text-anchor="start" font-weight="bold">早晨</text>
+<text x="220" y="132" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="14" fill="#888" text-anchor="start" font-weight="normal">心理考古</text>
+<text x="370" y="118" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="16" fill="#333" text-anchor="start" font-weight="normal">挖痛点 → 构建反愿景</text>
+<text x="370" y="148" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="16" fill="#333" text-anchor="start" font-weight="normal">勾勒最小可行愿景</text>
+<rect x="160" y="230" width="740" height="120" rx="14" fill="#fff3d0" stroke="#ddd" stroke-width="1"/>
+<rect x="160" y="230" width="8" height="120" rx="4" fill="#f0a500"/>
+<circle cx="140" cy="290" r="12" fill="#f0a500" stroke="#fff" stroke-width="3"/>
+<text x="190" y="268" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="18" fill="#333" text-anchor="middle" font-weight="normal">☀️</text>
+<text x="220" y="268" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="18" fill="#222" text-anchor="start" font-weight="bold">白天</text>
+<text x="220" y="292" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="14" fill="#888" text-anchor="start" font-weight="normal">打断自动驾驶</text>
+<text x="370" y="278" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="16" fill="#333" text-anchor="start" font-weight="normal">6个随机提醒问题</text>
+<text x="370" y="308" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="16" fill="#333" text-anchor="start" font-weight="normal">跳出无意识模式</text>
+<rect x="160" y="390" width="740" height="120" rx="14" fill="#d4f5e0" stroke="#ddd" stroke-width="1"/>
+<rect x="160" y="390" width="8" height="120" rx="4" fill="#6bcb77"/>
+<circle cx="140" cy="450" r="12" fill="#6bcb77" stroke="#fff" stroke-width="3"/>
+<text x="190" y="428" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="18" fill="#333" text-anchor="middle" font-weight="normal">🌙</text>
+<text x="220" y="428" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="18" fill="#222" text-anchor="start" font-weight="bold">晚上</text>
+<text x="220" y="452" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="14" fill="#888" text-anchor="start" font-weight="normal">整合洞察</text>
+<text x="370" y="438" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="16" fill="#333" text-anchor="start" font-weight="normal">找到真正敌人</text>
+<text x="370" y="468" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="16" fill="#333" text-anchor="start" font-weight="normal">反愿景浓缩 → 愿景 MVP</text>
+<rect x="75" y="115" width="55" height="24" rx="12" fill="#4d96ff" opacity="0.12"/>
+<text x="103" y="132" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="13" fill="#4d96ff" text-anchor="middle" font-weight="normal">心理考古</text>
+<rect x="75" y="275" width="55" height="24" rx="12" fill="#e6a800" opacity="0.12"/>
+<text x="103" y="292" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="13" fill="#e6a800" text-anchor="middle" font-weight="normal">打断自动驾驶</text>
+<rect x="75" y="435" width="55" height="24" rx="12" fill="#6bcb77" opacity="0.12"/>
+<text x="103" y="452" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="13" fill="#6bcb77" text-anchor="middle" font-weight="normal">整合洞察</text>
 </svg>
