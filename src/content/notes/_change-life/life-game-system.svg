@@ -1,33 +1,33 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 880">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1450 1200">
 <rect width="100%" height="100%" fill="#fcfcfc"/>
-<text x="600.0" y="35" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="20" fill="#222" text-anchor="middle" font-weight="bold">六层人生游戏系统</text>
-<text x="600.0" y="55" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="13" fill="#888" text-anchor="middle" font-weight="normal">六层同心圆聚焦你的注意力</text>
-<circle cx="400" cy="420" r="65" fill="none" stroke="#4d96ff" stroke-width="2.5" opacity="0.5"/>
-<rect x="485" y="398" width="130" height="44" rx="8" fill="#4d96ff" opacity="0.12"/>
-<text x="550.0" y="418" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="15" fill="#4d96ff" text-anchor="middle" font-weight="bold">约束条件</text>
-<text x="550.0" y="436" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="11" fill="#666" text-anchor="middle" font-weight="normal">🎮 游戏规则</text>
-<circle cx="400" cy="420" r="130" fill="none" stroke="#6bcb77" stroke-width="2.5" opacity="0.5"/>
-<rect x="550" y="398" width="130" height="44" rx="8" fill="#6bcb77" opacity="0.12"/>
-<text x="615.0" y="418" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="15" fill="#6bcb77" text-anchor="middle" font-weight="bold">日常杠杆</text>
-<text x="615.0" y="436" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="11" fill="#666" text-anchor="middle" font-weight="normal">🎮 每日任务</text>
-<circle cx="400" cy="420" r="205" fill="none" stroke="#2ecc71" stroke-width="2.5" opacity="0.5"/>
-<rect x="625" y="398" width="130" height="44" rx="8" fill="#2ecc71" opacity="0.12"/>
-<text x="690.0" y="418" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="15" fill="#2ecc71" text-anchor="middle" font-weight="bold">一月项目</text>
-<text x="690.0" y="436" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="11" fill="#666" text-anchor="middle" font-weight="normal">🎮 打 Boss</text>
-<circle cx="400" cy="420" r="290" fill="none" stroke="#f39c12" stroke-width="2.5" opacity="0.5"/>
-<rect x="710" y="398" width="130" height="44" rx="8" fill="#f39c12" opacity="0.12"/>
-<text x="775.0" y="418" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="15" fill="#f39c12" text-anchor="middle" font-weight="bold">一年目标</text>
-<text x="775.0" y="436" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="11" fill="#666" text-anchor="middle" font-weight="normal">🎮 主线任务</text>
-<circle cx="400" cy="420" r="385" fill="none" stroke="#e67e22" stroke-width="2.5" opacity="0.5"/>
-<rect x="805" y="398" width="130" height="44" rx="8" fill="#e67e22" opacity="0.12"/>
-<text x="870.0" y="418" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="15" fill="#e67e22" text-anchor="middle" font-weight="bold">愿景</text>
-<text x="870.0" y="436" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="11" fill="#666" text-anchor="middle" font-weight="normal">🎮 通关方式</text>
-<circle cx="400" cy="420" r="490" fill="none" stroke="#ff6b6b" stroke-width="2.5" opacity="0.5"/>
-<rect x="910" y="398" width="130" height="44" rx="8" fill="#ff6b6b" opacity="0.12"/>
-<text x="975.0" y="418" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="15" fill="#ff6b6b" text-anchor="middle" font-weight="bold">反愿景</text>
-<text x="975.0" y="436" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="11" fill="#666" text-anchor="middle" font-weight="normal">🎮 输掉代价</text>
-<circle cx="400" cy="420" r="28" fill="none" stroke="#4d96ff" stroke-width="2"/>
-<text x="400" y="425" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="16" fill="#4d96ff" text-anchor="middle" font-weight="bold">你</text>
-<text x="600.0" y="825" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="14" fill="#555" text-anchor="middle" font-weight="normal">六层同心圆罩着脑子，把乱七八糟的诱惑挡在外头。</text>
-<text x="600.0" y="852" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="14" fill="#222" text-anchor="middle" font-weight="bold">越玩这场游戏，这个圈越牢，到最后就成了你本人。</text>
+<text x="725.0" y="40" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="22" fill="#222" text-anchor="middle" font-weight="bold">六层人生游戏系统</text>
+<text x="725.0" y="62" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="14" fill="#888" text-anchor="middle" font-weight="normal">六层同心圆聚焦你的注意力</text>
+<circle cx="510" cy="550" r="65" fill="none" stroke="#4d96ff" stroke-width="2.5" opacity="0.5"/>
+<rect x="597" y="526" width="140" height="48" rx="10" fill="#4d96ff" opacity="0.12"/>
+<text x="667.0" y="548" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="16" fill="#4d96ff" text-anchor="middle" font-weight="bold">约束条件</text>
+<text x="667.0" y="568" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="12" fill="#666" text-anchor="middle" font-weight="normal">🎮 游戏规则</text>
+<circle cx="510" cy="550" r="130" fill="none" stroke="#6bcb77" stroke-width="2.5" opacity="0.5"/>
+<rect x="662" y="526" width="140" height="48" rx="10" fill="#6bcb77" opacity="0.12"/>
+<text x="732.0" y="548" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="16" fill="#6bcb77" text-anchor="middle" font-weight="bold">日常杠杆</text>
+<text x="732.0" y="568" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="12" fill="#666" text-anchor="middle" font-weight="normal">🎮 每日任务</text>
+<circle cx="510" cy="550" r="205" fill="none" stroke="#2ecc71" stroke-width="2.5" opacity="0.5"/>
+<rect x="737" y="526" width="140" height="48" rx="10" fill="#2ecc71" opacity="0.12"/>
+<text x="807.0" y="548" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="16" fill="#2ecc71" text-anchor="middle" font-weight="bold">一月项目</text>
+<text x="807.0" y="568" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="12" fill="#666" text-anchor="middle" font-weight="normal">🎮 打 Boss</text>
+<circle cx="510" cy="550" r="290" fill="none" stroke="#f39c12" stroke-width="2.5" opacity="0.5"/>
+<rect x="822" y="526" width="140" height="48" rx="10" fill="#f39c12" opacity="0.12"/>
+<text x="892.0" y="548" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="16" fill="#f39c12" text-anchor="middle" font-weight="bold">一年目标</text>
+<text x="892.0" y="568" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="12" fill="#666" text-anchor="middle" font-weight="normal">🎮 主线任务</text>
+<circle cx="510" cy="550" r="385" fill="none" stroke="#e67e22" stroke-width="2.5" opacity="0.5"/>
+<rect x="917" y="526" width="140" height="48" rx="10" fill="#e67e22" opacity="0.12"/>
+<text x="987.0" y="548" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="16" fill="#e67e22" text-anchor="middle" font-weight="bold">愿景</text>
+<text x="987.0" y="568" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="12" fill="#666" text-anchor="middle" font-weight="normal">🎮 通关方式</text>
+<circle cx="510" cy="550" r="490" fill="none" stroke="#ff6b6b" stroke-width="2.5" opacity="0.5"/>
+<rect x="1022" y="526" width="140" height="48" rx="10" fill="#ff6b6b" opacity="0.12"/>
+<text x="1092.0" y="548" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="16" fill="#ff6b6b" text-anchor="middle" font-weight="bold">反愿景</text>
+<text x="1092.0" y="568" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="12" fill="#666" text-anchor="middle" font-weight="normal">🎮 输掉代价</text>
+<circle cx="510" cy="550" r="30" fill="none" stroke="#4d96ff" stroke-width="2.5"/>
+<text x="510" y="556" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="18" fill="#4d96ff" text-anchor="middle" font-weight="bold">你</text>
+<text x="725.0" y="1130" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="15" fill="#555" text-anchor="middle" font-weight="normal">六层同心圆罩着脑子，把乱七八糟的诱惑挡在外头。</text>
+<text x="725.0" y="1160" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="15" fill="#222" text-anchor="middle" font-weight="bold">越玩这场游戏，这个圈越牢，到最后就成了你本人。</text>
 </svg>
