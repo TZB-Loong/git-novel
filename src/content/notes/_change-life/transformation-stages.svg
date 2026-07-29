@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400">
+  <defs>
+    <marker id="arrowBig" markerWidth="16" markerHeight="12" refX="14" refY="6" orient="auto">
+      <polygon points="0 0, 16 6, 0 12" fill="#94a3b8"/>
+    </marker>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="3" stdDeviation="6" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+  <style>
+    text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; }
+    .title { font-size: 24px; font-weight: 700; fill: #1e293b; }
+    .stage-title { font-size: 18px; font-weight: 700; }
+    .stage-desc { font-size: 14px; fill: rgba(255,255,255,0.9); text-anchor: middle; }
+    .stage-sub { font-size: 12px; fill: rgba(255,255,255,0.7); text-anchor: middle; }
+    .arrow-label { font-size: 13px; font-weight: 600; fill: #475569; }
+  </style>
+  <rect width="960" height="400" fill="#fefcf7"/>
+  <text x="480" y="45" text-anchor="middle" class="title">蜕变三阶段 · Transformation Stages</text>
+  <rect x="80" y="100" width="240" height="220" rx="16" fill="#ef4444" filter="url(#shadow)"/>
+  <rect x="80" y="100" width="240" height="90" rx="16" fill="#dc2626" opacity="0.3"/>
+  <rect x="80" y="175" width="240" height="15" fill="#dc2626" opacity="0.3"/>
+  <text x="200.0" y="140" text-anchor="middle" font-size="36">💥</text>
+  <text x="200.0" y="168" text-anchor="middle" class="stage-title" fill="#fff">撕裂期</text>
+  <text x="200.0" y="212" class="stage-desc">感觉格格不入</text>
+  <text x="200.0" y="238" class="stage-desc">受够了止步不前</text>
+  <text x="200.0" y="300" class="stage-sub">张力积蓄 · 忍无可忍</text>
+  <rect x="360" y="100" width="240" height="220" rx="16" fill="#f59e0b" filter="url(#shadow)"/>
+  <rect x="360" y="100" width="240" height="90" rx="16" fill="#d97706" opacity="0.3"/>
+  <rect x="360" y="175" width="240" height="15" fill="#d97706" opacity="0.3"/>
+  <text x="480.0" y="140" text-anchor="middle" font-size="36">🌫️</text>
+  <text x="480.0" y="168" text-anchor="middle" class="stage-title" fill="#fff">迷茫期</text>
+  <text x="480.0" y="212" class="stage-desc">不知道下一步在哪</text>
+  <text x="480.0" y="238" class="stage-desc">摸索试错中</text>
+  <text x="480.0" y="300" class="stage-sub">旧路已断 · 新路未明</text>
+  <rect x="640" y="100" width="240" height="220" rx="16" fill="#22c55e" filter="url(#shadow)"/>
+  <rect x="640" y="100" width="240" height="90" rx="16" fill="#16a34a" opacity="0.3"/>
+  <rect x="640" y="175" width="240" height="15" fill="#16a34a" opacity="0.3"/>
+  <text x="760.0" y="140" text-anchor="middle" font-size="36">💡</text>
+  <text x="760.0" y="168" text-anchor="middle" class="stage-title" fill="#fff">顿悟期</text>
+  <text x="760.0" y="212" class="stage-desc">找到想奔赴的方向</text>
+  <text x="760.0" y="238" class="stage-desc">六个月走完六年的路</text>
+  <text x="760.0" y="300" class="stage-sub">方向已定 · 加速成长</text>
+  <line x1="320" y1="210.0" x2="355" y2="210.0" stroke="#cbd5e1" stroke-width="3" marker-end="url(#arrowBig)"/>
+  <line x1="600" y1="210.0" x2="635" y2="210.0" stroke="#cbd5e1" stroke-width="3" marker-end="url(#arrowBig)"/>
+  <text x="210" y="215" text-anchor="middle" class="arrow-label">撑不住了</text>
+  <text x="490" y="215" text-anchor="middle" class="arrow-label">摸索中</text>
+  <rect x="80" y="340" width="800" height="8" rx="4" fill="#f1f5f9"/>
+  <rect x="80" y="340" width="267" height="8" rx="4" fill="#ef4444"/>
+  <rect x="347" y="340" width="266" height="8" rx="4" fill="#f59e0b"/>
+  <rect x="613" y="340" width="267" height="8" rx="4" fill="#22c55e"/>
+</svg>
