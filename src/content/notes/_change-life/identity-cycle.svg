@@ -1,46 +1,53 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 850"><rect width="100%" height="100%" fill="#fcfcfc"/>
-<text x="480.0" y="35" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="22" fill="#222" text-anchor="middle" font-weight="bold">身份形成与改变循环</text>
-<defs><marker id="a" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#999"/></marker><marker id="b" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#e74c3c"/></marker></defs>
-<rect x="60.0" y="80" width="180" height="80" rx="10" fill="#e8f4fd" stroke="#4d96ff" stroke-width="1.5"/>
-<text x="150.0" y="110" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="14" fill="#222" text-anchor="middle" font-weight="normal">🎯 设定</text>
-<text x="150.0" y="134" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="14" fill="#222" text-anchor="middle" font-weight="normal">一个目标</text>
-<text x="150.0" y="70" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="11" fill="#999" text-anchor="middle" font-weight="normal">Step 1</text>
-<rect x="280.0" y="80" width="180" height="80" rx="10" fill="#e8f4fd" stroke="#4d96ff" stroke-width="1.5"/>
-<text x="370.0" y="110" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="14" fill="#222" text-anchor="middle" font-weight="normal">🔍 透过目标</text>
-<text x="370.0" y="134" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="14" fill="#222" text-anchor="middle" font-weight="normal">重新审视现实</text>
-<text x="370.0" y="70" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="11" fill="#999" text-anchor="middle" font-weight="normal">Step 2</text>
-<rect x="500.0" y="80" width="180" height="80" rx="10" fill="#e8f4fd" stroke="#4d96ff" stroke-width="1.5"/>
-<text x="590.0" y="110" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="14" fill="#222" text-anchor="middle" font-weight="normal">📖 选择性</text>
-<text x="590.0" y="134" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="14" fill="#222" text-anchor="middle" font-weight="normal">注意 + 学习</text>
-<text x="590.0" y="70" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="11" fill="#999" text-anchor="middle" font-weight="normal">Step 3</text>
-<rect x="720.0" y="80" width="180" height="80" rx="10" fill="#e8f4fd" stroke="#4d96ff" stroke-width="1.5"/>
-<text x="810.0" y="110" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="14" fill="#222" text-anchor="middle" font-weight="normal">🚶 朝目标行动</text>
-<text x="810.0" y="134" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="14" fill="#222" text-anchor="middle" font-weight="normal">获得正向反馈</text>
-<text x="810.0" y="70" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="11" fill="#999" text-anchor="middle" font-weight="normal">Step 4</text>
-<rect x="60.0" y="420" width="180" height="80" rx="10" fill="#e8f4fd" stroke="#4d96ff" stroke-width="1.5"/>
-<text x="150.0" y="450" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="14" fill="#222" text-anchor="middle" font-weight="normal">🎯 塑造</text>
-<text x="150.0" y="474" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="14" fill="#222" text-anchor="middle" font-weight="normal">新目标</text>
-<text x="150.0" y="410" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="11" fill="#999" text-anchor="middle" font-weight="normal">Step 8</text>
-<rect x="280.0" y="420" width="180" height="80" rx="10" fill="#ffe0e0" stroke="#4d96ff" stroke-width="1.5"/>
-<text x="370.0" y="450" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="14" fill="#222" text-anchor="middle" font-weight="normal">🛡️ 捍卫</text>
-<text x="370.0" y="474" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="14" fill="#222" text-anchor="middle" font-weight="normal">这个身份</text>
-<text x="370.0" y="410" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="11" fill="#999" text-anchor="middle" font-weight="normal">Step 7</text>
-<rect x="500.0" y="420" width="180" height="80" rx="10" fill="#fff3cd" stroke="#4d96ff" stroke-width="1.5"/>
-<text x="590.0" y="450" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="14" fill="#222" text-anchor="middle" font-weight="normal">🧑 成为"那种人"</text>
-<text x="590.0" y="410" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="11" fill="#999" text-anchor="middle" font-weight="normal">Step 6</text>
-<rect x="720.0" y="420" width="180" height="80" rx="10" fill="#e8f4fd" stroke="#4d96ff" stroke-width="1.5"/>
-<text x="810.0" y="450" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="14" fill="#222" text-anchor="middle" font-weight="normal">🔄 条件反射</text>
-<text x="810.0" y="474" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="14" fill="#222" text-anchor="middle" font-weight="normal">自动反应</text>
-<text x="810.0" y="410" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="11" fill="#999" text-anchor="middle" font-weight="normal">Step 5</text>
-<line x1="240.0" y1="120" x2="280.0" y2="120" stroke="#4d96ff" stroke-width="2" marker-end="url(#a)"/>
-<line x1="460.0" y1="120" x2="500.0" y2="120" stroke="#4d96ff" stroke-width="2" marker-end="url(#a)"/>
-<line x1="680.0" y1="120" x2="720.0" y2="120" stroke="#4d96ff" stroke-width="2" marker-end="url(#a)"/>
-<line x1="240.0" y1="460" x2="280.0" y2="460" stroke="#999" stroke-width="2" marker-end="url(#a)"/>
-<line x1="460.0" y1="460" x2="500.0" y2="460" stroke="#999" stroke-width="2" marker-end="url(#a)"/>
-<line x1="680.0" y1="460" x2="720.0" y2="460" stroke="#999" stroke-width="2" marker-end="url(#a)"/>
-<line x1="660.0" y1="160" x2="660.0" y2="420" stroke="#999" stroke-width="2" marker-end="url(#a)"/>
-<line x1="150.0" y1="500" x2="150.0" y2="80" stroke="#e74c3c" stroke-width="3" stroke-dasharray="8,4" marker-end="url(#b)"/>
-<text x="190.0" y="555" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="13" fill="#c00" text-anchor="middle" font-weight="start">⚠ 关键断裂点</text>
-<text x="190.0" y="578" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="12" fill="#c00" text-anchor="middle" font-weight="start">在第6步（身份认同）和第7步</text>
-<text x="190.0" y="598" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="12" fill="#c00" text-anchor="middle" font-weight="start">（身份捍卫）之间打破循环</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 780">
+<rect width="100%" height="100%" fill="#fff"/>
+<text x="480.0" y="30" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="18" fill="#222" text-anchor="middle" font-weight="bold">身份形成与改变循环</text>
+<defs>
+<marker id="ag" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#999"/></marker>
+<marker id="ar" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#e74c3c"/></marker>
+</defs>
+<rect x="95.0" y="70" width="170" height="76" rx="8" fill="#e8f4fd" stroke="#4d96ff" stroke-width="1.5"/>
+<text x="180.0" y="62" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="10" fill="#999" text-anchor="middle" font-weight="normal">Step 1</text>
+<text x="180.0" y="98" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="13" fill="#222" text-anchor="middle" font-weight="normal">🎯 决定</text>
+<text x="180.0" y="120" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="13" fill="#222" text-anchor="middle" font-weight="normal">一个目标</text>
+<rect x="295.0" y="70" width="170" height="76" rx="8" fill="#e8f4fd" stroke="#4d96ff" stroke-width="1.5"/>
+<text x="380.0" y="62" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="10" fill="#999" text-anchor="middle" font-weight="normal">Step 2</text>
+<text x="380.0" y="98" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="13" fill="#222" text-anchor="middle" font-weight="normal">🔍 透过目标</text>
+<text x="380.0" y="120" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="13" fill="#222" text-anchor="middle" font-weight="normal">重新审视现实</text>
+<rect x="495.0" y="70" width="170" height="76" rx="8" fill="#e8f4fd" stroke="#4d96ff" stroke-width="1.5"/>
+<text x="580.0" y="62" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="10" fill="#999" text-anchor="middle" font-weight="normal">Step 3</text>
+<text x="580.0" y="98" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="13" fill="#222" text-anchor="middle" font-weight="normal">📖 选择性</text>
+<text x="580.0" y="120" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="13" fill="#222" text-anchor="middle" font-weight="normal">注意+学习</text>
+<rect x="695.0" y="70" width="170" height="76" rx="8" fill="#e8f4fd" stroke="#4d96ff" stroke-width="1.5"/>
+<text x="780.0" y="62" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="10" fill="#999" text-anchor="middle" font-weight="normal">Step 4</text>
+<text x="780.0" y="98" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="13" fill="#222" text-anchor="middle" font-weight="normal">🏃 朝目标行动</text>
+<text x="780.0" y="120" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="13" fill="#222" text-anchor="middle" font-weight="normal">获得正向反馈</text>
+<line x1="265.0" y1="108.0" x2="295.0" y2="108.0" stroke="#999" stroke-width="1.5" marker-end="url(#ag)"/>
+<line x1="465.0" y1="108.0" x2="495.0" y2="108.0" stroke="#999" stroke-width="1.5" marker-end="url(#ag)"/>
+<line x1="665.0" y1="108.0" x2="695.0" y2="108.0" stroke="#999" stroke-width="1.5" marker-end="url(#ag)"/>
+<rect x="95.0" y="380" width="170" height="76" rx="8" fill="#e8f4fd" stroke="#4d96ff" stroke-width="1.5"/>
+<text x="180.0" y="372" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="10" fill="#999" text-anchor="middle" font-weight="normal">Step 8</text>
+<text x="180.0" y="408" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="13" fill="#222" text-anchor="middle" font-weight="normal">🎯 塑造</text>
+<text x="180.0" y="430" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="13" fill="#222" text-anchor="middle" font-weight="normal">新目标</text>
+<rect x="295.0" y="380" width="170" height="76" rx="8" fill="#ffe0e0" stroke="#4d96ff" stroke-width="1.5"/>
+<text x="380.0" y="372" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="10" fill="#999" text-anchor="middle" font-weight="normal">Step 7</text>
+<text x="380.0" y="408" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="13" fill="#222" text-anchor="middle" font-weight="normal">🛡 捍卫</text>
+<text x="380.0" y="430" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="13" fill="#222" text-anchor="middle" font-weight="normal">这个身份</text>
+<rect x="495.0" y="380" width="170" height="76" rx="8" fill="#fff3cd" stroke="#4d96ff" stroke-width="1.5"/>
+<text x="580.0" y="372" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="10" fill="#999" text-anchor="middle" font-weight="normal">Step 6</text>
+<text x="580.0" y="408" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="13" fill="#222" text-anchor="middle" font-weight="normal">🐟 成为</text>
+<text x="580.0" y="430" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="13" fill="#222" text-anchor="middle" font-weight="normal">“那种人”</text>
+<rect x="695.0" y="380" width="170" height="76" rx="8" fill="#e8f4fd" stroke="#4d96ff" stroke-width="1.5"/>
+<text x="780.0" y="372" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="10" fill="#999" text-anchor="middle" font-weight="normal">Step 5</text>
+<text x="780.0" y="408" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="13" fill="#222" text-anchor="middle" font-weight="normal">🔄 条件反射</text>
+<text x="780.0" y="430" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="13" fill="#222" text-anchor="middle" font-weight="normal">自动反应</text>
+<line x1="295.0" y1="418.0" x2="265.0" y2="418.0" stroke="#999" stroke-width="1.5" marker-end="url(#ag)"/>
+<line x1="495.0" y1="418.0" x2="465.0" y2="418.0" stroke="#999" stroke-width="1.5" marker-end="url(#ag)"/>
+<line x1="695.0" y1="418.0" x2="665.0" y2="418.0" stroke="#999" stroke-width="1.5" marker-end="url(#ag)"/>
+<line x1="580.0" y1="146" x2="580.0" y2="380" stroke="#999" stroke-width="1.5" marker-end="url(#ag)"/>
+<line x1="780.0" y1="146" x2="780.0" y2="380" stroke="#999" stroke-width="1.5" marker-end="url(#ag)"/>
+<line x1="180.0" y1="456" x2="180.0" y2="70" stroke="#e74c3c" stroke-width="2.5" stroke-dasharray="8,4" marker-end="url(#ar)"/>
+<rect x="80.0" y="65" width="8" height="396" rx="8" fill="none" stroke="#e74c3c" stroke-width="2.5" opacity="0.7"/>
+<text x="75.0" y="491" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="11" fill="#c00" text-anchor="middle" font-weight="end">▲ 关键断裂点</text>
+<text x="75.0" y="509" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="10" fill="#c00" text-anchor="middle" font-weight="end">在第6步(身份认同)和第7步</text>
+<text x="75.0" y="526" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="10" fill="#c00" text-anchor="middle" font-weight="end">(身份捍卫)之间打破循环</text>
 </svg>
