@@ -1,112 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 800">
-  <defs>
-    <filter id="shadow">
-      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity="0.12"/>
-    </filter>
-    <filter id="shadowStrong">
-      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-opacity="0.2"/>
-    </filter>
-  </defs>
-  <style>
-    text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; }
-    .title { font-size: 24px; font-weight: 700; fill: #1e293b; }
-    .subtitle { font-size: 13px; fill: #64748b; }
-    .layer-title { font-size: 14px; font-weight: 700; text-anchor: middle; }
-    .layer-desc { font-size: 11px; text-anchor: middle; }
-    .layer-game { font-size: 12px; font-weight: 600; text-anchor: middle; }
-    .layer-sub { font-size: 10px; text-anchor: middle; }
-  </style>
-  <rect width="960" height="800" fill="#fefcf7"/>
-  <text x="480" y="40" text-anchor="middle" class="title">六层人生游戏系统 · Life Game System</text>
-  <text x="480" y="62" text-anchor="middle" class="subtitle">把人生调成"游戏模式"——从反愿景到约束条件的六层心智结构</text>
-  <circle cx="480" cy="400" r="50" fill="#faf5ff" stroke="#e9d5ff" stroke-width="2" filter="url(#shadow)"/>
-  <circle cx="480" cy="400" r="105" fill="#eff6ff" stroke="#bfdbfe" stroke-width="2" filter="url(#shadow)"/>
-  <circle cx="480" cy="400" r="160" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="2" filter="url(#shadow)"/>
-  <circle cx="480" cy="400" r="215" fill="#fffbeb" stroke="#fde68a" stroke-width="2" filter="url(#shadow)"/>
-  <circle cx="480" cy="400" r="275" fill="#fff7ed" stroke="#fed7aa" stroke-width="2" filter="url(#shadow)"/>
-  <circle cx="480" cy="400" r="340" fill="#fef2f2" stroke="#fecaca" stroke-width="2" filter="url(#shadow)"/>
-  <circle cx="480" cy="400" r="22" fill="#fff" stroke="#e2e8f0" stroke-width="1.5"/>
-  <text x="480" y="405" text-anchor="middle" fill="#1e293b" font-size="16" font-weight="700">🎮</text>
-  <text x="480" y="82" class="layer-title" fill="#ef4444">🎮 游戏规则</text>
-  <text x="480" y="98" class="layer-sub" fill="#64748b">限制逼着动脑子</text>
-  <text x="684.0" y="404" text-anchor="middle" class="layer-title" fill="#1e293b">约束条件</text>
-  <line x1="810.0" y1="400.0" x2="715.0" y2="400" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="3,2"/>
-  <text x="480" y="147" class="layer-title" fill="#f97316">📋 每日任务</text>
-  <text x="480" y="163" class="layer-sub" fill="#64748b">每天刷</text>
-  <text x="645.0" y="404" text-anchor="middle" class="layer-title" fill="#1e293b">日常杠杆</text>
-  <line x1="745.0" y1="400.0" x2="666.25" y2="400" stroke="#f97316" stroke-width="1.5" stroke-dasharray="3,2"/>
-  <text x="480" y="207" class="layer-title" fill="#f59e0b">👹 打 Boss</text>
-  <text x="480" y="223" class="layer-sub" fill="#64748b">涨经验</text>
-  <text x="609.0" y="404" text-anchor="middle" class="layer-title" fill="#1e293b">一月项目</text>
-  <line x1="685.0" y1="400.0" x2="621.25" y2="400" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="3,2"/>
-  <text x="480" y="262" class="layer-title" fill="#22c55e">🎯 主线任务</text>
-  <text x="576.0" y="404" text-anchor="middle" class="layer-title" fill="#1e293b">一年目标</text>
-  <line x1="630.0" y1="400.0" x2="580.0" y2="400" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="3,2"/>
-  <text x="480" y="317" class="layer-title" fill="#3b82f6">🏆 通关方式</text>
-  <text x="480" y="333" class="layer-sub" fill="#64748b">边追边优化</text>
-  <text x="543.0" y="404" text-anchor="middle" class="layer-title" fill="#1e293b">愿景</text>
-  <line x1="575.0" y1="400.0" x2="538.75" y2="400" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="3,2"/>
-  <rect x="720" y="320" width="200" height="320" rx="10" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
-  <text x="820.0" y="342" text-anchor="middle" fill="#1e293b" font-size="14" font-weight="700">游戏映射</text>
-  <line x1="735" y1="352" x2="905" y2="352" stroke="#e2e8f0" stroke-width="1"/>
-  <circle cx="738" cy="372" r="6" fill="#7c3aed" opacity="0.8"/>
-  <text x="752" y="370" fill="#1e293b" font-size="12" font-weight="600">反愿景</text>
-  <text x="752" y="386" fill="#64748b" font-size="11">💀 输掉的代价</text>
-  <line x1="752" y1="402" x2="905" y2="402" stroke="#f1f5f9" stroke-width="1"/>
-  <circle cx="738" cy="416" r="6" fill="#3b82f6" opacity="0.8"/>
-  <text x="752" y="414" fill="#1e293b" font-size="12" font-weight="600">愿景</text>
-  <text x="752" y="430" fill="#64748b" font-size="11">🏆 通关方式</text>
-  <line x1="752" y1="446" x2="905" y2="446" stroke="#f1f5f9" stroke-width="1"/>
-  <circle cx="738" cy="460" r="6" fill="#22c55e" opacity="0.8"/>
-  <text x="752" y="458" fill="#1e293b" font-size="12" font-weight="600">一年目标</text>
-  <text x="752" y="474" fill="#64748b" font-size="11">🎯 主线任务</text>
-  <line x1="752" y1="490" x2="905" y2="490" stroke="#f1f5f9" stroke-width="1"/>
-  <circle cx="738" cy="504" r="6" fill="#f59e0b" opacity="0.8"/>
-  <text x="752" y="502" fill="#1e293b" font-size="12" font-weight="600">一月项目</text>
-  <text x="752" y="518" fill="#64748b" font-size="11">👹 打 Boss</text>
-  <line x1="752" y1="534" x2="905" y2="534" stroke="#f1f5f9" stroke-width="1"/>
-  <circle cx="738" cy="548" r="6" fill="#f97316" opacity="0.8"/>
-  <text x="752" y="546" fill="#1e293b" font-size="12" font-weight="600">日常杠杆</text>
-  <text x="752" y="562" fill="#64748b" font-size="11">📋 每日任务</text>
-  <line x1="752" y1="578" x2="905" y2="578" stroke="#f1f5f9" stroke-width="1"/>
-  <circle cx="738" cy="592" r="6" fill="#ef4444" opacity="0.8"/>
-  <text x="752" y="590" fill="#1e293b" font-size="12" font-weight="600">约束条件</text>
-  <text x="752" y="606" fill="#64748b" font-size="11">🎮 游戏规则</text>
-  <text x="730" y="350" text-anchor="middle" class="layer-title" fill="#1e293b">约束条件</text>
-  <text x="730" y="368" text-anchor="middle" class="layer-desc" fill="#64748b">什么是不肯牺牲的</text>
-  <text x="685" y="290" text-anchor="middle" class="layer-title" fill="#1e293b">日常杠杆</text>
-  <text x="685" y="308" text-anchor="middle" class="layer-desc" fill="#64748b">每天推一把头等大事</text>
-  <text x="635" y="480" text-anchor="middle" class="layer-title" fill="#1e293b">一月项目</text>
-  <text x="635" y="498" text-anchor="middle" class="layer-desc" fill="#64748b">学什么 / 会什么 / 做出什么</text>
-  <text x="400" y="460" text-anchor="middle" class="layer-title" fill="#1e293b">一年目标</text>
-  <text x="400" y="478" text-anchor="middle" class="layer-desc" fill="#64748b">一年后该是什么样</text>
-  <text x="435" y="300" text-anchor="middle" class="layer-title" fill="#1e293b">愿景</text>
-  <text x="435" y="318" text-anchor="middle" class="layer-desc" fill="#64748b">真心想要的生活</text>
-  <text x="480" y="84" class="layer-title" fill="#ef4444">🎮 游戏规则</text>
-  <text x="480" y="100" class="layer-sub" fill="#64748b">限制逼着动脑子</text>
-  <text x="480" y="730" class="layer-title" fill="#1e293b">约束条件</text>
-  <text x="480" y="748" class="layer-desc" fill="#64748b">什么是不肯牺牲的</text>
-  <text x="480" y="149" class="layer-title" fill="#f97316">📋 每日任务</text>
-  <text x="480" y="165" class="layer-sub" fill="#64748b">每天刷</text>
-  <text x="480" y="665" class="layer-title" fill="#1e293b">日常杠杆</text>
-  <text x="480" y="683" class="layer-desc" fill="#64748b">每天推一把头等大事</text>
-  <text x="480" y="209" class="layer-title" fill="#f59e0b">👹 打 Boss</text>
-  <text x="480" y="225" class="layer-sub" fill="#64748b">涨经验</text>
-  <text x="480" y="605" class="layer-title" fill="#1e293b">一月项目</text>
-  <text x="480" y="623" class="layer-desc" fill="#64748b">学什么 / 会什么 / 做出什么</text>
-  <text x="480" y="264" class="layer-title" fill="#22c55e">🎯 主线任务</text>
-  <text x="480" y="550" class="layer-title" fill="#1e293b">一年目标</text>
-  <text x="480" y="568" class="layer-desc" fill="#64748b">一年后该是什么样</text>
-  <text x="480" y="319" class="layer-title" fill="#3b82f6">🏆 通关方式</text>
-  <text x="480" y="335" class="layer-sub" fill="#64748b">边追边优化</text>
-  <text x="480" y="495" class="layer-title" fill="#1e293b">愿景</text>
-  <text x="480" y="513" class="layer-desc" fill="#64748b">真心想要的生活</text>
-  <text x="480" y="374" class="layer-title" fill="#7c3aed">💀 输掉的代价</text>
-  <text x="480" y="390" class="layer-sub" fill="#64748b">我活腻了</text>
-  <text x="480" y="440" class="layer-title" fill="#1e293b">反愿景</text>
-  <text x="480" y="458" class="layer-desc" fill="#64748b">再也不想回去的日子</text>
-  <rect x="80" y="710" width="800" height="50" rx="10" fill="#f1f5f9"/>
-  <text x="480" y="732" text-anchor="middle" fill="#475569" font-size="13">💡 六层结构像六个同心圆，罩着脑子，把乱七八糟的诱惑挡在外头。越玩这场游戏，这个圈越牢</text>
-  <text x="480" y="750" text-anchor="middle" fill="#94a3b8" font-size="11">"意识里的秩序感，是内心体验最好的状态" —— 米哈里·契克森米哈伊</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 950" width="900" height="950">
+<rect width="900" height="950" fill="transparent"/>
+<text x="450" y="35" font-family="sans-serif" font-size="18" fill="#222" text-anchor="middle" font-weight="bold">六层人生游戏系统</text>
+<text x="450" y="55" font-family="sans-serif" font-size="12" fill="#888" text-anchor="middle" font-weight="normal">Each layer is a concentric ring that focuses your mind</text>
+<circle cx="450" cy="500" r="75" fill="none" stroke="#4d96ff" stroke-width="3" opacity="0.7"/>
+<rect x="555" y="465" width="90" height="28" rx="14" ry="14" fill="#4d96ff" opacity="0.2"/>
+<text x="560" y="484" font-family="sans-serif" font-size="11" fill="#4d96ff" text-anchor="start" font-weight="normal">L6</text>
+<text x="585" y="484" font-family="sans-serif" font-size="13" fill="#4d96ff" text-anchor="start" font-weight="bold">约束条件</text>
+<text x="555" y="515" font-family="sans-serif" font-size="12" fill="#555" text-anchor="start" font-weight="normal">🎮 游戏规则</text>
+<text x="555" y="537" font-family="sans-serif" font-size="11" fill="#888" text-anchor="start" font-weight="normal">什么是不肯牺牲的</text>
+<circle cx="450" cy="500" r="145" fill="none" stroke="#6bcb77" stroke-width="3" opacity="0.7"/>
+<rect x="185" y="370" width="90" height="28" rx="14" ry="14" fill="#6bcb77" opacity="0.2"/>
+<text x="190" y="389" font-family="sans-serif" font-size="11" fill="#6bcb77" text-anchor="start" font-weight="normal">L5</text>
+<text x="215" y="389" font-family="sans-serif" font-size="13" fill="#6bcb77" text-anchor="start" font-weight="bold">日 常 杠 杆</text>
+<text x="135" y="420" font-family="sans-serif" font-size="12" fill="#555" text-anchor="end" font-weight="normal">🎮 每日任务</text>
+<text x="135" y="442" font-family="sans-serif" font-size="11" fill="#888" text-anchor="end" font-weight="normal">每天推一把头等大事</text>
+<circle cx="450" cy="500" r="220" fill="none" stroke="#2ecc71" stroke-width="3" opacity="0.7"/>
+<rect x="700" y="465" width="90" height="28" rx="14" ry="14" fill="#2ecc71" opacity="0.2"/>
+<text x="705" y="484" font-family="sans-serif" font-size="11" fill="#2ecc71" text-anchor="start" font-weight="normal">L4</text>
+<text x="730" y="484" font-family="sans-serif" font-size="13" fill="#2ecc71" text-anchor="start" font-weight="bold">一 月 项 目</text>
+<text x="700" y="515" font-family="sans-serif" font-size="12" fill="#555" text-anchor="start" font-weight="normal">🎮 打 Boss</text>
+<text x="700" y="537" font-family="sans-serif" font-size="11" fill="#888" text-anchor="start" font-weight="normal">学什么·会什么·做出什么</text>
+<circle cx="450" cy="500" r="300" fill="none" stroke="#f39c12" stroke-width="3" opacity="0.7"/>
+<rect x="30" y="340" width="90" height="28" rx="14" ry="14" fill="#f39c12" opacity="0.2"/>
+<text x="35" y="359" font-family="sans-serif" font-size="11" fill="#f39c12" text-anchor="start" font-weight="normal">L3</text>
+<text x="60" y="359" font-family="sans-serif" font-size="13" fill="#f39c12" text-anchor="start" font-weight="bold">一 年 目 标</text>
+<text x="-20" y="390" font-family="sans-serif" font-size="12" fill="#555" text-anchor="end" font-weight="normal">🎮 主线任务</text>
+<text x="-20" y="412" font-family="sans-serif" font-size="11" fill="#888" text-anchor="end" font-weight="normal">一年后该是什么样</text>
+<circle cx="450" cy="500" r="385" fill="none" stroke="#e67e22" stroke-width="3" opacity="0.7"/>
+<rect x="865" y="465" width="90" height="28" rx="14" ry="14" fill="#e67e22" opacity="0.2"/>
+<text x="870" y="484" font-family="sans-serif" font-size="11" fill="#e67e22" text-anchor="start" font-weight="normal">L2</text>
+<text x="895" y="484" font-family="sans-serif" font-size="13" fill="#e67e22" text-anchor="start" font-weight="bold">愿    景</text>
+<text x="865" y="515" font-family="sans-serif" font-size="12" fill="#555" text-anchor="start" font-weight="normal">🎮 通关方式</text>
+<text x="865" y="537" font-family="sans-serif" font-size="11" fill="#888" text-anchor="start" font-weight="normal">真心想要的生活</text>
+<circle cx="450" cy="500" r="470" fill="none" stroke="#ff6b6b" stroke-width="3" opacity="0.7"/>
+<rect x="-140" y="310" width="90" height="28" rx="14" ry="14" fill="#ff6b6b" opacity="0.2"/>
+<text x="-135" y="329" font-family="sans-serif" font-size="11" fill="#ff6b6b" text-anchor="start" font-weight="normal">L1</text>
+<text x="-110" y="329" font-family="sans-serif" font-size="13" fill="#ff6b6b" text-anchor="start" font-weight="bold">反 愿 景</text>
+<text x="-190" y="360" font-family="sans-serif" font-size="12" fill="#555" text-anchor="end" font-weight="normal">🎮 输掉的代价</text>
+<text x="-190" y="382" font-family="sans-serif" font-size="11" fill="#888" text-anchor="end" font-weight="normal">我活腻了的日子·再也不想回去</text>
+<text x="450" y="505" font-family="sans-serif" font-size="28" fill="#333" text-anchor="middle" font-weight="normal">🎯</text>
+<text x="450" y="532" font-family="sans-serif" font-size="12" fill="#888" text-anchor="middle" font-weight="normal">你</text>
+<line x1="450" y1="508" x2="483.0" y2="522.0" stroke="#4d96ff" stroke-width="1" stroke-dasharray="4,3" opacity="0.4"/>
+<line x1="450" y1="508" x2="525.0" y2="550.0" stroke="#6bcb77" stroke-width="1" stroke-dasharray="4,3" opacity="0.4"/>
+<line x1="450" y1="508" x2="570.0" y2="580.0" stroke="#2ecc71" stroke-width="1" stroke-dasharray="4,3" opacity="0.4"/>
+<line x1="450" y1="508" x2="618.0" y2="612.0" stroke="#f39c12" stroke-width="1" stroke-dasharray="4,3" opacity="0.4"/>
+<line x1="450" y1="508" x2="669.0" y2="646.0" stroke="#e67e22" stroke-width="1" stroke-dasharray="4,3" opacity="0.4"/>
+<line x1="450" y1="508" x2="720.0" y2="680.0" stroke="#ff6b6b" stroke-width="1" stroke-dasharray="4,3" opacity="0.4"/>
+<text x="450" y="910" font-family="sans-serif" font-size="13" fill="#555" text-anchor="middle" font-weight="normal">六层同心圆罩着脑子，把乱七八糟的诱惑挡在外头。</text>
+<text x="450" y="930" font-family="sans-serif" font-size="13" fill="#555" text-anchor="middle" font-weight="bold">越玩这场游戏，这个圈越牢，到最后就成了你本人。</text>
 </svg>
