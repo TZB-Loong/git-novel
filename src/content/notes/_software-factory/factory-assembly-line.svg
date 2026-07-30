@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 520">
+<rect width="100%" height="100%" fill="#fcfcfc"/>
+<text x="500.0" y="28" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="20" fill="#222" text-anchor="middle" font-weight="bold">软件工厂流水线：9 站接力</text>
+<rect x="50.0" y="55" width="280" height="100" rx="10" fill="#e3f0ff" stroke="#ddd" stroke-width="1"/>
+<circle cx="70.0" cy="75" r="12" fill="#333" opacity="0.8"/>
+<text x="70.0" y="80" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="12" fill="#fff" text-anchor="middle" font-weight="bold">1</text>
+<text x="190.0" y="77" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="12" fill="#666" text-anchor="middle" font-weight="normal">/factory-plan</text>
+<text x="190.0" y="95" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="14" fill="#222" text-anchor="middle" font-weight="bold">采访者</text>
+<text x="190.0" y="112" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="11" fill="#555" text-anchor="middle" font-weight="normal">读取代码库</text>
+<text x="190.0" y="130" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="11" fill="#555" text-anchor="middle" font-weight="normal">访谈需求</text>
+<text x="190.0" y="148" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="11" fill="#555" text-anchor="middle" font-weight="normal">输出需求文档</text>
+<rect x="360.0" y="55" width="280" height="100" rx="10" fill="#e3f0ff" stroke="#ddd" stroke-width="1"/>
+<circle cx="380.0" cy="75" r="12" fill="#333" opacity="0.8"/>
+<text x="380.0" y="80" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="12" fill="#fff" text-anchor="middle" font-weight="bold">2</text>
+<text x="500.0" y="77" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="12" fill="#666" text-anchor="middle" font-weight="normal">/factory-plan</text>
+<text x="500.0" y="95" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="14" fill="#222" text-anchor="middle" font-weight="bold">规划者</text>
+<text x="500.0" y="112" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="11" fill="#555" text-anchor="middle" font-weight="normal">拆解user story</text>
+<text x="500.0" y="130" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="11" fill="#555" text-anchor="middle" font-weight="normal">分优先级</text>
+<text x="500.0" y="148" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="11" fill="#555" text-anchor="middle" font-weight="normal">安排任务</text>
+<rect x="670.0" y="55" width="280" height="100" rx="10" fill="#d4f5e0" stroke="#ddd" stroke-width="1"/>
+<circle cx="690.0" cy="75" r="12" fill="#333" opacity="0.8"/>
+<text x="690.0" y="80" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="12" fill="#fff" text-anchor="middle" font-weight="bold">3</text>
+<text x="810.0" y="77" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="12" fill="#666" text-anchor="middle" font-weight="normal">/factory-tests</text>
+<text x="810.0" y="95" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="14" fill="#222" text-anchor="middle" font-weight="bold">教授</text>
+<text x="810.0" y="112" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="11" fill="#555" text-anchor="middle" font-weight="normal">定义验收标准</text>
+<text x="810.0" y="130" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="11" fill="#555" text-anchor="middle" font-weight="normal">出考卷</text>
+<text x="810.0" y="148" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="11" fill="#555" text-anchor="middle" font-weight="normal">先过再写</text>
+<rect x="50.0" y="180" width="280" height="100" rx="10" fill="#fff3d0" stroke="#ddd" stroke-width="1"/>
+<circle cx="70.0" cy="200" r="12" fill="#333" opacity="0.8"/>
+<text x="70.0" y="205" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="12" fill="#fff" text-anchor="middle" font-weight="bold">4</text>
+<text x="190.0" y="202" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="12" fill="#666" text-anchor="middle" font-weight="normal">/factory-explain</text>
+<text x="190.0" y="220" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="14" fill="#222" text-anchor="middle" font-weight="bold">讲解员</text>
+<text x="190.0" y="237" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="11" fill="#555" text-anchor="middle" font-weight="normal">视觉隐喻解释</text>
+<text x="190.0" y="255" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="11" fill="#555" text-anchor="middle" font-weight="normal">解决认知瓶颈</text>
+<text x="190.0" y="273" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="11" fill="#555" text-anchor="middle" font-weight="normal">让人跟得上</text>
+<rect x="360.0" y="180" width="280" height="100" rx="10" fill="#f0d0ff" stroke="#ddd" stroke-width="1"/>
+<circle cx="380.0" cy="200" r="12" fill="#333" opacity="0.8"/>
+<text x="380.0" y="205" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="12" fill="#fff" text-anchor="middle" font-weight="bold">5</text>
+<text x="500.0" y="202" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="12" fill="#666" text-anchor="middle" font-weight="normal">/factory-handoff</text>
+<text x="500.0" y="220" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="14" fill="#222" text-anchor="middle" font-weight="bold">CTO→SWE</text>
+<text x="500.0" y="237" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="11" fill="#555" text-anchor="middle" font-weight="normal">打包工单</text>
+<text x="500.0" y="255" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="11" fill="#555" text-anchor="middle" font-weight="normal">强模型规划</text>
+<text x="500.0" y="273" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="11" fill="#555" text-anchor="middle" font-weight="normal">弱模型执行</text>
+<rect x="670.0" y="180" width="280" height="100" rx="10" fill="#ffe0e0" stroke="#ddd" stroke-width="1"/>
+<circle cx="690.0" cy="200" r="12" fill="#333" opacity="0.8"/>
+<text x="690.0" y="205" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="12" fill="#fff" text-anchor="middle" font-weight="bold">6</text>
+<text x="810.0" y="202" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="12" fill="#666" text-anchor="middle" font-weight="normal">Claude /loop</text>
+<text x="810.0" y="220" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="14" fill="#222" text-anchor="middle" font-weight="bold">夜班工人</text>
+<text x="810.0" y="237" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="11" fill="#555" text-anchor="middle" font-weight="normal">构建·测试·迭代</text>
+<text x="810.0" y="255" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="11" fill="#555" text-anchor="middle" font-weight="normal">断路器防跑偏</text>
+<text x="810.0" y="273" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="11" fill="#555" text-anchor="middle" font-weight="normal">你睡觉它干活</text>
+<rect x="50.0" y="305" width="280" height="100" rx="10" fill="#d4f5e0" stroke="#ddd" stroke-width="1"/>
+<circle cx="70.0" cy="325" r="12" fill="#333" opacity="0.8"/>
+<text x="70.0" y="330" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="12" fill="#fff" text-anchor="middle" font-weight="bold">7</text>
+<text x="190.0" y="327" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="12" fill="#666" text-anchor="middle" font-weight="normal">/factory-review</text>
+<text x="190.0" y="345" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="14" fill="#222" text-anchor="middle" font-weight="bold">批改老师</text>
+<text x="190.0" y="362" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="11" fill="#555" text-anchor="middle" font-weight="normal">独立审计</text>
+<text x="190.0" y="380" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="11" fill="#555" text-anchor="middle" font-weight="normal">重新跑测试</text>
+<text x="190.0" y="398" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="11" fill="#555" text-anchor="middle" font-weight="normal">学生不自批</text>
+<rect x="360.0" y="305" width="280" height="100" rx="10" fill="#e3f0ff" stroke="#ddd" stroke-width="1"/>
+<circle cx="380.0" cy="325" r="12" fill="#333" opacity="0.8"/>
+<text x="380.0" y="330" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="12" fill="#fff" text-anchor="middle" font-weight="bold">8</text>
+<text x="500.0" y="327" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="12" fill="#666" text-anchor="middle" font-weight="normal">/auto-loop</text>
+<text x="500.0" y="345" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="14" fill="#222" text-anchor="middle" font-weight="bold">质检录像</text>
+<text x="500.0" y="362" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="11" fill="#555" text-anchor="middle" font-weight="normal">浏览器录屏</text>
+<text x="500.0" y="380" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="11" fill="#555" text-anchor="middle" font-weight="normal">AI语音解说</text>
+<text x="500.0" y="398" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="11" fill="#555" text-anchor="middle" font-weight="normal">展示证据链</text>
+<rect x="670.0" y="305" width="280" height="100" rx="10" fill="#fff3d0" stroke="#ddd" stroke-width="1"/>
+<circle cx="690.0" cy="325" r="12" fill="#333" opacity="0.8"/>
+<text x="690.0" y="330" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="12" fill="#fff" text-anchor="middle" font-weight="bold">9</text>
+<text x="810.0" y="327" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="12" fill="#666" text-anchor="middle" font-weight="normal">/factory-explain</text>
+<text x="810.0" y="345" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="14" fill="#222" text-anchor="middle" font-weight="bold">更新说明书</text>
+<text x="810.0" y="362" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="11" fill="#555" text-anchor="middle" font-weight="normal">更新用户手册</text>
+<text x="810.0" y="380" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="11" fill="#555" text-anchor="middle" font-weight="normal">让你懂代码</text>
+<text x="810.0" y="398" font-family="sans-serif, PingFang SC, Microsoft YaHei, Noto Sans SC" font-size="11" fill="#555" text-anchor="middle" font-weight="normal">决策不外包</text>
+<line x1="80.0" y1="105.0" x2="360.0" y2="105.0" stroke="#999" stroke-width="1.5" marker-end="url(#a)"/>
+<line x1="390.0" y1="105.0" x2="670.0" y2="105.0" stroke="#999" stroke-width="1.5" marker-end="url(#a)"/>
+<line x1="485.0" y1="155" x2="485.0" y2="180" stroke="#999" stroke-width="1.5" marker-end="url(#a)"/>
+<line x1="80.0" y1="230.0" x2="360.0" y2="230.0" stroke="#999" stroke-width="1.5" marker-end="url(#a)"/>
+<line x1="390.0" y1="230.0" x2="670.0" y2="230.0" stroke="#999" stroke-width="1.5" marker-end="url(#a)"/>
+<line x1="485.0" y1="280" x2="485.0" y2="305" stroke="#999" stroke-width="1.5" marker-end="url(#a)"/>
+<line x1="80.0" y1="355.0" x2="360.0" y2="355.0" stroke="#999" stroke-width="1.5" marker-end="url(#a)"/>
+<line x1="390.0" y1="355.0" x2="670.0" y2="355.0" stroke="#999" stroke-width="1.5" marker-end="url(#a)"/>
+<defs><marker id="a" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#999"/></marker></defs>
+</svg>
