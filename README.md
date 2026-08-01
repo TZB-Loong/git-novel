@@ -1,6 +1,6 @@
 # git-novel
 
-基于 Astro 5 的个人博客，部署在 GitHub Pages。支持 Markdown 文章、图片笔记卡片流、图片相册。
+基于 Astro 5 的个人图文笔记博客，部署在 GitHub Pages。所有内容都以笔记卡片流和图文详情页呈现。
 
 ## 本地开发
 
@@ -15,24 +15,7 @@ npm run test:coverage
 
 ## 添加内容
 
-### 文章
-
-在 `src/content/articles/` 新建 `.md` 文件：
-
-```yaml
----
-title: 文章标题
-pubDate: 2024-03-15
-description: 一句话描述
-tags: [标签1, 标签2]
-category: 分类
-draft: false
----
-
-正文（Markdown）...
-```
-
-### 笔记
+### 图文笔记
 
 在 `src/content/notes/` 新建 `.md` 文件。带 `cover` 字段的笔记会出现在首页与 `/notes/` 卡片流：
 
@@ -48,25 +31,12 @@ cover: notes/my-cover.jpg   # 相对 src/assets/ 的路径
 
 封面图片放在 `src/assets/notes/`。
 
-### 相册
-
-在 `src/content/albums/` 新建 `.md` 文件，图片放在 `src/assets/gallery/<album-slug>/`：
-
-```yaml
----
-title: 相册标题
-date: 2024-03-22
-description: 可选描述
-images: [1.jpg, 2.jpg, 3.jpg]   # 相对 src/assets/gallery/<album-slug>/ 的文件名
----
-```
-
 ## 部署
 
 1. 在 GitHub 仓库 Settings → Pages → Source 选择 "GitHub Actions"。
 2. 启用 Discussions（Settings → General → Features → Discussions）。
 3. 在 `astro.config.ts` 中把 `site` 的 `username` 替换为真实 GitHub 用户名。
-4. （可选）配置 Giscus：
+4. （可选）配置 Giscus 评论：
    - 访问 https://giscus.app，填入仓库信息生成 `data-repo-id` 与 `data-category-id`。
    - 把得到的值填入 `src/lib/config.ts` 的 `rawGiscus` 对象。
 5. 推送 main 分支，GitHub Actions 自动构建部署到 `https://<username>.github.io/git-novel/`。
@@ -81,6 +51,6 @@ images: [1.jpg, 2.jpg, 3.jpg]   # 相对 src/assets/gallery/<album-slug>/ 的文
 
 见 `docs/superpowers/specs/2026-06-24-astro-blog-foundation-design.md` 第 2 节。
 
-## Schema 契约
+## 内容模型
 
-frontmatter schema 是 change 2（obsidian-migration）的稳定接口，详见 `docs/superpowers/specs/astro-blog-foundation-schema-contract.md`。修改 schema 需双方协调。
+当前只有 `notes` 内容集合。frontmatter 需要 `title` 与 `pubDate`，可选 `cover`、`tags`、`draft`。图片正文放在 `src/content/notes/_<note-name>/`，封面放在 `src/assets/notes/`。

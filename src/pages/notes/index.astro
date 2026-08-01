@@ -7,16 +7,19 @@ import { sortByDateDesc } from '../../lib/date';
 
 const notes = await getCollection('notes');
 const visible = notes.filter((n) => !n.data.draft || import.meta.env.DEV);
-const sorted = sortByDateDesc(visible);
+const sorted = sortByDateDesc(visible.filter((n) => Boolean(n.data.cover)));
 ---
 <BaseLayout title="笔记">
-  <h1>笔记</h1>
-  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem;margin-top:1.5rem;">
+  <div class="listing-header">
+    <div><span class="eyebrow">Visual journal</span><h1 class="page-title">笔记</h1></div>
+    <p>用图像保存灵感，用短文整理那些突然变得清晰的瞬间。这里没有分类，只有按时间展开的记录。</p>
+  </div>
+  <div class="content-grid">
     {sorted.map((entry: CollectionEntry<'notes'>) => (
       <NoteCard entry={entry} />
     ))}
   </div>
   {sorted.length === 0 && (
-    <p style="color:var(--color-muted);">还没有笔记。</p>
+    <p class="meta">还没有带封面的笔记。</p>
   )}
 </BaseLayout>

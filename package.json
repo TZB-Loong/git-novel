@@ -12,7 +12,6 @@
   "dependencies": {
     "@astrojs/mdx": "^4.0.0",
     "@astrojs/react": "^4.0.0",
-    "@astrojs/rss": "^4.0.0",
     "@astrojs/sitemap": "^3.2.0",
     "@fission-ai/openspec": "^1.4.1",
     "@giscus/react": "^3.0.0",

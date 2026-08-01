@@ -43,29 +43,55 @@ const baseURL = import.meta.env.BASE_URL;
   description={entry.data.title}
   pubDate={entry.data.pubDate}
 >
-  <article>
-    <header style="margin-bottom:2rem;">
-      <h1 style="margin:0 0 0.5rem;">{entry.data.title}</h1>
-      <small style="color:var(--color-muted);">{formatDate(entry.data.pubDate)}</small>
+  <div class="reading-progress" aria-hidden="true"><span></span></div>
+  <article class="reading-page">
+    <a class="back-link" href={`${baseURL}notes/`}>&larr; 返回笔记</a>
+
+    <header class="reading-header">
+      <span class="eyebrow">Visual note</span>
+      <h1 class="reading-title">{entry.data.title}</h1>
+      <div class="reading-meta">
+        <span>{formatDate(entry.data.pubDate)}</span>
+        <span class="meta-dot">&middot;</span>
+        <span>图文记录</span>
+      </div>
       {entry.data.tags && (
-        <div style="margin-top:0.5rem;">
-          {entry.data.tags.map((t) => (
-            <span style="background:var(--color-card-bg);padding:0.2rem 0.6rem;border-radius:4px;font-size:0.8rem;margin-right:0.4rem;">#{t}</span>
-          ))}
+        <div class="tag-list">
+          {entry.data.tags.map((t) => <span>#{t}</span>)}
         </div>
       )}
     </header>
+
     {coverModule && (
-      <a href={coverModule.default.src} class="glightbox" data-gallery="note-gallery">
-        <Image src={coverModule.default} alt={entry.data.title} width={800} />
-      </a>
+      <figure class="cover-figure">
+        <a href={coverModule.default.src} class="glightbox" data-gallery="note-gallery">
+          <Image src={coverModule.default} alt={entry.data.title} width={1100} />
+        </a>
+      </figure>
     )}
-    <div class="prose" id="note-content">
-      <Content />
+
+    <div class="reading-layout">
+      <aside class="reading-aside">
+        <span>阅读</span>
+        <span>{entry.data.tags?.length ? `${entry.data.tags.length} 个主题` : '图文笔记'}</span>
+      </aside>
+      <div class="prose reading-prose" id="note-content">
+        <Content />
+      </div>
     </div>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/css/glightbox.min.css" />
     <script>
+      const progress = document.querySelector('.reading-progress span');
+      const updateProgress = () => {
+        if (!progress) return;
+        const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+        const percent = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+        progress.style.width = `${Math.min(100, Math.max(0, percent))}%`;
+      };
+      window.addEventListener('scroll', updateProgress, { passive: true });
+      updateProgress();
+
       import('https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/js/glightbox.min.js').then((mod) => {
         const GLightbox = mod.default;
         const prose = document.getElementById('note-content');
@@ -99,12 +125,15 @@ const baseURL = import.meta.env.BASE_URL;
       });
     </script>
 
-    <nav style="margin-top:2rem;">
-      <a href={`${baseURL}notes/`}>&larr; 返回笔记列表</a>
+    <nav class="reading-footer-nav">
+      <a class="back-link" href={`${baseURL}notes/`}>&larr; 返回全部笔记</a>
     </nav>
 
-    <section id="comments" style="margin-top:3rem;">
-      <h2>评论</h2>
+    <section id="comments" class="comments-section">
+      <div class="section-heading">
+        <div><span class="eyebrow">Conversation</span><h2>留下想法</h2></div>
+        <span class="meta">Comments</span>
+      </div>
       <Giscus />
     </section>
   </article>
