@@ -19,8 +19,9 @@ const { title, description, image, pubDate } = Astro.props;
     <BaseHead title={title} description={description} image={image} pubDate={pubDate} />
   </head>
   <body>
+    <a class="skip-link" href="#main-content">跳到正文</a>
     <Header />
-    <main>
+    <main id="main-content">
       <slot />
     </main>
     <Footer />

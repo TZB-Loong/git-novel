@@ -1,0 +1,10 @@
+{
+  "identifier": "cola/ui-ux-pro-max-skill-ui-styling-2",
+  "slug": "ui-ux-pro-max-skill-ui-styling-2",
+  "version": "2026.07.26",
+  "sha256": "53cad8d039ac294da4b75d79110da979de6b54c3538e90b4ae9e68af7c71fa15",
+  "apiBase": "https://api.colaos.ai",
+  "agent": "codex",
+  "scope": "project",
+  "installedAt": "2026-08-01T09:55:31.942Z"
+}

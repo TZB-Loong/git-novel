@@ -1,0 +1,10 @@
+{
+  "identifier": "cola/ui-ux-pro-max-skill-design-system-2",
+  "slug": "ui-ux-pro-max-skill-design-system-2",
+  "version": "2026.07.26",
+  "sha256": "7cbbf59598c24881884e0401da9cf0a376b9e30f75866411e57bb3189bfc6dc4",
+  "apiBase": "https://api.colaos.ai",
+  "agent": "codex",
+  "scope": "project",
+  "installedAt": "2026-08-01T09:55:30.663Z"
+}
