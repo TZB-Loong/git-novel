@@ -9,6 +9,8 @@ Hermes Agent 和 NotebookLM 的集成在社区里讨论了一段时间。核心�
 
 本文记录从安装到可用的全过程，包含各条路径的尝试结果、踩到的坑和最终的解决方案。
 
+![](./_hermes-notebooklm/01-对接.png)
+
 ## 安装路径
 
 `notebooklm-py` 有两个主要分支：
@@ -58,6 +60,8 @@ CDP Network.getAllCookies → 927 cookies
 
 但即使是从**正在运行的 Chrome 实时会话**中提取的 cookies，`notebooklm list` 仍然报认证失败。这排除了"cookie 过期"的可能——问题不在 cookie 本身。
 
+![](./_hermes-notebooklm/02-认证失败.png)
+
 ### 第三次：升级版本 + auth refresh
 
 NotebookLM 的服务端使用了额外的反自动化检测，核心是 TLS 指纹识别。`notebooklm-py` 默认使用 Python 的 `httpx` 库发送 HTTP 请求，其 TLS 指纹与 Chrome 不同，被 Google 的 auth 系统识别为非浏览器流量并拦截。
@@ -89,6 +93,8 @@ notebooklm list → ✅ 成功列出 73 个笔记本
 ```
 
 `NOTEBOOKLM_TRANSPORT=curl_cffi` 作为持久的 TLS 指纹模拟层，加入 `~/.hermes/.env` 使其在所有会话中生效。
+
+![](./_hermes-notebooklm/03-指纹通过.png)
 
 ## 最终架构
 
@@ -122,6 +128,8 @@ notebooklm generate report --format blog-post --language zh_Hans --wait
 ```
 
 NotebookLM 基于 96 个来源自动生成了一篇 8 章节的中文博客文章，包含技术参数对比、工具清单和行动建议。整个过程不需要离开终端。
+
+![](./_hermes-notebooklm/04-自动出稿.png)
 
 ## 已知限制
 
