@@ -1,0 +1,4 @@
+# Transpec runtime artifacts (regenerable via preprocess/apply)
+ir/
+logs/
+workspace/

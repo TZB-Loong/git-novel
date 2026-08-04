@@ -1,0 +1,4 @@
+{"file":".trellis/workflow.md","reason":"Project workflow and conventions"}
+{"file":".trellis/spec/backend/index.md","reason":"Backend development guide"}
+{"file":".trellis/spec/frontend/index.md","reason":"Frontend or interaction-surface guide"}
+{"file":".trellis/spec/guides/cross-layer-thinking-guide.md","reason":"Task spans runtime and interaction-layer behavior"}

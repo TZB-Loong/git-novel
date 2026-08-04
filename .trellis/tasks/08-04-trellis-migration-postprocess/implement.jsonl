@@ -1,0 +1,6 @@
+{"_example": "Fill with {\"file\": \"<path>\", \"reason\": \"<why>\"}. Put spec/research files only — no code paths. Run `python3 .trellis/scripts/get_context.py --mode packages` to list available specs. Delete this line once real entries are added."}
+{"file": ".trellis/workflow.md", "reason": "Project workflow and conventions"}
+{"file": ".trellis/legacy/specs/content-publishing/spec.md", "reason": "Content collections conventions"}
+{"file": ".trellis/legacy/specs/photo-gallery/spec.md", "reason": "Gallery and image conventions"}
+{"file": ".trellis/legacy/specs/reader-comments/spec.md", "reason": "Giscus comments conventions"}
+{"file": ".trellis/legacy/specs/site-deployment/spec.md", "reason": "Deployment and SEO conventions"}
