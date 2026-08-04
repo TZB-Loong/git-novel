@@ -1,0 +1,10 @@
+{
+  "identifier": "cola/stop-slop",
+  "slug": "stop-slop",
+  "version": "2026.07.06",
+  "sha256": "398421985952397117302f7f60fc7150c0911c5a38b3cd1bdacb51a7f052a48f",
+  "apiBase": "https://api.colaos.ai",
+  "agent": "codex",
+  "scope": "project",
+  "installedAt": "2026-08-03T01:10:17.983Z"
+}
