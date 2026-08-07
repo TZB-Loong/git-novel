@@ -7,6 +7,7 @@ const path = Astro.url.pathname.replace(baseURL, '/');
 const navItems = [
   { href: '/', label: '首页' },
   { href: '/notes/', label: '笔记' },
+  { href: '/resume/', label: '简历' },
 ];
 const isActive = (href: string) =>
   href === '/' ? path === '/' : path.startsWith(href);

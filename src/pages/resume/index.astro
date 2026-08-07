@@ -1,0 +1,102 @@
+---
+// src/pages/resume/index.astro
+// 简历列表页:展示所有简历条目(src/content/resume/),详情在 /resume/<slug>/。
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+const entries = await getCollection('resume');
+const baseURL = import.meta.env.BASE_URL;
+const cards = entries.map((entry) => ({
+  id: entry.id,
+  name: entry.data.name,
+  tagline: entry.data.tagline || entry.data.objective,
+}));
+---
+<BaseLayout
+  title="简历"
+  description="个人简历列表 — 结构化呈现,支持打印 PDF"
+>
+  <section class="resume-index">
+    <header class="resume-index-head">
+      <span class="eyebrow">Resume</span>
+      <h1 class="page-title">简历</h1>
+      <p>个人相关信息的结构化呈现。浏览器打印(Cmd+P)可输出 A4 PDF。</p>
+    </header>
+
+    <div class="resume-card-grid">
+      {cards.map((card) => (
+        <a class="resume-card" href={`${baseURL}resume/${card.id}/`}>
+          <h2 class="resume-card-name">{card.name}</h2>
+          <p class="resume-card-tagline">{card.tagline}</p>
+          <span class="resume-card-hint">查看简历 ↗</span>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .resume-index {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .resume-index-head {
+    margin-bottom: var(--space-8);
+  }
+
+  .resume-index-head p {
+    color: var(--color-muted);
+  }
+
+  .resume-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: var(--space-4);
+  }
+
+  .resume-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding: var(--space-6);
+    background: var(--color-card-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    color: var(--color-fg);
+    transition: border-color var(--duration-normal) ease, transform var(--duration-normal) ease;
+  }
+
+  .resume-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
+  }
+
+  .resume-card-name {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    letter-spacing: 0.06em;
+    color: var(--color-fg);
+  }
+
+  .resume-card-tagline {
+    margin: 0;
+    color: var(--color-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    flex: 1;
+  }
+
+  .resume-card-hint {
+    color: var(--color-accent);
+    font-size: 0.9rem;
+  }
+
+  @media print {
+    .resume-card {
+      border: 1px solid #999;
+      break-inside: avoid;
+    }
+  }
+</style>

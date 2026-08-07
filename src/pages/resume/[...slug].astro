@@ -1,0 +1,397 @@
+---
+// src/pages/resume/[...slug].astro
+// 简历详情页:内容在 src/content/resume/ 集合(frontmatter 结构化数据),
+// 按字段存在与否渲染区块,样式独立 scoped,打印友好。
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('resume');
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+interface Props {
+  entry: CollectionEntry<'resume'>;
+}
+
+const { entry } = Astro.props;
+const resume = entry.data;
+
+const baseURL = import.meta.env.BASE_URL;
+---
+<BaseLayout
+  title={`${resume.name} · 简历`}
+  description={resume.tagline || resume.objective}
+>
+  <article class="resume-page">
+    <a class="back-link" href={`${baseURL}resume/`}>&larr; 返回简历列表</a>
+
+    <header class="resume-header">
+      <h1 class="resume-name">{resume.name}</h1>
+      <p class="resume-tagline">{resume.tagline || resume.objective}</p>
+      <p class="resume-contact">
+        邮箱:<span class="resume-email" data-user={resume.emailUser} data-domain={resume.emailDomain}>点击显示</span>
+      </p>
+    </header>
+
+    <section class="resume-section">
+      <h2 class="section-title">求职意向</h2>
+      <p class="section-body">{resume.objective}</p>
+    </section>
+
+    {resume.summary && (
+      <section class="resume-section">
+        <h2 class="section-title">自我评价</h2>
+        <p class="section-body">{resume.summary}</p>
+      </section>
+    )}
+
+    {resume.strengths && resume.strengths.length > 0 && (
+      <section class="resume-section">
+        <h2 class="section-title">核心优势</h2>
+        <ul class="resume-list">
+          {resume.strengths.map((s) => (
+            <li>
+              <strong>{s.title}</strong>
+              <span>{s.detail}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    {resume.skills && resume.skills.length > 0 && (
+      <section class="resume-section">
+        <h2 class="section-title">专业技能</h2>
+        <ul class="resume-list">
+          {resume.skills.map((s) => (
+            <li>
+              <strong>{s.name}</strong>
+              <span>{s.detail}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    {resume.experience && resume.experience.length > 0 && (
+      <section class="resume-section">
+        <h2 class="section-title">工作经历</h2>
+        {resume.experience.map((job) => (
+          <div class="job">
+            <div class="job-head">
+              <h3 class="job-company">{job.company}</h3>
+              <span class="job-period">{job.period}</span>
+            </div>
+            <p class="job-role">
+              {job.role}
+              {job.industry && <span class="job-industry">{job.industry}</span>}
+            </p>
+            {job.summary && <p class="job-summary">{job.summary}</p>}
+            <ul class="job-points">
+              {job.points.map((p) => (
+                <li>{p}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </section>
+    )}
+
+    {resume.projects && resume.projects.length > 0 && (
+      <section class="resume-section">
+        <h2 class="section-title">项目经历</h2>
+        {resume.projects.map((project) => (
+          <div class="job">
+            <div class="job-head">
+              <h3 class="job-company">{project.name}</h3>
+              <span class="job-period">{project.period}</span>
+            </div>
+            <p class="job-role">{project.role}</p>
+            {project.sections.map((sec) => (
+              <div class="project-section">
+                <h4 class="project-section-title">{sec.title}</h4>
+                <ul class="job-points">
+                  {sec.points.map((p) => (
+                    <li>{p}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        ))}
+      </section>
+    )}
+
+    <section class="resume-section">
+      <h2 class="section-title">教育经历</h2>
+      <div class="job">
+        <div class="job-head">
+          <h3 class="job-company">{resume.education.school}</h3>
+          <span class="job-period">{resume.education.period}</span>
+        </div>
+        <p class="job-role">
+          {resume.education.degree}
+          {resume.education.major && <span> · {resume.education.major}</span>}
+        </p>
+      </div>
+    </section>
+
+    {resume.certificates && resume.certificates.length > 0 && (
+      <section class="resume-section">
+        <h2 class="section-title">证书与语言</h2>
+        <ul class="resume-tags">
+          {resume.certificates.map((c) => (
+            <li>{c}</li>
+          ))}
+        </ul>
+      </section>
+    )}
+  </article>
+
+  <script>
+    // 邮箱防爬:JS 拼接渲染,静态爬虫抓不到完整地址;无 JS 时保留"点击显示"提示。
+    document.querySelectorAll('.resume-email').forEach((el) => {
+      const user = el.dataset.user || '';
+      const domain = el.dataset.domain || '';
+      const address = `${user}@${domain}`;
+      const link = document.createElement('a');
+      link.href = `mailto:${address}`;
+      link.textContent = address;
+      el.textContent = '';
+      el.appendChild(link);
+    });
+  </script>
+</BaseLayout>
+
+<style>
+  .resume-page {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: var(--space-8) var(--space-6);
+    background: var(--color-card-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    box-sizing: border-box;
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-bottom: var(--space-6);
+    color: var(--color-muted);
+    font-size: 0.9rem;
+  }
+
+  .back-link:hover {
+    color: var(--color-accent);
+  }
+
+  .resume-header {
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: var(--space-6);
+    margin-bottom: var(--space-8);
+  }
+
+  .resume-name {
+    font-family: var(--font-display);
+    font-size: 2.4rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    margin: 0 0 var(--space-2);
+    color: var(--color-fg);
+  }
+
+  .resume-tagline {
+    margin: 0 0 var(--space-4);
+    color: var(--color-accent);
+    font-weight: 500;
+  }
+
+  .resume-contact {
+    margin: 0;
+    color: var(--color-muted);
+    font-size: 0.95rem;
+  }
+
+  .resume-email a {
+    color: var(--color-accent);
+  }
+
+  .resume-section {
+    margin-bottom: var(--space-8);
+  }
+
+  .section-title {
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--color-accent);
+    padding-bottom: var(--space-2);
+    margin: 0 0 var(--space-4);
+    border-bottom: 2px solid var(--color-accent);
+    display: inline-block;
+  }
+
+  .section-body {
+    margin: 0;
+    color: var(--color-fg);
+    line-height: 1.8;
+  }
+
+  .resume-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .resume-list li {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    line-height: 1.7;
+    color: var(--color-fg);
+  }
+
+  .resume-list li strong {
+    color: var(--color-fg);
+  }
+
+  .job {
+    margin-bottom: var(--space-6);
+    padding-bottom: var(--space-6);
+    border-bottom: 1px dashed var(--color-border);
+  }
+
+  .job:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  .job-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .job-company {
+    margin: 0;
+    font-size: 1.05rem;
+    color: var(--color-fg);
+  }
+
+  .job-period {
+    color: var(--color-muted);
+    font-size: 0.9rem;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .job-role {
+    margin: var(--space-1) 0 var(--space-2);
+    color: var(--color-muted);
+    font-size: 0.95rem;
+  }
+
+  .job-industry {
+    margin-left: var(--space-2);
+    padding: 1px var(--space-2);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-pill);
+    font-size: 0.8rem;
+    color: var(--color-muted);
+  }
+
+  .job-summary {
+    margin: 0 0 var(--space-2);
+    color: var(--color-muted);
+    line-height: 1.7;
+    font-size: 0.95rem;
+  }
+
+  .job-points {
+    margin: 0;
+    padding-left: 1.2em;
+    color: var(--color-fg);
+    line-height: 1.75;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .project-section {
+    margin-top: var(--space-3);
+  }
+
+  .project-section-title {
+    margin: 0 0 var(--space-2);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-fg);
+  }
+
+  .resume-tags {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .resume-tags li {
+    padding: var(--space-1) var(--space-3);
+    background: var(--color-ink-soft);
+    border-radius: var(--radius-pill);
+    font-size: 0.9rem;
+    color: var(--color-fg);
+  }
+
+  /* === 打印样式:隐藏站点导航,输出 A4 简历 === */
+  @media print {
+    :global(.site-header),
+    :global(.site-footer),
+    :global(.skip-link) {
+      display: none !important;
+    }
+
+    body {
+      background: #fff;
+    }
+
+    main {
+      padding: 0;
+      max-width: none;
+    }
+
+    .back-link {
+      display: none;
+    }
+
+    .resume-page {
+      max-width: 100%;
+      border: none;
+      border-radius: 0;
+      padding: 0;
+      box-shadow: none;
+    }
+
+    .resume-section,
+    .job {
+      break-inside: avoid;
+    }
+
+    .section-title {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+  }
+</style>
