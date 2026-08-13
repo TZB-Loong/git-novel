@@ -2,9 +2,9 @@
 // src/pages/notes/[...slug].astro
 import { getCollection, render, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { formatDate } from '../../lib/date';
+import NoteCoverImage from '../../components/NoteCoverImage.astro';
 import Giscus from '../../components/Giscus.astro';
-import { Image } from 'astro:assets';
+import { formatDate, prevNextByDate, sortByDateDesc } from '../../lib/date';
 
 export async function getStaticPaths() {
   const notes = await getCollection('notes');
@@ -19,20 +19,23 @@ interface Props {
 }
 
 const { entry } = Astro.props;
-const { Content } = await render(entry);
+const { Content, headings } = await render(entry);
+const toc = headings.filter((heading) => heading.depth >= 2 && heading.depth <= 3);
 
-// Load cover images via Vite's glob (handles asset hashing at build time)
+const notes = await getCollection('notes');
+const visible = notes.filter((n) => !n.data.draft || import.meta.env.DEV);
+const { prev, next } = prevNextByDate(sortByDateDesc(visible), entry.id);
+
+// Keep a raw module reference for the GLightbox target URL.
 const coverImages = import.meta.glob<{ default: import('astro/assets').ImageMetadata }>(
   '/src/assets/**/*.{svg,png,jpg,jpeg,gif,webp}',
   { eager: true },
 );
-
-let coverModule: { default: import('astro/assets').ImageMetadata } | null = null;
+let coverHref: string | null = null;
 if (entry.data.cover) {
-  const key = `/src/assets/${entry.data.cover}`;
-  const matched = coverImages[key];
+  const matched = coverImages[`/src/assets/${entry.data.cover}`];
   if (matched) {
-    coverModule = matched;
+    coverHref = matched.default.src;
   }
 }
 
@@ -48,93 +51,132 @@ const baseURL = import.meta.env.BASE_URL;
     <a class="back-link" href={`${baseURL}notes/`}>&larr; 返回笔记</a>
 
     <header class="reading-header">
-      <span class="eyebrow">Visual note</span>
+      <span class="eyebrow">Field note</span>
       <h1 class="reading-title">{entry.data.title}</h1>
       <div class="reading-meta">
         <span>{formatDate(entry.data.pubDate)}</span>
-        <span class="meta-dot">&middot;</span>
-        <span>图文记录</span>
+        <span class="meta-dot">/</span>
+        <span>{entry.data.tags?.length ? `${entry.data.tags.length} 个主题` : '图文记录'}</span>
       </div>
       {entry.data.tags && (
         <div class="tag-list">
-          {entry.data.tags.map((t) => <span>#{t}</span>)}
+          {entry.data.tags.map((tag) => (
+            <span>#{tag}</span>
+          ))}
         </div>
       )}
     </header>
 
-    {coverModule && (
+    {coverHref && (
       <figure class="cover-figure">
-        <a href={coverModule.default.src} class="glightbox" data-gallery="note-gallery">
-          <Image src={coverModule.default} alt={entry.data.title} width={1100} />
+        <a href={coverHref} class="glightbox" data-gallery="note-gallery">
+          <NoteCoverImage
+            entry={entry}
+            className="cover-image"
+            width={1200}
+            height={675}
+            sizes="(max-width: 720px) 100vw, 1100px"
+          />
         </a>
       </figure>
     )}
 
-    <div class="reading-layout">
-      <aside class="reading-aside">
-        <span>阅读</span>
-        <span>{entry.data.tags?.length ? `${entry.data.tags.length} 个主题` : '图文笔记'}</span>
+    <div class="reading-shell">
+      <aside class="reading-toc" aria-label="本页目录">
+        {toc.length > 0 ? (
+          <>
+            <h2>本页目录</h2>
+            <ol>
+              {toc.map((heading) => (
+                <li>
+                  <a href={`#${heading.slug}`} class={heading.depth === 3 ? 'toc-h3' : ''}>
+                    {heading.text}
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </>
+        ) : (
+          <h2>图文记录</h2>
+        )}
       </aside>
       <div class="prose reading-prose" id="note-content">
         <Content />
       </div>
     </div>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/css/glightbox.min.css" />
-    <script>
-      const progress = document.querySelector('.reading-progress span');
-      const updateProgress = () => {
-        if (!progress) return;
-        const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-        const percent = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
-        progress.style.width = `${Math.min(100, Math.max(0, percent))}%`;
-      };
-      window.addEventListener('scroll', updateProgress, { passive: true });
-      updateProgress();
-
-      import('https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/js/glightbox.min.js').then((mod) => {
-        const GLightbox = mod.default;
-        const prose = document.getElementById('note-content');
-        if (prose) {
-          const imgs = prose.querySelectorAll('img');
-          imgs.forEach((img) => {
-            const a = document.createElement('a');
-            a.href = img.src;
-            a.className = 'glightbox';
-            a.setAttribute('data-gallery', 'note-gallery');
-            img.parentNode.insertBefore(a, img);
-            a.appendChild(img);
-          });
-        }
-        const lightbox = new GLightbox({
-          selector: '.glightbox',
-          touchNavigation: true,
-          closeOnTouch: true,
-          loop: false,
-          onOpen: () => {
-            const checkExist = setInterval(() => {
-              const slideImage = document.querySelector('.gslide-image');
-              if (slideImage) {
-                clearInterval(checkExist);
-                slideImage.style.cursor = 'pointer';
-                slideImage.addEventListener('click', () => lightbox.close());
-              }
-            }, 100);
-          },
-        });
-      });
-    </script>
-
-    <nav class="reading-footer-nav">
-      <a class="back-link" href={`${baseURL}notes/`}>&larr; 返回全部笔记</a>
+    <nav class="post-pager" aria-label="上一篇和下一篇">
+      {prev ? (
+        <a class="post-pager-prev" href={`${baseURL}notes/${prev.id}/`}>
+          <small>上一篇</small>
+          <strong>{prev.data.title}</strong>
+        </a>
+      ) : (
+        <span class="post-pager-empty" />
+      )}
+      {next ? (
+        <a class="post-pager-next" href={`${baseURL}notes/${next.id}/`}>
+          <small>下一篇</small>
+          <strong>{next.data.title}</strong>
+        </a>
+      ) : (
+        <span class="post-pager-empty" />
+      )}
     </nav>
 
     <section id="comments" class="comments-section">
       <div class="section-heading">
-        <div><span class="eyebrow">Conversation</span><h2>留下想法</h2></div>
+        <div>
+          <span class="eyebrow">Conversation</span>
+          <h2>留下想法</h2>
+        </div>
         <span class="meta">Comments</span>
       </div>
       <Giscus />
     </section>
   </article>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/css/glightbox.min.css" />
+  <script>
+    const progress = document.querySelector('.reading-progress span');
+    const updateProgress = () => {
+      if (!progress) return;
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      const percent = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+      progress.style.width = `${Math.min(100, Math.max(0, percent))}%`;
+    };
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+
+    import('https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/js/glightbox.min.js').then((mod) => {
+      const GLightbox = mod.default;
+      const prose = document.getElementById('note-content');
+      if (prose) {
+        prose.querySelectorAll('img').forEach((img) => {
+          const link = document.createElement('a');
+          link.href = img.src;
+          link.className = 'glightbox';
+          link.setAttribute('data-gallery', 'note-gallery');
+          img.parentNode.insertBefore(link, img);
+          link.appendChild(img);
+        });
+      }
+      const lightbox = new GLightbox({
+        selector: '.glightbox',
+        touchNavigation: true,
+        closeOnTouch: true,
+        loop: false,
+        onOpen: () => {
+          const checkExist = setInterval(() => {
+            const slideImage = document.querySelector('.gslide-image');
+            if (slideImage) {
+              clearInterval(checkExist);
+              slideImage.style.cursor = 'pointer';
+              slideImage.addEventListener('click', () => lightbox.close());
+            }
+          }, 100);
+        },
+      });
+    });
+  </script>
 </BaseLayout>

@@ -32,7 +32,7 @@ export const SITE_CONFIG: SiteConfig = {
   site: 'https://TZB-Loong.github.io',
   base: '/git-novel',
   title: '夏目友人懒人帐',
-  description: '个人博客 — 文章、笔记、相册',
+  description: '个人图文知识日志 — AI、工程实践与持续思考',
   author: 'loong',
   giscus:
     rawGiscus.repo && rawGiscus.repoId && rawGiscus.categoryId

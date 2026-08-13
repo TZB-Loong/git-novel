@@ -1,8 +1,7 @@
 ---
 // src/pages/resume/index.astro
-// 简历列表页:展示所有简历条目(src/content/resume/),详情在 /resume/<slug>/。
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getCollection, type CollectionEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
 
 const entries = await getCollection('resume');
 const baseURL = import.meta.env.BASE_URL;
@@ -18,17 +17,23 @@ const cards = entries.map((entry) => ({
 >
   <section class="resume-index">
     <header class="resume-index-head">
-      <span class="eyebrow">Resume</span>
+      <span class="eyebrow">Resume / {cards.length}</span>
       <h1 class="page-title">简历</h1>
-      <p>个人相关信息的结构化呈现。浏览器打印(Cmd+P)可输出 A4 PDF。</p>
+      <p>个人相关信息的结构化呈现。浏览器打印（Cmd+P）可输出 A4 PDF。</p>
     </header>
 
     <div class="resume-card-grid">
-      {cards.map((card) => (
+      {cards.map((card, index) => (
         <a class="resume-card" href={`${baseURL}resume/${card.id}/`}>
+          <div class="resume-card-top">
+            <span class="resume-card-index">0{index + 1}</span>
+            <span class="resume-card-type">Profile</span>
+          </div>
           <h2 class="resume-card-name">{card.name}</h2>
           <p class="resume-card-tagline">{card.tagline}</p>
-          <span class="resume-card-hint">查看简历 ↗</span>
+          <span class="resume-card-hint">
+            查看简历 <span aria-hidden="true">→</span>
+          </span>
         </a>
       ))}
     </div>
@@ -37,66 +42,109 @@ const cards = entries.map((entry) => ({
 
 <style>
   .resume-index {
-    max-width: 860px;
+    max-width: 980px;
     margin: 0 auto;
   }
 
   .resume-index-head {
-    margin-bottom: var(--space-8);
+    margin-bottom: var(--space-12);
+    padding-bottom: var(--space-6);
+    border-bottom: 1px solid var(--color-border);
   }
 
   .resume-index-head p {
+    max-width: 34rem;
+    margin: 0;
     color: var(--color-muted);
   }
 
   .resume-card-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: var(--space-4);
   }
 
   .resume-card {
     display: flex;
     flex-direction: column;
-    gap: var(--space-2);
+    gap: var(--space-4);
+    min-width: 0;
     padding: var(--space-6);
-    background: var(--color-card-bg);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
+    background: var(--color-bg-elevated);
     color: var(--color-fg);
-    transition: border-color var(--duration-normal) ease, transform var(--duration-normal) ease;
+    box-shadow: var(--shadow-xs);
+    transition:
+      border-color var(--duration-normal) ease,
+      transform var(--duration-normal) ease,
+      box-shadow var(--duration-normal) ease;
   }
 
   .resume-card:hover {
     border-color: var(--color-accent);
-    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+    transform: translateY(-3px);
+  }
+
+  .resume-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+  }
+
+  .resume-card-index {
+    color: var(--color-signal);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 700;
+  }
+
+  .resume-card-type {
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
   }
 
   .resume-card-name {
     margin: 0;
     font-family: var(--font-display);
-    font-size: 1.4rem;
-    letter-spacing: 0.06em;
-    color: var(--color-fg);
+    font-size: 1.55rem;
+    font-weight: 800;
+    letter-spacing: 0;
   }
 
   .resume-card-tagline {
+    flex: 1;
     margin: 0;
     color: var(--color-muted);
     font-size: 0.95rem;
-    line-height: 1.6;
-    flex: 1;
+    line-height: 1.65;
   }
 
   .resume-card-hint {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
     color: var(--color-accent);
     font-size: 0.9rem;
+    font-weight: 700;
+  }
+
+  @media (max-width: 720px) {
+    .resume-index-head {
+      margin-bottom: var(--space-8);
+    }
   }
 
   @media print {
     .resume-card {
       border: 1px solid #999;
       break-inside: avoid;
+      box-shadow: none;
     }
   }
 </style>

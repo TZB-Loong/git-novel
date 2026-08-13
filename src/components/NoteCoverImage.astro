@@ -1,0 +1,40 @@
+---
+// src/components/NoteCoverImage.astro
+import { Image } from 'astro:assets';
+
+interface Props {
+  entry: {
+    data: {
+      title: string;
+      cover?: string;
+    };
+  };
+  className?: string;
+  width?: number;
+  height?: number;
+  sizes?: string;
+}
+
+const { entry, className, width = 640, height = 400, sizes } = Astro.props;
+
+const coverImages = import.meta.glob<{ default: import('astro/assets').ImageMetadata }>(
+  '/src/assets/**/*.{svg,png,jpg,jpeg,gif,webp}',
+  { eager: true },
+);
+const coverKey = entry.data.cover ? `/src/assets/${entry.data.cover}` : '';
+const coverModule = coverImages[coverKey] ?? null;
+---
+{coverModule ? (
+  <Image
+    src={coverModule.default}
+    alt={entry.data.title}
+    class={className}
+    width={width}
+    height={height}
+    sizes={sizes}
+  />
+) : (
+  <span class={className ?? 'cover-placeholder'} aria-label="无封面">
+    无封面
+  </span>
+)}

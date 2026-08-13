@@ -1,36 +1,44 @@
 ---
 // src/components/NoteCard.astro
 import { formatDate } from '../lib/date';
-import { Image } from 'astro:assets';
+import NoteCoverImage from './NoteCoverImage.astro';
 
 interface Props {
   entry: {
     id: string;
-    data: { title: string; pubDate: Date; cover: string };
+    data: {
+      title: string;
+      pubDate: Date;
+      cover?: string;
+      tags?: string[];
+    };
   };
 }
+
 const { entry } = Astro.props;
 const baseURL = import.meta.env.BASE_URL;
-
-// Load cover via eager glob (Vite-resolved at build time, avoids dynamic import limitations)
-const coverImages = import.meta.glob<{ default: import('astro/assets').ImageMetadata }>(
-  '/src/assets/**/*.{svg,png,jpg,jpeg,gif,webp}',
-  { eager: true },
-);
-const coverKey = `/src/assets/${entry.data.cover}`;
-const coverModule = coverImages[coverKey] ?? null;
+const tags = entry.data.tags ?? [];
 ---
-<a href={`${baseURL}notes/${entry.id}/`} style="display:block;color:inherit;">
+<a href={`${baseURL}notes/${entry.id}/`} class="note-card-link">
   <article class="note-card">
-    {coverModule ? (
-      <Image src={coverModule.default} alt={entry.data.title} width={400} height={225} />
-    ) : (
-      <div style="width:100%;height:225px;background:var(--color-card-bg);display:flex;align-items:center;justify-content:center;color:var(--color-muted);">无封面</div>
-    )}
+    <div class="note-card-media">
+      <NoteCoverImage entry={entry} className="note-card-image" width={640} height={400} />
+    </div>
     <div class="note-card-body">
-      <span class="eyebrow">Note</span>
+      <div class="note-card-top">
+        <span class="eyebrow">Field note</span>
+        <time class="note-card-date" datetime={entry.data.pubDate.toISOString()}>
+          {formatDate(entry.data.pubDate)}
+        </time>
+      </div>
       <h3>{entry.data.title}</h3>
-      <small class="meta">{formatDate(entry.data.pubDate)}</small>
+      {tags.length > 0 && (
+        <div class="note-card-tags">
+          {tags.slice(0, 3).map((tag) => (
+            <span class="note-tag">{tag}</span>
+          ))}
+        </div>
+      )}
     </div>
   </article>
 </a>

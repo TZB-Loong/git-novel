@@ -21,6 +21,23 @@ const baseURL = import.meta.env.BASE_URL;
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="icon" type="image/svg+xml" href={`${baseURL}favicon.svg`} />
 <link rel="canonical" href={canonicalURL} />
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#f3f5f2" />
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#121516" />
+
+<script is:inline>
+  (() => {
+    const root = document.documentElement;
+    try {
+      const saved = localStorage.getItem('theme');
+      const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches
+        ? 'dark'
+        : 'light';
+      root.dataset.theme = saved ?? preferred;
+    } catch {
+      root.dataset.theme = 'light';
+    }
+  })();
+</script>
 
 <title>{title}</title>
 <meta name="description" content={description} />

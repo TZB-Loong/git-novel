@@ -3,23 +3,84 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import NoteCard from '../../components/NoteCard.astro';
-import { sortByDateDesc } from '../../lib/date';
+import { formatDate, sortByDateDesc } from '../../lib/date';
 
 const notes = await getCollection('notes');
 const visible = notes.filter((n) => !n.data.draft || import.meta.env.DEV);
 const sorted = sortByDateDesc(visible.filter((n) => Boolean(n.data.cover)));
+const latest = sorted[0] ?? null;
+
+const tagCounts = new Map<string, number>();
+for (const note of sorted) {
+  for (const tag of note.data.tags ?? []) {
+    tagCounts.set(tag, (tagCounts.get(tag) ?? 0) + 1);
+  }
+}
+const tags = [...tagCounts.entries()].sort((a, b) => b[1] - a[1]);
 ---
-<BaseLayout title="笔记">
+<BaseLayout title="图文笔记" description="图片笔记卡片流 — 用图像保存灵感，用短文整理观察。">
   <div class="listing-header">
-    <div><span class="eyebrow">Visual journal</span><h1 class="page-title">笔记</h1></div>
-    <p>用图像保存灵感，用短文整理那些突然变得清晰的瞬间。这里没有分类，只有按时间展开的记录。</p>
+    <div>
+      <span class="eyebrow">Archive / {sorted.length}</span>
+      <h1 class="page-title">图文笔记</h1>
+      <p>用图像保存灵感，用短文整理那些突然变得清晰的瞬间。这里没有分类，只有按时间展开的记录。</p>
+    </div>
+    <div class="listing-meta">
+      <span>最近更新</span>
+      <strong>{latest ? formatDate(latest.data.pubDate) : '—'}</strong>
+    </div>
   </div>
-  <div class="content-grid">
+
+  <div class="filter-bar" role="group" aria-label="按主题筛选笔记">
+    <button class="filter-btn is-active" type="button" data-filter="all">
+      全部 <span>{sorted.length}</span>
+    </button>
+    {tags.map((item) => (
+      <button class="filter-btn" type="button" data-filter={item[0]}>
+        {item[0]} <span>{item[1]}</span>
+      </button>
+    ))}
+  </div>
+
+  <div class="content-grid note-grid" id="note-grid">
     {sorted.map((entry: CollectionEntry<'notes'>) => (
-      <NoteCard entry={entry} />
+      <div class="note-card-wrapper" data-tags={entry.data.tags?.join(' ') ?? ''}>
+        <NoteCard entry={entry} />
+      </div>
     ))}
   </div>
   {sorted.length === 0 && (
     <p class="meta">还没有带封面的笔记。</p>
   )}
 </BaseLayout>
+
+<script>
+  const buttons = Array.from(document.querySelectorAll<HTMLButtonElement>('.filter-btn'));
+  const wrappers = Array.from(document.querySelectorAll<HTMLElement>('.note-card-wrapper'));
+
+  const update = (tag: string) => {
+    buttons.forEach((btn) => {
+      btn.classList.toggle('is-active', btn.dataset.filter === tag);
+    });
+    wrappers.forEach((wrapper) => {
+      const tags = (wrapper.dataset.tags ?? '').split(/\s+/).filter(Boolean);
+      wrapper.hidden = tag !== 'all' && !tags.includes(tag);
+    });
+    const url = new URL(window.location.href);
+    if (tag === 'all') {
+      url.searchParams.delete('tag');
+    } else {
+      url.searchParams.set('tag', tag);
+    }
+    window.history.replaceState(null, '', url);
+  };
+
+  const initial = new URLSearchParams(window.location.search).get('tag');
+  if (initial && buttons.some((btn) => btn.dataset.filter === initial)) {
+    update(initial);
+  }
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => update(btn.dataset.filter ?? 'all'));
+  });
+</script>

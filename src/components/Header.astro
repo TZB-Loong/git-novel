@@ -13,17 +13,66 @@ const isActive = (href: string) =>
   href === '/' ? path === '/' : path.startsWith(href);
 ---
 <header class="site-header">
-  <nav class="site-nav">
-    <a href={`${baseURL}`} class="site-brand">{SITE_CONFIG.title}</a>
+  <nav class="site-nav" aria-label="主导航">
+    <a href={`${baseURL}`} class="site-brand" aria-label={`${SITE_CONFIG.title} 首页`}>
+      <span class="brand-mark" aria-hidden="true">夏</span>
+      <span class="brand-copy">
+        <strong>{SITE_CONFIG.title}</strong>
+        <small>Field notes</small>
+      </span>
+    </a>
     <div class="site-nav-links">
       {navItems.map((item) => (
         <a
           href={`${baseURL}${item.href.replace(/^\//, '')}`}
           class={isActive(item.href) ? 'active' : ''}
+          aria-current={isActive(item.href) ? 'page' : undefined}
         >
           {item.label}
         </a>
       ))}
     </div>
+    <button class="theme-toggle" type="button" data-theme-toggle aria-label="切换明暗主题" aria-pressed="false">
+      <svg class="icon-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+        <circle cx="12" cy="12" r="4"></circle>
+        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+      </svg>
+      <svg class="icon-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"></path>
+      </svg>
+    </button>
   </nav>
 </header>
+
+<script>
+  const root = document.documentElement;
+  const toggle = document.querySelector('[data-theme-toggle]');
+  const getPreferred = () =>
+    window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+
+  let current;
+  try {
+    current = localStorage.getItem('theme') ?? root.dataset.theme ?? getPreferred();
+  } catch {
+    current = root.dataset.theme ?? getPreferred();
+  }
+  root.dataset.theme = current;
+
+  if (toggle) {
+    const sync = () => {
+      toggle.setAttribute('aria-pressed', String(root.dataset.theme === 'dark'));
+    };
+    sync();
+    toggle.addEventListener('click', () => {
+      const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try {
+        localStorage.setItem('theme', next);
+      } catch {
+        // Theme still applies for this page even if storage is unavailable.
+      }
+      sync();
+      window.dispatchEvent(new Event('themechange'));
+    });
+  }
+</script>

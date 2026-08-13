@@ -6,10 +6,33 @@ const year = new Date().getUTCFullYear();
 ---
 <footer class="site-footer">
   <div class="footer-inner">
-    <small>记录正在发生的事，也记录正在成形的想法。</small>
-    <div class="footer-links">
-    <a href={`https://github.com/${SITE_CONFIG.author}`} target="_blank" rel="noopener">GitHub</a>
+    <div class="footer-brand">
+      <span class="brand-mark brand-mark-footer" aria-hidden="true">夏</span>
+      <div>
+        <p class="footer-title">{SITE_CONFIG.title}</p>
+        <p class="footer-note">记录正在发生的事，也记录正在成形的想法。</p>
+      </div>
+    </div>
+    <div>
+      <span class="footer-label">导航</span>
+      <div class="footer-nav">
+        <a href={`${baseURL}`}>首页</a>
+        <a href={`${baseURL}notes/`}>图文笔记</a>
+        <a href={`${baseURL}resume/`}>简历</a>
+      </div>
+    </div>
+    <div>
+      <span class="footer-label">连接</span>
+      <div class="footer-nav">
+        <a href={`https://github.com/${SITE_CONFIG.author}`} target="_blank" rel="noopener">
+          GitHub <span aria-hidden="true">↗</span>
+        </a>
+        <span>Astro 5 · Static site</span>
+      </div>
     </div>
   </div>
-  <div style="max-width:var(--max-width);margin:1.3rem auto 0;"><small>&copy; {year} {SITE_CONFIG.author}</small></div>
+  <div class="footer-meta">
+    <span>&copy; {year} {SITE_CONFIG.author}</span>
+    <span>写下来，才看得见成长。</span>
+  </div>
 </footer>

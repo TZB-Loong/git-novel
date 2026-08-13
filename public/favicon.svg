@@ -1,1 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" fill="#333"/><text x="16" y="22" font-size="18" text-anchor="middle" fill="#fff">N</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="8" fill="#15191a"/>
+  <rect x="10" y="10" width="44" height="44" rx="4" fill="none" stroke="#3fbe9e" stroke-width="3"/>
+  <text x="32" y="44" font-family="PingFang SC, Hiragino Sans GB, sans-serif" font-size="32" font-weight="700" text-anchor="middle" fill="#f3f5f2">夏</text>
+</svg>
