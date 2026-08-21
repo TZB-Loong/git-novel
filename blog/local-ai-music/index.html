@@ -1,0 +1,636 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>在 Mac mini 上，让本地 AI 唱一首关于家乡的歌</title>
+  <style>
+    :root {
+      --ink: #17222b;
+      --ink-soft: #44515a;
+      --paper: #f6f4ef;
+      --paper-deep: #ece7dd;
+      --night: #101a24;
+      --night-soft: #1b2834;
+      --coral: #e85d3f;
+      --teal: #2f8f8a;
+      --gold: #d99a3d;
+      --line: #d8d2c6;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      line-height: 1.8;
+      letter-spacing: 0;
+    }
+
+    a { color: var(--teal); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .hero {
+      position: relative;
+      min-height: 68vh;
+      display: flex;
+      align-items: flex-end;
+      background: var(--night);
+      overflow: hidden;
+    }
+
+    .hero img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.42;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(16,26,36,0.15) 0%, rgba(16,26,36,0.78) 78%, var(--night) 100%);
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      width: min(960px, calc(100% - 48px));
+      margin: 0 auto;
+      padding: 72px 0 48px;
+      color: var(--white);
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 18px;
+      padding: 6px 12px;
+      border: 1px solid rgba(255,255,255,0.28);
+      border-radius: 999px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.86);
+    }
+
+    .kicker::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--coral);
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 820px;
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.22;
+      letter-spacing: 0;
+      font-weight: 800;
+    }
+
+    .hero p {
+      max-width: 720px;
+      margin: 20px 0 0;
+      font-size: 17px;
+      color: rgba(255,255,255,0.82);
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 28px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.72);
+    }
+
+    main {
+      width: min(960px, calc(100% - 48px));
+      margin: 0 auto;
+      padding: 48px 0 72px;
+    }
+
+    section {
+      margin-top: 48px;
+      scroll-margin-top: 24px;
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-size: 28px;
+      line-height: 1.3;
+      letter-spacing: 0;
+      padding-left: 14px;
+      border-left: 4px solid var(--coral);
+    }
+
+    h3 {
+      margin: 28px 0 10px;
+      font-size: 20px;
+      line-height: 1.4;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 0 0 16px;
+      font-size: 16px;
+      color: var(--ink-soft);
+    }
+
+    strong { color: var(--ink); }
+
+    .lead {
+      font-size: 18px;
+      color: var(--ink);
+    }
+
+    .tldr {
+      margin-top: 8px;
+      padding: 20px 22px;
+      border-radius: 8px;
+      background: var(--paper-deep);
+      border: 1px solid var(--line);
+    }
+
+    .tldr ul {
+      margin: 8px 0 0;
+      padding-left: 20px;
+    }
+
+    .tldr li { margin: 6px 0; }
+
+    .callout {
+      margin: 20px 0;
+      padding: 16px 18px;
+      border-radius: 8px;
+      border-left: 4px solid var(--teal);
+      background: rgba(47,143,138,0.08);
+      font-size: 15px;
+      color: var(--ink-soft);
+    }
+
+    .warn {
+      border-left-color: var(--gold);
+      background: rgba(217,154,61,0.10);
+    }
+
+    figure {
+      margin: 24px 0;
+    }
+
+    figcaption {
+      margin-top: 10px;
+      font-size: 13px;
+      color: var(--ink-soft);
+      text-align: center;
+    }
+
+    img {
+      max-width: 100%;
+      border-radius: 8px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0 10px;
+      font-size: 14px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 12px 14px;
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+
+    th {
+      background: var(--night);
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    tr:last-child td { border-bottom: 0; }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 8px;
+      align-items: stretch;
+      margin: 22px 0;
+    }
+
+    .flow-step {
+      position: relative;
+      min-height: 88px;
+      padding: 14px 12px;
+      border-radius: 8px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .flow-step b {
+      font-size: 14px;
+      color: var(--ink);
+    }
+
+    .flow-step span {
+      font-size: 12px;
+      color: var(--ink-soft);
+      line-height: 1.5;
+    }
+
+    .flow-step::after {
+      content: "→";
+      position: absolute;
+      right: -14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--coral);
+      font-weight: 700;
+      z-index: 2;
+    }
+
+    .flow-step:last-child::after { display: none; }
+
+    .bars {
+      display: grid;
+      gap: 14px;
+      margin: 22px 0;
+    }
+
+    .bar-row {
+      display: grid;
+      grid-template-columns: 140px 1fr 92px;
+      align-items: center;
+      gap: 14px;
+      font-size: 14px;
+    }
+
+    .bar-track {
+      height: 22px;
+      background: var(--paper-deep);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      border-radius: 4px;
+      background: var(--teal);
+    }
+
+    .bar-fill.coral { background: var(--coral); }
+
+    .audio-box {
+      margin: 24px 0;
+      padding: 20px;
+      border-radius: 8px;
+      background: var(--night);
+      color: var(--white);
+    }
+
+    .audio-box h3 {
+      margin-top: 0;
+      color: var(--white);
+    }
+
+    .audio-box p {
+      color: rgba(255,255,255,0.76);
+      font-size: 14px;
+    }
+
+    audio {
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    .lyrics {
+      margin: 22px 0;
+      padding: 20px 22px;
+      border-radius: 8px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      font-size: 15px;
+      color: var(--ink-soft);
+    }
+
+    .lyrics p { margin: 0 0 8px; }
+    .lyrics p:last-child { margin-bottom: 0; }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0;
+    }
+
+    .chip {
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--paper-deep);
+      border: 1px solid var(--line);
+      font-size: 13px;
+      color: var(--ink-soft);
+    }
+
+    footer {
+      width: min(960px, calc(100% - 48px));
+      margin: 0 auto;
+      padding: 28px 0 48px;
+      border-top: 1px solid var(--line);
+      font-size: 14px;
+      color: var(--ink-soft);
+    }
+
+    .sources { margin: 8px 0 0; padding-left: 20px; }
+
+    @media (max-width: 760px) {
+      .flow { grid-template-columns: repeat(2, 1fr); }
+      .flow-step:nth-child(2)::after { display: none; }
+      .flow-step:nth-child(4)::after { display: none; }
+      .bar-row { grid-template-columns: 110px 1fr 80px; }
+      .hero { min-height: 58vh; }
+    }
+
+    @media (max-width: 520px) {
+      .flow { grid-template-columns: 1fr; }
+      .flow-step::after { display: none; }
+      main, .hero-inner, footer { width: calc(100% - 32px); }
+    }
+  </style>
+</head>
+<body>
+
+<header class="hero">
+  <img src="assets/img/waveform-3min.png" alt="本地生成歌曲的波形图">
+  <div class="hero-inner">
+    <div class="kicker">Local AI Music · ComfyUI · MiniMax Music 3</div>
+    <h1>在 Mac mini 上，让本地 AI 唱一首关于家乡的歌</h1>
+    <p>一台 M4 Pro、48GB 统一内存、一个刚开源两天的音乐模型，以及一次把文本编码器搬上 MPS 的加速实验。</p>
+    <div class="meta">
+      <span>2026-08-17</span>
+      <span>约 18 分钟阅读</span>
+      <span>实测数据来自本机运行</span>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section id="summary">
+    <h2>先看结论</h2>
+    <div class="tldr">
+      <p class="lead">这篇博客记录了一次完整的“本地 AI 音乐生成”实践：从选模型、装环境、调速度，到最后生成一首 3 分钟的原创中文民谣。</p>
+      <ul>
+        <li>本机是 Mac mini M4 Pro，12 核 CPU、16 核 GPU、48GB 统一内存。</li>
+        <li>使用 ComfyUI 0.33.0 原生支持的开源模型 MiniMax Music 3，输出含人声的完整歌曲。</li>
+        <li>默认路径下 8B 文本编码器跑 CPU，是最大瓶颈；换成 bf16 文本编码器并加 <code>--gpu-only</code> 后，AR 采样提速约 17 倍。</li>
+        <li>实测：5 秒片段从约 8 分钟降到约 1.5 分钟；60 秒歌曲约 18 分钟；180 秒完整歌曲约 61 分钟。</li>
+        <li>最终生成了《故乡的炊烟》，一首 180 秒的中国乡村民谣，音频在文末。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="example">
+    <h2>示例作品</h2>
+    <p class="lead">下面这首 180 秒完整版就是本文最终的本地生成成果，基于上面的歌词和编曲描述生成。</p>
+    <div class="audio-box">
+      <h3>《故乡的炊烟》完整版</h3>
+      <p>中国乡村民谣，70 BPM，木吉他、口琴与竹笛间奏。</p>
+      <audio controls preload="metadata" src="assets/audio/hometown_chinese_folk_3min_00001.mp3"></audio>
+      <p style="margin-top:12px"><a href="assets/audio/hometown_chinese_folk_3min_00001.mp3" style="color:var(--coral)">下载 180 秒 MP3</a></p>
+    </div>
+  </section>
+
+  <section id="why">
+    <h2>为什么要在本地生成音乐</h2>
+    <p>云端音乐生成器的体验足够顺手，但存在几个实际问题：生成次数和下载受订阅限制、商用条款会变化、灵感被网络和账号锁在平台里。本地运行意味着每一次生成都由自己的硬件决定，没有按首计费，也没有上传等待。</p>
+    <p>2026 年 8 月，MiniMax 发布 MiniMax Music 3 开放权重版本。它用 8B 全局语言模型规划整首歌的结构，用 0.6B 局部模型恢复声学细节，再通过 Flow Matching 和 Flow-VAE 输出 32kHz 立体声。官方文档称最长可生成约 5 分钟歌曲，ComfyUI 在发布当天就提供了原生工作流模板。</p>
+    <p>对一台 48GB 内存的 Mac mini 来说，这个模型的重量级落在“能不能跑”和“跑多快”之间。完整精度推荐 22-24GB 显存，本机统一内存足够；真正需要处理的，是 Apple Silicon 上文本编码器的执行设备问题。</p>
+  </section>
+
+  <section id="setup">
+    <h2>环境与模型落地</h2>
+    <p>本机原本运行的是 ComfyUI 0.31.0。MiniMax Music 3 的原生节点要求 0.33.0+，所以第一步是安全升级：先把本地 MPS 补丁备份，再拉取最新 master，最后更新 Python 依赖。</p>
+    <table>
+      <tr>
+        <th>组件</th>
+        <th>版本 / 大小</th>
+        <th>说明</th>
+      </tr>
+      <tr>
+        <td>ComfyUI</td>
+        <td>0.33.0</td>
+        <td>内置 MiniMax Music 3 节点与模板</td>
+      </tr>
+      <tr>
+        <td>MiniMax Music 3 DiT FP16</td>
+        <td>4.6 GB</td>
+        <td>默认扩散模型</td>
+      </tr>
+      <tr>
+        <td>MiniMax Music 3 DiT INT8</td>
+        <td>2.3 GB</td>
+        <td>低显存备选</td>
+      </tr>
+      <tr>
+        <td>文本编码器 INT8</td>
+        <td>8.6 GB</td>
+        <td>默认模板使用，CPU 路径慢</td>
+      </tr>
+      <tr>
+        <td>文本编码器 bf16</td>
+        <td>16.7 GB</td>
+        <td>加速方案实际使用</td>
+      </tr>
+      <tr>
+        <td>音频 VAE</td>
+        <td>207 MB</td>
+        <td>解码为最终音频</td>
+      </tr>
+    </table>
+    <p>模型文件统一放在外置 SSD 的 <code>/Volumes/ssd/comfyui_models</code>，通过符号链接指向 ComfyUI 的 models 目录。磁盘剩余空间约 200GB，足够同时保留多个音乐模型。</p>
+  </section>
+
+  <section id="bottleneck">
+    <h2>瓶颈：8B 文本编码器被放在 CPU</h2>
+    <p>第一次用默认模板生成 5 秒音频时，总耗时约 473 秒。日志暴露了问题：<code>CLIP/text encoder model load device: cpu</code>。MiniMax Music 3 的 AR 采样由 8B 语言模型逐帧执行，而 ComfyUI 在 Apple Silicon 的共享内存模式下，默认把文本编码器放在 CPU。</p>
+    <p>AR 采样每帧约 3.4 秒，5 秒音频要生成 126 帧，光这一阶段就超过 7 分钟。扩散 DiT 反而很快，30 步约 27 秒。所以真正的优化方向不是采样器，而是让 8B 语言模型跑上 MPS。</p>
+    <div class="callout warn">
+      <strong>关键判断：</strong>社区现有的 MiniMax 加速节点几乎都针对 H3 视频模型，不能直接套到 Music 3。可落地的加速路径是自己控制“文本编码器设备”和“模型精度”。
+    </div>
+  </section>
+
+  <section id="acceleration">
+    <h2>加速方案：bf16 文本编码器 + --gpu-only</h2>
+    <p>实验分两步。第一步只加 <code>--gpu-only</code>，保留 INT8 文本编码器。结果文本编码器确实搬到了 MPS，但 INT8 矩阵乘在 MPS 上触发 <code>_int_mm</code> 回退到 CPU，实际卡住。</p>
+    <p>第二步下载非量化的 pruned bf16 文本编码器（16.7GB），用 <code>--gpu-only</code> 启动 ComfyUI。AR 采样切换到 MPS 后，从约 0.29 帧/秒提升到约 5 帧/秒，提速约 17 倍。</p>
+    <table>
+      <tr>
+        <th>对比项</th>
+        <th>默认 INT8 + CPU</th>
+        <th>bf16 + MPS</th>
+      </tr>
+      <tr>
+        <td>5 秒片段总耗时</td>
+        <td>约 473 秒</td>
+        <td>约 97 秒</td>
+      </tr>
+      <tr>
+        <td>AR 采样速度</td>
+        <td>0.29 帧/秒</td>
+        <td>约 5 帧/秒</td>
+      </tr>
+      <tr>
+        <td>AR 单帧耗时</td>
+        <td>约 3.4 秒</td>
+        <td>约 0.2 秒</td>
+      </tr>
+      <tr>
+        <td>实际启动参数</td>
+        <td>--highvram</td>
+        <td>--gpu-only --force-fp16</td>
+      </tr>
+    </table>
+    <p>最终保留两个启动脚本：日常使用的普通启动脚本，以及 MiniMax Music 专用的加速启动脚本。音乐工作流也已切换到 bf16 文本编码器。</p>
+  </section>
+
+  <section id="benchmark">
+    <h2>长音频的实测成本</h2>
+    <p>AR 采样与时长成正比，DiT 的序列长度也随音频时长增长。以本机 M4 Pro 为例，三个时长的实际表现如下。</p>
+    <div class="bars">
+      <div class="bar-row">
+        <span>5 秒</span>
+        <div class="bar-track"><div class="bar-fill" style="width: 2%"></div></div>
+        <strong>约 1.6 分钟</strong>
+      </div>
+      <div class="bar-row">
+        <span>60 秒</span>
+        <div class="bar-track"><div class="bar-fill" style="width: 30%"></div></div>
+        <strong>约 18 分钟</strong>
+      </div>
+      <div class="bar-row">
+        <span>180 秒</span>
+        <div class="bar-track"><div class="bar-fill coral" style="width: 100%"></div></div>
+        <strong>约 61 分钟</strong>
+      </div>
+    </div>
+    <table>
+      <tr>
+        <th>目标时长</th>
+        <th>总耗时</th>
+        <th>AR 采样</th>
+        <th>DiT 采样</th>
+      </tr>
+      <tr>
+        <td>5 秒</td>
+        <td>约 1.6 分钟</td>
+        <td>约 30 秒</td>
+        <td>约 27 秒</td>
+      </tr>
+      <tr>
+        <td>60 秒</td>
+        <td>约 18 分钟</td>
+        <td>约 6 分 30 秒</td>
+        <td>约 10 分 50 秒</td>
+      </tr>
+      <tr>
+        <td>180 秒</td>
+        <td>约 61 分钟</td>
+        <td>约 26 分 50 秒</td>
+        <td>约 32 分 40 秒</td>
+      </tr>
+    </table>
+    <p>这些数字都来自同一台机器、同一套参数。NVIDIA 显卡的官方宣传是 4090 上 3 分钟歌曲约 3 分 40 秒，Apple Silicon 的实际成本更高，但已经完全可用。</p>
+  </section>
+
+  <section id="workflow">
+    <h2>ComfyUI 工作流是怎么连的</h2>
+    <p>官方模板在界面里是一个整体节点，展开后是标准链路：文本编码、空音频潜空间、KSampler、VAE 解码、保存 MP3。</p>
+    <div class="flow">
+      <div class="flow-step"><b>歌词 + 描述</b><span>结构化歌词和 Caption</span></div>
+      <div class="flow-step"><b>MiniMax Music 3 Text Encode</b><span>8B AR 采样，生成声学条件序列</span></div>
+      <div class="flow-step"><b>Empty Latent Audio</b><span>按目标秒数创建潜空间</span></div>
+      <div class="flow-step"><b>KSampler</b><span>DiT 30 步，euler / simple</span></div>
+      <div class="flow-step"><b>VAE Decode Audio</b><span>潜空间还原为波形</span></div>
+      <div class="flow-step"><b>Save Audio Advanced</b><span>输出 MP3 到 output/audio</span></div>
+    </div>
+    <p>工作流文件已保存到 ComfyUI 用户目录：<code>user/default/workflows/MiniMax Music 3 文本生成音乐.json</code>。默认时长设为 15 秒，确认歌词和风格后再调高。</p>
+  </section>
+
+  <section id="song">
+    <h2>成果：一首 180 秒的《故乡的炊烟》</h2>
+    <p>歌词围绕中国乡村民谣的典型意象展开：老槐树、石桥、炊烟、母亲喊我回家、稻田蛙声、萤火虫、爷爷的蒲扇。编曲以木吉他为主，加入口琴和竹笛间奏，结尾回到安静。</p>
+    <div class="chips">
+      <span class="chip">70 BPM</span>
+      <span class="chip">C 大调</span>
+      <span class="chip">男声</span>
+      <span class="chip">木吉他</span>
+      <span class="chip">口琴</span>
+      <span class="chip">竹笛</span>
+    </div>
+
+    <div class="audio-box">
+      <h3>60 秒试听版</h3>
+      <p>用于快速验证风格，时长约 1 分钟。</p>
+      <audio controls preload="none" src="assets/audio/hometown_chinese_folk_00001.mp3"></audio>
+    </div>
+
+    <div class="audio-box">
+      <h3>180 秒完整版</h3>
+      <p>包含 Intro、双 Verse、多次 Chorus、Instrumental、Bridge 和 Outro。</p>
+      <audio controls preload="none" src="assets/audio/hometown_chinese_folk_3min_00001.mp3"></audio>
+    </div>
+
+    <figure>
+      <img src="assets/img/waveform-3min.png" alt="180 秒歌曲完整波形">
+      <figcaption>180 秒歌曲的完整波形，开头安静、中段起伏、结尾渐弱</figcaption>
+    </figure>
+  </section>
+
+  <section id="lessons">
+    <h2>踩坑和边界</h2>
+    <h3>MPS 不是官方承诺的路径</h3>
+    <p>MiniMax Music 3 官方模型卡以 NVIDIA CUDA 为推荐环境。当前 ComfyUI 能跑通，依赖的是 bf16 权重 + <code>--gpu-only</code> + MPS 回退，属于可复现但不官方的路径。更新 ComfyUI 或模型后需要重新验证。</p>
+    <h3>许可证</h3>
+    <p>MiniMax Music 3 使用 MiniMax Community License：允许修改和分发，商用产品界面需要显著标注模型名称，年收入超过 2000 万美元需要单独授权。个人创作和普通内容生产影响不大。</p>
+    <h3>长歌很贵</h3>
+    <p>3 分钟歌曲在本机约 1 小时。想缩短等待，可以降低 DiT 步数到 20，或先生成 30-60 秒确认结构，再生成完整版。真正的社区加速节点可能随后出现，但当前没有针对 Music 3 的现成方案。</p>
+  </section>
+
+  <section id="next">
+    <h2>下一步可以做什么</h2>
+    <p>短期内最有价值的改进是给 MiniMax Music 3 写一个 MPS 专用补丁，把 AR 执行精度显式切到 fp16，避免依赖 bf16 和回退路径。之后可以尝试 LoRA 风格化、多版本歌词批量生成，或把歌曲接到 MV 生成流程里。</p>
+    <p>对创作者来说，这套链路的意义不在“代替 Suno”，而在于把音乐生成变成一台本地设备上的私有创作工具：词曲可控、次数不限、结果归自己。</p>
+  </section>
+</main>
+
+<footer>
+  <p>参考资料与来源：</p>
+  <ul class="sources">
+    <li>ComfyUI 官方文档：MiniMax Music 3 Text to Music 工作流</li>
+    <li>MiniMax Music 3 开放权重模型卡与社区许可说明</li>
+    <li>ComfyUI 0.33.0 发布说明与 MiniMax Music 3 原生节点</li>
+    <li>本机实测日志：AR 采样、DiT 采样与总耗时</li>
+  </ul>
+  <p style="margin-top:12px">生成工具：ComfyUI 0.33.0 + MiniMax Music 3 + M4 Pro MPS 加速模式。图片素材为本地音频波形渲染。</p>
+</footer>
+
+</body>
+</html>
