@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">DFlash2 本机性能对照</title>
+  <desc id="desc">Apple M4 Pro 上官方 Qwen3.8-27B baseline 为 9.98 tok/s，DFlash2 为 2.84 tok/s；文章 PR 数据为 18.89 tok/s。</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0a1123"/><stop offset="1" stop-color="#21162e"/></linearGradient>
+    <linearGradient id="bar1" x1="0" x2="1"><stop stop-color="#58e3e8"/><stop offset="1" stop-color="#8df7c3"/></linearGradient>
+    <linearGradient id="bar2" x1="0" x2="1"><stop stop-color="#ff8295"/><stop offset="1" stop-color="#ffbf69"/></linearGradient>
+    <linearGradient id="bar3" x1="0" x2="1"><stop stop-color="#a1b5ee"/><stop offset="1" stop-color="#d2c8ff"/></linearGradient>
+  </defs>
+  <rect width="1200" height="720" rx="28" fill="url(#bg)"/>
+  <g font-family="-apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif">
+    <text x="66" y="75" fill="#fff" font-size="32" font-weight="800">同一台机器，三组数字</text>
+    <text x="67" y="111" fill="#9eadd1" font-size="18">固定 prompt · temperature 0 · max_tokens 96 · 单请求短跑</text>
+    <g transform="translate(94 164)">
+      <line x1="0" y1="420" x2="900" y2="420" stroke="#6f7da3" stroke-opacity=".5"/>
+      <line x1="0" y1="315" x2="900" y2="315" stroke="#6f7da3" stroke-opacity=".18" stroke-dasharray="5 10"/>
+      <line x1="0" y1="210" x2="900" y2="210" stroke="#6f7da3" stroke-opacity=".18" stroke-dasharray="5 10"/>
+      <line x1="0" y1="105" x2="900" y2="105" stroke="#6f7da3" stroke-opacity=".18" stroke-dasharray="5 10"/>
+      <text x="-48" y="426" fill="#8290b5" font-size="14">0</text><text x="-56" y="321" fill="#8290b5" font-size="14">5</text><text x="-64" y="216" fill="#8290b5" font-size="14">10</text><text x="-64" y="111" fill="#8290b5" font-size="14">15</text><text x="-64" y="6" fill="#8290b5" font-size="14">20</text>
+      <rect x="112" y="210" width="190" height="210" rx="15" fill="url(#bar1)"/>
+      <rect x="372" y="360" width="190" height="60" rx="15" fill="url(#bar2)"/>
+      <rect x="632" y="24" width="190" height="396" rx="15" fill="url(#bar3)"/>
+      <text x="164" y="190" fill="#d9fff1" font-size="30" font-weight="800">9.98</text>
+      <text x="424" y="340" fill="#ffd9d4" font-size="30" font-weight="800">2.84</text>
+      <text x="684" y="4" fill="#eceaff" font-size="30" font-weight="800">18.89</text>
+      <text x="107" y="468" fill="#d9fff1" font-size="18" font-weight="700">官方主模型</text><text x="141" y="495" fill="#9eadd1" font-size="15">baseline</text>
+      <text x="365" y="468" fill="#ffd9d4" font-size="18" font-weight="700">官方 + DFlash2</text><text x="430" y="495" fill="#9eadd1" font-size="15">本机实测</text>
+      <text x="622" y="468" fill="#eceaff" font-size="18" font-weight="700">PR 对照数据</text><text x="631" y="495" fill="#9eadd1" font-size="15">M5 Pro / llama.cpp PR</text>
+      <text x="0" y="555" fill="#8290b5" font-size="15">decode 速度（tokens / second）</text>
+    </g>
+    <g transform="translate(92 654)">
+      <rect width="1015" height="1" fill="#fff" opacity=".12"/>
+      <text x="0" y="29" fill="#ff9da9" font-size="17" font-weight="700">本机 DFlash2 / baseline = 0.284×</text>
+      <text x="390" y="29" fill="#9eadd1" font-size="16">不是“略慢”，而是额外 draft 成本没有被接受率覆盖</text>
+    </g>
+  </g>
+</svg>

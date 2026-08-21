@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="650" viewBox="0 0 1200 650" role="img" aria-labelledby="title desc">
+  <title id="title">DFlash2 接受率分析</title>
+  <desc id="desc">本机测试中 draft generated 302 tokens，draft accepted 49 tokens，接受率 16.23%，平均每轮接受长度 2.09。</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0b1225"/><stop offset="1" stop-color="#24172d"/></linearGradient>
+    <linearGradient id="track" x1="0" x2="1"><stop stop-color="#384463"/><stop offset="1" stop-color="#222b48"/></linearGradient>
+    <linearGradient id="fill" x1="0" x2="1"><stop stop-color="#ff8295"/><stop offset="1" stop-color="#ffbf69"/></linearGradient>
+  </defs>
+  <rect width="1200" height="650" rx="28" fill="url(#bg)"/>
+  <g font-family="-apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif">
+    <text x="64" y="76" fill="#fff" font-size="32" font-weight="800">为什么会变慢？看接受率</text>
+    <text x="65" y="113" fill="#9eadd1" font-size="18">draft 不是免费午餐：猜得越不像，验证成本越难摊平</text>
+    <g transform="translate(72 178)">
+      <text x="0" y="0" fill="#8df7c3" font-size="18" font-weight="700">DRAFT GENERATED</text>
+      <text x="0" y="76" fill="#fff" font-size="68" font-weight="800">302</text><text x="155" y="70" fill="#aebbd8" font-size="20">tokens</text>
+      <rect x="0" y="110" width="820" height="28" rx="14" fill="url(#track)"/>
+      <rect x="0" y="110" width="133" height="28" rx="14" fill="url(#fill)"/>
+      <text x="0" y="180" fill="#ffb3ba" font-size="17">真正被接受：49 tokens</text>
+      <text x="0" y="211" fill="#8290b5" font-size="16">302 个提议中，只有 49 个进入最终输出</text>
+    </g>
+    <g transform="translate(72 450)">
+      <rect width="270" height="112" rx="18" fill="#311f38" stroke="#ff8295" stroke-width="2"/>
+      <text x="24" y="38" fill="#ffbf69" font-size="16" font-weight="700">ACCEPTANCE RATE</text>
+      <text x="24" y="86" fill="#fff" font-size="34" font-weight="800">16.23%</text>
+    </g>
+    <g transform="translate(374 450)">
+      <rect width="270" height="112" rx="18" fill="#182840" stroke="#58e3e8" stroke-width="2"/>
+      <text x="24" y="38" fill="#8df7c3" font-size="16" font-weight="700">MEAN ACCEPTED</text>
+      <text x="24" y="86" fill="#fff" font-size="34" font-weight="800">2.09 <tspan font-size="19" fill="#aebbd8">tokens</tspan></text>
+    </g>
+    <g transform="translate(676 450)">
+      <rect width="420" height="112" rx="18" fill="#141d38" stroke="#fff" stroke-opacity=".18" stroke-width="2"/>
+      <text x="24" y="37" fill="#b9c7ec" font-size="16" font-weight="700">WHAT THIS SAYS</text>
+      <text x="24" y="70" fill="#fff" font-size="16">当前 draft 与 target 的 token 分布</text>
+      <text x="24" y="94" fill="#ffb3ba" font-size="16">一致性不足，猜测成本反而成了负担。</text>
+    </g>
+  </g>
+</svg>

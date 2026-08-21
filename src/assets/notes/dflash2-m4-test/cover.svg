@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">DFlash2 本机实测：Apple M4 Pro 能跑，但没有加速</title>
+  <desc id="desc">深色技术风格封面，展示一个大模型和一个草稿模型之间的 token 流。</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1020"/>
+      <stop offset="0.55" stop-color="#111936"/>
+      <stop offset="1" stop-color="#24142e"/>
+    </linearGradient>
+    <linearGradient id="cyan" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#58e3e8"/>
+      <stop offset="1" stop-color="#8df7c3"/>
+    </linearGradient>
+    <linearGradient id="pink" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#ff8a9d"/>
+      <stop offset="1" stop-color="#ffbf69"/>
+    </linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="11" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <pattern id="grid" width="42" height="42" patternUnits="userSpaceOnUse"><path d="M42 0H0V42" fill="none" stroke="#fff" stroke-opacity=".045"/></pattern>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <rect width="1200" height="675" fill="url(#grid)"/>
+  <circle cx="930" cy="190" r="230" fill="#4ee6df" opacity=".08" filter="url(#glow)"/>
+  <circle cx="1020" cy="520" r="180" fill="#ff8295" opacity=".08" filter="url(#glow)"/>
+  <g font-family="-apple-system,BlinkMacSystemFont,'SF Pro Display','PingFang SC',sans-serif">
+    <text x="86" y="118" fill="#8df7c3" font-size="20" font-weight="700" letter-spacing="4">LOCAL INFERENCE / FIELD NOTE</text>
+    <text x="84" y="250" fill="#fff" font-size="84" font-weight="800" letter-spacing="-3">DFlash<tspan fill="url(#cyan)">2</tspan></text>
+    <text x="89" y="315" fill="#dce6ff" font-size="34" font-weight="600">Apple M4 Pro 本机实测</text>
+    <text x="90" y="367" fill="#ffb6bd" font-size="30" font-weight="700">能跑，但没有加速</text>
+    <path d="M90 416H520" stroke="url(#cyan)" stroke-width="3" opacity=".9"/>
+    <text x="90" y="464" fill="#9aa8ca" font-size="20">功能可用 ≠ 性能加速</text>
+    <text x="90" y="500" fill="#9aa8ca" font-size="18">Mac mini M4 Pro · 12C CPU / 16C GPU · 48 GB</text>
+  </g>
+  <g transform="translate(680 126)">
+    <rect x="0" y="0" width="362" height="168" rx="22" fill="#151f42" stroke="#58e3e8" stroke-opacity=".6" stroke-width="2"/>
+    <text x="28" y="43" fill="#8df7c3" font-size="18" font-family="sans-serif" font-weight="700">TARGET MODEL</text>
+    <text x="28" y="91" fill="#fff" font-size="32" font-family="sans-serif" font-weight="700">27B</text>
+    <text x="28" y="125" fill="#aab8d9" font-size="17" font-family="sans-serif">Q4_K_M · 18.97 GB</text>
+    <circle cx="308" cy="84" r="35" fill="#58e3e8" opacity=".14"/>
+    <path d="M289 84h38M308 65v38" stroke="#8df7c3" stroke-width="4" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(745 388)">
+    <rect x="0" y="0" width="260" height="112" rx="18" fill="#281a38" stroke="#ff8a9d" stroke-opacity=".7" stroke-width="2"/>
+    <text x="24" y="37" fill="#ffbf69" font-size="16" font-family="sans-serif" font-weight="700">DRAFT MODEL</text>
+    <text x="24" y="75" fill="#fff" font-size="26" font-family="sans-serif" font-weight="700">DFlash2</text>
+  </g>
+  <g stroke-linecap="round" fill="none">
+    <path d="M866 294C866 335 848 350 848 388" stroke="url(#cyan)" stroke-width="5" stroke-dasharray="9 13"/>
+    <path d="M1005 444C1060 444 1063 338 1035 286" stroke="url(#pink)" stroke-width="4" stroke-dasharray="7 12"/>
+  </g>
+  <g fill="#8df7c3">
+    <circle cx="866" cy="327" r="6"/><circle cx="848" cy="367" r="6"/><circle cx="1039" cy="366" r="5"/><circle cx="1042" cy="322" r="5"/>
+  </g>
+  <g transform="translate(676 558)" font-family="monospace" font-size="18">
+    <rect x="0" y="0" width="370" height="42" rx="21" fill="#10162d" stroke="#fff" stroke-opacity=".14"/>
+    <text x="22" y="27" fill="#8df7c3">accepted: 49</text><text x="190" y="27" fill="#ff9da9">rate: 16.23%</text>
+  </g>
+</svg>

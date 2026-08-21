@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600" role="img" aria-labelledby="title desc">
+  <title id="title">DFlash2 本机测试结论</title>
+  <desc id="desc">本机测试确认 DFlash2 功能可用，但当前组合未获得加速。</desc>
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0b1225"/><stop offset="1" stop-color="#24172d"/></linearGradient><linearGradient id="yes" x1="0" x2="1"><stop stop-color="#58e3e8"/><stop offset="1" stop-color="#8df7c3"/></linearGradient><linearGradient id="no" x1="0" x2="1"><stop stop-color="#ff8295"/><stop offset="1" stop-color="#ffbf69"/></linearGradient></defs>
+  <rect width="1200" height="600" rx="28" fill="url(#bg)"/>
+  <g font-family="-apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif">
+    <text x="70" y="82" fill="#fff" font-size="34" font-weight="800">一次诚实的本机结论</text>
+    <text x="71" y="120" fill="#9eadd1" font-size="18">测试不是为了证明文章错了，而是为了知道这台机器现在能做到什么</text>
+    <g transform="translate(72 190)">
+      <rect width="490" height="248" rx="26" fill="#122c38" stroke="url(#yes)" stroke-width="3"/>
+      <circle cx="72" cy="72" r="34" fill="#58e3e8" opacity=".18"/><path d="M53 72l13 13 27-29" fill="none" stroke="#8df7c3" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="132" y="82" fill="#8df7c3" font-size="24" font-weight="800">功能可用</text>
+      <text x="40" y="143" fill="#e9fffa" font-size="19">官方 target 模型可加载</text><text x="40" y="177" fill="#e9fffa" font-size="19">DFlash2 draft 可加载</text><text x="40" y="211" fill="#e9fffa" font-size="19">speculative decoding 确实发生</text>
+    </g>
+    <g transform="translate(638 190)">
+      <rect width="490" height="248" rx="26" fill="#351e32" stroke="url(#no)" stroke-width="3"/>
+      <circle cx="72" cy="72" r="34" fill="#ff8295" opacity=".18"/><path d="M57 57l30 30M87 57L57 87" stroke="#ffbf69" stroke-width="7" stroke-linecap="round"/>
+      <text x="132" y="82" fill="#ffbf69" font-size="24" font-weight="800">性能未加速</text>
+      <text x="40" y="143" fill="#fff0e8" font-size="19">9.98 tok/s → 2.84 tok/s</text><text x="40" y="177" fill="#fff0e8" font-size="19">速度比：0.284×</text><text x="40" y="211" fill="#fff0e8" font-size="19">当前组合约慢 3.5 倍</text>
+    </g>
+    <text x="72" y="515" fill="#b9c7ec" font-size="20">下一步要调的不是“信仰”，而是 draft / target 匹配、接受率与参数。</text>
+  </g>
+</svg>
