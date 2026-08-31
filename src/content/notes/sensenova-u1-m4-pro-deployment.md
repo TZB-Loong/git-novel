@@ -32,6 +32,8 @@ tags: [SenseNova, 商汤, 文生图, Apple Silicon, M4 Pro, ComfyUI, 开源模�
 
 与别家对比，这份 Apache 双许可（代码+权重）比 `FLUX.1-dev` 的非商用要干净，无用户量阈值、无 gated 审批，`hf download` 直拉。
 
+![](./_sensenova-u1-m4-pro/01-opensource.png)
+
 ## 本机基线
 
 * Mac mini Mac16,11 / Apple M4 Pro 12 核 / 48GB 统一内存 / macOS 26.5.2
@@ -60,6 +62,8 @@ git clone --depth 1 https://github.com/OpenSenseNova/SenseNova-U1.git /Users/loo
 
 索引 `model.safetensors.index.json` → `total_size 35065708928`，`1116` 个 `weight_map` 条目，对应 `model-00001..00008`。
 
+![](./_sensenova-u1-m4-pro/02-mirror.png)
+
 ## 冒烟：框架过，生成被拦
 
 三级冒烟：
@@ -87,6 +91,8 @@ def require_accelerator(device):
 
 ComfyUI 本地节点同样走该路径，M4 上无法进入采样。
 
+![](./_sensenova-u1-m4-pro/03-blocked.png)
+
 ## 与本机双引擎对比
 
 | 维度 | U1.5 8B | Z-Image-Turbo 6B | FLUX schnell 12B |
@@ -100,6 +106,8 @@ ComfyUI 本地节点同样走该路径，M4 上无法进入采样。
 
 U1.5 的差异化是中文与一体化编辑，但 M4 本地不可用使其在当前基线上无法替换批量分镜能力。
 
+![](./_sensenova-u1-m4-pro/04-compare.png)
+
 ## 清理
 
 验证后已移除以回收空间：
@@ -112,6 +120,8 @@ pip uninstall sensenova-u1 -y
 ```
 
 回归 `Z-Image + FLUX` 双引擎。
+
+![](./_sensenova-u1-m4-pro/05-cleanup.png)
 
 ## 复盘与建议
 

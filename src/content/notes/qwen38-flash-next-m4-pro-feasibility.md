@@ -41,6 +41,8 @@ Qwen3.8-Flash-Next 不是传统稠密模型，是阿里为下一代 Qwen4 做的
 
 模型于 2026-08-26 随 Qwen Chat 同步放出，Hugging Face 上官方仓与社区 1-bit/2-bit 量化同日出现，采用 131072 词表与全新 `qwen3_next` 架构，原生上下文 262K（YaRN 渐进）。
 
+![](./_qwen38-flash-next-m4-pro/01-params.png)
+
 ## 量化后到底多大
 
 Unsloth 的量化表把账算得很清楚：
@@ -59,6 +61,8 @@ Unsloth 的量化表把账算得很清楚：
 
 官方文档原话是“至少 75GB RAM or unified memory”，并补充“可把 PLE 放硬盘用 mmap 少占一点”——这就是文章所谓“硬盘来凑”的出处，但并未把门槛降到 48GB。
 
+![](./_qwen38-flash-next-m4-pro/02-threshold.png)
+
 ## M4 Pro 实算
 
 本机基线：Mac mini Mac16,11 / Apple M4 Pro 12 核 / 48GB 统一内存 / macOS 26.5.2 / `/Volumes/ssd` 可用 222GB / ComfyUI 0.33.0 已跑通 Z-Image 11G + FLUX 16G。
@@ -69,6 +73,8 @@ Unsloth 的量化表把账算得很清楚：
 * **上下文账**：原生 262K 开 YaRN 时，KV Cache 按 6B 激活 * 262K 需额外 30-40GB（FP8），48GB 根本开不了长文，官方也提示需关长上下文才有点亮意义。
 
 这与上次 SenseNova U1.5 的结论同构：**链路可打通，不代表你的硬件是目标机**。U1.5 卡在 `accel.py` 的 `cuda/xpu only`，这次卡在显存硬墙。
+
+![](./_qwen38-flash-next-m4-pro/03-speed.png)
 
 ## 与本机已有模型对比
 
@@ -82,6 +88,8 @@ Unsloth 的量化表把账算得很清楚：
 | 建议 | API | 尝鲜上限 | 日常主力 | 生图主力 |
 
 对 48GB Mac，甜点是 30B 档 MoE（激活 3B），80B 是上限，125B 已越级。
+
+![](./_qwen38-flash-next-m4-pro/04-cost.png)
 
 ## 风险与忽略变量
 
@@ -101,6 +109,8 @@ Unsloth 的量化表把账算得很清楚：
 3. **非要本地点亮**：用 Baekpica SSD-PLE 版 + `llama.cpp --mmap`，`--ctx-size 8192 --no-mmap-offload`，并接受 12 t/s 与 30-60s 首字延迟；注意不要与 ComfyUI 生图同时常驻。
 
 判断本地模型是否值得替换，标准不是 ELO 高低，而是“在你的硬件与工作流上，能否稳定批量交付”。
+
+![](./_qwen38-flash-next-m4-pro/05-choice.png)
 
 ## 出处
 
