@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="460" viewBox="0 0 900 460">
+  <defs>
+    <style>
+      .box { fill: #0f172a; stroke: #334155; stroke-width: 1.5; rx: 8; }
+      .router-box { fill: #1e1b4b; stroke: #818cf8; stroke-width: 2; rx: 8; }
+      .worker-box { fill: #064e3b; stroke: #34d399; stroke-width: 1.5; rx: 8; }
+      .storage-box { fill: #1e293b; stroke: #f59e0b; stroke-width: 1.5; rx: 8; }
+      .text-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: bold; font-size: 14px; fill: #f8fafc; }
+      .text-sub { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 12px; fill: #94a3b8; }
+      .text-code { font-family: monospace; font-size: 11px; fill: #38bdf8; }
+      .arrow { stroke: #64748b; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+    </style>
+    <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <rect width="900" height="460" fill="#030712" rx="12"/>
+
+  <!-- Left Side: Router & External State Machine -->
+  <g transform="translate(40, 40)">
+    <rect width="250" height="380" class="router-box"/>
+    <text x="25" y="40" class="text-title" fill="#c7d2fe">Router 调度器 (轻量状态机)</text>
+    <text x="25" y="65" class="text-sub">保持极小活跃窗口 (＜ 3k Tokens)</text>
+
+    <!-- State Machine list -->
+    <rect x="20" y="95" width="210" height="130" rx="6" fill="#312e81"/>
+    <text x="32" y="125" class="text-title" font-size="12">外置状态转换图 (DAG)</text>
+    <text x="32" y="150" class="text-code">1. PLAN: 拆解为原子任务列表</text>
+    <text x="32" y="170" class="text-code">2. DISPATCH: 唤醒专用 Worker</text>
+    <text x="32" y="190" class="text-code">3. RECONCILE: 校验结果收敛</text>
+    <text x="32" y="210" class="text-code">4. MERGE: 落盘并销毁 Worker</text>
+
+    <!-- External Checkpoint Store -->
+    <rect x="20" y="245" width="210" height="105" rx="6" class="storage-box"/>
+    <text x="32" y="275" class="text-title" font-size="12" fill="#fbbf24">外部持久化 (SQLite / JSONL)</text>
+    <text x="32" y="298" class="text-sub">所有记忆持久化存储在磁盘</text>
+    <text x="32" y="318" class="text-sub">绝对不往 LLM 上下文中生搬硬塞</text>
+    <text x="32" y="336" class="text-code">checkpoint_id: v3-phase2</text>
+  </g>
+
+  <!-- Right Side: Ephemeral Clean Workers (Fan-out) -->
+  <g transform="translate(360, 40)">
+    <rect width="500" height="380" rx="10" fill="#090d16" stroke="#1e293b"/>
+    <text x="30" y="35" class="text-title" fill="#e2e8f0">短暂生命周期 工蜂集群 (Ephemeral Workers)</text>
+    <text x="30" y="55" class="text-sub">每只工蜂运行在完全隔离、无污染的微型上下文环境中 (3k-6k Tokens)</text>
+
+    <!-- Worker 1 -->
+    <g transform="translate(30, 80)">
+      <rect width="440" height="85" class="worker-box"/>
+      <text x="20" y="28" class="text-title">Worker A: 代码实现工蜂</text>
+      <text x="20" y="48" class="text-sub">注入要素：仅包含单一文件 + 目标接口类型声明</text>
+      <text x="20" y="68" class="text-code">执行完毕 -> 输出 Diff -> 进程销毁，内存归零</text>
+    </g>
+
+    <!-- Worker 2 -->
+    <g transform="translate(30, 180)">
+      <rect width="440" height="85" class="worker-box"/>
+      <text x="20" y="28" class="text-title">Worker B: 盲测审查工蜂</text>
+      <text x="20" y="48" class="text-sub">注入要素：仅包含验收规范 Spec + 编译输出</text>
+      <text x="20" y="68" class="text-code">执行完毕 -> 判定 PASS/FAIL -> 进程销毁</text>
+    </g>
+
+    <!-- Worker 3 -->
+    <g transform="translate(30, 280)">
+      <rect width="440" height="80" class="worker-box"/>
+      <text x="20" y="28" class="text-title">Worker C: 文档与日志沉淀工蜂</text>
+      <text x="20" y="48" class="text-sub">注入要素：Git commit 摘要与变更统计</text>
+      <text x="20" y="68" class="text-code">生成 Journal -> 提交磁盘 -> 进程销毁</text>
+    </g>
+  </g>
+
+  <!-- Flow Arrows -->
+  <line x1="290" y1="140" x2="360" y2="120" class="arrow"/>
+  <line x1="290" y1="165" x2="360" y2="220" class="arrow"/>
+  <line x1="290" y1="190" x2="360" y2="320" class="arrow"/>
+</svg>

@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="460" viewBox="0 0 900 460">
+  <defs>
+    <style>
+      .edge-container { fill: #064e3b; stroke: #10b981; stroke-width: 2; rx: 10; }
+      .cloud-container { fill: #1e1b4b; stroke: #818cf8; stroke-width: 2; rx: 10; }
+      .box-card { fill: #0f172a; stroke: #334155; stroke-width: 1.5; rx: 8; }
+      .title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: bold; font-size: 15px; fill: #f8fafc; }
+      .sub { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 12px; fill: #94a3b8; }
+      .code { font-family: monospace; font-size: 11px; fill: #38bdf8; }
+      .arrow { stroke: #64748b; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+    </style>
+    <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <rect width="900" height="460" fill="#030712" rx="12"/>
+
+  <!-- Left: Local Edge (Mac / Local Model) -->
+  <g transform="translate(40, 30)">
+    <rect width="400" height="400" class="edge-container"/>
+    <text x="25" y="35" class="title" fill="#6ee7b7">端侧本地引擎 (Local M4 / Ollama)</text>
+    <text x="25" y="55" class="sub">7B-14B 级别模型 · 零网络延迟 · 零 Token 账单</text>
+
+    <!-- Block 1 -->
+    <rect x="25" y="80" width="350" height="85" class="box-card"/>
+    <text x="40" y="105" class="title" font-size="13">1. 敏感数据与凭证动态脱敏 (Sanitizer)</text>
+    <text x="40" y="125" class="sub">自动识别并替换 API Key, 内网 IP, 私钥, 用户 PII</text>
+    <text x="40" y="145" class="code">输出 Sanitized AST 映射表至本地安全内存</text>
+
+    <!-- Block 2 -->
+    <rect x="25" y="180" width="350" height="95" class="box-card"/>
+    <text x="40" y="205" class="title" font-size="13">2. 脏活过滤与高频补全 (L1 Router)</text>
+    <text x="40" y="225" class="sub">语法修正、代码格式化、标准单测模板填充</text>
+    <text x="40" y="242" class="sub">若本地判定确定性通过 (Local Pass) -> 直接落盘</text>
+    <text x="40" y="260" class="code">80% 平庸改动在此闭环，绝不上云！</text>
+
+    <!-- Block 3 -->
+    <rect x="25" y="290" width="350" height="85" class="box-card"/>
+    <text x="40" y="315" class="title" font-size="13" fill="#fbbf24">3. 难点特征提取 (Escalation Gate)</text>
+    <text x="40" y="335" class="sub">识别跨多文件架构冲突 / 复杂并发算法重构</text>
+    <text x="40" y="355" class="code">压缩上下文为极简 RFC 摘要 -> 触发上云升级</text>
+  </g>
+
+  <!-- Flow Arrow from Edge to Cloud -->
+  <g transform="translate(445, 200)">
+    <line x1="0" y1="20" x2="40" y2="20" class="arrow"/>
+    <text x="5" y="10" font-family="-apple-system, sans-serif" font-size="10" fill="#a5b4fc">升级 (20%)</text>
+  </g>
+
+  <!-- Right: Cloud Frontier SOTA -->
+  <g transform="translate(490, 30)">
+    <rect width="370" height="400" class="cloud-container"/>
+    <text x="25" y="35" class="title" fill="#c084fc">云端顶级推理模型 (Cloud SOTA)</text>
+    <text x="25" y="55" class="sub">Claude 3.5 Sonnet / o1 / DeepSeek-V3</text>
+
+    <rect x="25" y="80" width="320" height="130" class="box-card"/>
+    <text x="40" y="108" class="title" font-size="13">核心决策与架构仲裁</text>
+    <text x="40" y="130" class="sub">仅接收本地过滤脱敏后的骨架</text>
+    <text x="40" y="150" class="sub">专注于分布式系统设计与深度推理</text>
+    <text x="40" y="170" class="code">Input: 1.5k 精炼 Token (原需 50k)</text>
+    <text x="40" y="190" class="code">Output: 架构补丁与约束规则</text>
+
+    <rect x="25" y="230" width="320" height="145" class="box-card"/>
+    <text x="40" y="258" class="title" font-size="13" fill="#34d399">回传与本地重组还原</text>
+    <text x="40" y="280" class="sub">云端返回高阶方案 -> 本地小模型注入</text>
+    <text x="40" y="300" class="sub">依据 Sanitizer 映射表还原真实凭证</text>
+    <text x="40" y="320" class="sub">本地触发 Astro / Vitest 验收闭环</text>
+    <text x="40" y="345" class="code">总账单直降 70% · 零资产泄露</text>
+  </g>
+</svg>

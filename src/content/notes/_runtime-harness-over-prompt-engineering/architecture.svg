@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="460" viewBox="0 0 900 460">
+  <defs>
+    <style>
+      .card { fill: #0f172a; stroke: #334155; stroke-width: 1.5; rx: 8; }
+      .agent-box { fill: #1e1b4b; stroke: #6366f1; stroke-width: 2; rx: 8; }
+      .harness-box { fill: #064e3b; stroke: #10b981; stroke-width: 2; rx: 8; }
+      .os-box { fill: #1e293b; stroke: #38bdf8; stroke-width: 1.5; rx: 8; }
+      .text-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: bold; font-size: 14px; fill: #f8fafc; }
+      .text-sub { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 12px; fill: #94a3b8; }
+      .text-code { font-family: monospace; font-size: 11px; fill: #38bdf8; }
+      .line-flow { stroke: #64748b; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+      .line-danger { stroke: #ef4444; stroke-width: 2; stroke-dasharray: 4,4; fill: none; marker-end: url(#redarrow); }
+    </style>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#64748b"/>
+    </marker>
+    <marker id="redarrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#ef4444"/>
+    </marker>
+  </defs>
+
+  <rect width="900" height="460" fill="#030712" rx="12"/>
+
+  <!-- Agent Layer -->
+  <g transform="translate(40, 40)">
+    <rect width="220" height="380" class="agent-box"/>
+    <text x="25" y="40" class="text-title" fill="#a5b4fc">Agent Core (LLM)</text>
+    <text x="25" y="65" class="text-sub">仅负责高阶逻辑推演</text>
+    
+    <rect x="20" y="100" width="180" height="70" rx="6" fill="#312e81"/>
+    <text x="30" y="125" class="text-title" font-size="12">意图输出 (Intent)</text>
+    <text x="30" y="145" class="text-code">ToolCall: edit_file</text>
+    <text x="30" y="160" class="text-code">ToolCall: run_bash</text>
+
+    <rect x="20" y="240" width="180" height="110" rx="6" fill="#1e1b4b" stroke="#4338ca"/>
+    <text x="30" y="265" class="text-title" font-size="12">硬核反馈接收</text>
+    <text x="30" y="285" class="text-sub">不讲情面，直接吐出：</text>
+    <text x="30" y="305" class="text-code">1. AST 语法解析失败</text>
+    <text x="30" y="325" class="text-code">2. EPERM 只读文件锁</text>
+    <text x="30" y="340" class="text-code">3. 动态断言违规</text>
+  </g>
+
+  <!-- Harness Middleware Layer (The Core) -->
+  <g transform="translate(320, 40)">
+    <rect width="280" height="380" class="harness-box"/>
+    <text x="30" y="40" class="text-title" fill="#34d399">Runtime Harness 门禁层</text>
+    <text x="30" y="65" class="text-sub">确定性物理阻断（零模型概率性）</text>
+
+    <!-- Submodule 1 -->
+    <rect x="20" y="90" width="240" height="75" rx="6" fill="#065f46"/>
+    <text x="32" y="115" class="text-title" font-size="13">1. AST / Lint 拦截沙盒</text>
+    <text x="32" y="135" class="text-sub">代码写入前解析 AST 树结构</text>
+    <text x="32" y="152" class="text-sub">检测未闭合标签 / 破坏性导入</text>
+
+    <!-- Submodule 2 -->
+    <rect x="20" y="180" width="240" height="85" rx="6" fill="#065f46"/>
+    <text x="32" y="205" class="text-title" font-size="13">2. 虚拟 PTY 与命令白名单</text>
+    <text x="32" y="225" class="text-sub">伪终端仿真交互，剥离 ANSI 杂质</text>
+    <text x="32" y="242" class="text-sub">拦截破坏性指令 (rm -rf, git push)</text>
+    <text x="32" y="258" class="text-code">ExitCode 拦截 + 精准错误裁剪</text>
+
+    <!-- Submodule 3 -->
+    <rect x="20" y="280" width="240" height="75" rx="6" fill="#065f46"/>
+    <text x="32" y="305" class="text-title" font-size="13">3. 工作区文件锁 (Lock / Spec)</text>
+    <text x="32" y="325" class="text-sub">按路径粒度下发写锁；保护 core</text>
+    <text x="32" y="342" class="text-sub">超出 Spec 范围修改立即拒绝</text>
+  </g>
+
+  <!-- OS / Environment Layer -->
+  <g transform="translate(660, 40)">
+    <rect width="200" height="380" class="os-box"/>
+    <text x="25" y="40" class="text-title" fill="#7dd3fc">Clean Environment</text>
+    <text x="25" y="65" class="text-sub">纯净受控底层操作系统</text>
+
+    <rect x="20" y="110" width="160" height="60" rx="6" fill="#0f172a"/>
+    <text x="30" y="135" class="text-title" font-size="12">文件系统 (FS)</text>
+    <text x="30" y="155" class="text-sub">严格原子化写入落盘</text>
+
+    <rect x="20" y="200" width="160" height="60" rx="6" fill="#0f172a"/>
+    <text x="30" y="225" class="text-title" font-size="12">编译器 / 运行时</text>
+    <text x="30" y="245" class="text-sub">tsc / vitest / build</text>
+
+    <rect x="20" y="290" width="160" height="60" rx="6" fill="#0f172a"/>
+    <text x="30" y="315" class="text-title" font-size="12">版本控制 (Git)</text>
+    <text x="30" y="335" class="text-sub">不可篡改的变更记录</text>
+  </g>
+
+  <!-- Connector Lines -->
+  <line x1="260" y1="135" x2="320" y2="135" class="line-flow"/>
+  <line x1="600" y1="135" x2="660" y2="135" class="line-flow"/>
+  <line x1="600" y1="230" x2="660" y2="230" class="line-flow"/>
+  <line x1="320" y1="290" x2="260" y2="290" class="line-flow"/>
+</svg>
