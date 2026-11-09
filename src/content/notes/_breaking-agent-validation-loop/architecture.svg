@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="480" viewBox="0 0 900 480">
+  <defs>
+    <style>
+      .box { fill: #1e293b; stroke: #334155; stroke-width: 2; rx: 8; }
+      .box-green { fill: #064e3b; stroke: #10b981; stroke-width: 2; rx: 8; }
+      .box-red { fill: #881337; stroke: #f43f5e; stroke-width: 2; rx: 8; }
+      .box-blue { fill: #0c4a6e; stroke: #0284c7; stroke-width: 2; rx: 8; }
+      .title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: bold; font-size: 15px; fill: #f8fafc; }
+      .desc { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 12px; fill: #94a3b8; }
+      .code { font-family: monospace; font-size: 11px; fill: #38bdf8; }
+      .arrow { stroke: #64748b; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+    </style>
+    <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <rect width="900" height="480" fill="#0b1120" rx="12"/>
+
+  <!-- Left Side: Tautological Testing Loop (Broken Pattern) -->
+  <g transform="translate(30, 30)">
+    <rect width="380" height="420" rx="10" fill="#18181b" stroke="#f43f5e" stroke-dasharray="6,4" stroke-width="1.5"/>
+    <text x="20" y="32" class="title" fill="#f43f5e">传统单上下文：循环自证陷阱 (Tautological)</text>
+    <text x="20" y="52" class="desc">同一个 Agent 既写实现又写测试，共享同一份注意力权重</text>
+
+    <!-- Step 1 -->
+    <rect x="25" y="80" width="330" height="70" class="box-red"/>
+    <text x="40" y="108" class="title">1. 生成带有隐式 Bug 的业务代码</text>
+    <text x="40" y="130" class="desc">例如：错误地假设并发场景下的读写无需排他锁</text>
+
+    <!-- Arrow down -->
+    <line x1="190" y1="150" x2="190" y2="185" class="arrow"/>
+
+    <!-- Step 2 -->
+    <rect x="25" y="190" width="330" height="85" class="box-red"/>
+    <text x="40" y="218" class="title">2. 在同一会话内补充“单元测试”</text>
+    <text x="40" y="240" class="desc">⚠️ 盲区镜像：用 Mock 顺应自身的错误假设</text>
+    <text x="40" y="258" class="code">expect(mockLock.acquire).not.toHaveBeenCalled()</text>
+
+    <!-- Arrow down -->
+    <line x1="190" y1="275" x2="190" y2="310" class="arrow"/>
+
+    <!-- Step 3 -->
+    <rect x="25" y="315" width="330" height="70" class="box"/>
+    <text x="40" y="343" class="title" fill="#fbbf24">3. CI 门禁：100% 覆盖率绿灯合入</text>
+    <text x="40" y="365" class="desc">💥 上线即崩：测试不仅未发现 Bug，反而固化了 Bug</text>
+  </g>
+
+  <!-- Right Side: Adversarial & Isolated Architecture (Target Pattern) -->
+  <g transform="translate(480, 30)">
+    <rect width="390" height="420" rx="10" fill="#18181b" stroke="#10b981" stroke-width="1.5"/>
+    <text x="20" y="32" class="title" fill="#34d399">架构正解：对抗式物理隔离流水线</text>
+    <text x="20" y="52" class="desc">契约前置、双盲隔离、异构对抗、沙盒形式化验证</text>
+
+    <!-- Spec Root -->
+    <rect x="30" y="75" width="330" height="55" class="box-blue"/>
+    <text x="45" y="98" class="title">0. 形式化规格契约（Spec / Invariants）</text>
+    <text x="45" y="116" class="desc">不可妥协的状态前置条件与后置不变式定义</text>
+
+    <!-- Forking arrow -->
+    <line x1="195" y1="130" x2="110" y2="165" class="arrow"/>
+    <line x1="195" y1="130" x2="280" y2="165" class="arrow"/>
+
+    <!-- Worker 1 -->
+    <rect x="25" y="170" width="165" height="110" class="box"/>
+    <text x="35" y="195" class="title" font-size="13">Worker Agent</text>
+    <text x="35" y="215" class="code">角色：业务实现</text>
+    <text x="35" y="235" class="desc">仅接收 Spec 接口</text>
+    <text x="35" y="255" class="desc">零测试用例感知</text>
+
+    <!-- Worker 2 -->
+    <rect x="200" y="170" width="165" height="110" class="box"/>
+    <text x="210" y="195" class="title" font-size="13" fill="#f43f5e">Adversary Agent</text>
+    <text x="210" y="215" class="code" fill="#f43f5e">角色：变异与攻击</text>
+    <text x="210" y="235" class="desc">专挑边界与竞态</text>
+    <text x="210" y="255" class="desc">盲测生成反例用例</text>
+
+    <!-- Converge arrow -->
+    <line x1="105" y1="280" x2="195" y2="320" class="arrow"/>
+    <line x1="285" y1="280" x2="195" y2="320" class="arrow"/>
+
+    <!-- Gatekeeper -->
+    <rect x="25" y="325" width="340" height="75" class="box-green"/>
+    <text x="40" y="352" class="title">独立沙盒仲裁与对抗门禁（Gatekeeper）</text>
+    <text x="40" y="372" class="desc">在隔离容器运行属性测试；若对抗测试红灯则驳回并附带反例</text>
+    <text x="40" y="388" class="desc">✅ 彻底切断生成者的自圆其说链条</text>
+  </g>
+</svg>
