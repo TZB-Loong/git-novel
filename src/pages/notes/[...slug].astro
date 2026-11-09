@@ -3,7 +3,6 @@
 import { getCollection, render, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import NoteCoverImage from '../../components/NoteCoverImage.astro';
-import Giscus from '../../components/Giscus.astro';
 import { formatDate, prevNextByDate, sortByDateDesc } from '../../lib/date';
 
 export async function getStaticPaths() {
@@ -124,7 +123,49 @@ const baseURL = import.meta.env.BASE_URL;
         <span class="post-pager-empty" />
       )}
     </nav>
-
-    <Giscus />
   </article>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/css/glightbox.min.css" />
+  <script>
+    const progress = document.querySelector('.reading-progress span');
+    const updateProgress = () => {
+      if (!progress) return;
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      const percent = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+      progress.style.width = `${Math.min(100, Math.max(0, percent))}%`;
+    };
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+
+    import('https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/js/glightbox.min.js').then((mod) => {
+      const GLightbox = mod.default;
+      const prose = document.getElementById('note-content');
+      if (prose) {
+        prose.querySelectorAll('img').forEach((img) => {
+          const link = document.createElement('a');
+          link.href = img.src;
+          link.className = 'glightbox';
+          link.setAttribute('data-gallery', 'note-gallery');
+          img.parentNode.insertBefore(link, img);
+          link.appendChild(img);
+        });
+      }
+      const lightbox = new GLightbox({
+        selector: '.glightbox',
+        touchNavigation: true,
+        closeOnTouch: true,
+        loop: false,
+        onOpen: () => {
+          const checkExist = setInterval(() => {
+            const slideImage = document.querySelector('.gslide-image');
+            if (slideImage) {
+              clearInterval(checkExist);
+              slideImage.style.cursor = 'pointer';
+              slideImage.addEventListener('click', () => lightbox.close());
+            }
+          }, 100);
+        },
+      });
+    });
+  </script>
 </BaseLayout>
