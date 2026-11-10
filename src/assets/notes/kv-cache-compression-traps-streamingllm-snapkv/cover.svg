@@ -48,7 +48,7 @@
     <text x="18" y="130" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#94a3b8">吞吐暴跌 87.9%，每生成 1 个 Token 需完整搬运 3.58 GB 显存</text>
     <rect x="18" y="155" width="274" height="6" rx="3" fill="#1e293b"/>
     <rect x="18" y="155" width="33" height="6" rx="3" fill="#ef4444"/>
-    <text x="18" y="185" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#64748b">瓶颈：显存搬运带宽打满而非计算核心</text>
+    <text x="18" y="185" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#64748b">瓶颈：长序列数据搬运开销占据主导</text>
 
     <!-- Card 2: Memory Compression -->
     <rect x="340" y="0" width="310" height="210" rx="14" fill="#0b1324" stroke="#1e293b" stroke-width="1.5"/>
@@ -69,7 +69,8 @@
     <text x="698" y="65" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#e2e8f0">50% 深度大海捞针实测</text>
     <text x="698" y="98" font-family="ui-monospace, monospace" font-size="28" font-weight="800" fill="url(#accent-warn)">100% → 0%</text>
     <text x="865" y="98" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#f87171">PASS RATE</text>
-    <text x="698" y="130" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#94a3b8">滑动窗口物理丢弃关键事实；池化聚类未能保留稀疏长尾信息</text>
+    <text x="698" y="125" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94a3b8">滑动窗口物理驱逐关键事实，</text>
+    <text x="698" y="142" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94a3b8">聚类池化未能保留稀疏长尾信息</text>
     <rect x="698" y="155" width="304" height="6" rx="3" fill="#1e293b"/>
     <rect x="698" y="155" width="6" height="6" rx="3" fill="#ef4444"/>
     <text x="698" y="185" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#f87171">结论：没有免费午餐，压缩摧毁长尾逻辑链</text>
