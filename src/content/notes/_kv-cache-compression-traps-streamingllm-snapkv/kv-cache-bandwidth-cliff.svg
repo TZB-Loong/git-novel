@@ -1,0 +1,172 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="480" viewBox="0 0 920 480">
+  <defs>
+    <style>
+      .bg { fill: #040813; rx: 14; }
+      .axis { stroke: #334155; stroke-width: 1.5; }
+      .grid { stroke: #1e293b; stroke-width: 1; stroke-dasharray: 4,4; }
+      .text-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 800; font-size: 15px; fill: #f8fafc; }
+      .text-sub { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 12px; fill: #94a3b8; }
+      .text-axis { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 11px; fill: #64748b; }
+      .text-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 11px; }
+      .line-full-tp { fill: none; stroke: #ef4444; stroke-width: 3; }
+      .line-comp-tp { fill: none; stroke: #10b981; stroke-width: 3; }
+      .line-full-mem { fill: none; stroke: #f59e0b; stroke-width: 2.5; stroke-dasharray: 6,4; }
+    </style>
+    <linearGradient id="fullArea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ef4444" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#ef4444" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="920" height="480" class="bg"/>
+
+  <!-- Title & Subtitle -->
+  <text x="40" y="38" class="text-title">图 1-1：实测上下文长度 vs 解码吞吐断崖与 KV 显存膨胀（Qwen2.5-7B @ Tesla T4×2）</text>
+  <text x="40" y="60" class="text-sub">Full KV 每 Token 搬运完整缓存导致解码吞吐暴跌 87.9%；压缩策略锁死 KV 显存，解码吞吐逆势提升 13.7 倍</text>
+
+  <!-- Left Chart: Decode Throughput (tok/s) -->
+  <!-- Coordinate origin: (90, 360), Width: 460, Height: 240 (Y: 0~16 tok/s -> scale: 15px/tok/s) -->
+  <g transform="translate(0, 20)">
+    <!-- X-axis: 4k(x=90), 8k(x=185), 16k(x=280), 32k(x=375), 64k(x=470) -->
+    <!-- Grid Y: 0, 4, 8, 12, 16 -->
+    <line x1="90" y1="120" x2="520" y2="120" class="grid"/>
+    <text x="75" y="124" class="text-axis" text-anchor="end">16</text>
+    <line x1="90" y1="180" x2="520" y2="180" class="grid"/>
+    <text x="75" y="184" class="text-axis" text-anchor="end">12</text>
+    <line x1="90" y1="240" x2="520" y2="240" class="grid"/>
+    <text x="75" y="244" class="text-axis" text-anchor="end">8</text>
+    <line x1="90" y1="300" x2="520" y2="300" class="grid"/>
+    <text x="75" y="304" class="text-axis" text-anchor="end">4</text>
+    <line x1="90" y1="360" x2="520" y2="360" class="axis"/>
+    <text x="75" y="364" class="text-axis" text-anchor="end">0</text>
+
+    <!-- Axes -->
+    <line x1="90" y1="100" x2="90" y2="360" class="axis"/>
+    <text x="90" y="92" class="text-axis" font-weight="700">解码吞吐 (tok/s)</text>
+
+    <!-- X labels -->
+    <text x="90" y="380" class="text-axis" text-anchor="middle">4k</text>
+    <text x="185" y="380" class="text-axis" text-anchor="middle">8k</text>
+    <text x="280" y="380" class="text-axis" text-anchor="middle">16k</text>
+    <text x="375" y="380" class="text-axis" text-anchor="middle">32k</text>
+    <text x="470" y="380" class="text-axis" text-anchor="middle">64k</text>
+    <text x="525" y="380" class="text-axis">上下文</text>
+
+    <!-- Curve 1: SnapKV Throughput (y = 360 - val * 15) -->
+    <!-- 4k: 13.39 -> 159.15, 8k: 14.09 -> 148.65, 16k: 14.04 -> 149.4, 32k: 13.97 -> 150.45, 64k: 13.83 -> 152.55 -->
+    <path d="M 90 159.15 L 185 148.65 L 280 149.4 L 375 150.45 L 470 152.55" class="line-comp-tp"/>
+
+    <!-- Curve 2: Full_KV Throughput -->
+    <!-- 4k: 8.34 -> 234.9, 8k: 5.69 -> 274.65, 16k: 3.42 -> 308.7, 32k: 1.92 -> 331.2, 64k: 1.01 -> 344.85 -->
+    <path d="M 90 234.9 L 185 274.65 L 280 308.7 L 375 331.2 L 470 344.85" class="line-full-tp"/>
+    <path d="M 90 234.9 L 185 274.65 L 280 308.7 L 375 331.2 L 470 344.85 L 470 360 L 90 360 Z" fill="url(#fullArea)"/>
+
+    <!-- Data Points: Full KV -->
+    <circle cx="90" cy="234.9" r="4.5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <text x="90" y="222" class="text-mono" font-weight="700" fill="#f87171" text-anchor="middle">8.34</text>
+
+    <circle cx="185" cy="274.65" r="4.5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <text x="185" y="262" class="text-mono" font-weight="700" fill="#f87171" text-anchor="middle">5.69</text>
+
+    <circle cx="280" cy="308.7" r="4.5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <text x="280" y="296" class="text-mono" font-weight="700" fill="#f87171" text-anchor="middle">3.42</text>
+
+    <circle cx="375" cy="331.2" r="4.5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <text x="375" y="320" class="text-mono" font-weight="700" fill="#f87171" text-anchor="middle">1.92</text>
+
+    <circle cx="470" cy="344.85" r="5" fill="#ef4444" stroke="#ffffff" stroke-width="2"/>
+    <text x="470" y="335" class="text-mono" font-weight="800" fill="#f87171" text-anchor="middle">1.01 tok/s</text>
+
+    <!-- Data Points: SnapKV -->
+    <circle cx="90" cy="159.15" r="4.5" fill="#10b981" stroke="#ffffff" stroke-width="1.5"/>
+    <text x="90" y="146" class="text-mono" font-weight="700" fill="#34d399" text-anchor="middle">13.39</text>
+
+    <circle cx="185" cy="148.65" r="4.5" fill="#10b981" stroke="#ffffff" stroke-width="1.5"/>
+    <text x="185" y="136" class="text-mono" font-weight="700" fill="#34d399" text-anchor="middle">14.09</text>
+
+    <circle cx="280" cy="149.4" r="4.5" fill="#10b981" stroke="#ffffff" stroke-width="1.5"/>
+    <text x="280" y="136" class="text-mono" font-weight="700" fill="#34d399" text-anchor="middle">14.04</text>
+
+    <circle cx="375" cy="150.45" r="4.5" fill="#10b981" stroke="#ffffff" stroke-width="1.5"/>
+    <text x="375" y="136" class="text-mono" font-weight="700" fill="#34d399" text-anchor="middle">13.97</text>
+
+    <circle cx="470" cy="152.55" r="5" fill="#10b981" stroke="#ffffff" stroke-width="2"/>
+    <text x="470" y="136" class="text-mono" font-weight="800" fill="#34d399" text-anchor="middle">13.83 tok/s</text>
+
+    <!-- Annotations on Left Chart -->
+    <rect x="290" y="245" width="165" height="38" rx="6" fill="#1e1b2e" stroke="#7c3aed" stroke-width="1"/>
+    <text x="298" y="261" class="text-mono" font-weight="700" fill="#c084fc">带宽墙：吞吐骤降 87.9%</text>
+    <text x="298" y="275" font-family="-apple-system, sans-serif" font-size="10" fill="#94a3b8">显存 I/O 成为主导瓶颈</text>
+  </g>
+
+  <!-- Right Panel: Data Matrix & Hardware Physics Breakdown -->
+  <g transform="translate(565, 85)">
+    <rect x="0" y="0" width="315" height="360" rx="10" fill="#0b1324" stroke="#1e293b" stroke-width="1.5"/>
+
+    <!-- Header -->
+    <text x="20" y="28" font-family="-apple-system, sans-serif" font-size="13" font-weight="700" fill="#f8fafc">实测显存占用对比 (Tesla T4×2)</text>
+    <text x="20" y="46" font-family="-apple-system, sans-serif" font-size="11" fill="#64748b">Qwen2.5-7B-Instruct (FP16 双卡分片)</text>
+
+    <!-- KV Cache Memory Table -->
+    <g transform="translate(15, 60)">
+      <!-- Table Header -->
+      <rect x="0" y="0" width="285" height="24" rx="4" fill="#1e293b"/>
+      <text x="10" y="16" class="text-axis" font-weight="700">上下文</text>
+      <text x="80" y="16" class="text-axis" font-weight="700">Full KV</text>
+      <text x="170" y="16" class="text-axis" font-weight="700">SnapKV/Stream</text>
+      <text x="250" y="16" class="text-axis" font-weight="700">压降</text>
+
+      <!-- Row 4k -->
+      <text x="10" y="42" class="text-mono" fill="#cbd5e1">4k</text>
+      <text x="80" y="42" class="text-mono" fill="#f87171">223 MB</text>
+      <text x="170" y="42" class="text-mono" fill="#34d399">59.5 MB</text>
+      <text x="250" y="42" class="text-mono" fill="#38bdf8">-73%</text>
+
+      <!-- Row 8k -->
+      <text x="10" y="66" class="text-mono" fill="#cbd5e1">8k</text>
+      <text x="80" y="66" class="text-mono" fill="#f87171">447 MB</text>
+      <text x="170" y="66" class="text-mono" fill="#34d399">59.5 MB</text>
+      <text x="250" y="66" class="text-mono" fill="#38bdf8">-87%</text>
+
+      <!-- Row 16k -->
+      <text x="10" y="90" class="text-mono" fill="#cbd5e1">16k</text>
+      <text x="80" y="90" class="text-mono" fill="#f87171">895 MB</text>
+      <text x="170" y="90" class="text-mono" fill="#34d399">59.5 MB</text>
+      <text x="250" y="90" class="text-mono" fill="#38bdf8">-93%</text>
+
+      <!-- Row 32k -->
+      <text x="10" y="114" class="text-mono" fill="#cbd5e1">32k</text>
+      <text x="80" y="114" class="text-mono" fill="#f87171">1,791 MB</text>
+      <text x="170" y="114" class="text-mono" fill="#34d399">59.5 MB</text>
+      <text x="250" y="114" class="text-mono" fill="#38bdf8">-97%</text>
+
+      <!-- Row 64k Highlight -->
+      <rect x="0" y="126" width="285" height="26" rx="4" fill="#1e182a" stroke="#ef4444" stroke-width="1"/>
+      <text x="10" y="143" class="text-mono" font-weight="700" fill="#fca5a5">64k</text>
+      <text x="80" y="143" class="text-mono" font-weight="800" fill="#ef4444">3,583 MB</text>
+      <text x="170" y="143" class="text-mono" font-weight="800" fill="#34d399">59.5 MB</text>
+      <text x="250" y="143" class="text-mono" font-weight="800" fill="#38bdf8">-98.3%</text>
+    </g>
+
+    <!-- Formula Box -->
+    <g transform="translate(15, 230)">
+      <rect x="0" y="0" width="285" height="115" rx="8" fill="#040813" stroke="#1e293b" stroke-width="1"/>
+      <text x="12" y="20" class="text-mono" font-weight="700" fill="#e2e8f0">显存搬运物理公式 (Decode):</text>
+      <text x="12" y="40" class="text-mono" font-size="10" fill="#94a3b8">Bytes_per_Token = 2 × 2 × L × D × N_ctx</text>
+      <text x="12" y="60" class="text-mono" font-size="10" fill="#94a3b8">Qwen2.5-7B (28L, 28H, 128D, GQA 4KV):</text>
+      <text x="12" y="80" class="text-mono" font-size="10" fill="#fca5a5">64k 上下文 = 单 Token 必须读 3.58 GB</text>
+      <text x="12" y="100" class="text-mono" font-size="10" fill="#34d399">T4 实测带宽饱和：生成速度仅剩 1.01 tok/s</text>
+    </g>
+  </g>
+
+  <!-- Legend -->
+  <g transform="translate(90, 445)">
+    <line x1="0" y1="0" x2="30" y2="0" class="line-comp-tp"/>
+    <circle cx="15" cy="0" r="4" fill="#10b981"/>
+    <text x="38" y="4" class="text-sub">SnapKV / StreamingLLM 解码吞吐 (约 13.8 tok/s)</text>
+
+    <line x1="330" y1="0" x2="360" y2="0" class="line-full-tp"/>
+    <circle cx="345" cy="0" r="4" fill="#ef4444"/>
+    <text x="368" y="4" class="text-sub">Full KV 解码吞吐 (8.34 → 1.01 tok/s 暴跌)</text>
+  </g>
+</svg>

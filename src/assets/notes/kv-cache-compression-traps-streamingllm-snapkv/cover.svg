@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#040812"/>
+      <stop offset="50%" stop-color="#0a1322"/>
+      <stop offset="100%" stop-color="#02050e"/>
+    </linearGradient>
+    <linearGradient id="accent-cyan" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="50%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#c084fc"/>
+    </linearGradient>
+    <linearGradient id="accent-warn" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#ef4444"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="1" stroke-opacity="0.5"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect x="50" y="50" width="1100" height="530" rx="20" fill="none" stroke="#1e293b" stroke-width="2" stroke-dasharray="8,6"/>
+
+  <!-- Badge -->
+  <rect x="90" y="85" width="280" height="36" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <circle cx="110" cy="103" r="5" fill="#f59e0b"/>
+  <text x="125" y="108" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#94a3b8" letter-spacing="1">GPU BENCHMARK &amp; ATTENTION</text>
+
+  <!-- Title -->
+  <text x="90" y="175" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="40" font-weight="800" fill="#f8fafc">KV Cache 的显存压缩陷阱</text>
+  <text x="90" y="235" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="28" font-weight="600" fill="url(#accent-cyan)">从 StreamingLLM 到 SnapKV：我们在丢掉哪些注意力？</text>
+
+  <!-- Subtitle -->
+  <text x="90" y="285" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" fill="#94a3b8">Qwen2.5-7B 在 Tesla T4×2 上 4k~64k 实测：98.3% 显存暴降与 0% 大海捞针召回的残酷代价</text>
+
+  <!-- Visual Cards Showcase -->
+  <g transform="translate(90, 325)">
+    <!-- Card 1: Bandwidth Cliff -->
+    <rect x="0" y="0" width="310" height="210" rx="14" fill="#0b1324" stroke="#1e293b" stroke-width="1.5"/>
+    <rect x="18" y="16" width="90" height="22" rx="4" fill="#1e293b"/>
+    <text x="26" y="31" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#38bdf8">BANDWIDTH WALL</text>
+    <text x="18" y="65" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#e2e8f0">Full KV 解码吞吐断崖</text>
+    <text x="18" y="98" font-family="ui-monospace, monospace" font-size="28" font-weight="800" fill="#ef4444">8.34 → 1.01</text>
+    <text x="180" y="98" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#64748b">tok/s (4k→64k)</text>
+    <text x="18" y="130" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#94a3b8">吞吐暴跌 87.9%，每生成 1 个 Token 需完整搬运 3.58 GB 显存</text>
+    <rect x="18" y="155" width="274" height="6" rx="3" fill="#1e293b"/>
+    <rect x="18" y="155" width="33" height="6" rx="3" fill="#ef4444"/>
+    <text x="18" y="185" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#64748b">瓶颈：显存搬运带宽打满而非计算核心</text>
+
+    <!-- Card 2: Memory Compression -->
+    <rect x="340" y="0" width="310" height="210" rx="14" fill="#0b1324" stroke="#1e293b" stroke-width="1.5"/>
+    <rect x="358" y="16" width="95" height="22" rx="4" fill="#1e293b"/>
+    <text x="366" y="31" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#34d399">CACHE REDUCTION</text>
+    <text x="358" y="65" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#e2e8f0">SnapKV 显存锁死</text>
+    <text x="358" y="98" font-family="ui-monospace, monospace" font-size="28" font-weight="800" fill="#34d399">59.50 MB</text>
+    <text x="495" y="98" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#64748b">(-98.3%)</text>
+    <text x="358" y="130" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#94a3b8">64k 下 KV 显存从 3.58 GB 压缩至 59 MB，生成速度逆势维稳 13.8 tok/s</text>
+    <rect x="358" y="155" width="274" height="6" rx="3" fill="#1e293b"/>
+    <rect x="358" y="155" width="269" height="6" rx="3" fill="#34d399"/>
+    <text x="358" y="185" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#64748b">提速：相较 Full KV 提升 13.7 倍</text>
+
+    <!-- Card 3: The Trap -->
+    <rect x="680" y="0" width="340" height="210" rx="14" fill="#0b1324" stroke="#334155" stroke-width="1.5"/>
+    <rect x="698" y="16" width="105" height="22" rx="4" fill="#450a0a"/>
+    <text x="706" y="31" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#f87171">THE TRAP 召回陷阱</text>
+    <text x="698" y="65" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#e2e8f0">50% 深度大海捞针实测</text>
+    <text x="698" y="98" font-family="ui-monospace, monospace" font-size="28" font-weight="800" fill="url(#accent-warn)">100% → 0%</text>
+    <text x="865" y="98" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#f87171">PASS RATE</text>
+    <text x="698" y="130" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#94a3b8">滑动窗口物理丢弃关键事实；池化聚类未能保留稀疏长尾信息</text>
+    <rect x="698" y="155" width="304" height="6" rx="3" fill="#1e293b"/>
+    <rect x="698" y="155" width="6" height="6" rx="3" fill="#ef4444"/>
+    <text x="698" y="185" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#f87171">结论：没有免费午餐，压缩摧毁长尾逻辑链</text>
+  </g>
+</svg>

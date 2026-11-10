@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="420" viewBox="0 0 920 420">
+  <defs>
+    <style>
+      .bg { fill: #040813; rx: 14; }
+      .text-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 800; font-size: 15px; fill: #f8fafc; }
+      .text-sub { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 12px; fill: #94a3b8; }
+      .text-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 11px; }
+      .text-head { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 13px; font-weight: 700; fill: #f1f5f9; }
+      .bar-bg { fill: #1e293b; rx: 4; }
+    </style>
+  </defs>
+
+  <rect width="920" height="420" class="bg"/>
+
+  <!-- Header -->
+  <text x="40" y="38" class="text-title">图 3-1：显存极限压缩（98.3%）与长文本事实召回崩溃（0% PASS）的工程代价</text>
+  <text x="40" y="60" class="text-sub">在长文本大海捞针（Needle in a Haystack）实测中，压缩算法斩获极致吞吐，但彻底击穿工程 Agent 的事实底线</text>
+
+  <!-- Left: The Trade-off Bar Chart (64k Context) -->
+  <g transform="translate(40, 85)">
+    <rect x="0" y="0" width="410" height="305" rx="10" fill="#090f1d" stroke="#1e293b" stroke-width="1.2"/>
+    <text x="20" y="30" class="text-head">64k 上下文：显存压降 vs 事实召回率</text>
+    <text x="20" y="48" class="text-mono" fill="#64748b">模型: Qwen2.5-7B | 密钥: KYLIN_7749 (50% 深度)</text>
+
+    <!-- Strategy 1: Full KV -->
+    <g transform="translate(20, 75)">
+      <text x="0" y="14" class="text-mono" font-weight="700" fill="#f8fafc">1. Full_KV (基线无压缩)</text>
+      <!-- KV Memory Bar: 3583MB -> 100% width=240 -->
+      <rect x="0" y="24" width="260" height="18" class="bar-bg"/>
+      <rect x="0" y="24" width="260" height="18" rx="4" fill="#ef4444"/>
+      <text x="270" y="38" class="text-mono" fill="#fca5a5">3,583 MB (基线)</text>
+      <!-- Recall Bar: 100% -->
+      <rect x="0" y="48" width="260" height="14" class="bar-bg"/>
+      <rect x="0" y="48" width="260" height="14" rx="4" fill="#10b981"/>
+      <text x="270" y="60" class="text-mono" font-weight="700" fill="#34d399">召回率: 100% ✓</text>
+    </g>
+
+    <!-- Strategy 2: StreamingLLM -->
+    <g transform="translate(20, 155)">
+      <text x="0" y="14" class="text-mono" font-weight="700" fill="#f8fafc">2. StreamingLLM (Sink 4 + Win 1024)</text>
+      <!-- KV Memory Bar: 56.22MB -> 4px -->
+      <rect x="0" y="24" width="260" height="18" class="bar-bg"/>
+      <rect x="0" y="24" width="5" height="18" rx="2" fill="#34d399"/>
+      <text x="270" y="38" class="text-mono" font-weight="700" fill="#34d399">56.2 MB (-98.4%)</text>
+      <!-- Recall Bar: 0% -->
+      <rect x="0" y="48" width="260" height="14" class="bar-bg"/>
+      <rect x="0" y="48" width="2" height="14" rx="1" fill="#ef4444"/>
+      <text x="270" y="60" class="text-mono" font-weight="700" fill="#ef4444">召回率: 0% ✗ (丢失)</text>
+    </g>
+
+    <!-- Strategy 3: SnapKV -->
+    <g transform="translate(20, 235)">
+      <text x="0" y="14" class="text-mono" font-weight="700" fill="#f8fafc">3. SnapKV (聚类 Top-K 1088)</text>
+      <!-- KV Memory Bar: 59.50MB -> 5px -->
+      <rect x="0" y="24" width="260" height="18" class="bar-bg"/>
+      <rect x="0" y="24" width="6" height="18" rx="2" fill="#34d399"/>
+      <text x="270" y="38" class="text-mono" font-weight="700" fill="#34d399">59.5 MB (-98.3%)</text>
+      <!-- Recall Bar: 0% -->
+      <rect x="0" y="48" width="260" height="14" class="bar-bg"/>
+      <rect x="0" y="48" width="2" height="14" rx="1" fill="#ef4444"/>
+      <text x="270" y="60" class="text-mono" font-weight="700" fill="#ef4444">召回率: 0% ✗ (丢失)</text>
+    </g>
+  </g>
+
+  <!-- Right: Real Hallucination & Failure Modes in Production -->
+  <g transform="translate(470, 85)">
+    <rect x="0" y="0" width="410" height="305" rx="10" fill="#090f1d" stroke="#1e293b" stroke-width="1.2"/>
+    <text x="20" y="30" class="text-head">代码工程与 Agent 场景下的灾难映射</text>
+    <text x="20" y="48" class="text-mono" fill="#ef4444">当长程事实被驱逐后的实测生成输出</text>
+
+    <!-- Failure Card 1: Needle In A Haystack Actual Output -->
+    <g transform="translate(20, 68)">
+      <rect x="0" y="0" width="370" height="85" rx="6" fill="#030712" stroke="#334155"/>
+      <text x="12" y="18" class="text-mono" font-size="10" fill="#38bdf8">实测 Prompt: "What is the security passkey for project Prometheus?"</text>
+      <text x="12" y="36" class="text-mono" font-size="10" fill="#34d399">Full KV: "KYLIN_7749. The special security passkey..." (准确)</text>
+      <text x="12" y="54" class="text-mono" font-size="10" fill="#ef4444">StreamingLLM: "1. ( pass. ( ( ( ( ( ( ( ( ( (..." (乱码复读)</text>
+      <text x="12" y="72" class="text-mono" font-size="10" fill="#ef4444">SnapKV: "1. 10. pass. 10. 10. O. 10. 10" (注意力退化)</text>
+    </g>
+
+    <!-- Failure Card 2: Code Agent Vulnerabilities -->
+    <g transform="translate(20, 165)">
+      <rect x="0" y="0" width="370" height="120" rx="6" fill="#180e15" stroke="#ef4444" stroke-width="1"/>
+      <text x="12" y="20" class="text-mono" font-weight="700" fill="#fca5a5">生产危害分析：为什么代码 Agent 绝不能盲目压缩？</text>
+      <text x="12" y="40" class="text-mono" font-size="10" fill="#e2e8f0">• 跨文件类型定义丢失：AST 深度引用被窗口裁剪，触发 TS2304 报错</text>
+      <text x="12" y="60" class="text-mono" font-size="10" fill="#e2e8f0">• 环境变量与安全密钥幻觉：中段配置文件丢弃，误生成硬编码测试 Key</text>
+      <text x="12" y="80" class="text-mono" font-size="10" fill="#e2e8f0">• 状态机转移错乱：Git / DB 事务上下文遗忘，导致破坏性硬覆盖重写</text>
+      <text x="12" y="102" class="text-mono" font-size="10" font-weight="700" fill="#34d399">最佳架构建议：长程检索靠 RAG / AST 路由，Decode 阶段守住完整注意力</text>
+    </g>
+  </g>
+</svg>
