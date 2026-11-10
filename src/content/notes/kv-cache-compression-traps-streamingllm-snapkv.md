@@ -142,7 +142,7 @@ StreamingLLM 过于激进地丢掉了所有非局部历史，显然无法处理�
 ```text
 1. KYLIN_7749 2. 2. 3. 3. 4. 4. 5. 5
 ```
-- **判定结果**：**准确命中目标密钥（PASS）**。在 64k 极限上下文与 50% 深度下，因果注意力完整检索到了位于第 32,768 个 Token 处的密钥 `KYLIN_7749`（模型后续生成虽出现数字重复，但核心实体成功找回，召回判定为通过；而在 4k/8k 下模型输出为完整的自然语言回答 `KYLIN_7749. The special security passkey for project Prometheus is KYLIN_7749.`）。
+- **判定结果**：**准确命中目标密钥（PASS）**。在 64k 极限上下文与 50% 深度下，因果注意力完整检索到了位于第 32,768 个 Token 处的密钥 `KYLIN_7749`（模型后续生成虽出现数字重复，但核心实体成功找回，召回判定为通过；而在 4k/8k 下模型输出为完整自然语言回答，归档切片记录前 60 字符为 `KYLIN_7749. \n\nThe special security passkey for project Prome`）。
 
 #### 方案二：StreamingLLM（滑动窗口 · 64k 实测输出）
 ```text
@@ -199,7 +199,9 @@ StreamingLLM 过于激进地丢掉了所有非局部历史，显然无法处理�
    Qwen Team, Alibaba Cloud. (2024). *Qwen2.5: A Party of Foundation Models*. Hugging Face Repository [Qwen/Qwen2.5-7B-Instruct](https://huggingface.co/Qwen/Qwen2.5-7B-Instruct).
 4. **PagedAttention 与显存分页机制**：
    Kwon, W., et al. (2023). *Efficient Memory Management for Large Language Model Serving with PagedAttention*. ACM SOSP 2023. DOI: [10.1145/3600006.3613165](https://dl.acm.org/doi/10.1145/3600006.3613165).
-5. **本次实验评测环境与数据归档**：
+5. **vLLM PagedAttention 与 FP8/INT4 缓存量化内核优化实践**：
+   vLLM Team. (2024). *Quantization and Kernel Benchmarks in vLLM (FP8 KV Cache)*. vLLM Documentation [docs.vllm.ai](https://docs.vllm.ai/en/latest/quantization/fp8.html).
+6. **本次实验评测环境与数据归档**：
    - 硬件环境：NVIDIA Tesla T4 × 2 (PCIe 16GB, CUDA 13.0, PyTorch 2.11.0, Transformers 5.20.2)
    - 原始实测数据集与日志：[kv_cache_benchmark.csv](https://github.com/TZB-Loong/git-novel/blob/main/benchmark/kv_cache_benchmark.csv) 与 [kv_cache_benchmark.json](https://github.com/TZB-Loong/git-novel/blob/main/benchmark/kv_cache_benchmark.json)（SHA-256: `907413ad5534...` 与 `97e1d48bb27c...`）
-   - 云端实测实例：Kaggle Notebook [`loong3xu/kv-cache-benchmark-qwen`](https://www.kaggle.com/code/loong3xu/kv-cache-benchmark-qwen)（已归档，状态 COMPLETE）
+   - 云端实测实例：Kaggle Notebook [`loong3xu/kv-cache-benchmark-qwen`](https://www.kaggle.com/code/loong3xu/kv-cache-benchmark-qwen)（已归档，状态 COMPLETE；需 Kaggle 登录或公开权限访问）

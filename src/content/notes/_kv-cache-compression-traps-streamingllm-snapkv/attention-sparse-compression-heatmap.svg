@@ -108,14 +108,15 @@
 
       <!-- Observation Window at Bottom-Right -->
       <rect x="145" y="145" width="35" height="35" fill="#06b6d4" opacity="0.8"/>
-      <text x="95" y="166" class="text-mono" font-size="9" fill="#06b6d4">观察窗口</text>
+      <text x="145" y="138" class="text-mono" font-size="9" fill="#06b6d4">观察窗口</text>
 
-      <!-- Empty Pruned Areas (Moved text to avoid overlapping the column at x=35) -->
+      <!-- Empty Pruned Areas -->
       <text x="48" y="60" class="text-mono" font-size="9" fill="#64748b">池化裁剪区</text>
 
       <!-- Needle Position Dropped due to non-clustered attention -->
-      <circle cx="90" cy="140" r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
-      <text x="82" y="132" class="text-mono" font-weight="700" fill="#ef4444">未入选 Top-K</text>
+      <circle cx="90" cy="135" r="4.5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+      <line x1="90" y1="130" x2="90" y2="100" stroke="#ef4444" stroke-width="1" stroke-dasharray="2,2"/>
+      <text x="90" y="94" text-anchor="middle" class="text-mono" font-size="9" font-weight="700" fill="#ef4444">未入选 Top-K (Needle 丢失)</text>
     </g>
 
     <!-- Description -->
