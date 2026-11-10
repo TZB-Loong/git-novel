@@ -186,7 +186,7 @@ StreamingLLM 过于激进地丢掉了所有非局部历史，显然无法处理�
    - **坚决禁止有损压缩的场景**：代码审查（Code Review）、金融账单对账、复杂 Agent DAG 决策回路、高安全级别运维诊断。
 
 3. **硬件级长文本加速方案**：
-   在必须处理长程事实时，优先选用 **FlashAttention-2/3**、**vLLM PagedAttention** 以及 **INT4 / FP8 KV Cache 量化**。学术界与社区工程实践（如 vLLM / FlashAttention 官方基准）表明，低损量化（如 FP8 KV）仅引入极微小的数值精度扰动，且能在保留 100% 注意力拓扑的同时，稳稳将显存砍半并成倍提升吞吐，远比稀疏有损剔除安全得多。
+   在必须处理长程事实时，优先选用 **FlashAttention-2/3**、**vLLM PagedAttention** 以及 **INT4 / FP8 KV Cache 量化**。学术界与社区工程实践（如 vLLM 官方量化内核基准）表明，低损量化（如 FP8 KV）仅引入极微小的数值精度扰动，且能在保留 100% 注意力拓扑的同时，稳稳将显存砍半并成倍提升吞吐，远比稀疏有损剔除安全得多。
 
 ---
 ## 六、 参考资料与基准出处
@@ -199,9 +199,9 @@ StreamingLLM 过于激进地丢掉了所有非局部历史，显然无法处理�
    Qwen Team, Alibaba Cloud. (2024). *Qwen2.5: A Party of Foundation Models*. Hugging Face Repository [Qwen/Qwen2.5-7B-Instruct](https://huggingface.co/Qwen/Qwen2.5-7B-Instruct).
 4. **PagedAttention 与显存分页机制**：
    Kwon, W., et al. (2023). *Efficient Memory Management for Large Language Model Serving with PagedAttention*. ACM SOSP 2023. DOI: [10.1145/3600006.3613165](https://dl.acm.org/doi/10.1145/3600006.3613165).
-5. **vLLM PagedAttention 与 FP8/INT4 缓存量化内核优化实践**：
-   vLLM Team. (2024). *Quantization and Kernel Benchmarks in vLLM (FP8 KV Cache)*. vLLM Documentation [docs.vllm.ai](https://docs.vllm.ai/en/latest/quantization/fp8.html).
+5. **vLLM Quantized KV Cache (FP8) 官方优化实践**：
+   vLLM Team. (2024). *Quantized KV Cache in vLLM (FP8)*. vLLM Documentation [docs.vllm.ai](https://docs.vllm.ai/en/latest/features/quantization/quantized_kvcache/).
 6. **本次实验评测环境与数据归档**：
    - 硬件环境：NVIDIA Tesla T4 × 2 (PCIe 16GB, CUDA 13.0, PyTorch 2.11.0, Transformers 5.20.2)
    - 原始实测数据集与日志：[kv_cache_benchmark.csv](https://github.com/TZB-Loong/git-novel/blob/main/benchmark/kv_cache_benchmark.csv) 与 [kv_cache_benchmark.json](https://github.com/TZB-Loong/git-novel/blob/main/benchmark/kv_cache_benchmark.json)（SHA-256: `907413ad5534...` 与 `97e1d48bb27c...`）
-   - 云端实测实例：Kaggle Notebook [`loong3xu/kv-cache-benchmark-qwen`](https://www.kaggle.com/code/loong3xu/kv-cache-benchmark-qwen)（已归档，状态 COMPLETE；需 Kaggle 登录或公开权限访问）
+   - 云端实测实例：Kaggle Notebook [`loong3xu/kv-cache-benchmark-qwen`](https://www.kaggle.com/code/loong3xu/kv-cache-benchmark-qwen)（已归档，状态 COMPLETE；当前为作者私有状态，完整基准数据已在上方 GitHub Blob 完全公开对齐）

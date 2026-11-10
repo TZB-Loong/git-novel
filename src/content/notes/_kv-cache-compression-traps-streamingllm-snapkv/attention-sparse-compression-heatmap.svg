@@ -75,7 +75,7 @@
 
       <!-- Local Sliding Window (Right-most band along diagonal) -->
       <polygon points="140,140 180,140 180,180 140,180" fill="#10b981" opacity="0.8"/>
-      <text x="110" y="175" class="text-mono" font-size="9" fill="#10b981">Window</text>
+      <text x="95" y="175" class="text-mono" font-size="9" fill="#10b981">Window</text>
 
       <!-- Needle Position Lost -->
       <circle cx="90" cy="140" r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
