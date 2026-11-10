@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="420" viewBox="0 0 900 420">
+  <defs>
+    <style>
+      .bg { fill: #030712; rx: 12; }
+      .box { rx: 8; stroke-width: 1.5; }
+      .text-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: bold; font-size: 14px; fill: #f8fafc; }
+      .text-sub { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 11.5px; fill: #94a3b8; }
+      .text-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 11px; }
+      .arrow { stroke: #64748b; stroke-width: 2; fill: none; marker-end: url(#arrow-gray2); }
+      .arrow-blue { stroke: #38bdf8; stroke-width: 2; fill: none; marker-end: url(#arrow-sky2); }
+    </style>
+    <marker id="arrow-gray2" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#64748b"/>
+    </marker>
+    <marker id="arrow-sky2" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#38bdf8"/>
+    </marker>
+  </defs>
+
+  <rect width="900" height="420" class="bg"/>
+
+  <text x="40" y="38" class="text-title" font-size="15px">图 2-2：基于 SQLite 的 Task DAG 拓扑执行器与 Worker 隔离流转</text>
+  <text x="40" y="60" class="text-sub">外部轻量状态机解耦记忆与执行，拓扑排序并发调度，每个 Worker 独享 0 历史纯净上下文</text>
+
+  <!-- Router FSM (Left) -->
+  <g transform="translate(40, 85)">
+    <rect width="250" height="295" fill="#1e1b4b" stroke="#6366f1" class="box"/>
+    <text x="20" y="32" class="text-title" fill="#a5b4fc">Router (外部调度状态机)</text>
+    <text x="20" y="55" class="text-sub">维护 SQLite DAG 依赖拓扑</text>
+    
+    <rect x="16" y="70" width="218" height="60" rx="4" fill="#312e81"/>
+    <text x="24" y="92" class="text-mono" fill="#c7d2fe">SQLite tasks 表:</text>
+    <text x="24" y="112" class="text-mono" fill="#a5b4fc">status: PENDING | RUNNING | DONE</text>
+
+    <rect x="16" y="142" width="218" height="60" rx="4" fill="#312e81"/>
+    <text x="24" y="164" class="text-mono" fill="#c7d2fe">SQLite dependencies 表:</text>
+    <text x="24" y="184" class="text-mono" fill="#a5b4fc">task_id -> depends_on_id</text>
+
+    <rect x="16" y="214" width="218" height="60" rx="4" fill="#0f172a" stroke="#4338ca"/>
+    <text x="24" y="238" class="text-mono" fill="#38bdf8">Kahn 算法实时拓扑排序</text>
+    <text x="24" y="258" class="text-mono" fill="#94a3b8">动态派发入度为 0 的任务</text>
+  </g>
+
+  <!-- Connectors -->
+  <path d="M 290,170 L 350,135" class="arrow-blue"/>
+  <path d="M 290,230 L 350,230" class="arrow-blue"/>
+  <path d="M 290,290 L 350,325" class="arrow-blue"/>
+
+  <!-- Worker Instances (Middle-Right) -->
+  <g transform="translate(360, 85)">
+    <!-- Worker 1 -->
+    <rect width="260" height="85" fill="#064e3b" stroke="#10b981" class="box"/>
+    <text x="18" y="26" class="text-title" fill="#6ee7b7">Worker A: Auth 模块重构</text>
+    <text x="18" y="48" class="text-sub">输入：仅注入 Interface 签名骨架（~4k token）</text>
+    <text x="18" y="70" class="text-mono" fill="#34d399">状态：COMPLETED (耗时 12s, 0 污染)</text>
+
+    <!-- Worker 2 -->
+    <g transform="translate(0, 105)">
+      <rect width="260" height="85" fill="#0f172a" stroke="#38bdf8" class="box"/>
+      <text x="18" y="26" class="text-title" fill="#7dd3fc">Worker B: 数据层迁移</text>
+      <text x="18" y="48" class="text-sub">依赖：Worker A 输出的类型声明</text>
+      <text x="18" y="70" class="text-mono" fill="#38bdf8">状态：RUNNING (干净隔离上下文)</text>
+    </g>
+
+    <!-- Worker 3 -->
+    <g transform="translate(0, 210)">
+      <rect width="260" height="85" fill="#1e293b" stroke="#64748b" class="box"/>
+      <text x="18" y="26" class="text-title" fill="#94a3b8">Worker C: API 联调单测</text>
+      <text x="18" y="48" class="text-sub">依赖：Worker A, B 完成后激活</text>
+      <text x="18" y="70" class="text-mono" fill="#64748b">状态：PENDING (等待上游入度归零)</text>
+    </g>
+  </g>
+
+  <!-- External Disk / Checkpoint (Far Right) -->
+  <g transform="translate(650, 85)">
+    <rect width="210" height="295" fill="#111827" stroke="#374151" class="box"/>
+    <text x="18" y="32" class="text-title" fill="#f3f4f6">外部持久化 Checkpoint</text>
+    <text x="18" y="55" class="text-sub">随时断点续跑，防崩溃</text>
+
+    <rect x="15" y="75" width="180" height="80" rx="4" fill="#1f2937"/>
+    <text x="24" y="100" class="text-mono" fill="#e5e7eb">artifacts/ 结构化产物</text>
+    <text x="24" y="120" class="text-mono" fill="#9ca3af">• diff.patch 文件</text>
+    <text x="24" y="138" class="text-mono" fill="#9ca3af">• test-report.json</text>
+
+    <rect x="15" y="170" width="180" height="95" rx="4" fill="#1f2937"/>
+    <text x="24" y="195" class="text-mono" fill="#10b981">✓ 零跨会话漂移</text>
+    <text x="24" y="215" class="text-mono" fill="#10b981">✓ 可并行分发 N 个</text>
+    <text x="24" y="235" class="text-mono" fill="#10b981">✓ 随时回滚单节点</text>
+  </g>
+</svg>

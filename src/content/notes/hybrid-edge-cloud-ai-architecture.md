@@ -47,6 +47,8 @@ $$\text{Tokens/s} \le \frac{\text{Memory Bandwidth}}{\text{Model Parameter Count
 - 人均每日触发 80 轮编码与审查任务。
 - 平均单次上下文：输入 25,000 Tokens，输出 1,000 Tokens。
 
+![10人团队纯云端 vs 端云混合算力账本回本曲线](./_hybrid-edge-cloud-ai-architecture/cost-breakeven-chart.svg)
+
 ```
 全量云端方案 (Claude 3.5 Sonnet / GPT-4o 混合):
 · 每日总输入 Token: 10人 × 80次 × 25k = 20,000,000 Tokens
@@ -62,7 +64,7 @@ $$\text{Tokens/s} \le \frac{\text{Memory Bandwidth}}{\text{Model Parameter Count
 · 每月直接净现金节省: ¥9,400 元 / 月！
 ```
 
-**硬件回本周期**：采购 2 台 M4 芯片 Mac 节点部署为团队内部共享本地算力池（采购成本约 ¥24,000），**仅需 2.5 个月的 API 费用差额即可全额收回固定资产投资**，往后每年纯省 10 万元以上真金白银。
+**硬件回本周期**：采购 2 台 M4 芯片 Mac 节点部署为团队内部共享本地算力池（采购成本约 ¥32,000），**仅需 2.5 个月的 API 费用差额即可全额收回固定资产投资**，往后每年纯省 10 万元以上真金白银。
 
 ---
 
@@ -77,6 +79,8 @@ $$\text{Tokens/s} \le \frac{\text{Memory Bandwidth}}{\text{Model Parameter Count
 ## 三、 核心实现 1：本地零信任隐私脱敏器（Local Sanitizer）
 
 任何代码段在离开内网发起云端 API 请求前，必须经过完全本地运行的**双向可逆脱敏管道**。
+
+![端侧零信任双向脱敏与安全内存映射时序流](./_hybrid-edge-cloud-ai-architecture/zero-trust-redaction-flow.svg)
 
 ```typescript
 // gateway/privacy-sanitizer.ts

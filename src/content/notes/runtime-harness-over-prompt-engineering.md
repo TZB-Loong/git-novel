@@ -8,8 +8,7 @@ draft: false
 
 > **核心导读**：当给 Coding Agent 堆砌了上万 Token 的 System Prompt，写满了“你是一个严谨的工程师”、“请不要修改无关文件”、“请务必保持向后兼容”，模型却依然在第 5 轮会话后把关键配置文件覆写成垃圾代码——这一幕正在各大 AI 研发团队中高频重演。本文剖析“提示词软约束”在复杂工程中的物理失效原理，深入解构顶级 Agent 框架（如 Claude Code、Cursor、Trellis 核心线缆）如何转向以 AST 语法守卫、PTY 虚拟终端、文件只读锁为核心的 **Runtime Harness（运行时硬约束）** 架构，提供一套工业级可落地的闭环实现。
 
----
-
+---\n
 ## 一、 提示词工程的“物理天花板”
 
 在过去的两年中，技术社区把 Agent 的构建重点几乎全部押注在 Prompt Engineering 上：编写更严密的 CoT（思维链）、注入大量 Few-Shot 示例、反复推敲 System Prompt 中的警告字眼。
@@ -26,19 +25,9 @@ $$\alpha_{t, i} = \frac{\exp\left(\frac{q_t k_i^T}{\sqrt{d_k}}\right)}{\sum_{j=1
 
 当上下文长度 $L$ 从 4k 增加到 64k、128k 时，分母以指数级扩张。尽管模型通过 RoPE（旋转位置编码）在一定程度上保留了局部相对位置，但**负向约束的信息熵密度被海量的代码文本严重稀释**。
 
-实测统计表明，随着上下文轮次增加，模型违背 System Prompt 显式禁令（如 *“严禁修改 package.json”* 或 *“禁止执行全局依赖删除”*）的失控概率呈现单调上升趋势：
+实测统计表明，随着上下文轮次与窗口大小扩张，模型违背 System Prompt 显式禁令（如 *“严禁修改 package.json”* 或 *“禁止执行全局依赖删除”*）的失控概率呈现单调上升趋势：
 
-```
-失控概率 P(Violation) 
-  ▲
-100%│                                          ╭───── (Prompt 方案崩溃)
- 80%│                                   .---'´
- 60%│                            .---'´
- 40%│                     .---'´
- 20%│              .---'´
-  0%└───────────┴─────────────┴─────────────┴─────────────►
-     Round 1     Round 5     Round 10    Round 20   (会话轮次)
-```
+![Softmax 注意力稀释与负向约束失控曲线](./_runtime-harness-over-prompt-engineering/attention-dilution-curve.svg)
 
 在工程系统设计中，**如果一个防护机制的失效概率随时间单调递增，它就不是安全机制，而是自欺欺人的定时炸弹。** 用自然语言去“恳求”一个随机采样模型遵守纪律，是反软件工程学的。
 
@@ -73,6 +62,8 @@ Runtime Harness 的核心哲学可以概括为三条铁律：
 传统 Agent 框架的 `write_to_file` 或 `edit_file` 工具，本质上是把 LLM 生成的无结构字符串直接写入磁盘（`fs.writeFile`）。这种粗暴操作是导致项目瘫痪的主因。
 
 现代 Harness 的做法是：**将文件系统写入抽象为一个带事务与语义拦截的反向代理**。
+
+![AST Guard 运行时语法守卫与沙盒四步闭环拦截流](./_runtime-harness-over-prompt-engineering/ast-guard-interception-flow.svg)
 
 ```typescript
 // harness/ast-guard.ts

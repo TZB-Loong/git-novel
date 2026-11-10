@@ -28,18 +28,20 @@ draft: false
 ---
 ```
 
-## 3. 配图与资源规范
+## 3. 配图与资源规范（图文并茂底线）
 - **封面图**：
   - 存放于 `src/assets/notes/<slug>/cover.png`（支持 png/jpg/webp/svg）。
   - Frontmatter 字段填 `notes/<slug>/cover.png`。
-- **正文插图**：
+- **正文插图（必须图文并茂）**：
+  - 文章绝不能只有一张单薄的总览图，必须随章节推进穿插多张直观插图（系统架构图、AST语法拦截流、时序状态机、Token/算力对比图、实测曲线等）。
   - 存放于 `src/content/notes/_<slug>/`（下划线开头的子目录）。
-  - Markdown 中相对引用：`![说明文字](./_<slug>/image-01.png)`。
+  - Markdown 中相对引用：`![说明文字](./_<slug>/<name>.svg)`。
+  - SVG 图表要求采用现代工程美学配色（深色/浅色高对比适配、圆角容器、优雅阴影与字体层次）。
 
 ## 4. 博客写作风格与排版
 - **开篇导言**：使用引用块（`> ...`）提炼全文核心要点与背景。
 - **结构化编排**：合理使用二级和三级标题（`## 一、...`、`### 1.1 ...`），逻辑层层递进。
-- **视觉化与对比**：善用 Markdown 表格、Mermaid 架构流程图与数据对比。
+- **视觉化与图文结合**：文字、代码、数据表与直观矢量插图（SVG/流程图）紧密呼应，图文并茂拆解硬核技术机理。
 - **代码与公式**：代码块标明语言；数学公式使用标准 LaTeX 语法。
 - **总结反思**：文末提供实战建议、技术权衡或演进思考。
 
@@ -48,5 +50,5 @@ draft: false
 1. **单测检查**：`npm --prefix /Volumes/ssd/git-novel test`
 2. **构建检查**：`npm --prefix /Volumes/ssd/git-novel run build`
 3. **版本管理**：
-   - 提交信息规范（如 `content: add <title>`）。
-   - 注意：向远程 GitHub push 之前先询问 loong 确认。
+   - 提交信息规范（如 `content: add <title>` 或 `style: enhance illustrations`）。
+   - 注意：对外推送（`git push`）、删除重要文件或花钱操作，必须经 loong 拍板。

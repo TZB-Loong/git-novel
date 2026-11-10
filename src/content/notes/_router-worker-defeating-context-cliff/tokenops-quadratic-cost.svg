@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="420" viewBox="0 0 900 420">
+  <defs>
+    <style>
+      .bg { fill: #030712; rx: 12; }
+      .axis { stroke: #334155; stroke-width: 1.5; }
+      .grid { stroke: #1e293b; stroke-width: 1; stroke-dasharray: 4,4; }
+      .text-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: bold; font-size: 15px; fill: #f8fafc; }
+      .text-sub { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 12px; fill: #94a3b8; }
+      .text-label { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 11px; fill: #64748b; }
+      .text-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 11px; }
+      .curve-single { fill: none; stroke: #f43f5e; stroke-width: 3; }
+      .curve-router { fill: none; stroke: #10b981; stroke-width: 3; }
+    </style>
+    <linearGradient id="glow-rose-token" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f43f5e" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#f43f5e" stop-opacity="0.0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="900" height="420" class="bg"/>
+
+  <!-- Title & Header -->
+  <text x="40" y="42" class="text-title">图 2-1：TokenOps 成本模型对比：单会话 $O(N^2)$ 累积雪崩 vs Router-Worker 线性可控</text>
+  <text x="40" y="65" class="text-sub">单会话盲目追加历史引发二次方计费陷阱；分治架构将单次 Worker 限制在干净的小上下文区间</text>
+
+  <!-- Coordinate Grid -->
+  <g transform="translate(70, 95)">
+    <!-- Grid Lines -->
+    <line x1="0" y1="40" x2="520" y2="40" class="grid"/>
+    <line x1="0" y1="100" x2="520" y2="100" class="grid"/>
+    <line x1="0" y1="160" x2="520" y2="160" class="grid"/>
+    <line x1="0" y1="220" x2="520" y2="220" class="grid"/>
+
+    <line x1="130" y1="0" x2="130" y2="240" class="grid"/>
+    <line x1="260" y1="0" x2="260" y2="240" class="grid"/>
+    <line x1="390" y1="0" x2="390" y2="240" class="grid"/>
+    <line x1="520" y1="0" x2="520" y2="240" class="grid"/>
+
+    <!-- Axes -->
+    <line x1="0" y1="240" x2="540" y2="240" class="axis"/>
+    <line x1="0" y1="0" x2="0" y2="240" class="axis"/>
+
+    <!-- Y labels (Cost) -->
+    <text x="-15" y="10" text-anchor="end" class="text-label">$150</text>
+    <text x="-15" y="70" text-anchor="end" class="text-label">$100</text>
+    <text x="-15" y="130" text-anchor="end" class="text-label">$50</text>
+    <text x="-15" y="190" text-anchor="end" class="text-label">$15</text>
+    <text x="-15" y="245" text-anchor="end" class="text-label">$0</text>
+
+    <!-- X labels (Turns) -->
+    <text x="0" y="260" text-anchor="middle" class="text-label">1 轮</text>
+    <text x="130" y="260" text-anchor="middle" class="text-label">10 轮</text>
+    <text x="260" y="260" text-anchor="middle" class="text-label">25 轮</text>
+    <text x="390" y="260" text-anchor="middle" class="text-label">40 轮</text>
+    <text x="520" y="260" text-anchor="middle" class="text-label">50 轮</text>
+    <text x="260" y="285" text-anchor="middle" class="text-label" fill="#94a3b8">工程协作交互轮数 (Turns)</text>
+
+    <!-- Curve 1: Single Session Quadratic (Rose) -->
+    <path d="M 0,238 Q 200,220 350,130 T 520,18" class="curve-single"/>
+    <path d="M 0,238 Q 200,220 350,130 T 520,18 L 520,240 L 0,240 Z" fill="url(#glow-rose-token)"/>
+
+    <!-- Curve 2: Router-Worker Linear (Emerald) -->
+    <line x1="0" y1="238" x2="520" y2="185" class="curve-router"/>
+
+    <!-- Callouts -->
+    <circle cx="520" cy="18" r="5" fill="#f43f5e"/>
+    <text x="500" y="10" text-anchor="end" class="text-mono" fill="#f43f5e" font-weight="bold">单任务耗费 $142.50 (O(N²))</text>
+
+    <circle cx="520" cy="185" r="5" fill="#10b981"/>
+    <text x="500" y="175" text-anchor="end" class="text-mono" fill="#10b981" font-weight="bold">Router-Worker 仅需 $16.80 (O(N))</text>
+  </g>
+
+  <!-- Side Summary Card -->
+  <g transform="translate(630, 95)">
+    <rect width="230" height="255" rx="8" fill="#0f172a" stroke="#1e293b"/>
+    <text x="18" y="30" class="text-title" font-size="13px" fill="#10b981">88.2% 成本压降来源</text>
+
+    <text x="18" y="60" class="text-sub" font-size="11.5px">
+      <tspan x="18" dy="0" fill="#f43f5e">• 单会话恶性循环：</tspan>
+      <tspan x="26" dy="18" fill="#cbd5e1">第 30 轮交互时，前 29 轮</tspan>
+      <tspan x="26" dy="16" fill="#cbd5e1">全部作为 Input Token</tspan>
+      <tspan x="26" dy="16" fill="#cbd5e1">被反复计费上百次</tspan>
+      
+      <tspan x="18" dy="24" fill="#10b981">• Router-Worker 破局：</tspan>
+      <tspan x="26" dy="18" fill="#cbd5e1">主调度维持极简 DAG</tspan>
+      <tspan x="26" dy="16" fill="#cbd5e1">派生每个 Worker 上下文</tspan>
+      <tspan x="26" dy="16" fill="#cbd5e1">均在 4k~8k 干净重置</tspan>
+      <tspan x="18" dy="22" fill="#38bdf8">精准交付，彻底阻断注意力衰减</tspan>
+    </text>
+  </g>
+</svg>

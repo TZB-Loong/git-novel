@@ -48,6 +48,8 @@ $$p_i = \frac{\exp(s_i)}{\sum_{j=1}^N \exp(s_j)}, \quad s_i = \frac{q \cdot k_i}
 
 $$\text{Total Cost} = \sum_{r=1}^R \left(\text{Prompt}_0 + \sum_{k=1}^{r-1} \Delta \text{Tokens}_k\right) \times C_{\text{input}} \approx O(R^2)$$
 
+![TokenOps 成本模型对比](./_router-worker-defeating-context-cliff/tokenops-quadratic-cost.svg)
+
 下表是使用单会话模式完成一个标准 20 轮跨文件 Bug 修复任务的真实账单剖析：
 
 ```
@@ -87,6 +89,8 @@ Round 20: [Prompt (10k) + 19轮对话 (190k)]                   -> 200k
 
 ### 3.1 状态机与任务图（Task DAG）实现
 
+![基于 SQLite 的 Task DAG 拓扑执行器与 Worker 隔离流转](./_router-worker-defeating-context-cliff/task-dag-scheduler.svg)
+
 ```typescript
 // orchestration/router-state-machine.ts
 import Database from 'better-sqlite3';
@@ -113,17 +117,7 @@ export class TaskRouterEngine {
 
   private initDatabase() {
     this.db.exec(`
-      CREATE TABLE IF NOT EXISTS task_dag (
-        id TEXT PRIMARY KEY,
-        title TEXT,
-        dependencies TEXT,
-        target_file TEXT,
-        contract_spec TEXT,
-        status TEXT DEFAULT 'PENDING',
-        retry_count INTEGER DEFAULT 0,
-        result_diff TEXT
-      );
-    `);
+      CREATE TABLE IF NOT EXISTS task_dag (\n        id TEXT PRIMARY KEY,\n        title TEXT,\n        dependencies TEXT,\n        target_file TEXT,\n        contract_spec TEXT,\n        status TEXT DEFAULT 'PENDING',\n        retry_count INTEGER DEFAULT 0,\n        result_diff TEXT\n      );\n    `);
   }
 
   /**

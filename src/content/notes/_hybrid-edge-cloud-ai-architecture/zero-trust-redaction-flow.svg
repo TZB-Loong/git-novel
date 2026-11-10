@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="420" viewBox="0 0 900 420">
+  <defs>
+    <style>
+      .bg { fill: #030712; rx: 12; }
+      .box { rx: 8; stroke-width: 1.5; }
+      .text-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: bold; font-size: 14px; fill: #f8fafc; }
+      .text-sub { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 11.5px; fill: #94a3b8; }
+      .text-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 11px; }
+      .arrow { stroke: #64748b; stroke-width: 2; fill: none; marker-end: url(#arrow-gray3); }
+      .arrow-green { stroke: #10b981; stroke-width: 2; fill: none; marker-end: url(#arrow-green3); }
+      .arrow-blue { stroke: #38bdf8; stroke-width: 2; fill: none; marker-end: url(#arrow-sky3); }
+    </style>
+    <marker id="arrow-gray3" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#64748b"/>
+    </marker>
+    <marker id="arrow-green3" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#10b981"/>
+    </marker>
+    <marker id="arrow-sky3" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#38bdf8"/>
+    </marker>
+  </defs>
+
+  <rect width="900" height="420" class="bg"/>
+
+  <text x="40" y="38" class="text-title" font-size="15px">图 3-2：端侧零信任双向脱敏与安全内存映射时序流</text>
+  <text x="40" y="60" class="text-sub">敏感凭证与客户 PII 绝不离开内网：出站正则伪匿名化，入站透明无损逆向还原</text>
+
+  <!-- Node 1: Local IDE / Codebase -->
+  <g transform="translate(40, 85)">
+    <rect width="210" height="295" fill="#1e1b4b" stroke="#6366f1" class="box"/>
+    <text x="18" y="32" class="text-title" fill="#a5b4fc">1. 本地代码资产 (Local)</text>
+    <text x="18" y="55" class="text-sub">含核心密钥、业务内网 IP</text>
+    
+    <rect x="15" y="70" width="180" height="95" rx="4" fill="#312e81"/>
+    <text x="24" y="92" class="text-mono" fill="#fecdd3">sk_live_9981248...</text>
+    <text x="24" y="112" class="text-mono" fill="#fecdd3">postgres://admin:pw@10.0.1.5</text>
+    <text x="24" y="132" class="text-mono" fill="#c7d2fe">func handlePayment() { ... }</text>
+    <text x="24" y="152" class="text-mono" fill="#94a3b8">// 真实生产代码</text>
+
+    <rect x="15" y="180" width="180" height="85" rx="4" fill="#0f172a" stroke="#4338ca"/>
+    <text x="24" y="205" class="text-mono" fill="#38bdf8">本地内存映射表 (Map):</text>
+    <text x="24" y="225" class="text-mono" fill="#10b981">TOKEN_A =&gt; sk_live_998...</text>
+    <text x="24" y="245" class="text-mono" fill="#10b981">TOKEN_B =&gt; 10.0.1.5</text>
+  </g>
+
+  <!-- Outbound Arrow -->
+  <path d="M 250,150 L 330,150" class="arrow-green"/>
+  <text x="290" y="140" text-anchor="middle" class="text-mono" fill="#10b981" font-size="10px">出站脱敏</text>
+
+  <!-- Node 2: Redaction Gateway -->
+  <g transform="translate(340, 85)">
+    <rect width="250" height="295" fill="#064e3b" stroke="#10b981" class="box"/>
+    <text x="20" y="32" class="text-title" fill="#6ee7b7">2. 端侧脱敏网关 (Gateway)</text>
+    <text x="20" y="55" class="text-sub">高性能正则与熵值安全扫描</text>
+    
+    <rect x="16" y="72" width="218" height="65" rx="4" fill="#022c22"/>
+    <text x="24" y="95" class="text-mono" fill="#34d399">安全审计与混淆：</text>
+    <text x="24" y="115" class="text-mono" fill="#a7f3d0">替换为合规虚拟占位符</text>
+
+    <rect x="16" y="150" width="218" height="115" rx="4" fill="#022c22"/>
+    <text x="24" y="175" class="text-mono" fill="#38bdf8">混淆后的安全 Payload:</text>
+    <text x="24" y="195" class="text-mono" fill="#cbd5e1">REDACTED_API_KEY_01</text>
+    <text x="24" y="215" class="text-mono" fill="#cbd5e1">HOST_INTERNAL_DB_01</text>
+    <text x="24" y="235" class="text-mono" fill="#10b981">✓ 零隐私泄露风险</text>
+  </g>
+
+  <!-- Cloud Arrow -->
+  <path d="M 590,150 L 660,150" class="arrow-blue"/>
+  <text x="625" y="140" text-anchor="middle" class="text-mono" fill="#38bdf8" font-size="10px">HTTPS</text>
+
+  <!-- Inbound Arrow -->
+  <path d="M 660,250 L 590,250" class="arrow"/>
+  <text x="625" y="240" text-anchor="middle" class="text-mono" fill="#94a3b8" font-size="10px">云端响应</text>
+
+  <!-- Restore Arrow -->
+  <path d="M 340,250 L 250,250" class="arrow-green"/>
+  <text x="295" y="240" text-anchor="middle" class="text-mono" fill="#10b981" font-size="10px">入站逆向还原</text>
+
+  <!-- Node 3: Cloud LLM -->
+  <g transform="translate(670, 85)">
+    <rect width="190" height="295" fill="#1e293b" stroke="#38bdf8" class="box"/>
+    <text x="18" y="32" class="text-title" fill="#7dd3fc">3. 云端大模型 (Cloud)</text>
+    <text x="18" y="55" class="text-sub">顶配模型只接触骨架</text>
+
+    <rect x="15" y="75" width="160" height="90" rx="4" fill="#0f172a"/>
+    <text x="22" y="100" class="text-mono" fill="#38bdf8">Claude 3.5 Sonnet</text>
+    <text x="22" y="122" class="text-mono" fill="#cbd5e1">仅做高阶架构重构</text>
+    <text x="22" y="142" class="text-mono" fill="#94a3b8">无从得知真实密钥</text>
+
+    <rect x="15" y="180" width="160" height="85" rx="4" fill="#0f172a"/>
+    <text x="22" y="205" class="text-mono" fill="#34d399">安全生成 Diff:</text>
+    <text x="22" y="225" class="text-mono" fill="#94a3b8">保留占位符原样返回</text>
+  </g>
+</svg>
