@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#020617"/>
+      <stop offset="50%" stop-color="#0b1120"/>
+      <stop offset="100%" stop-color="#030712"/>
+    </linearGradient>
+    <linearGradient id="title-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="70%" stop-color="#e2e8f0"/>
+      <stop offset="100%" stop-color="#94a3b8"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="12" flood-color="#000" flood-opacity="0.6"/>
+    </filter>
+    <style>
+      .title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 900; font-size: 38px; fill: url(#title-grad); }
+      .subtitle { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 500; font-size: 18px; fill: #94a3b8; }
+      .badge-text { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 11px; font-weight: 700; }
+      .tag { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 12px; fill: #64748b; }
+      .card-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 700; font-size: 15px; }
+      .card-sub { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 12px; fill: #94a3b8; }
+      .code-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 11px; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Subtle Grid Accent -->
+  <g opacity="0.08" stroke="#38bdf8" stroke-width="1">
+    <line x1="100" y1="0" x2="100" y2="630"/>
+    <line x1="300" y1="0" x2="300" y2="630"/>
+    <line x1="500" y1="0" x2="500" y2="630"/>
+    <line x1="700" y1="0" x2="700" y2="630"/>
+    <line x1="900" y1="0" x2="900" y2="630"/>
+    <line x1="1100" y1="0" x2="1100" y2="630"/>
+    <line x1="0" y1="120" x2="1200" y2="120"/>
+    <line x1="0" y1="260" x2="1200" y2="260"/>
+    <line x1="0" y1="400" x2="1200" y2="400"/>
+    <line x1="0" y1="540" x2="1200" y2="540"/>
+  </g>
+
+  <!-- Top Badges -->
+  <g transform="translate(80, 55)">
+    <rect width="135" height="26" rx="13" fill="#1e1b4b" stroke="#6366f1" stroke-width="1"/>
+    <text x="67" y="17" text-anchor="middle" class="badge-text" fill="#a5b4fc">ACTION SPACE</text>
+
+    <rect x="145" y="0" width="135" height="26" rx="13" fill="#0f291e" stroke="#10b981" stroke-width="1"/>
+    <text x="212" y="17" text-anchor="middle" class="badge-text" fill="#6ee7b7">CODE-AS-ACTION</text>
+
+    <rect x="290" y="0" width="115" height="26" rx="13" fill="#2d1515" stroke="#ef4444" stroke-width="1"/>
+    <text x="347" y="17" text-anchor="middle" class="badge-text" fill="#fca5a5">ANTI-PATTERN</text>
+  </g>
+
+  <!-- Title & Subtitle -->
+  <g transform="translate(80, 125)">
+    <text x="0" y="0" class="title">告别 50 个 JSON Schema</text>
+    <text x="0" y="42" class="title" fill="#38bdf8" style="fill: #38bdf8;">为什么“以代码为动作空间”正在终结传统 Tool Calling？</text>
+    <text x="0" y="85" class="subtitle">从参数幻觉、串行网络往返到 REPL 沙盒图灵完备执行的智能体范式转移</text>
+  </g>
+
+  <!-- Visual Blueprint Cards -->
+  <g transform="translate(80, 260)">
+    <!-- Left Card: JSON Tool Calling Anti-pattern -->
+    <g transform="translate(0, 0)" filter="url(#shadow)">
+      <rect width="490" height="280" rx="12" fill="#0f172a" stroke="#ef4444" stroke-width="1.2" opacity="0.95"/>
+      <rect x="18" y="18" width="160" height="26" rx="6" fill="#450a0a"/>
+      <text x="98" y="35" text-anchor="middle" class="badge-text" fill="#f87171">TRADITIONAL JSON CALLING</text>
+
+      <text x="18" y="74" class="card-title" fill="#fca5a5">臃肿工具集与串行往返灾难</text>
+      <text x="18" y="96" class="card-sub">50+ JSON Schemas 挤占注意力，参数类型深层幻觉</text>
+
+      <g transform="translate(18, 115)">
+        <rect width="454" height="140" rx="8" fill="#030712" stroke="#1e293b"/>
+        <text x="14" y="24" class="code-mono" fill="#ef4444">❌ 伪多步过滤：5 次模型往返 (Round Trips)</text>
+        <text x="14" y="46" class="code-mono" fill="#94a3b8">Turn 1: call get_users(dept="eng") -> 2,000 users</text>
+        <text x="14" y="68" class="code-mono" fill="#94a3b8">Turn 2: call filter_salary(users, min=150k) -> JSON Fail</text>
+        <text x="14" y="90" class="code-mono" fill="#f87171">⚠ 致命问题: 上万 Token 序列化废弃，无错误恢复</text>
+        <text x="14" y="116" class="code-mono" fill="#64748b">Latency: 14.8s | Token Tax: 42,000 | 成功率: 58%</text>
+      </g>
+    </g>
+
+    <!-- Right Card: Code-as-Action Golden Pattern -->
+    <g transform="translate(550, 0)" filter="url(#shadow)">
+      <rect width="490" height="280" rx="12" fill="#0f172a" stroke="#10b981" stroke-width="1.2" opacity="0.95"/>
+      <rect x="18" y="18" width="160" height="26" rx="6" fill="#064e3b"/>
+      <text x="98" y="35" text-anchor="middle" class="badge-text" fill="#34d399">CODE-AS-ACTION / REPL</text>
+
+      <text x="18" y="74" class="card-title" fill="#6ee7b7">原生代码单步内聚闭环</text>
+      <text x="18" y="96" class="card-sub">给模型一个 Python REPL 沙盒，循环/过滤/异常处理本地完成</text>
+
+      <g transform="translate(18, 115)">
+        <rect width="454" height="140" rx="8" fill="#030712" stroke="#1e293b"/>
+        <text x="14" y="24" class="code-mono" fill="#10b981">✔ 原生代码：单步秒级执行完成闭环</text>
+        <text x="14" y="46" class="code-mono" fill="#38bdf8">import pandas as pd; df = db.load("users")</text>
+        <text x="14" y="68" class="code-mono" fill="#38bdf8">res = df[(df.dept=='eng') &amp; (df.salary>=150e3)].describe()</text>
+        <text x="14" y="90" class="code-mono" fill="#34d399">✔ 胜出核心: 数据不出沙盒，只交回 3 行纯汇总摘要</text>
+        <text x="14" y="116" class="code-mono" fill="#6ee7b7">Latency: 1.6s (9x 快) | Token Tax: 850 (98% 降幅)</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Footer Tags -->
+  <g transform="translate(80, 585)">
+    <text x="0" y="0" class="tag">#AgentArchitecture</text>
+    <text x="175" y="0" class="tag">#CodeAsAction</text>
+    <text x="325" y="0" class="tag">#ToolCalling</text>
+    <text x="445" y="0" class="tag">#PythonREPL</text>
+    <text x="565" y="0" class="tag">#TokenOptimization</text>
+    <text x="1040" y="0" class="tag" fill="#38bdf8" style="fill:#38bdf8;">git-novel</text>
+  </g>
+</svg>

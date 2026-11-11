@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="560" viewBox="0 0 960 560">
+  <defs>
+    <style>
+      .bg { fill: #040813; rx: 14; }
+      .text-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 800; font-size: 16px; fill: #f8fafc; }
+      .text-sub { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 12px; fill: #94a3b8; }
+      .text-h2 { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 700; font-size: 13px; fill: #e2e8f0; }
+      .text-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 11px; fill: #cbd5e1; }
+      .text-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 11px; }
+      .card-bg { fill: #0b1329; stroke: #1e293b; stroke-width: 1; rx: 10; }
+    </style>
+  </defs>
+
+  <rect width="960" height="560" class="bg"/>
+
+  <!-- Header -->
+  <text x="35" y="36" class="text-title">图 1-1：传统 JSON Tool Calling 串行往返 vs Code-as-Action 单步内聚执行时序</text>
+  <text x="35" y="56" class="text-sub">为什么多步数据处理中，JSON 抽象会导致严重的“Token 通胀”与“网络握手税”？解剖两者的状态流转机制</text>
+
+  <!-- Container -->
+  <g transform="translate(35, 75)">
+    <rect width="890" height="450" rx="10" class="card-bg"/>
+
+    <!-- Left Box: JSON Tool Calling -->
+    <g transform="translate(25, 25)">
+      <rect width="405" height="400" rx="8" fill="#070d1e" stroke="#ef4444" stroke-width="1.2"/>
+      <rect x="14" y="14" width="377" height="28" rx="4" fill="#450a0a" stroke="#ef4444" stroke-width="0.8"/>
+      <text x="24" y="33" class="text-mono" font-weight="700" fill="#fca5a5">模式 A：传统 JSON Function Calling (串行往返)</text>
+
+      <!-- Steps Flow -->
+      <g transform="translate(14, 55)">
+        <!-- Step 1 -->
+        <rect width="377" height="65" rx="4" fill="#0b172d" stroke="#1e293b"/>
+        <text x="12" y="18" class="text-mono" font-weight="700" fill="#f87171">1. LLM 输出 Function Call JSON</text>
+        <text x="12" y="36" class="text-mono" fill="#94a3b8">{"name": "fetch_users", "args": {"dept": "AI"}}</text>
+        <text x="12" y="52" class="text-body" fill="#64748b">→ 消耗 1 次网络握手，等待调度器执行</text>
+
+        <!-- Arrow -->
+        <text x="180" y="78" fill="#ef4444" font-size="12" text-anchor="middle">↓</text>
+
+        <!-- Step 2 -->
+        <g transform="translate(0, 85)">
+          <rect width="377" height="65" rx="4" fill="#1f1315" stroke="#7f1d1d"/>
+          <text x="12" y="18" class="text-mono" font-weight="700" fill="#fca5a5">2. 宿主返回 5,000 条原始 JSON 数据</text>
+          <text x="12" y="36" class="text-mono" fill="#ef4444">Context 激增 28,000 Tokens 脏数据进入会话</text>
+          <text x="12" y="52" class="text-body" fill="#f87171">Attention 被海量无用字段淹没，出现注意力涣散</text>
+        </g>
+
+        <!-- Arrow -->
+        <text x="180" y="163" fill="#ef4444" font-size="12" text-anchor="middle">↓</text>
+
+        <!-- Step 3 -->
+        <g transform="translate(0, 170)">
+          <rect width="377" height="65" rx="4" fill="#0b172d" stroke="#1e293b"/>
+          <text x="12" y="18" class="text-mono" font-weight="700" fill="#f87171">3. LLM 再次输出聚合过滤 JSON</text>
+          <text x="12" y="36" class="text-mono" fill="#94a3b8">{"name": "calc_p95_salary", "args": {...}}</text>
+          <text x="12" y="52" class="text-body" fill="#64748b">→ 第 2 次甚至第 3 次往返，极易产生参数幻觉</text>
+        </g>
+
+        <!-- Summary Metrics -->
+        <g transform="translate(0, 255)">
+          <rect width="377" height="75" rx="4" fill="#2a0808" stroke="#ef4444" stroke-width="0.8"/>
+          <text x="12" y="20" class="text-mono" font-weight="700" fill="#fca5a5">传统链路代价统计：</text>
+          <text x="12" y="38" class="text-body" fill="#fecaca">• 网络往返 (RTT): 3 ~ 5 次串行阻塞 (耗时 12.8s)</text>
+          <text x="12" y="54" class="text-body" fill="#fecaca">• 上下文税: 35,000+ Tokens 被无用序列化吞噬</text>
+          <text x="12" y="70" class="text-body" fill="#fecaca">• 容错性: 单步报错即中断，无法自我捕获调试</text>
+        </g>
+      </g>
+    </g>
+
+    <!-- Right Box: Code as Action -->
+    <g transform="translate(460, 25)">
+      <rect width="405" height="400" rx="8" fill="#070d1e" stroke="#10b981" stroke-width="1.2"/>
+      <rect x="14" y="14" width="377" height="28" rx="4" fill="#064e3b" stroke="#10b981" stroke-width="0.8"/>
+      <text x="24" y="33" class="text-mono" font-weight="700" fill="#6ee7b7">模式 B：Code-as-Action / REPL (单步内聚闭环)</text>
+
+      <!-- Steps Flow -->
+      <g transform="translate(14, 55)">
+        <!-- Step 1 -->
+        <rect width="377" height="150" rx="4" fill="#061c14" stroke="#047857"/>
+        <text x="12" y="18" class="text-mono" font-weight="700" fill="#34d399">1. LLM 单步生成完整图灵完备代码</text>
+        <g transform="translate(12, 28)">
+          <rect width="353" height="110" rx="3" fill="#020d09"/>
+          <text x="8" y="16" class="text-mono" fill="#38bdf8">import pandas as pd</text>
+          <text x="8" y="32" class="text-mono" fill="#e2e8f0">df = db.query("SELECT * FROM users WHERE dept='AI'")</text>
+          <text x="8" y="48" class="text-mono" fill="#a7f3d0">p95 = df['salary'].quantile(0.95)</text>
+          <text x="8" y="64" class="text-mono" fill="#6ee7b7">count = len(df)</text>
+          <text x="8" y="80" class="text-mono" fill="#fbbf24">print(f"Total: {count}, P95 Salary: {p95:.2f}")</text>
+          <text x="8" y="98" class="text-mono" fill="#64748b"># 原生 try-except 容错与本地流式清洗</text>
+        </g>
+
+        <!-- Arrow -->
+        <text x="180" y="192" fill="#10b981" font-size="12" text-anchor="middle">↓</text>
+
+        <!-- Step 2 -->
+        <g transform="translate(0, 200)">
+          <rect width="377" height="42" rx="4" fill="#0b172d" stroke="#1e293b"/>
+          <text x="12" y="18" class="text-mono" font-weight="700" fill="#38bdf8">2. 沙盒执行：数据在内存处理，绝不回传上下文</text>
+          <text x="12" y="32" class="text-mono" fill="#94a3b8">5,000 条数据停留在本地沙盒，输出捕获仅 32 字节</text>
+        </g>
+
+        <!-- Summary Metrics -->
+        <g transform="translate(0, 255)">
+          <rect width="377" height="75" rx="4" fill="#063523" stroke="#10b981" stroke-width="0.8"/>
+          <text x="12" y="20" class="text-mono" font-weight="700" fill="#6ee7b7">代码动作空间优势统计：</text>
+          <text x="12" y="38" class="text-body" fill="#a7f3d0">• 网络往返 (RTT): 1 次单步完成 (耗时仅 1.4s，提速 9x)</text>
+          <text x="12" y="54" class="text-body" fill="#a7f3d0">• 上下文税: 仅消耗 650 Tokens (相比 JSON 节约 98%)</text>
+          <text x="12" y="70" class="text-body" fill="#a7f3d0">• 确定性: 代码编译器直接拦截类型错误，支持自修复</text>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
