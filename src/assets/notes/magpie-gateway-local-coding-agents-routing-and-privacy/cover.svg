@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#020617"/>
+      <stop offset="50%" stop-color="#0b1120"/>
+      <stop offset="100%" stop-color="#030712"/>
+    </linearGradient>
+    <linearGradient id="title-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="70%" stop-color="#e2e8f0"/>
+      <stop offset="100%" stop-color="#94a3b8"/>
+    </linearGradient>
+    <linearGradient id="cyan-glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+    <linearGradient id="emerald-glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="amber-glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="12" flood-color="#000" flood-opacity="0.6"/>
+    </filter>
+    <style>
+      .title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 900; font-size: 36px; fill: url(#title-grad); }
+      .subtitle { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 500; font-size: 17px; fill: #94a3b8; }
+      .badge-text { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 11px; font-weight: 700; }
+      .tag { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 12px; fill: #64748b; }
+      .card-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 700; font-size: 15px; }
+      .card-sub { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 12px; fill: #94a3b8; }
+      .code-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 11px; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Subtle Tech Grid -->
+  <g stroke="#1e293b" stroke-width="1" opacity="0.3">
+    <path d="M0 70 H1200 M0 140 H1200 M0 210 H1200 M0 280 H1200 M0 350 H1200 M0 420 H1200 M0 490 H1200 M0 560 H1200"/>
+    <path d="M100 0 V630 M200 0 V630 M300 0 V630 M400 0 V630 M500 0 V630 M600 0 V630 M700 0 V630 M800 0 V630 M900 0 V630 M1000 0 V630 M1100 0 V630"/>
+  </g>
+
+  <!-- Header Category Badge -->
+  <rect x="80" y="45" width="230" height="28" rx="6" fill="#083344" stroke="#06b6d4" stroke-width="1.2"/>
+  <text x="92" y="63" fill="#22d3ee" class="badge-text">GATEWAY ARCHITECTURE · 2026</text>
+
+  <!-- Main Title & Subtitle -->
+  <text x="80" y="112" class="title">本地 Coding Agent 的透明代理：Magpie Gateway 实战</text>
+  <text x="80" y="146" class="subtitle">统一意图路由 · AST 语法级隐私脱敏 · 70% Token 降本与弹性熔断降级</text>
+
+  <!-- Architecture Flow Visual Layout -->
+  
+  <!-- Step 1: Client Coding Agent -->
+  <g transform="translate(80, 185)" filter="url(#shadow)">
+    <rect width="280" height="360" rx="14" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+    <rect x="0" y="0" width="280" height="42" rx="14" fill="#1e293b"/>
+    <circle cx="20" cy="21" r="5" fill="#ef4444"/>
+    <circle cx="36" cy="21" r="5" fill="#f59e0b"/>
+    <circle cx="52" cy="21" r="5" fill="#10b981"/>
+    <text x="75" y="26" fill="#f8fafc" class="card-title">1. Local Coding Agent</text>
+
+    <!-- Content -->
+    <rect x="18" y="58" width="244" height="64" rx="8" fill="#020617" stroke="#1e293b"/>
+    <text x="30" y="80" fill="#94a3b8" class="code-mono">Client: Claude Code / Aider</text>
+    <text x="30" y="102" fill="#38bdf8" class="code-mono">BASE_URL: http://127.0.0.1:8080</text>
+
+    <rect x="18" y="134" width="244" height="96" rx="8" fill="#1e1e2e" stroke="#313244"/>
+    <text x="30" y="154" fill="#a6adc8" class="code-mono">// Outbound Payload</text>
+    <text x="30" y="172" fill="#f38ba8" class="code-mono">- Source Code (.ts/.py)</text>
+    <text x="30" y="190" fill="#f9e2af" class="code-mono">- Secret Keys (OPENAI_KEY)</text>
+    <text x="30" y="208" fill="#89dceb" class="code-mono">- High-volume AST Repo Maps</text>
+
+    <rect x="18" y="244" width="244" height="84" rx="8" fill="#0f172a" stroke="#334155"/>
+    <text x="30" y="268" fill="#cbd5e1" class="card-title" font-size="13">痛点与物理墙</text>
+    <text x="30" y="290" fill="#94a3b8" class="card-sub">• 源码机密/Token 直接上云</text>
+    <text x="30" y="308" fill="#94a3b8" class="card-sub">• 微小修改触发全量昂贵计费</text>
+  </g>
+
+  <!-- Arrow 1 to 2 -->
+  <g stroke="#38bdf8" stroke-width="2.5" fill="none">
+    <path d="M 365 365 L 420 365"/>
+    <polygon points="420,360 430,365 420,370" fill="#38bdf8"/>
+  </g>
+  <text x="370" y="352" fill="#38bdf8" class="code-mono" font-size="10">HTTP / SSE</text>
+
+  <!-- Step 2: Magpie Gateway Daemon (Centerpiece) -->
+  <g transform="translate(435, 185)" filter="url(#shadow)">
+    <rect width="360" height="360" rx="14" fill="#090d16" stroke="#0284c7" stroke-width="2"/>
+    <rect x="0" y="0" width="360" height="42" rx="14" fill="#0369a1"/>
+    <text x="20" y="26" fill="#ffffff" class="card-title">2. Magpie Gateway Daemon (127.0.0.1)</text>
+
+    <!-- Pillar 1: AST Privacy Redactor -->
+    <rect x="18" y="58" width="324" height="82" rx="8" fill="#0f172a" stroke="#1e293b"/>
+    <circle cx="34" cy="74" r="6" fill="#10b981"/>
+    <text x="48" y="78" fill="#34d399" class="card-title" font-size="13">AST-Aware 隐私与机密脱敏</text>
+    <text x="48" y="98" fill="#94a3b8" class="card-sub">Tree-sitter 动态遍历，正则+熵值双重识别</text>
+    <text x="48" y="118" fill="#6ee7b7" class="code-mono">sk-proj-*** -> &lt;SECRET_KEY_#1&gt;</text>
+
+    <!-- Pillar 2: Intent Router -->
+    <rect x="18" y="152" width="324" height="96" rx="8" fill="#0f172a" stroke="#1e293b"/>
+    <circle cx="34" cy="168" r="6" fill="#38bdf8"/>
+    <text x="48" y="172" fill="#38bdf8" class="card-title" font-size="13">语义意图感知分流（&lt;15ms）</text>
+    <text x="48" y="192" fill="#94a3b8" class="card-sub">• 语法补全 / Git Diff / 简单单测 $\rightarrow$ 免费端侧</text>
+    <text x="48" y="210" fill="#94a3b8" class="card-sub">• 跨文件架构重构 / 模糊推理 $\rightarrow$ 商业云端</text>
+    <text x="48" y="230" fill="#cbd5e1" class="code-mono">Local Semantic Cache: 38% Hit Rate</text>
+
+    <!-- Pillar 3: Resilient Fallback -->
+    <rect x="18" y="260" width="324" height="70" rx="8" fill="#0f172a" stroke="#1e293b"/>
+    <circle cx="34" cy="276" r="6" fill="#f59e0b"/>
+    <text x="48" y="280" fill="#fbbf24" class="card-title" font-size="13">熔断限流与双向回填引擎</text>
+    <text x="48" y="300" fill="#94a3b8" class="card-sub">429 限流毫秒级无感降级；响应 Patch 还原机密</text>
+  </g>
+
+  <!-- Arrow 2 to 3 -->
+  <g stroke="#10b981" stroke-width="2.5" fill="none">
+    <path d="M 800 365 L 850 365"/>
+    <polygon points="850,360 860,365 850,370" fill="#10b981"/>
+  </g>
+  <text x="804" y="352" fill="#10b981" class="code-mono" font-size="10">Sanitized</text>
+
+  <!-- Step 3: Heterogeneous Backends -->
+  <g transform="translate(865, 185)" filter="url(#shadow)">
+    <rect width="255" height="360" rx="14" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+    <rect x="0" y="0" width="255" height="42" rx="14" fill="#1e293b"/>
+    <text x="18" y="26" fill="#f8fafc" class="card-title">3. Tiered Model Backends</text>
+
+    <!-- Tier 1: Local / Edge -->
+    <rect x="16" y="58" width="223" height="84" rx="8" fill="#020617" stroke="#10b981" stroke-width="1.2"/>
+    <text x="28" y="80" fill="#34d399" class="card-title" font-size="13">Tier 1: 本地私有算力</text>
+    <text x="28" y="98" fill="#94a3b8" class="card-sub">Ollama / vLLM (Qwen2.5-Coder)</text>
+    <text x="28" y="118" fill="#10b981" class="code-mono">成本: $0 | 零泄密 | 毫秒级</text>
+
+    <!-- Tier 2: Low-cost Cloud -->
+    <rect x="16" y="152" width="223" height="84" rx="8" fill="#020617" stroke="#0ea5e9" stroke-width="1.2"/>
+    <text x="28" y="174" fill="#38bdf8" class="card-title" font-size="13">Tier 2: 极低成本公有云</text>
+    <text x="28" y="192" fill="#94a3b8" class="card-sub">DeepSeek-V3 / Qwen-Flash</text>
+    <text x="28" y="212" fill="#38bdf8" class="code-mono">成本: $0.14/MTok | 高吞吐</text>
+
+    <!-- Tier 3: Frontier Models -->
+    <rect x="16" y="246" width="223" height="84" rx="8" fill="#020617" stroke="#f59e0b" stroke-width="1.2"/>
+    <text x="28" y="268" fill="#fbbf24" class="card-title" font-size="13">Tier 3: 顶尖推理旗舰</text>
+    <text x="28" y="286" fill="#94a3b8" class="card-sub">Claude 3.5 Sonnet / o1</text>
+    <text x="28" y="306" fill="#f59e0b" class="code-mono">仅处理 15% 顶层疑难架构</text>
+  </g>
+
+  <!-- Bottom Stats Banner -->
+  <g transform="translate(80, 565)">
+    <rect width="1040" height="40" rx="8" fill="#0b1329" stroke="#1e293b"/>
+    <text x="30" y="25" fill="#94a3b8" class="code-mono">实测降本表现: 综合 Token 成本降低 73.4% · 隐私泄露拦截率 100% · 429 中断率清零</text>
+    <text x="940" y="25" fill="#38bdf8" class="code-mono">git-novel 架构评测</text>
+  </g>
+</svg>

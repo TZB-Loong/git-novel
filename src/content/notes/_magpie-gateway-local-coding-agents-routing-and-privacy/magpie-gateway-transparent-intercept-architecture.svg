@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="600" viewBox="0 0 960 600">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#020617"/>
+      <stop offset="100%" stop-color="#0b1120"/>
+    </linearGradient>
+    <linearGradient id="cyan-glow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <linearGradient id="emerald-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+    <style>
+      .title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 800; font-size: 22px; fill: #f8fafc; }
+      .subtitle { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 13px; fill: #94a3b8; }
+      .box-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 700; font-size: 14px; fill: #f1f5f9; }
+      .box-desc { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 11px; fill: #94a3b8; }
+      .code-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 11px; }
+      .badge-text { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 10px; font-weight: 700; }
+    </style>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="960" height="600" rx="16" fill="url(#bg)" stroke="#1e293b" stroke-width="1.5"/>
+
+  <!-- Header -->
+  <g transform="translate(40, 32)">
+    <rect x="0" y="0" width="160" height="24" rx="4" fill="#083344" stroke="#06b6d4" stroke-width="1"/>
+    <text x="10" y="16" fill="#22d3ee" class="badge-text">TRANSPARENT PROXY ARCH</text>
+    <text x="175" y="18" class="title">Magpie Gateway 全双工本地透明代理与拦截架构</text>
+    <text x="0" y="44" class="subtitle">零侵入客户端劫持 · 语法感知脱敏 · 语义意图分流与双向机密回填管道</text>
+  </g>
+
+  <!-- Section 1: Client Zone (Left) -->
+  <g transform="translate(40, 105)" filter="url(#shadow)">
+    <rect width="210" height="455" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+    <rect x="0" y="0" width="210" height="36" rx="10" fill="#1e293b"/>
+    <text x="16" y="23" fill="#f8fafc" class="box-title">终端 Coding Agent</text>
+
+    <!-- Sub-clients -->
+    <rect x="14" y="50" width="182" height="70" rx="6" fill="#020617" stroke="#1e293b"/>
+    <text x="24" y="72" fill="#38bdf8" class="code-mono" font-weight="700">Claude Code CLI</text>
+    <text x="24" y="90" fill="#64748b" class="code-mono">export ANTHROPIC_BASE_URL</text>
+    <text x="24" y="106" fill="#10b981" class="code-mono">= http://127.0.0.1:8080</text>
+
+    <rect x="14" y="130" width="182" height="70" rx="6" fill="#020617" stroke="#1e293b"/>
+    <text x="24" y="152" fill="#38bdf8" class="code-mono" font-weight="700">Aider / Cursor CLI</text>
+    <text x="24" y="170" fill="#64748b" class="code-mono">export OPENAI_BASE_URL</text>
+    <text x="24" y="186" fill="#10b981" class="code-mono">= http://127.0.0.1:8080</text>
+
+    <!-- Client Traffic Characteristics -->
+    <rect x="14" y="215" width="182" height="225" rx="6" fill="#0b1329" stroke="#1e293b"/>
+    <text x="24" y="238" fill="#cbd5e1" class="box-title" font-size="12">流量特征与行为</text>
+    <text x="24" y="260" fill="#94a3b8" class="box-desc">• 全量代码文件 Diff 上传</text>
+    <text x="24" y="280" fill="#94a3b8" class="box-desc">• 隐式包含 .env / 数据库密匙</text>
+    <text x="24" y="300" fill="#94a3b8" class="box-desc">• 高频请求（单步 2~5 次/分）</text>
+    <text x="24" y="320" fill="#94a3b8" class="box-desc">• SSE 流式响应接收与写入</text>
+    <line x1="24" y1="335" x2="180" y2="335" stroke="#334155" stroke-width="1"/>
+    <text x="24" y="358" fill="#f43f5e" class="code-mono" font-weight="700">传统直连痛点:</text>
+    <text x="24" y="378" fill="#fda4af" class="code-mono">• 敏感源码直奔公网</text>
+    <text x="24" y="398" fill="#fda4af" class="code-mono">• 语法微调浪费大额 Token</text>
+    <text x="24" y="418" fill="#fda4af" class="code-mono">• 429 报错直接中断会话</text>
+  </g>
+
+  <!-- Connectors: Client -> Magpie Gateway -->
+  <g stroke="#38bdf8" stroke-width="2" fill="none">
+    <path d="M 250 200 L 290 200"/>
+    <polygon points="290,196 298,200 290,204" fill="#38bdf8"/>
+  </g>
+  <text x="254" y="190" fill="#38bdf8" class="code-mono" font-size="9">POST /v1</text>
+
+  <!-- Section 2: Magpie Gateway Daemon (Center) -->
+  <g transform="translate(300, 105)" filter="url(#shadow)">
+    <rect width="360" height="455" rx="10" fill="#090e1a" stroke="#0284c7" stroke-width="2"/>
+    <rect x="0" y="0" width="360" height="36" rx="10" fill="#0369a1"/>
+    <text x="16" y="23" fill="#ffffff" class="box-title">Magpie Gateway 本地守护进程 (127.0.0.1:8080)</text>
+
+    <!-- Subsystem 1: Protocol Adapter -->
+    <rect x="14" y="48" width="332" height="64" rx="6" fill="#0f172a" stroke="#1e293b"/>
+    <text x="26" y="70" fill="#38bdf8" class="code-mono" font-weight="700">1. 协议标准化与请求拆包 (Protocol Adapter)</text>
+    <text x="26" y="88" fill="#94a3b8" class="box-desc">自动归一化 Anthropic Messages / OpenAI Chat 格式</text>
+    <text x="26" y="102" fill="#64748b" class="box-desc">抽取 System Prompt、AST Repo-Map、User Query 与工具声明</text>
+
+    <!-- Subsystem 2: AST Secret Redaction Engine -->
+    <rect x="14" y="120" width="332" height="96" rx="6" fill="#0f172a" stroke="#059669" stroke-width="1.2"/>
+    <text x="26" y="142" fill="#34d399" class="code-mono" font-weight="700">2. AST 语法级隐私脱敏引擎 (Redaction Vault)</text>
+    <text x="26" y="160" fill="#94a3b8" class="box-desc">• Tree-sitter 遍历代码节点，捕获变量分配与环境配置</text>
+    <text x="26" y="176" fill="#94a3b8" class="box-desc">• Shannon 熵值检测 + 规则模式识别（API Token/私钥）</text>
+    <text x="26" y="198" fill="#10b981" class="code-mono">映射存储: sk-live-99x $\leftrightarrow$ &lt;SECRET_VAL_#1&gt;</text>
+
+    <!-- Subsystem 3: Intent Classification & Routing -->
+    <rect x="14" y="224" width="332" height="106" rx="6" fill="#0f172a" stroke="#0284c7" stroke-width="1.2"/>
+    <text x="26" y="246" fill="#38bdf8" class="code-mono" font-weight="700">3. 动态意图分流器 (Intent Router · 耗时&lt;12ms)</text>
+    <text x="26" y="264" fill="#94a3b8" class="box-desc">• 分级分类器（启发式规则 + 轻量嵌入模型）：</text>
+    <text x="36" y="282" fill="#e2e8f0" class="code-mono" font-size="10">L1: 语法格式化 / 单行 Diff / AST 查找 $\rightarrow$ Local Ollama</text>
+    <text x="36" y="298" fill="#e2e8f0" class="code-mono" font-size="10">L2: 单元测试生成 / 错误排查 $\rightarrow$ DeepSeek-V3 ($0.14)</text>
+    <text x="36" y="314" fill="#e2e8f0" class="code-mono" font-size="10">L3: 跨架构重构 / 模糊推理 $\rightarrow$ Claude 3.5 Sonnet</text>
+
+    <!-- Subsystem 4: De-redaction & Patch Assembler -->
+    <rect x="14" y="338" width="332" height="100" rx="6" fill="#0f172a" stroke="#f59e0b" stroke-width="1.2"/>
+    <text x="26" y="360" fill="#fbbf24" class="code-mono" font-weight="700">4. 逆向脱敏还原与双向熔断 (Circuit Breaker)</text>
+    <text x="26" y="378" fill="#94a3b8" class="box-desc">• 响应拦截：将上游模型返回的占位符还原为真实密匙</text>
+    <text x="26" y="396" fill="#94a3b8" class="box-desc">• 弹性降级：遇 429 Rate-Limit 自动切换 Tier 2 备用节点</text>
+    <text x="26" y="420" fill="#f59e0b" class="code-mono">SSE 流式管道无感还原 $\rightarrow$ 无缓冲透传至 Client</text>
+  </g>
+
+  <!-- Connectors: Magpie Gateway -> Providers -->
+  <g stroke="#10b981" stroke-width="2" fill="none">
+    <path d="M 660 180 L 705 180"/>
+    <polygon points="705,176 713,180 705,184" fill="#10b981"/>
+
+    <path d="M 660 300 L 705 300"/>
+    <polygon points="705,296 713,300 705,304" fill="#10b981"/>
+
+    <path d="M 660 440 L 705 440"/>
+    <polygon points="705,436 713,440 705,444" fill="#10b981"/>
+  </g>
+
+  <!-- Section 3: Upstream Providers (Right) -->
+  <g transform="translate(715, 105)" filter="url(#shadow)">
+    <rect width="205" height="455" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+    <rect x="0" y="0" width="205" height="36" rx="10" fill="#1e293b"/>
+    <text x="16" y="23" fill="#f8fafc" class="box-title">分级模型算力池</text>
+
+    <!-- Target 1: Local Ollama -->
+    <rect x="12" y="48" width="181" height="115" rx="6" fill="#020617" stroke="#059669" stroke-width="1.2"/>
+    <text x="22" y="70" fill="#34d399" class="code-mono" font-weight="700">Tier 1: 本地离线节点</text>
+    <text x="22" y="88" fill="#e2e8f0" class="code-mono">Ollama / vLLM</text>
+    <text x="22" y="104" fill="#94a3b8" class="box-desc">Qwen2.5-Coder-7B/14B</text>
+    <line x1="22" y1="114" x2="175" y2="114" stroke="#1e293b" stroke-width="1"/>
+    <text x="22" y="132" fill="#10b981" class="code-mono">成本: $0 | 吞吐: 85t/s</text>
+    <text x="22" y="148" fill="#34d399" class="code-mono">承接流量占比: 52%</text>
+
+    <!-- Target 2: High Throughput Cloud -->
+    <rect x="12" y="172" width="181" height="115" rx="6" fill="#020617" stroke="#0284c7" stroke-width="1.2"/>
+    <text x="22" y="194" fill="#38bdf8" class="code-mono" font-weight="700">Tier 2: 经济型公有云</text>
+    <text x="22" y="212" fill="#e2e8f0" class="code-mono">DeepSeek-V3 / Flash</text>
+    <text x="22" y="228" fill="#94a3b8" class="box-desc">极高性价比代码补全</text>
+    <line x1="22" y1="238" x2="175" y2="238" stroke="#1e293b" stroke-width="1"/>
+    <text x="22" y="256" fill="#38bdf8" class="code-mono">成本: $0.14/MTok</text>
+    <text x="22" y="272" fill="#38bdf8" class="code-mono">承接流量占比: 34%</text>
+
+    <!-- Target 3: Frontier Reasoner -->
+    <rect x="12" y="296" width="181" height="142" rx="6" fill="#020617" stroke="#f59e0b" stroke-width="1.2"/>
+    <text x="22" y="318" fill="#fbbf24" class="code-mono" font-weight="700">Tier 3: 商业旗舰大模型</text>
+    <text x="22" y="336" fill="#e2e8f0" class="code-mono">Claude 3.5 Sonnet</text>
+    <text x="22" y="352" fill="#94a3b8" class="box-desc">复杂架构规划与多文件推理</text>
+    <line x1="22" y1="362" x2="175" y2="362" stroke="#1e293b" stroke-width="1"/>
+    <text x="22" y="380" fill="#f59e0b" class="code-mono">成本: $3.00/MTok</text>
+    <text x="22" y="396" fill="#fbbf24" class="code-mono">承接流量占比: 14%</text>
+    <text x="22" y="420" fill="#94a3b8" class="box-desc">仅关键时刻调用</text>
+  </g>
+</svg>

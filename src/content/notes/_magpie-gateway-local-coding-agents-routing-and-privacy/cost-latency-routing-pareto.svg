@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="520" viewBox="0 0 960 520">
+  <defs>
+    <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#020617"/>
+      <stop offset="100%" stop-color="#0b1120"/>
+    </linearGradient>
+    <filter id="shadow3" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+    <style>
+      .title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 800; font-size: 21px; fill: #f8fafc; }
+      .subtitle { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 13px; fill: #94a3b8; }
+      .box-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 700; font-size: 14px; fill: #f1f5f9; }
+      .axis-label { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 11px; fill: #64748b; font-weight: 600; }
+      .code-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 11px; }
+      .badge-text { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 10px; font-weight: 700; }
+    </style>
+  </defs>
+
+  <rect width="960" height="520" rx="14" fill="url(#bg3)" stroke="#1e293b" stroke-width="1.5"/>
+
+  <!-- Header -->
+  <g transform="translate(40, 28)">
+    <rect x="0" y="0" width="160" height="24" rx="4" fill="#082f49" stroke="#0ea5e9" stroke-width="1"/>
+    <text x="10" y="16" fill="#38bdf8" class="badge-text">PARETO EFFICIENCY CURVE</text>
+    <text x="175" y="18" class="title">成本 - 首字延迟 - 任务通过率帕累托前沿对比</text>
+    <text x="0" y="42" class="subtitle">全量商业旗舰 vs 全量本地小模型 vs Magpie 三层意图路由实测基准 (基于 500 次编码任务评估)</text>
+  </g>
+
+  <!-- Left: Pareto 2D Coordinate Chart -->
+  <g transform="translate(40, 85)" filter="url(#shadow3)">
+    <rect width="520" height="395" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1.2"/>
+    <rect x="0" y="0" width="520" height="32" rx="10" fill="#1e293b"/>
+    <text x="16" y="21" fill="#f8fafc" class="box-title">成本-延迟综合坐标系 (Cost vs Latency vs Accuracy)</text>
+
+    <!-- Axes -->
+    <g transform="translate(60, 45)">
+      <!-- Grid Lines -->
+      <line x1="0" y1="60" x2="420" y2="60" stroke="#1e293b" stroke-dasharray="3,3"/>
+      <line x1="0" y1="130" x2="420" y2="130" stroke="#1e293b" stroke-dasharray="3,3"/>
+      <line x1="0" y1="200" x2="420" y2="200" stroke="#1e293b" stroke-dasharray="3,3"/>
+      <line x1="0" y1="270" x2="420" y2="270" stroke="#1e293b" stroke-dasharray="3,3"/>
+
+      <!-- Y Axis (Daily Cost per Dev) -->
+      <line x1="0" y1="0" x2="0" y2="280" stroke="#475569" stroke-width="1.5"/>
+      <text x="-48" y="15" class="axis-label">$50/天</text>
+      <text x="-48" y="85" class="axis-label">$35/天</text>
+      <text x="-48" y="155" class="axis-label">$20/天</text>
+      <text x="-48" y="225" class="axis-label">$10/天</text>
+      <text x="-40" y="280" class="axis-label">$0/天</text>
+      <text x="-15" y="-12" fill="#94a3b8" class="code-mono" font-size="10">日均 Token 成本</text>
+
+      <!-- X Axis (Simple Request Latency ms) -->
+      <line x1="0" y1="280" x2="420" y2="280" stroke="#475569" stroke-width="1.5"/>
+      <text x="30" y="300" class="axis-label">300ms</text>
+      <text x="130" y="300" class="axis-label">800ms</text>
+      <text x="240" y="300" class="axis-label">1800ms</text>
+      <text x="350" y="300" class="axis-label">3000ms</text>
+      <text x="340" y="318" fill="#94a3b8" class="code-mono" font-size="10">端到端响应延迟 (RTT)</text>
+
+      <!-- Curve: Pareto Optimal Frontier -->
+      <path d="M 25,275 Q 70,220 180,180 T 380,20" fill="none" stroke="#06b6d4" stroke-width="2" stroke-dasharray="4,4"/>
+      <text x="210" y="165" fill="#22d3ee" class="code-mono" font-size="9" transform="rotate(-28 210,165)">帕累托前沿 (Pareto Frontier)</text>
+
+      <!-- Point 1: Pure Frontier (All Claude 3.5 Sonnet) -->
+      <g transform="translate(370, 25)">
+        <circle cx="0" cy="0" r="10" fill="#f59e0b" fill-opacity="0.25" stroke="#f59e0b" stroke-width="2"/>
+        <circle cx="0" cy="0" r="4" fill="#fbbf24"/>
+        <text x="-110" y="-8" fill="#fbbf24" class="code-mono" font-weight="700">全量商业旗舰 (Claude 3.5)</text>
+        <text x="-110" y="8" fill="#cbd5e1" class="code-mono" font-size="10">日成本: $48.6 | 延迟: 2850ms</text>
+        <text x="-110" y="22" fill="#94a3b8" class="code-mono" font-size="10">准确率: 98.2% (但成本巨幅浪费)</text>
+      </g>
+
+      <!-- Point 2: Pure Local 7B (All Ollama) -->
+      <g transform="translate(35, 275)">
+        <circle cx="0" cy="0" r="10" fill="#ef4444" fill-opacity="0.25" stroke="#ef4444" stroke-width="2"/>
+        <circle cx="0" cy="0" r="4" fill="#f87171"/>
+        <text x="14" y="-12" fill="#f87171" class="code-mono" font-weight="700">全量本地小模型 (Qwen2.5-7B)</text>
+        <text x="14" y="4" fill="#cbd5e1" class="code-mono" font-size="10">日成本: $0 | 延迟: 320ms</text>
+        <text x="14" y="18" fill="#fca5a5" class="code-mono" font-size="10">准确率仅 61.5% (架构重构频频翻车)</text>
+      </g>
+
+      <!-- Point 3: Magpie Tiered Router (The Golden Sweet Spot) -->
+      <g transform="translate(68, 205)">
+        <circle cx="0" cy="0" r="14" fill="#10b981" fill-opacity="0.3" stroke="#10b981" stroke-width="2.5"/>
+        <circle cx="0" cy="0" r="6" fill="#34d399"/>
+        <rect x="18" y="-28" width="220" height="52" rx="6" fill="#042f2e" stroke="#10b981" stroke-width="1.2"/>
+        <text x="26" y="-10" fill="#34d399" class="code-mono" font-weight="700">Magpie 智能三层分流 (最优解)</text>
+        <text x="26" y="6" fill="#f0fdf4" class="code-mono" font-size="10">日成本: $12.9 (降幅 73.4%)</text>
+        <text x="26" y="20" fill="#6ee7b7" class="code-mono" font-size="10">综合通过率: 96.8% | 延迟: 410ms</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Right: Breakdown Stats Cards -->
+  <g transform="translate(580, 85)" filter="url(#shadow3)">
+    <rect width="340" height="395" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1.2"/>
+    <rect x="0" y="0" width="340" height="32" rx="10" fill="#1e293b"/>
+    <text x="16" y="21" fill="#f8fafc" class="box-title">Magpie 路由分流与收益实测细目</text>
+
+    <!-- Stat 1: Traffic Distribution -->
+    <rect x="14" y="46" width="312" height="98" rx="8" fill="#020617" stroke="#1e293b"/>
+    <text x="24" y="68" fill="#38bdf8" class="code-mono" font-weight="700">流量分流实际配比 (500 次请求样本)</text>
+    <!-- Bar 1 -->
+    <rect x="24" y="80" width="162" height="12" rx="3" fill="#10b981"/>
+    <text x="194" y="90" fill="#10b981" class="code-mono">52% 本地 Ollama (零成本)</text>
+    <!-- Bar 2 -->
+    <rect x="24" y="100" width="106" height="12" rx="3" fill="#0ea5e9"/>
+    <text x="194" y="110" fill="#38bdf8" class="code-mono">34% DeepSeek-V3 (低费)</text>
+    <!-- Bar 3 -->
+    <rect x="24" y="120" width="44" height="12" rx="3" fill="#f59e0b"/>
+    <text x="194" y="130" fill="#fbbf24" class="code-mono">14% Claude 3.5 (核心架构)</text>
+
+    <!-- Stat 2: Security & Fallback Performance -->
+    <rect x="14" y="156" width="312" height="108" rx="8" fill="#020617" stroke="#1e293b"/>
+    <text x="24" y="178" fill="#34d399" class="code-mono" font-weight="700">安全合规与稳定性指标</text>
+    <text x="24" y="200" fill="#e2e8f0" class="code-mono">• 隐私机密截断率: <tspan fill="#34d399">100%</tspan> (零泄露)</text>
+    <text x="24" y="220" fill="#e2e8f0" class="code-mono">• 429 限流熔断切换成功率: <tspan fill="#34d399">99.4%</tspan></text>
+    <text x="24" y="240" fill="#e2e8f0" class="code-mono">• 代理自身引入延迟: <tspan fill="#38bdf8">&lt; 14.2ms</tspan> (近乎无感)</text>
+    <text x="24" y="256" fill="#94a3b8" class="box-desc">无需等待云端队列，单行语法即时补全</text>
+
+    <!-- Stat 3: Engineer Experience Verdict -->
+    <rect x="14" y="276" width="312" height="102" rx="8" fill="#082f49" stroke="#0284c7" stroke-width="1"/>
+    <text x="24" y="298" fill="#38bdf8" class="code-mono" font-weight="700">工程总结：降维打击单体直连</text>
+    <text x="24" y="320" fill="#e0f2fe" class="code-mono">“既享受了端侧本地的零泄密与极速，</text>
+    <text x="24" y="338" fill="#e0f2fe" class="code-mono"> 又保留了顶级大模型的架构规划力。”</text>
+    <text x="24" y="362" fill="#94a3b8" class="box-desc">真正实现工业级 Coding Agent 的自由开发。</text>
+  </g>
+</svg>
