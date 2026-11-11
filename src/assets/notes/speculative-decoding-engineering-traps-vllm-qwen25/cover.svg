@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#040812"/>
+      <stop offset="50%" stop-color="#0a1322"/>
+      <stop offset="100%" stop-color="#02050e"/>
+    </linearGradient>
+    <linearGradient id="accent-cyan" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="50%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#c084fc"/>
+    </linearGradient>
+    <linearGradient id="accent-warn" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#ef4444"/>
+    </linearGradient>
+    <linearGradient id="accent-green" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="1" stroke-opacity="0.5"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect x="50" y="50" width="1100" height="530" rx="20" fill="none" stroke="#1e293b" stroke-width="2" stroke-dasharray="8,6"/>
+
+  <!-- Badge -->
+  <rect x="90" y="85" width="350" height="36" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <circle cx="110" cy="103" r="5" fill="#ef4444"/>
+  <text x="125" y="108" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#94a3b8" letter-spacing="1">vLLM 0.33.0 &amp; SPECULATIVE DECODING</text>
+
+  <!-- Title -->
+  <text x="90" y="175" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="40" font-weight="800" fill="#f8fafc">推测解码的工程真相</text>
+  <text x="90" y="235" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="28" font-weight="600" fill="url(#accent-cyan)">为什么宣称的 2~3 倍提速，在生产中成了吞吐负优化？</text>
+
+  <!-- Subtitle -->
+  <text x="90" y="285" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" fill="#94a3b8">基于 Qwen2.5 与 Tesla T4 全矩阵实测：同家族词表暗礁、验证树回滚代价与 Schema 确定性逆袭</text>
+
+  <!-- Visual Cards Showcase -->
+  <g transform="translate(90, 325)">
+    <!-- Card 1: Throughput Drop -->
+    <rect x="0" y="0" width="320" height="210" rx="14" fill="#0b1324" stroke="#1e293b" stroke-width="1.5"/>
+    <rect x="18" y="16" width="120" height="22" rx="4" fill="#1e293b"/>
+    <text x="26" y="31" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#ef4444">THROUGHPUT CLIFF</text>
+    <text x="18" y="65" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#e2e8f0">开放写作吞吐直接腰斩</text>
+    <text x="18" y="98" font-family="ui-monospace, monospace" font-size="28" font-weight="800" fill="#ef4444">19.38 → 9.59</text>
+    <text x="195" y="98" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#64748b">tok/s (0.49x)</text>
+    <text x="18" y="125" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94a3b8">温度 0.7 接收率跌至 16.7%</text>
+    <text x="18" y="142" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94a3b8">Draft 频繁预测失败触发昂贵回滚</text>
+    <rect x="18" y="160" width="284" height="6" rx="3" fill="#1e293b"/>
+    <rect x="18" y="160" width="140" height="6" rx="3" fill="#ef4444"/>
+    <text x="18" y="185" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#64748b">实测 6 组里 4 组负优化</text>
+
+    <!-- Card 2: TTFT Penalty -->
+    <rect x="350" y="0" width="320" height="210" rx="14" fill="#0b1324" stroke="#1e293b" stroke-width="1.5"/>
+    <rect x="368" y="16" width="105" height="22" rx="4" fill="#1e293b"/>
+    <text x="376" y="31" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#f59e0b">LATENCY PENALTY</text>
+    <text x="368" y="65" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#e2e8f0">TTFT 首字延迟恶化 4~5 倍</text>
+    <text x="368" y="98" font-family="ui-monospace, monospace" font-size="28" font-weight="800" fill="#f59e0b">78ms → 462ms</text>
+    <text x="580" y="98" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#64748b">(+440%)</text>
+    <text x="368" y="125" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94a3b8">双模型 Prefill 串行与树状调度开销</text>
+    <text x="368" y="142" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94a3b8">实时交互对话体验断崖式恶化</text>
+    <rect x="368" y="160" width="284" height="6" rx="3" fill="#1e293b"/>
+    <rect x="368" y="160" width="230" height="6" rx="3" fill="#f59e0b"/>
+    <text x="368" y="185" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#64748b">交互首字敏感场景直接触礁</text>
+
+    <!-- Card 3: Deterministic schema -->
+    <rect x="700" y="0" width="320" height="210" rx="14" fill="#0b1324" stroke="#1e293b" stroke-width="1.5"/>
+    <rect x="718" y="16" width="130" height="22" rx="4" fill="#1e293b"/>
+    <text x="726" y="31" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#10b981">SCHEMA INVERSION</text>
+    <text x="718" y="65" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#e2e8f0">JSON 强约束下确定性逆袭</text>
+    <text x="718" y="98" font-family="ui-monospace, monospace" font-size="28" font-weight="800" fill="#10b981">90.6% / +21%</text>
+    <text x="925" y="98" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#64748b">加速比 1.21x</text>
+    <text x="718" y="125" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94a3b8">两档温度输出逐字节完全一致</text>
+    <text x="718" y="142" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94a3b8">约束压低生成熵，推测命中率封顶</text>
+    <rect x="718" y="160" width="284" height="6" rx="3" fill="#1e293b"/>
+    <rect x="718" y="160" width="260" height="6" rx="3" fill="#10b981"/>
+    <text x="718" y="185" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#64748b">平均单步接收 5.53 个 Token</text>
+  </g>
+</svg>

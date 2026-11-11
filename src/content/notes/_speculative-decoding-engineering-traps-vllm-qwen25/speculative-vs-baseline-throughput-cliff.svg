@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="520" viewBox="0 0 920 520">
+  <defs>
+    <style>
+      .bg { fill: #040813; rx: 14; }
+      .text-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 800; font-size: 15px; fill: #f8fafc; }
+      .text-sub { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 12px; fill: #94a3b8; }
+      .text-axis { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 11px; fill: #64748b; }
+      .text-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 11px; }
+      .grid { stroke: #1e293b; stroke-width: 1; stroke-dasharray: 4,4; }
+      .axis { stroke: #334155; stroke-width: 1.5; }
+    </style>
+  </defs>
+
+  <rect width="920" height="520" class="bg"/>
+
+  <!-- Title & Subtitle -->
+  <text x="40" y="38" class="text-title">图 2-1：实测 3 任务 × 2 温度推测解码 vs 基线吞吐（Tokens/s）与首字延迟（TTFT）对比</text>
+  <text x="40" y="58" class="text-sub">Tesla T4 单卡实测（Qwen2.5-3B + 0.5B，vLLM 0.33.0）：6 组测试中 4 组发生严重负优化，TTFT 普遍恶化 4~5 倍</text>
+
+  <!-- Left Chart: Throughput Comparison (Tokens/s) -->
+  <g transform="translate(40, 85)">
+    <!-- Sub-header -->
+    <rect x="0" y="0" width="480" height="385" rx="10" fill="#0b1329" stroke="#1e293b" stroke-width="1"/>
+    <text x="20" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#f8fafc">端到端输出吞吐（Output Tokens/s，越大越好）</text>
+
+    <!-- Legend -->
+    <rect x="290" y="16" width="12" height="12" rx="2" fill="#3b82f6"/>
+    <text x="308" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">基线（单 3B）</text>
+    <rect x="385" y="16" width="12" height="12" rx="2" fill="#ef4444"/>
+    <text x="403" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">推测解码 (K=5)</text>
+
+    <!-- Chart Body -->
+    <!-- X-axis scale: 0 to 35 tok/s, width = 360px -> 1 tok/s = 10.28 px. origin x=95 -->
+    <!-- Grid vertical lines -->
+    <g transform="translate(0, 40)">
+      <line x1="95" y1="15" x2="95" y2="305" class="axis"/>
+      <line x1="198" y1="15" x2="198" y2="305" class="grid"/>
+      <line x1="301" y1="15" x2="301" y2="305" class="grid"/>
+      <line x1="403" y1="15" x2="403" y2="305" class="grid"/>
+      <line x1="455" y1="15" x2="455" y2="305" class="grid"/>
+
+      <text x="95" y="322" class="text-axis" text-anchor="middle">0</text>
+      <text x="198" y="322" class="text-axis" text-anchor="middle">10</text>
+      <text x="301" y="322" class="text-axis" text-anchor="middle">20</text>
+      <text x="403" y="322" class="text-axis" text-anchor="middle">30</text>
+      <text x="455" y="322" class="text-axis" text-anchor="middle">35 tok/s</text>
+
+      <!-- Row 1: Writing t=0.0 -->
+      <text x="85" y="38" class="text-axis" text-anchor="end" font-weight="600">写作 t=0.0</text>
+      <rect x="95" y="25" width="253" height="13" rx="3" fill="#3b82f6"/>
+      <text x="355" y="36" class="text-mono" fill="#93c5fd">24.61</text>
+      <rect x="95" y="41" width="155" height="13" rx="3" fill="#ef4444"/>
+      <text x="257" y="52" class="text-mono" fill="#fca5a5">15.07 (0.61x)</text>
+
+      <!-- Row 2: Writing t=0.7 -->
+      <text x="85" y="88" class="text-axis" text-anchor="end" font-weight="600">写作 t=0.7</text>
+      <rect x="95" y="75" width="199" height="13" rx="3" fill="#3b82f6"/>
+      <text x="301" y="86" class="text-mono" fill="#93c5fd">19.38</text>
+      <rect x="95" y="91" width="99" height="13" rx="3" fill="#ef4444"/>
+      <text x="201" y="102" class="text-mono" fill="#ef4444" font-weight="700">9.59 (0.49x 腰斩)</text>
+
+      <!-- Row 3: Code t=0.0 -->
+      <text x="85" y="138" class="text-axis" text-anchor="end" font-weight="600">代码 t=0.0</text>
+      <rect x="95" y="125" width="252" height="13" rx="3" fill="#3b82f6"/>
+      <text x="354" y="136" class="text-mono" fill="#93c5fd">24.50</text>
+      <rect x="95" y="141" width="203" height="13" rx="3" fill="#ef4444"/>
+      <text x="305" y="152" class="text-mono" fill="#fca5a5">19.77 (0.81x)</text>
+
+      <!-- Row 4: Code t=0.7 -->
+      <text x="85" y="188" class="text-axis" text-anchor="end" font-weight="600">代码 t=0.7</text>
+      <rect x="95" y="175" width="254" height="13" rx="3" fill="#3b82f6"/>
+      <text x="356" y="186" class="text-mono" fill="#93c5fd">24.70</text>
+      <rect x="95" y="191" width="180" height="13" rx="3" fill="#ef4444"/>
+      <text x="282" y="202" class="text-mono" fill="#fca5a5">17.48 (0.71x)</text>
+
+      <!-- Row 5: JSON t=0.0 -->
+      <text x="85" y="238" class="text-axis" text-anchor="end" font-weight="600">JSON t=0.0</text>
+      <rect x="95" y="225" width="250" height="13" rx="3" fill="#3b82f6"/>
+      <text x="352" y="236" class="text-mono" fill="#93c5fd">24.32</text>
+      <rect x="95" y="241" width="295" height="13" rx="3" fill="#10b981"/>
+      <text x="397" y="252" class="text-mono" fill="#34d399" font-weight="700">28.67 (1.18x)</text>
+
+      <!-- Row 6: JSON t=0.7 -->
+      <text x="85" y="288" class="text-axis" text-anchor="end" font-weight="600">JSON t=0.7</text>
+      <rect x="95" y="275" width="248" height="13" rx="3" fill="#3b82f6"/>
+      <text x="350" y="286" class="text-mono" fill="#93c5fd">24.09</text>
+      <rect x="95" y="291" width="299" height="13" rx="3" fill="#10b981"/>
+      <text x="401" y="302" class="text-mono" fill="#34d399" font-weight="700">29.04 (1.21x)</text>
+    </g>
+  </g>
+
+  <!-- Right Chart: TTFT Penalty & Acceptance Stats -->
+  <g transform="translate(540, 85)">
+    <!-- Container -->
+    <rect x="0" y="0" width="340" height="385" rx="10" fill="#0b1329" stroke="#1e293b" stroke-width="1"/>
+    <text x="20" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#f8fafc">首字延迟 TTFT 恶化（毫秒，越小越好）</text>
+
+    <!-- TTFT Bars -->
+    <g transform="translate(15, 45)">
+      <!-- Task 1: Writing -->
+      <rect x="0" y="0" width="310" height="70" rx="6" fill="#0f172a" stroke="#1e293b"/>
+      <text x="12" y="20" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#e2e8f0">开放写作 (Writing)</text>
+      <text x="12" y="40" class="text-mono" fill="#94a3b8">基线 TTFT: 85~93 ms</text>
+      <text x="12" y="58" class="text-mono" fill="#f59e0b" font-weight="700">推测 TTFT: 454~462 ms (恶化 5.3x)</text>
+      <rect x="220" y="16" width="75" height="38" rx="4" fill="#450a0a" stroke="#ef4444"/>
+      <text x="257" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fca5a5" text-anchor="middle">接收率</text>
+      <text x="257" y="47" class="text-mono" font-weight="700" fill="#ef4444" text-anchor="middle">16.7%~33.9%</text>
+
+      <!-- Task 2: Code -->
+      <rect x="0" y="85" width="310" height="70" rx="6" fill="#0f172a" stroke="#1e293b"/>
+      <text x="12" y="105" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#e2e8f0">代码生成 (Code)</text>
+      <text x="12" y="125" class="text-mono" fill="#94a3b8">基线 TTFT: 79~83 ms</text>
+      <text x="12" y="143" class="text-mono" fill="#f59e0b" font-weight="700">推测 TTFT: 339 ms (恶化 4.3x)</text>
+      <rect x="220" y="101" width="75" height="38" rx="4" fill="#451a03" stroke="#f59e0b"/>
+      <text x="257" y="117" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fed7aa" text-anchor="middle">接收率</text>
+      <text x="257" y="132" class="text-mono" font-weight="700" fill="#f59e0b" text-anchor="middle">39.3%~51.0%</text>
+
+      <!-- Task 3: JSON -->
+      <rect x="0" y="170" width="310" height="70" rx="6" fill="#0f172a" stroke="#1e293b"/>
+      <text x="12" y="190" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#e2e8f0">JSON 结构化抽取 (JSON)</text>
+      <text x="12" y="210" class="text-mono" fill="#94a3b8">基线 TTFT: 78~88 ms</text>
+      <text x="12" y="228" class="text-mono" fill="#f59e0b" font-weight="700">推测 TTFT: 332~335 ms (恶化 4.1x)</text>
+      <rect x="220" y="186" width="75" height="38" rx="4" fill="#064e3b" stroke="#10b981"/>
+      <text x="257" y="202" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#a7f3d0" text-anchor="middle">接收率</text>
+      <text x="257" y="217" class="text-mono" font-weight="700" fill="#10b981" text-anchor="middle">90.6% 封顶</text>
+
+      <!-- Key Insight Box -->
+      <rect x="0" y="255" width="310" height="65" rx="6" fill="#172554" stroke="#1e40af"/>
+      <text x="12" y="275" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#60a5fa">工程定论：</text>
+      <text x="12" y="293" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#bfdbfe">无脑开启推测解码将引入 4x 首字延迟；</text>
+      <text x="12" y="309" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#bfdbfe">且若接收率 &lt; 65%，整体吞吐必然倒亏！</text>
+    </g>
+  </g>
+
+  <!-- Bottom Global Summary Line -->
+  <text x="40" y="495" class="text-mono" font-size="11" fill="#64748b">数据来源：Tesla T4 16GB · vLLM 0.33.0 · CUDA 13.0 · seed=42 · max_tokens=256 · SHA-256: 42707cfa6c738e41</text>
+</svg>

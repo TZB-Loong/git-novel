@@ -1,0 +1,159 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="500" viewBox="0 0 920 500">
+  <defs>
+    <style>
+      .bg { fill: #040813; rx: 14; }
+      .text-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 800; font-size: 15px; fill: #f8fafc; }
+      .text-sub { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 12px; fill: #94a3b8; }
+      .text-box-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 700; font-size: 13px; }
+      .text-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 11px; }
+      .text-desc { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 11px; fill: #94a3b8; }
+      .box { rx: 8; stroke-width: 1.5; }
+      .conn { stroke-width: 2; fill: none; }
+      .token-pill { rx: 6; stroke-width: 1.5; }
+    </style>
+    <marker id="arrow-cyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#38bdf8"/>
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#10b981"/>
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#ef4444"/>
+    </marker>
+    <linearGradient id="draftGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0284c7" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#0369a1" stop-opacity="0.05"/>
+    </linearGradient>
+    <linearGradient id="targetGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#4f46e5" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#4338ca" stop-opacity="0.05"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="920" height="500" class="bg"/>
+
+  <!-- Title -->
+  <text x="40" y="38" class="text-title">图 1-1：推测解码（Speculative Decoding）草稿生成、验证树评估与 KV Cache 回滚时序机制</text>
+  <text x="40" y="58" class="text-sub">单步自回归中 Draft 模型连推 K=5 个候选词，Target 模型单次前向并行裁决；一旦拒绝立即截断多余 KV 缓存并触发重采</text>
+
+  <!-- Step 1: Draft Phase (Top) -->
+  <g transform="translate(40, 85)">
+    <!-- Draft Container -->
+    <rect x="0" y="0" width="840" height="110" rx="10" fill="url(#draftGrad)" stroke="#0284c7" stroke-width="1.5" stroke-dasharray="6,4"/>
+    <rect x="15" y="12" width="130" height="22" rx="4" fill="#0f172a" stroke="#0284c7" stroke-width="1"/>
+    <text x="22" y="27" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#38bdf8">阶段一 · 草稿投机自回归</text>
+    <text x="160" y="28" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#64748b">Draft Model (Qwen2.5-0.5B, fp16) 自回归前向 K=5 次生成候选 Token</text>
+
+    <!-- Draft Token Sequence -->
+    <g transform="translate(30, 48)">
+      <!-- Context Token -->
+      <rect x="0" y="0" width="110" height="42" class="token-pill" fill="#0f172a" stroke="#334155"/>
+      <text x="55" y="18" font-family="ui-monospace, monospace" font-size="11" font-weight="700" fill="#94a3b8" text-anchor="middle">Context</text>
+      <text x="55" y="32" font-family="ui-monospace, monospace" font-size="10" fill="#64748b" text-anchor="middle">prefix: &quot;def add(&quot;</text>
+
+      <!-- Arrow -->
+      <path d="M 115 21 L 135 21" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow-cyan)"/>
+
+      <!-- T1 -->
+      <rect x="140" y="0" width="115" height="42" class="token-pill" fill="#0c4a6e" stroke="#38bdf8"/>
+      <text x="197" y="18" font-family="ui-monospace, monospace" font-size="11" font-weight="700" fill="#e0f2fe" text-anchor="middle">Token 1: &quot;a&quot;</text>
+      <text x="197" y="32" class="text-mono" fill="#38bdf8" text-anchor="middle">p_draft = 0.94</text>
+
+      <path d="M 260 21 L 280 21" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow-cyan)"/>
+
+      <!-- T2 -->
+      <rect x="285" y="0" width="115" height="42" class="token-pill" fill="#0c4a6e" stroke="#38bdf8"/>
+      <text x="342" y="18" font-family="ui-monospace, monospace" font-size="11" font-weight="700" fill="#e0f2fe" text-anchor="middle">Token 2: &quot;,&quot;</text>
+      <text x="342" y="32" class="text-mono" fill="#38bdf8" text-anchor="middle">p_draft = 0.88</text>
+
+      <path d="M 405 21 L 425 21" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow-cyan)"/>
+
+      <!-- T3 -->
+      <rect x="430" y="0" width="115" height="42" class="token-pill" fill="#0c4a6e" stroke="#38bdf8"/>
+      <text x="487" y="18" font-family="ui-monospace, monospace" font-size="11" font-weight="700" fill="#e0f2fe" text-anchor="middle">Token 3: &quot; b&quot;</text>
+      <text x="487" y="32" class="text-mono" fill="#f59e0b" text-anchor="middle">p_draft = 0.52</text>
+
+      <path d="M 550 21 L 570 21" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow-cyan)"/>
+
+      <!-- T4 -->
+      <rect x="575" y="0" width="115" height="42" class="token-pill" fill="#0c4a6e" stroke="#38bdf8"/>
+      <text x="632" y="18" font-family="ui-monospace, monospace" font-size="11" font-weight="700" fill="#e0f2fe" text-anchor="middle">Token 4: &quot;):&quot;</text>
+      <text x="632" y="32" class="text-mono" fill="#38bdf8" text-anchor="middle">p_draft = 0.82</text>
+
+      <path d="M 695 21 L 715 21" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow-cyan)"/>
+
+      <!-- T5 -->
+      <rect x="720" y="0" width="100" height="42" class="token-pill" fill="#0c4a6e" stroke="#38bdf8"/>
+      <text x="770" y="18" font-family="ui-monospace, monospace" font-size="11" font-weight="700" fill="#e0f2fe" text-anchor="middle">Token 5: &quot;\n&quot;</text>
+      <text x="770" y="32" class="text-mono" fill="#38bdf8" text-anchor="middle">p_draft = 0.91</text>
+    </g>
+  </g>
+
+  <!-- Big Vertical Transition Arrow -->
+  <g transform="translate(460, 202)">
+    <line x1="0" y1="0" x2="0" y2="20" stroke="#818cf8" stroke-width="2.5" stroke-dasharray="4,3"/>
+    <polygon points="-5,18 0,26 5,18" fill="#818cf8"/>
+    <text x="15" y="15" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#a5b4fc">单次并行前向输入验证树 (Target 并行打分)</text>
+  </g>
+
+  <!-- Step 2: Target Validation Phase (Bottom) -->
+  <g transform="translate(40, 235)">
+    <!-- Target Container -->
+    <rect x="0" y="0" width="840" height="235" rx="10" fill="url(#targetGrad)" stroke="#6366f1" stroke-width="1.5"/>
+    <rect x="15" y="12" width="150" height="22" rx="4" fill="#0f172a" stroke="#6366f1" stroke-width="1"/>
+    <text x="22" y="27" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#a5b4fc">阶段二 · 主模型并行判定与回滚</text>
+    <text x="180" y="28" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#64748b">Target Model (Qwen2.5-3B, fp16) 执行单次 5-token 并行前向并比对分布</text>
+
+    <!-- Validation Cards -->
+    <g transform="translate(30, 48)">
+      <!-- V1: Accepted -->
+      <rect x="140" y="0" width="115" height="100" class="token-pill" fill="#064e3b" stroke="#10b981"/>
+      <text x="197" y="20" font-family="ui-monospace, monospace" font-size="11" font-weight="700" fill="#a7f3d0" text-anchor="middle">Token 1: &quot;a&quot;</text>
+      <text x="197" y="38" class="text-mono" fill="#6ee7b7" text-anchor="middle">p_tgt = 0.96</text>
+      <rect x="152" y="48" width="90" height="18" rx="4" fill="#047857"/>
+      <text x="197" y="61" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#ffffff" text-anchor="middle">✓ 接受 (Accepted)</text>
+      <text x="197" y="82" class="text-mono" font-size="9" fill="#a7f3d0" text-anchor="middle">KV Cache 保留</text>
+
+      <!-- V2: Accepted -->
+      <rect x="285" y="0" width="115" height="100" class="token-pill" fill="#064e3b" stroke="#10b981"/>
+      <text x="342" y="20" font-family="ui-monospace, monospace" font-size="11" font-weight="700" fill="#a7f3d0" text-anchor="middle">Token 2: &quot;,&quot;</text>
+      <text x="342" y="38" class="text-mono" fill="#6ee7b7" text-anchor="middle">p_tgt = 0.89</text>
+      <rect x="297" y="48" width="90" height="18" rx="4" fill="#047857"/>
+      <text x="342" y="61" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#ffffff" text-anchor="middle">✓ 接受 (Accepted)</text>
+      <text x="342" y="82" class="text-mono" font-size="9" fill="#a7f3d0" text-anchor="middle">KV Cache 保留</text>
+
+      <!-- V3: Rejected -->
+      <rect x="430" y="0" width="115" height="100" class="token-pill" fill="#450a0a" stroke="#ef4444"/>
+      <text x="487" y="20" font-family="ui-monospace, monospace" font-size="11" font-weight="700" fill="#fecaca" text-anchor="middle">Token 3: &quot; b&quot;</text>
+      <text x="487" y="38" class="text-mono" fill="#f87171" text-anchor="middle">p_tgt = 0.08</text>
+      <rect x="442" y="48" width="90" height="18" rx="4" fill="#b91c1c"/>
+      <text x="487" y="61" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#ffffff" text-anchor="middle">✗ 拒绝 (Rejected)</text>
+      <text x="487" y="82" class="text-mono" font-size="9" fill="#fca5a5" text-anchor="middle">触发修正采样</text>
+
+      <!-- V4: Discarded -->
+      <rect x="575" y="0" width="115" height="100" class="token-pill" fill="#18181b" stroke="#3f3f46" stroke-dasharray="4,4"/>
+      <text x="632" y="20" font-family="ui-monospace, monospace" font-size="11" font-weight="700" fill="#71717a" text-anchor="middle">Token 4: &quot;):&quot;</text>
+      <text x="632" y="38" class="text-mono" fill="#52525b" text-anchor="middle">未评测</text>
+      <rect x="587" y="48" width="90" height="18" rx="4" fill="#27272a"/>
+      <text x="632" y="61" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#a1a1aa" text-anchor="middle">作废 (Pruned)</text>
+      <text x="632" y="82" class="text-mono" font-size="9" fill="#ef4444" text-anchor="middle">KV 回滚截断</text>
+
+      <!-- V5: Discarded -->
+      <rect x="720" y="0" width="100" height="100" class="token-pill" fill="#18181b" stroke="#3f3f46" stroke-dasharray="4,4"/>
+      <text x="770" y="20" font-family="ui-monospace, monospace" font-size="11" font-weight="700" fill="#71717a" text-anchor="middle">Token 5: &quot;\n&quot;</text>
+      <text x="770" y="38" class="text-mono" fill="#52525b" text-anchor="middle">未评测</text>
+      <rect x="725" y="48" width="90" height="18" rx="4" fill="#27272a"/>
+      <text x="770" y="61" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#a1a1aa" text-anchor="middle">作废 (Pruned)</text>
+      <text x="770" y="82" class="text-mono" font-size="9" fill="#ef4444" text-anchor="middle">KV 回滚截断</text>
+    </g>
+
+    <!-- Bottom Result & Cost Callout -->
+    <g transform="translate(30, 160)">
+      <rect x="0" y="0" width="790" height="58" rx="6" fill="#0b1329" stroke="#1e293b"/>
+      <text x="15" y="22" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#38bdf8">本轮解码收益结算：</text>
+      <text x="125" y="22" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#e2e8f0">实际采纳 2 Token + Target 纠偏采样 1 Token = 本步有效产出 3 Token（平均单步接收长度 3.0）</text>
+      <text x="15" y="42" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#ef4444">代价与负优化死穴：</text>
+      <text x="125" y="42" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">Draft 模型前向 5 次 + Target 并行验证 1 次 + Token 4/5 的 KV 显存块截断回滚开销。若接收率 &lt; 0.4，总耗时远超基线！</text>
+    </g>
+  </g>
+</svg>
