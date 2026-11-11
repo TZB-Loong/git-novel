@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="580" viewBox="0 0 960 580">
+  <defs>
+    <style>
+      .bg { fill: #040813; rx: 14; }
+      .text-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 800; font-size: 16px; fill: #f8fafc; }
+      .text-sub { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 12px; fill: #94a3b8; }
+      .text-h2 { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 700; font-size: 13px; fill: #e2e8f0; }
+      .text-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 11px; fill: #cbd5e1; }
+      .text-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 11px; }
+      .card-bg { fill: #0b1329; stroke: #1e293b; stroke-width: 1; rx: 10; }
+    </style>
+  </defs>
+
+  <rect width="960" height="580" class="bg"/>
+
+  <!-- Header -->
+  <text x="35" y="36" class="text-title">图 2-1：基于磁盘产物（Artifact-Centric）的零历史无状态交接流水线</text>
+  <text x="35" y="56" class="text-sub">为什么长程接力绝不能透传会话日志？解构以文件系统为唯一真理契约的数据交接模型与容错机制</text>
+
+  <!-- Container -->
+  <g transform="translate(35, 75)">
+    <rect width="890" height="470" rx="10" class="card-bg"/>
+
+    <!-- Contrast 1: Anti-Pattern (Top Half: History Cascade Pollution) -->
+    <g transform="translate(35, 25)">
+      <rect width="820" height="185" rx="8" fill="#140a10" stroke="#ef4444" stroke-width="1.2" stroke-dasharray="6,4"/>
+      <rect x="16" y="14" width="220" height="26" rx="4" fill="#311010" stroke="#ef4444" stroke-width="0.8"/>
+      <text x="26" y="32" class="text-mono" font-weight="700" fill="#fca5a5">❌ 错误模式：全量对话历史级联透传</text>
+
+      <g transform="translate(20, 50)">
+        <!-- Node 1 -->
+        <rect width="180" height="70" rx="6" fill="#1e1015" stroke="#f43f5e" stroke-width="1"/>
+        <text x="10" y="20" class="text-mono" font-weight="700" fill="#fca5a5">Bot A (5K Tokens)</text>
+        <text x="10" y="38" class="text-body" fill="#fecaca">• 输出 50 行代码建议</text>
+        <text x="10" y="54" class="text-body" fill="#fecaca">• 包含 2 次调试报错 Trace</text>
+
+        <!-- Arrow with bloated transcript -->
+        <g transform="translate(185, 25)">
+          <line x1="0" y1="10" x2="60" y2="10" stroke="#ef4444" stroke-width="2"/>
+          <polygon points="60,10 52,6 52,14" fill="#ef4444"/>
+          <text x="30" y="2" text-anchor="middle" class="text-mono" font-size="9" fill="#f87171">完整对话透传</text>
+        </g>
+
+        <!-- Node 2 -->
+        <g transform="translate(250, 0)">
+          <rect width="210" height="70" rx="6" fill="#1e1015" stroke="#ef4444" stroke-width="1.2"/>
+          <text x="10" y="20" class="text-mono" font-weight="700" fill="#fca5a5">Bot B (25K Tokens 膨胀)</text>
+          <text x="10" y="38" class="text-body" fill="#fecaca">• 必须重读 A 的全部废弃报错</text>
+          <text x="10" y="54" class="text-body" fill="#fecaca">• 产生严重的注意力漂移 (Lost in Mid)</text>
+        </g>
+
+        <!-- Arrow with huge transcript -->
+        <g transform="translate(465, 25)">
+          <line x1="0" y1="10" x2="60" y2="10" stroke="#ef4444" stroke-width="2"/>
+          <polygon points="60,10 52,6 52,14" fill="#ef4444"/>
+          <text x="30" y="2" text-anchor="middle" class="text-mono" font-size="9" fill="#f87171">滚雪球污染</text>
+        </g>
+
+        <!-- Node 3 -->
+        <g transform="translate(530, 0)">
+          <rect width="250" height="70" rx="6" fill="#311010" stroke="#ef4444" stroke-width="1.5"/>
+          <text x="10" y="20" class="text-mono" font-weight="700" fill="#fca5a5">Bot C (60K+ 崩溃断崖)</text>
+          <text x="10" y="38" class="text-body" fill="#fecaca">• 误把 A 的早期错误当作当前规范</text>
+          <text x="10" y="54" class="text-mono" font-size="10" fill="#ef4444">⚠️ 指令遵从度归零 / 幻觉爆发</text>
+        </g>
+      </g>
+
+      <rect x="20" y="135" width="780" height="36" rx="4" fill="#1e0c12"/>
+      <text x="30" y="157" class="text-mono" font-size="10" fill="#fca5a5">工业惨案：跨 3 个 Bot 后有效信息占比不足 8%，Token 费用飙升 12 倍，任务失败率 &gt;60%。</text>
+    </g>
+
+    <!-- Contrast 2: Solution (Bottom Half: Artifact-Centric Protocol) -->
+    <g transform="translate(35, 230)">
+      <rect width="820" height="215" rx="8" fill="#061822" stroke="#10b981" stroke-width="1.2"/>
+      <rect x="16" y="14" width="260" height="26" rx="4" fill="#042a1f" stroke="#10b981" stroke-width="0.8"/>
+      <text x="26" y="32" class="text-mono" font-weight="700" fill="#6ee7b7">✔ 黄金模式：基于磁盘落盘产物的断代契约</text>
+
+      <!-- Artifact Pipeline -->
+      <g transform="translate(20, 50)">
+        <!-- Step 1 -->
+        <rect width="180" height="85" rx="6" fill="#031e16" stroke="#10b981" stroke-width="1"/>
+        <text x="10" y="20" class="text-mono" font-weight="700" fill="#a7f3d0">Step 1: 需求与契约落盘</text>
+        <text x="10" y="38" class="text-body" fill="#d1fae5">• 主笔规划测试指标口径</text>
+        <text x="10" y="54" class="text-body" fill="#d1fae5">• 生成目标 Schema 模板</text>
+        <text x="10" y="70" class="text-mono" font-size="9" fill="#34d399">落盘: topic1_benchmark.md</text>
+
+        <!-- Arrow with Disk Icon / Schema Check -->
+        <g transform="translate(185, 30)">
+          <line x1="0" y1="12" x2="60" y2="12" stroke="#10b981" stroke-width="2"/>
+          <polygon points="60,12 52,8 52,16" fill="#10b981"/>
+          <text x="30" y="4" text-anchor="middle" class="text-mono" font-size="9" fill="#6ee7b7">磁盘文件引用</text>
+        </g>
+
+        <!-- Step 2 -->
+        <g transform="translate(250, 0)">
+          <rect width="210" height="85" rx="6" fill="#031e16" stroke="#10b981" stroke-width="1"/>
+          <text x="10" y="20" class="text-mono" font-weight="700" fill="#a7f3d0">Step 2: 沙盒测试脚本落盘</text>
+          <text x="10" y="38" class="text-body" fill="#d1fae5">• 纯净上下文，读取 Markdown</text>
+          <text x="10" y="54" class="text-body" fill="#d1fae5">• 生成并打通真实 Python 矩阵</text>
+          <text x="10" y="70" class="text-mono" font-size="9" fill="#34d399">落盘: benchmark_worker.py</text>
+        </g>
+
+        <!-- Arrow with Disk Icon -->
+        <g transform="translate(465, 30)">
+          <line x1="0" y1="12" x2="60" y2="12" stroke="#10b981" stroke-width="2"/>
+          <polygon points="60,12 52,8 52,16" fill="#10b981"/>
+          <text x="30" y="4" text-anchor="middle" class="text-mono" font-size="9" fill="#6ee7b7">物理文件交接</text>
+        </g>
+
+        <!-- Step 3 -->
+        <g transform="translate(530, 0)">
+          <rect width="250" height="85" rx="6" fill="#031e16" stroke="#10b981" stroke-width="1.2"/>
+          <text x="10" y="20" class="text-mono" font-weight="700" fill="#a7f3d0">Step 3: 算力实测结果落盘</text>
+          <text x="10" y="38" class="text-body" fill="#d1fae5">• 零历史干净启动 Kernel</text>
+          <text x="10" y="54" class="text-body" fill="#d1fae5">• 跑满 36 组矩阵，直接吐出标准数据</text>
+          <text x="10" y="70" class="text-mono" font-size="9" fill="#10b981">落盘: benchmark_results.csv</text>
+        </g>
+      </g>
+
+      <!-- Protocol rule summary -->
+      <g transform="translate(20, 150)">
+        <rect width="780" height="48" rx="4" fill="#042a1f"/>
+        <text x="15" y="20" class="text-mono" font-weight="700" font-size="10" fill="#6ee7b7">核心契约铁律：</text>
+        <text x="15" y="36" class="text-body" fill="#a7f3d0">下游 Bot 启动时的 Context 是 100% 崭新纯净的，只消费上一节点落在文件系统中的实体产物；每一步有可检验的物理实体，零上下文腐烂！</text>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,178 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#030713"/>
+      <stop offset="50%" stop-color="#091224"/>
+      <stop offset="100%" stop-color="#02040b"/>
+    </linearGradient>
+    <linearGradient id="title-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="70%" stop-color="#e2e8f0"/>
+      <stop offset="100%" stop-color="#94a3b8"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="12" flood-color="#000" flood-opacity="0.6"/>
+    </filter>
+    <style>
+      .title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 900; font-size: 38px; fill: url(#title-grad); }
+      .subtitle { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 500; font-size: 18px; fill: #94a3b8; }
+      .badge-text { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 11px; font-weight: 700; }
+      .tag { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 12px; fill: #64748b; }
+      .card-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 700; font-size: 15px; }
+      .card-sub { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 12px; fill: #94a3b8; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Subtle Grid Lines -->
+  <g stroke="#1e293b" stroke-width="0.5" opacity="0.3">
+    <line x1="0" y1="90" x2="1200" y2="90"/>
+    <line x1="0" y1="180" x2="1200" y2="180"/>
+    <line x1="0" y1="270" x2="1200" y2="270"/>
+    <line x1="0" y1="360" x2="1200" y2="360"/>
+    <line x1="0" y1="450" x2="1200" y2="450"/>
+    <line x1="0" y1="540" x2="1200" y2="540"/>
+    <line x1="150" y1="0" x2="150" y2="630"/>
+    <line x1="300" y1="0" x2="300" y2="630"/>
+    <line x1="450" y1="0" x2="450" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="750" y1="0" x2="750" y2="630"/>
+    <line x1="900" y1="0" x2="900" y2="630"/>
+    <line x1="1050" y1="0" x2="1050" y2="630"/>
+  </g>
+
+  <!-- Top Badges -->
+  <g transform="translate(70, 50)">
+    <rect width="155" height="26" rx="13" fill="#062d22" stroke="#10b981" stroke-width="1"/>
+    <text x="14" y="17" class="badge-text" fill="#6ee7b7">生产实战正向范式</text>
+
+    <rect x="165" width="165" height="26" rx="13" fill="#1e1b4b" stroke="#6366f1" stroke-width="1"/>
+    <text x="179" y="17" class="badge-text" fill="#a5b4fc">跨异构基础设施协同</text>
+
+    <rect x="340" width="160" height="26" rx="13" fill="#042a38" stroke="#38bdf8" stroke-width="1"/>
+    <text x="354" y="17" class="badge-text" fill="#7dd3fc">零历史纯产物交接</text>
+  </g>
+
+  <!-- Title & Subtitle -->
+  <text x="70" y="125" class="title">跨越基础设施孤岛：多 Bot 异构协同实录</text>
+  <text x="70" y="160" class="subtitle">解密本地工程宿主、云端沙盒与分布式 GPU 算力集群的确定性产物接力架构</text>
+
+  <!-- Main Pipeline Architecture Canvas -->
+  <g transform="translate(70, 200)" filter="url(#shadow)">
+    <rect width="1060" height="340" rx="16" fill="#0b1329" stroke="#1e293b" stroke-width="1"/>
+
+    <!-- 3 Pillars of Infrastructure -->
+    <!-- Pillar 1: Local Host (Tuli) -->
+    <g transform="translate(25, 25)">
+      <rect width="310" height="290" rx="12" fill="#070d1e" stroke="#38bdf8" stroke-width="1.2"/>
+      <rect x="16" y="16" width="278" height="28" rx="6" fill="#0a2a3e" stroke="#38bdf8" stroke-width="0.8"/>
+      <text x="26" y="35" class="badge-text" fill="#7dd3fc">节点 1：本地宿主工程 (Local Harness)</text>
+
+      <g transform="translate(16, 60)">
+        <text x="0" y="15" class="card-title" fill="#e0f2fe">@Tuli (主笔 · 架构师)</text>
+        <text x="0" y="32" class="card-sub">运行环境: macOS 宿主机 / 磁盘 SSD 直连</text>
+
+        <!-- Tasks list -->
+        <g transform="translate(0, 45)">
+          <rect width="278" height="75" rx="5" fill="#041624"/>
+          <text x="10" y="20" font-family="ui-monospace" font-size="10" font-weight="700" fill="#38bdf8">核心资产与工程职责：</text>
+          <text x="10" y="38" font-family="-apple-system, sans-serif" font-size="11" fill="#bae6fd">• 代码仓维护 (`src/content/notes/`)</text>
+          <text x="10" y="54" font-family="-apple-system, sans-serif" font-size="11" fill="#bae6fd">• 矢量插图 SVG 绘制与排版</text>
+          <text x="10" y="70" font-family="-apple-system, sans-serif" font-size="11" fill="#bae6fd">• `npm test` &amp; Astro 5 全站静态构建</text>
+        </g>
+
+        <!-- Output badge -->
+        <g transform="translate(0, 130)">
+          <rect width="278" height="32" rx="4" fill="#032533" stroke="#0284c7" stroke-width="0.8"/>
+          <text x="10" y="20" font-family="ui-monospace" font-size="10" fill="#7dd3fc">输出: 压测需求规范与指标契约</text>
+        </g>
+      </g>
+    </g>
+
+    <!-- Flow Arrow 1 -> 2 (Artifact Pipe) -->
+    <g transform="translate(345, 155)">
+      <line x1="0" y1="0" x2="25" y2="0" stroke="#38bdf8" stroke-width="2"/>
+      <polygon points="25,0 17,-4 17,4" fill="#38bdf8"/>
+      <text x="12" y="-8" text-anchor="middle" font-family="ui-monospace" font-size="9" fill="#7dd3fc">派发契约</text>
+    </g>
+
+    <!-- Pillar 2: Cloud Sandbox (Simular) -->
+    <g transform="translate(375, 25)">
+      <rect width="310" height="290" rx="12" fill="#070d1e" stroke="#10b981" stroke-width="1.2"/>
+      <rect x="16" y="16" width="278" height="28" rx="6" fill="#042a1f" stroke="#10b981" stroke-width="0.8"/>
+      <text x="26" y="35" class="badge-text" fill="#6ee7b7">节点 2：云端轻量沙盒 (Cloud Sandbox)</text>
+
+      <g transform="translate(16, 60)">
+        <text x="0" y="15" class="card-title" fill="#a7f3d0">@云端沙盒-Simular (操作手)</text>
+        <text x="0" y="32" class="card-sub">运行环境: 云端安全独立容器 (Simular Box)</text>
+
+        <!-- Tasks list -->
+        <g transform="translate(0, 45)">
+          <rect width="278" height="75" rx="5" fill="#031e16"/>
+          <text x="10" y="20" font-family="ui-monospace" font-size="10" font-weight="700" fill="#10b981">环境隔离与实验脚手架：</text>
+          <text x="10" y="38" font-family="-apple-system, sans-serif" font-size="11" fill="#a7f3d0">• 长短 Prompt 样本集生成与配平</text>
+          <text x="10" y="54" font-family="-apple-system, sans-serif" font-size="11" fill="#a7f3d0">• 探针验证与隔离进程防显存泄漏</text>
+          <text x="10" y="70" font-family="-apple-system, sans-serif" font-size="11" fill="#a7f3d0">• 跨卡 Tensor Parallel 参数自动化合入</text>
+        </g>
+
+        <!-- Output badge -->
+        <g transform="translate(0, 130)">
+          <rect width="278" height="32" rx="4" fill="#043224" stroke="#059669" stroke-width="0.8"/>
+          <text x="10" y="20" font-family="ui-monospace" font-size="10" fill="#a7f3d0">产物: prompts_*.json / benchmark_*.py</text>
+        </g>
+      </g>
+    </g>
+
+    <!-- Flow Arrow 2 -> 3 (Artifact Pipe) -->
+    <g transform="translate(695, 155)">
+      <line x1="0" y1="0" x2="25" y2="0" stroke="#10b981" stroke-width="2"/>
+      <polygon points="25,0 17,-4 17,4" fill="#10b981"/>
+      <text x="12" y="-8" text-anchor="middle" font-family="ui-monospace" font-size="9" fill="#6ee7b7">落盘交接</text>
+    </g>
+
+    <!-- Pillar 3: Cloud GPU Cluster (Kaggle) -->
+    <g transform="translate(725, 25)">
+      <rect width="310" height="290" rx="12" fill="#070d1e" stroke="#8b5cf6" stroke-width="1.2"/>
+      <rect x="16" y="16" width="278" height="28" rx="6" fill="#1b1236" stroke="#8b5cf6" stroke-width="0.8"/>
+      <text x="26" y="35" class="badge-text" fill="#d8b4fe">节点 3：云端 GPU 集群 (Heterogeneous GPU)</text>
+
+      <g transform="translate(16, 60)">
+        <text x="0" y="15" class="card-title" fill="#e9d5ff">@Kaggle 算力手 (GPU 压测)</text>
+        <text x="0" y="32" class="card-sub">运行环境: Kaggle Kernel (NVIDIA T4 × 2, 30GB)</text>
+
+        <!-- Tasks list -->
+        <g transform="translate(0, 45)">
+          <rect width="278" height="75" rx="5" fill="#150d2c"/>
+          <text x="10" y="20" font-family="ui-monospace" font-size="10" font-weight="700" fill="#c084fc">重型模型推理与基准打点：</text>
+          <text x="10" y="38" font-family="-apple-system, sans-serif" font-size="11" fill="#e9d5ff">• 36 组全矩阵串行实测压测 (35.9 分钟)</text>
+          <text x="10" y="54" font-family="-apple-system, sans-serif" font-size="11" fill="#e9d5ff">• 逐 Token ITL 与毫秒级 TTFT 流式打点</text>
+          <text x="10" y="70" font-family="-apple-system, sans-serif" font-size="11" fill="#e9d5ff">• 产物回传与 11.61h 免费算力安全预算</text>
+        </g>
+
+        <!-- Output badge -->
+        <g transform="translate(0, 130)">
+          <rect width="278" height="32" rx="4" fill="#2e1065" stroke="#7c3aed" stroke-width="0.8"/>
+          <text x="10" y="20" font-family="ui-monospace" font-size="10" fill="#d8b4fe">产物: benchmark_results.csv / json</text>
+        </g>
+      </g>
+    </g>
+
+    <!-- Bottom Global Orchestration Banner (Human Gate) -->
+    <g transform="translate(25, 255)">
+      <rect width="1010" height="42" rx="6" fill="#140f2b" stroke="#6366f1" stroke-width="1"/>
+      <circle cx="25" cy="21" r="6" fill="#a855f7"/>
+      <text x="40" y="25" font-family="-apple-system, sans-serif" font-weight="700" font-size="12" fill="#e9d5ff">人类架构师门禁 (@loong)</text>
+      <text x="210" y="25" font-family="ui-monospace" font-size="11" fill="#c4b5fd">| 负责鉴权拍板、零破坏确认卡片、以及最终代码上线（git push）双重审批</text>
+      <rect x="870" y="9" width="125" height="24" rx="4" fill="#042a1f" stroke="#10b981" stroke-width="0.8"/>
+      <text x="932" y="24" text-anchor="middle" font-family="ui-monospace" font-size="10" font-weight="700" fill="#6ee7b7">零付费 · 100% 闭环</text>
+    </g>
+  </g>
+
+  <!-- Footer Branding -->
+  <g transform="translate(70, 585)">
+    <text x="0" y="0" class="tag">git-novel · 架构深思考系列 · Tuli 原创出品</text>
+    <text x="1060" y="0" class="tag" text-anchor="end">Heterogeneous Multi-Bot Architecture Case Study</text>
+  </g>
+</svg>

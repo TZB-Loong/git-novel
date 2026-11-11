@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="580" viewBox="0 0 960 580">
+  <defs>
+    <style>
+      .bg { fill: #040813; rx: 14; }
+      .text-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 800; font-size: 16px; fill: #f8fafc; }
+      .text-sub { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 12px; fill: #94a3b8; }
+      .text-h2 { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 700; font-size: 13px; fill: #e2e8f0; }
+      .text-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 11px; fill: #cbd5e1; }
+      .text-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 11px; }
+      .card-bg { fill: #0b1329; stroke: #1e293b; stroke-width: 1; rx: 10; }
+    </style>
+  </defs>
+
+  <rect width="960" height="580" class="bg"/>
+
+  <!-- Header -->
+  <text x="35" y="36" class="text-title">图 1-1：跨越基础设施孤岛的三位一体拓扑架构</text>
+  <text x="35" y="56" class="text-sub">为什么同构单体 Agent 必然受困于物理墙？解剖本地工程宿主、隔离沙盒与云端 GPU 集群的职能切分与流转</text>
+
+  <!-- Container -->
+  <g transform="translate(35, 75)">
+    <rect width="890" height="470" rx="10" class="card-bg"/>
+
+    <!-- Left Box: Local Host (Tuli) -->
+    <g transform="translate(25, 30)">
+      <rect width="255" height="340" rx="8" fill="#070d1e" stroke="#38bdf8" stroke-width="1.2"/>
+      <rect x="14" y="14" width="227" height="28" rx="4" fill="#0a2a3e" stroke="#38bdf8" stroke-width="0.8"/>
+      <text x="24" y="33" class="text-mono" font-weight="700" fill="#7dd3fc">物理节点 A：本地工程宿主</text>
+
+      <g transform="translate(14, 55)">
+        <text x="0" y="15" class="text-h2" fill="#e0f2fe">@Tuli (主笔 · 架构师)</text>
+        <text x="0" y="32" class="text-mono" font-size="10" fill="#64748b">Mac 物理机 / SSD 直连</text>
+
+        <!-- Capabilities -->
+        <g transform="translate(0, 45)">
+          <rect width="227" height="150" rx="4" fill="#041624"/>
+          <text x="10" y="20" class="text-mono" font-weight="700" fill="#38bdf8">独占特权与优势：</text>
+          <text x="10" y="40" class="text-body" fill="#bae6fd">• 代码仓库唯一物理宿主 (`git-novel`)</text>
+          <text x="10" y="60" class="text-body" fill="#bae6fd">• Astro 5 静态构建与全站 SEO 编排</text>
+          <text x="10" y="80" class="text-body" fill="#bae6fd">• 矢量 SVG 插图原生渲染生成</text>
+          <text x="10" y="100" class="text-body" fill="#bae6fd">• Vitest 单测实时执行反馈</text>
+          <text x="10" y="125" class="text-mono" font-size="10" fill="#f87171">✖ 物理墙：无高端 GPU，无法跑 7B+</text>
+          <text x="20" y="140" class="text-mono" font-size="10" fill="#f87171">深度模型或大并发分布式压测</text>
+        </g>
+
+        <!-- Output badge -->
+        <g transform="translate(0, 210)">
+          <rect width="227" height="55" rx="4" fill="#032533" stroke="#0284c7" stroke-width="0.8"/>
+          <text x="10" y="20" class="text-mono" font-weight="700" fill="#7dd3fc">输出契约：</text>
+          <text x="10" y="38" class="text-body" fill="#bae6fd">压测目标、测试变量与 Schema 规范</text>
+        </g>
+      </g>
+    </g>
+
+    <!-- Center Box: Cloud Sandbox (Simular) -->
+    <g transform="translate(315, 30)">
+      <rect width="255" height="340" rx="8" fill="#070d1e" stroke="#10b981" stroke-width="1.2"/>
+      <rect x="14" y="14" width="227" height="28" rx="4" fill="#042a1f" stroke="#10b981" stroke-width="0.8"/>
+      <text x="24" y="33" class="text-mono" font-weight="700" fill="#6ee7b7">物理节点 B：云端隔离沙盒</text>
+
+      <g transform="translate(14, 55)">
+        <text x="0" y="15" class="text-h2" fill="#a7f3d0">@云端沙盒-Simular</text>
+        <text x="0" y="32" class="text-mono" font-size="10" fill="#64748b">云端轻量独立 Linux 容器</text>
+
+        <!-- Capabilities -->
+        <g transform="translate(0, 45)">
+          <rect width="227" height="150" rx="4" fill="#031e16"/>
+          <text x="10" y="20" class="text-mono" font-weight="700" fill="#10b981">环境探针与隔离准备：</text>
+          <text x="10" y="40" class="text-body" fill="#a7f3d0">• 外部不可信 Prompt 样本生成与脱敏</text>
+          <text x="10" y="60" class="text-body" fill="#a7f3d0">• 自动化打通 TP=2 双卡并行参数</text>
+          <text x="10" y="80" class="text-body" fill="#a7f3d0">• 子进程显存生命周期物理隔离测试</text>
+          <text x="10" y="100" class="text-body" fill="#a7f3d0">• `--probe` 单点探针快速打通</text>
+          <text x="10" y="125" class="text-mono" font-size="10" fill="#fdba74">⚠ 物理墙：计算型沙盒成本高昂，</text>
+          <text x="20" y="140" class="text-mono" font-size="10" fill="#fdba74">长周期跑测会消耗昂贵托管账单</text>
+        </g>
+
+        <!-- Output badge -->
+        <g transform="translate(0, 210)">
+          <rect width="227" height="55" rx="4" fill="#043224" stroke="#059669" stroke-width="0.8"/>
+          <text x="10" y="20" class="text-mono" font-weight="700" fill="#a7f3d0">输出产物：</text>
+          <text x="10" y="38" class="text-body" fill="#d1fae5">`prompts_*.json` / `run_matrix.py`</text>
+        </g>
+      </g>
+    </g>
+
+    <!-- Right Box: Cloud GPU Cluster (Kaggle) -->
+    <g transform="translate(605, 30)">
+      <rect width="255" height="340" rx="8" fill="#070d1e" stroke="#8b5cf6" stroke-width="1.2"/>
+      <rect x="14" y="14" width="227" height="28" rx="4" fill="#1b1236" stroke="#8b5cf6" stroke-width="0.8"/>
+      <text x="24" y="33" class="text-mono" font-weight="700" fill="#d8b4fe">物理节点 C：异构 GPU 集群</text>
+
+      <g transform="translate(14, 55)">
+        <text x="0" y="15" class="text-h2" fill="#e9d5ff">@Kaggle 算力手</text>
+        <text x="0" y="32" class="text-mono" font-size="10" fill="#64748b">Kaggle T4 × 2 (30GB VRAM)</text>
+
+        <!-- Capabilities -->
+        <g transform="translate(0, 45)">
+          <rect width="227" height="150" rx="4" fill="#150d2c"/>
+          <text x="10" y="20" class="text-mono" font-weight="700" fill="#c084fc">重型计算吞吐执行：</text>
+          <text x="10" y="40" class="text-body" fill="#e9d5ff">• 30GB 显存支撑 7B 模型 + 4K 上下文</text>
+          <text x="10" y="60" class="text-body" fill="#e9d5ff">• 跑满 36 组全矩阵完整压测 (35.9m)</text>
+          <text x="10" y="80" class="text-body" fill="#e9d5ff">• 流式毫秒级 TTFT 与 ITL 实时打点</text>
+          <text x="10" y="100" class="text-body" fill="#e9d5ff">• 享受每周 30h 免费 GPU 算力池</text>
+          <text x="10" y="125" class="text-mono" font-size="10" fill="#38bdf8">✔ 0 付费账单，无单机资源抢占</text>
+          <text x="20" y="140" class="text-mono" font-size="10" fill="#38bdf8">运算完毕自动释放显存与 Kernel</text>
+        </g>
+
+        <!-- Output badge -->
+        <g transform="translate(0, 210)">
+          <rect width="227" height="55" rx="4" fill="#2e1065" stroke="#7c3aed" stroke-width="0.8"/>
+          <text x="10" y="20" class="text-mono" font-weight="700" fill="#d8b4fe">输出数据：</text>
+          <text x="10" y="38" class="text-body" fill="#f3e8ff">`benchmark_results.csv` / `.json`</text>
+        </g>
+      </g>
+    </g>
+
+    <!-- Bottom Arbitrator Bar -->
+    <g transform="translate(25, 390)">
+      <rect width="835" height="55" rx="6" fill="#110d24" stroke="#6366f1" stroke-width="1"/>
+      <circle cx="25" cy="27" r="8" fill="#a855f7"/>
+      <text x="45" y="32" class="text-h2" fill="#e9d5ff">人类架构师门禁 (@loong)：</text>
+      <text x="235" y="32" class="text-body" fill="#c4b5fd">统一把关【凭据代持申请】、【零付费额度核算】与【最终 git push 上线拍板】。实现零信任切面隔离。</text>
+    </g>
+  </g>
+</svg>
