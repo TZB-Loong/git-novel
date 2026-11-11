@@ -1,0 +1,190 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <defs>
+    <style>
+      .bg { fill: #040813; rx: 14; }
+      .text-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 800; font-size: 16px; fill: #f8fafc; }
+      .text-sub { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 12px; fill: #94a3b8; }
+      .text-axis { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 11px; fill: #64748b; }
+      .text-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 11px; }
+      .grid { stroke: #1e293b; stroke-width: 1; stroke-dasharray: 4,4; }
+      .axis { stroke: #334155; stroke-width: 1.5; }
+      .card-bg { fill: #0b1329; stroke: #1e293b; stroke-width: 1; rx: 10; }
+    </style>
+  </defs>
+
+  <rect width="960" height="540" class="bg"/>
+
+  <!-- Title & Subtitle -->
+  <text x="35" y="36" class="text-title">图 2-1：长输入场景（2048 in / 64 out，并发 8）Chunk 档位 vs 首字延迟与吞吐的帕累托前沿</text>
+  <text x="35" y="56" class="text-sub">双卡 Tesla T4 × 2 (TP=2) 实测：直观呈现切分过细的反噬断崖、黄金平衡点与退化区间</text>
+
+  <!-- Left: Pareto Frontier Scatter & Curve -->
+  <!-- Box: 550 width, 430 height -->
+  <g transform="translate(35, 75)">
+    <rect width="550" height="430" class="card-bg"/>
+    <text x="20" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#f8fafc">帕累托相图 (X: 首字延迟 TTFT P50, Y: 输出吞吐 Tokens/s)</text>
+
+    <!-- Axes & Plot Area: origin at (70, 360), width=440, height=290 -->
+    <!-- X-axis: 0 to 10,000 ms. 1000 ms = 44 px. origin X=70, 10000ms at X=510 -->
+    <!-- Y-axis: 0 to 80 tok/s. 10 tok/s = 35 px. origin Y=360, 80 tok/s at Y=80 -->
+    <g transform="translate(10, 15)">
+      <!-- Grid lines horizontal -->
+      <line x1="60" y1="340" x2="500" y2="340" class="axis"/>
+      <line x1="60" y1="270" x2="500" y2="270" class="grid"/>
+      <line x1="60" y1="200" x2="500" y2="200" class="grid"/>
+      <line x1="60" y1="130" x2="500" y2="130" class="grid"/>
+      <line x1="60" y1="60" x2="500" y2="60" class="grid"/>
+
+      <!-- Y axis labels -->
+      <text x="50" y="344" class="text-axis" text-anchor="end">0</text>
+      <text x="50" y="274" class="text-axis" text-anchor="end">20</text>
+      <text x="50" y="204" class="text-axis" text-anchor="end">40</text>
+      <text x="50" y="134" class="text-axis" text-anchor="end">60</text>
+      <text x="50" y="64" class="text-axis" text-anchor="end">80 tok/s</text>
+
+      <!-- Grid lines vertical -->
+      <line x1="60" y1="60" x2="60" y2="340" class="axis"/>
+      <line x1="148" y1="60" x2="148" y2="340" class="grid"/>
+      <line x1="236" y1="60" x2="236" y2="340" class="grid"/>
+      <line x1="324" y1="60" x2="324" y2="340" class="grid"/>
+      <line x1="412" y1="60" x2="412" y2="340" class="grid"/>
+      <line x1="500" y1="60" x2="500" y2="340" class="grid"/>
+
+      <!-- X axis labels -->
+      <text x="60" y="358" class="text-axis" text-anchor="middle">0</text>
+      <text x="148" y="358" class="text-axis" text-anchor="middle">2000</text>
+      <text x="236" y="358" class="text-axis" text-anchor="middle">4000</text>
+      <text x="324" y="358" class="text-axis" text-anchor="middle">6000</text>
+      <text x="412" y="358" class="text-axis" text-anchor="middle">8000</text>
+      <text x="495" y="358" class="text-axis" text-anchor="middle">10000 ms</text>
+
+      <!-- Optimal Zone Highlight (TTFT 500~1500, Thr 65~78) -->
+      <rect x="80" y="70" width="70" height="85" rx="8" fill="#10b981" fill-opacity="0.12" stroke="#10b981" stroke-dasharray="3,3"/>
+      <text x="155" y="90" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#34d399">帕累托最优区 (512 ~ 1024)</text>
+
+      <!-- Points:
+           Baseline: TTFT 9136ms -> X = 60 + 9.136 * 44 = 462, Thr 40.0 -> Y = 340 - 4.0 * 35 = 200
+           256:      TTFT 726ms  -> X = 60 + 0.726 * 44 = 92,  Thr 32.0 -> Y = 340 - 3.2 * 35 = 228
+           512:      TTFT 771ms  -> X = 60 + 0.771 * 44 = 94,  Thr 70.5 -> Y = 340 - 7.05 * 35 = 93
+           1024:     TTFT 992ms  -> X = 60 + 0.992 * 44 = 104, Thr 73.8 -> Y = 340 - 7.38 * 35 = 82
+           2048:     TTFT 1279ms -> X = 60 + 1.279 * 44 = 116, Thr 75.1 -> Y = 340 - 7.51 * 35 = 77
+           4096:     TTFT 2592ms -> X = 60 + 2.592 * 44 = 174, Thr 73.7 -> Y = 340 - 7.37 * 35 = 82
+      -->
+
+      <!-- Pareto connecting curves -->
+      <path d="M 92 228 L 94 93 L 104 82 L 116 77 L 174 82 L 462 200" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-dasharray="4,4"/>
+
+      <!-- Point 1: 256 (Cliff) -->
+      <circle cx="92" cy="228" r="7" fill="#ef4444"/>
+      <text x="92" y="252" class="text-mono" font-weight="700" fill="#f87171" text-anchor="middle">256 (32.0 tok/s)</text>
+      <text x="92" y="266" class="text-axis" fill="#fca5a5" text-anchor="middle">算力断崖 / ITL 7.9s</text>
+
+      <!-- Point 2: 512 (Sweet spot) -->
+      <circle cx="94" cy="93" r="8" fill="#10b981"/>
+      <circle cx="94" cy="93" r="12" fill="none" stroke="#10b981" stroke-width="2"/>
+      <text x="82" y="55" class="text-mono" font-weight="800" fill="#34d399">512: 770ms / 70.5 t/s</text>
+      <text x="82" y="68" class="text-sub" fill="#6ee7b7">★ 极速首字 + 高吞吐</text>
+
+      <!-- Point 3: 1024 -->
+      <circle cx="104" cy="82" r="7" fill="#3b82f6"/>
+      <text x="125" y="80" class="text-mono" font-weight="700" fill="#60a5fa">1024 (73.8 tok/s)</text>
+
+      <!-- Point 4: 2048 -->
+      <circle cx="116" cy="77" r="6" fill="#818cf8"/>
+
+      <!-- Point 5: 4096 -->
+      <circle cx="174" cy="82" r="6" fill="#a855f7"/>
+      <text x="180" y="105" class="text-mono" fill="#c084fc">4096 (2592ms)</text>
+
+      <!-- Point 6: Baseline -->
+      <circle cx="462" cy="200" r="7" fill="#f59e0b"/>
+      <text x="462" y="222" class="text-mono" font-weight="700" fill="#fbbf24" text-anchor="middle">Baseline (40.0 tok/s)</text>
+      <text x="462" y="236" class="text-axis" fill="#fde68a" text-anchor="middle">TTFT 9136ms 严重阻塞</text>
+    </g>
+  </g>
+
+  <!-- Right: Data Breakdown Table (Concurrency 8) -->
+  <g transform="translate(600, 75)">
+    <rect width="325" height="430" class="card-bg"/>
+    <text x="20" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#f8fafc">长文本 (2K in) 并发 8 实测详表</text>
+
+    <!-- Table Header -->
+    <g transform="translate(15, 45)">
+      <rect width="295" height="28" rx="4" fill="#0f172a"/>
+      <text x="10" y="18" class="text-mono" font-weight="700" fill="#94a3b8">Chunk</text>
+      <text x="65" y="18" class="text-mono" font-weight="700" fill="#94a3b8">TTFT P50</text>
+      <text x="150" y="18" class="text-mono" font-weight="700" fill="#94a3b8">吞吐 (t/s)</text>
+      <text x="235" y="18" class="text-mono" font-weight="700" fill="#94a3b8">GPU %</text>
+    </g>
+
+    <!-- Table Rows -->
+    <g transform="translate(15, 80)">
+      <!-- Baseline -->
+      <rect y="0" width="295" height="44" rx="4" fill="#18181b"/>
+      <text x="10" y="20" class="text-mono" font-weight="700" fill="#fbbf24">baseline</text>
+      <text x="10" y="34" class="text-sub">无分块</text>
+      <text x="65" y="20" class="text-mono" fill="#ef4444">9136 ms</text>
+      <text x="65" y="34" class="text-sub">阻塞瓶颈</text>
+      <text x="150" y="20" class="text-mono" fill="#cbd5e1">40.02</text>
+      <text x="235" y="20" class="text-mono" fill="#cbd5e1">48.4%</text>
+
+      <!-- 256 -->
+      <g transform="translate(0, 50)">
+        <rect width="295" height="44" rx="4" fill="#450a0a" stroke="#ef4444" stroke-width="0.8"/>
+        <text x="10" y="20" class="text-mono" font-weight="700" fill="#f87171">256</text>
+        <text x="10" y="34" class="text-sub" fill="#fca5a5">过细切分</text>
+        <text x="65" y="20" class="text-mono" fill="#34d399">726 ms</text>
+        <text x="150" y="20" class="text-mono" fill="#ef4444" font-weight="700">31.96</text>
+        <text x="150" y="34" class="text-sub" fill="#fca5a5">-20.1% 暴跌</text>
+        <text x="235" y="20" class="text-mono" fill="#f87171">44.2%</text>
+      </g>
+
+      <!-- 512 -->
+      <g transform="translate(0, 100)">
+        <rect width="295" height="48" rx="4" fill="#064e3b" stroke="#10b981" stroke-width="1.2"/>
+        <text x="10" y="20" class="text-mono" font-weight="800" fill="#34d399">512 ★</text>
+        <text x="10" y="36" class="text-sub" fill="#6ee7b7">黄金平衡</text>
+        <text x="65" y="20" class="text-mono" font-weight="700" fill="#34d399">770 ms</text>
+        <text x="65" y="36" class="text-sub" fill="#6ee7b7">-91.6% 削平</text>
+        <text x="150" y="20" class="text-mono" font-weight="700" fill="#34d399">70.46</text>
+        <text x="150" y="36" class="text-sub" fill="#6ee7b7">+76.1% 暴涨</text>
+        <text x="235" y="20" class="text-mono" font-weight="700" fill="#34d399">90.3%</text>
+      </g>
+
+      <!-- 1024 -->
+      <g transform="translate(0, 154)">
+        <rect width="295" height="42" rx="4" fill="#0b1329" stroke="#3b82f6" stroke-width="0.8"/>
+        <text x="10" y="20" class="text-mono" font-weight="700" fill="#60a5fa">1024</text>
+        <text x="65" y="20" class="text-mono" fill="#cbd5e1">991 ms</text>
+        <text x="150" y="20" class="text-mono" font-weight="700" fill="#60a5fa">73.75</text>
+        <text x="150" y="34" class="text-sub" fill="#93c5fd">+84.3% 峰值</text>
+        <text x="235" y="20" class="text-mono" fill="#cbd5e1">88.4%</text>
+      </g>
+
+      <!-- 2048 -->
+      <g transform="translate(0, 202)">
+        <rect width="295" height="40" rx="4" fill="#0f172a"/>
+        <text x="10" y="22" class="text-mono" fill="#cbd5e1">2048</text>
+        <text x="65" y="22" class="text-mono" fill="#cbd5e1">1278 ms</text>
+        <text x="150" y="22" class="text-mono" fill="#cbd5e1">75.12</text>
+        <text x="235" y="22" class="text-mono" fill="#cbd5e1">89.5%</text>
+      </g>
+
+      <!-- 4096 -->
+      <g transform="translate(0, 248)">
+        <rect width="295" height="40" rx="4" fill="#0f172a"/>
+        <text x="10" y="22" class="text-mono" fill="#cbd5e1">4096</text>
+        <text x="65" y="22" class="text-mono" fill="#fbbf24">2592 ms</text>
+        <text x="150" y="22" class="text-mono" fill="#cbd5e1">73.70</text>
+        <text x="235" y="22" class="text-mono" fill="#cbd5e1">88.1%</text>
+      </g>
+    </g>
+
+    <!-- Bottom summary box -->
+    <g transform="translate(15, 380)">
+      <rect width="295" height="38" rx="6" fill="#1e293b"/>
+      <text x="10" y="16" class="text-mono" font-weight="700" fill="#f8fafc">工程定论：</text>
+      <text x="10" y="30" class="text-sub" fill="#cbd5e1">锁死 512~1024：延迟与吞吐双赢最优解</text>
+    </g>
+  </g>
+</svg>

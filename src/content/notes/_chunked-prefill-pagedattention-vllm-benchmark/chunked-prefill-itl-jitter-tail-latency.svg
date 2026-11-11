@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="520" viewBox="0 0 960 520">
+  <defs>
+    <style>
+      .bg { fill: #040813; rx: 14; }
+      .text-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 800; font-size: 16px; fill: #f8fafc; }
+      .text-sub { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 12px; fill: #94a3b8; }
+      .text-axis { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 11px; fill: #64748b; }
+      .text-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 11px; }
+      .grid { stroke: #1e293b; stroke-width: 1; stroke-dasharray: 4,4; }
+      .axis { stroke: #334155; stroke-width: 1.5; }
+      .card-bg { fill: #0b1329; stroke: #1e293b; stroke-width: 1; rx: 10; }
+    </style>
+  </defs>
+
+  <rect width="960" height="520" class="bg"/>
+
+  <!-- Header -->
+  <text x="35" y="36" class="text-title">图 3-1：长输入场景下 Token 间延迟（ITL P99）抖动与尾部首字延迟（TTFT P99）对比</text>
+  <text x="35" y="56" class="text-sub">揭秘 Chunk=256 的 7.9 秒停顿噩梦：当 M 维过小与调度碎片化共振时，流式输出的崩塌实测</text>
+
+  <!-- Left: ITL P99 Jitter Comparison (ms) -->
+  <g transform="translate(35, 75)">
+    <rect width="435" height="410" class="card-bg"/>
+    <text x="20" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#f8fafc">逐 Token 间隔延迟抖动 (ITL P99，越小越平稳)</text>
+    <text x="20" y="44" class="text-sub">长输入 2K / 并发 8：流式打字机手感是否卡顿</text>
+
+    <!-- Bars for Concurrency 8 ITL P99:
+         scale: 0 to 8000 ms. width = 310 px -> 1000 ms = 38.7 px.
+         origin X = 85
+    -->
+    <g transform="translate(15, 60)">
+      <!-- Grid -->
+      <line x1="85" y1="10" x2="85" y2="280" class="axis"/>
+      <line x1="162" y1="10" x2="162" y2="280" class="grid"/>
+      <line x1="240" y1="10" x2="240" y2="280" class="grid"/>
+      <line x1="317" y1="10" x2="317" y2="280" class="grid"/>
+      <line x1="395" y1="10" x2="395" y2="280" class="grid"/>
+
+      <text x="85" y="298" class="text-axis" text-anchor="middle">0</text>
+      <text x="162" y="298" class="text-axis" text-anchor="middle">2000</text>
+      <text x="240" y="298" class="text-axis" text-anchor="middle">4000</text>
+      <text x="317" y="298" class="text-axis" text-anchor="middle">6000</text>
+      <text x="395" y="298" class="text-axis" text-anchor="middle">8000 ms</text>
+
+      <!-- Row 1: Baseline -->
+      <text x="75" y="32" class="text-axis" text-anchor="end" font-weight="600">baseline</text>
+      <rect x="85" y="18" width="4" height="22" rx="3" fill="#fbbf24"/>
+      <text x="95" y="34" class="text-mono" fill="#fde68a">104 ms</text>
+
+      <!-- Row 2: 256 -->
+      <text x="75" y="77" class="text-axis" text-anchor="end" font-weight="600" fill="#ef4444">256</text>
+      <rect x="85" y="63" width="306" height="22" rx="3" fill="#ef4444"/>
+      <text x="300" y="79" class="text-mono" font-weight="800" fill="#ffffff">7922 ms (7.92s!)</text>
+
+      <!-- Row 3: 512 -->
+      <text x="75" y="122" class="text-axis" text-anchor="end" font-weight="600" fill="#10b981">512 ★</text>
+      <rect x="85" y="108" width="15" height="22" rx="3" fill="#10b981"/>
+      <text x="106" y="124" class="text-mono" font-weight="700" fill="#34d399">392 ms (稳定平顺)</text>
+
+      <!-- Row 4: 1024 -->
+      <text x="75" y="167" class="text-axis" text-anchor="end" font-weight="600">1024</text>
+      <rect x="85" y="153" width="24" height="22" rx="3" fill="#3b82f6"/>
+      <text x="115" y="169" class="text-mono" fill="#93c5fd">619 ms</text>
+
+      <!-- Row 5: 2048 -->
+      <text x="75" y="212" class="text-axis" text-anchor="end" font-weight="600">2048</text>
+      <rect x="85" y="198" width="44" height="22" rx="3" fill="#818cf8"/>
+      <text x="135" y="214" class="text-mono" fill="#c7d2fe">1127 ms</text>
+
+      <!-- Row 6: 4096 -->
+      <text x="75" y="257" class="text-axis" text-anchor="end" font-weight="600">4096</text>
+      <rect x="85" y="243" width="31" height="22" rx="3" fill="#a855f7"/>
+      <text x="122" y="259" class="text-mono" fill="#e9d5ff">791 ms</text>
+    </g>
+
+    <!-- Bottom note -->
+    <rect x="20" y="360" width="395" height="32" rx="6" fill="#450a0a"/>
+    <text x="30" y="380" class="text-mono" font-weight="700" fill="#fca5a5">惊人断崖：Chunk 256 在并发8下导致每个 Token 停顿超 7.9 秒！</text>
+  </g>
+
+  <!-- Right: TTFT P99 Tail Latency (ms) -->
+  <g transform="translate(490, 75)">
+    <rect width="435" height="410" class="card-bg"/>
+    <text x="20" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#f8fafc">尾部首字延迟 (TTFT P99，越小越好)</text>
+    <text x="20" y="44" class="text-sub">长输入 2K / 并发 8：极端长尾下用户的最大等待忍耐极限</text>
+
+    <!-- Bars for Concurrency 8 TTFT P99:
+         scale: 0 to 14000 ms. width = 310 px -> 2000 ms = 44.2 px.
+         origin X = 85
+    -->
+    <g transform="translate(15, 60)">
+      <!-- Grid -->
+      <line x1="85" y1="10" x2="85" y2="280" class="axis"/>
+      <line x1="129" y1="10" x2="129" y2="280" class="grid"/>
+      <line x1="173" y1="10" x2="173" y2="280" class="grid"/>
+      <line x1="217" y1="10" x2="217" y2="280" class="grid"/>
+      <line x1="261" y1="10" x2="261" y2="280" class="grid"/>
+      <line x1="305" y1="10" x2="305" y2="280" class="grid"/>
+      <line x1="350" y1="10" x2="350" y2="280" class="grid"/>
+
+      <text x="85" y="298" class="text-axis" text-anchor="middle">0</text>
+      <text x="173" y="298" class="text-axis" text-anchor="middle">4k</text>
+      <text x="261" y="298" class="text-axis" text-anchor="middle">8k</text>
+      <text x="350" y="298" class="text-axis" text-anchor="middle">12k ms</text>
+
+      <!-- Row 1: Baseline -->
+      <text x="75" y="32" class="text-axis" text-anchor="end" font-weight="600">baseline</text>
+      <rect x="85" y="18" width="202" height="22" rx="3" fill="#fbbf24"/>
+      <text x="293" y="34" class="text-mono" fill="#fde68a">9138 ms</text>
+
+      <!-- Row 2: 256 -->
+      <text x="75" y="77" class="text-axis" text-anchor="end" font-weight="600" fill="#ef4444">256</text>
+      <rect x="85" y="63" width="273" height="22" rx="3" fill="#ef4444"/>
+      <text x="270" y="79" class="text-mono" font-weight="800" fill="#ffffff">12359 ms (12.3s)</text>
+
+      <!-- Row 3: 512 -->
+      <text x="75" y="122" class="text-axis" text-anchor="end" font-weight="600" fill="#10b981">512 ★</text>
+      <rect x="85" y="108" width="80" height="22" rx="3" fill="#10b981"/>
+      <text x="172" y="124" class="text-mono" font-weight="700" fill="#34d399">3599 ms (-60.6%)</text>
+
+      <!-- Row 4: 1024 -->
+      <text x="75" y="167" class="text-axis" text-anchor="end" font-weight="600">1024</text>
+      <rect x="85" y="153" width="72" height="22" rx="3" fill="#3b82f6"/>
+      <text x="163" y="169" class="text-mono" fill="#93c5fd">3273 ms (最优尾部)</text>
+
+      <!-- Row 5: 2048 -->
+      <text x="75" y="212" class="text-axis" text-anchor="end" font-weight="600">2048</text>
+      <rect x="85" y="198" width="71" height="22" rx="3" fill="#818cf8"/>
+      <text x="162" y="214" class="text-mono" fill="#c7d2fe">3231 ms</text>
+
+      <!-- Row 6: 4096 -->
+      <text x="75" y="257" class="text-axis" text-anchor="end" font-weight="600">4096</text>
+      <rect x="85" y="243" width="74" height="22" rx="3" fill="#a855f7"/>
+      <text x="165" y="259" class="text-mono" fill="#e9d5ff">3328 ms</text>
+    </g>
+
+    <!-- Bottom note -->
+    <rect x="20" y="360" width="395" height="32" rx="6" fill="#064e3b"/>
+    <text x="30" y="380" class="text-mono" font-weight="700" fill="#6ee7b7">压制长尾：Chunk 512~1024 将 P99 尾部延迟从 9~12s 压制在 3s 出头</text>
+  </g>
+</svg>

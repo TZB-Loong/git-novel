@@ -1,0 +1,160 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="580" viewBox="0 0 960 580">
+  <defs>
+    <style>
+      .bg { fill: #040813; rx: 14; }
+      .text-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 800; font-size: 16px; fill: #f8fafc; }
+      .text-sub { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 12px; fill: #94a3b8; }
+      .text-h2 { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 700; font-size: 13px; fill: #e2e8f0; }
+      .text-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 11px; fill: #cbd5e1; }
+      .text-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 11px; }
+      .card-bg { fill: #0b1329; stroke: #1e293b; stroke-width: 1; rx: 10; }
+    </style>
+  </defs>
+
+  <rect width="960" height="580" class="bg"/>
+
+  <!-- Header -->
+  <text x="35" y="36" class="text-title">图 1-1：Chunked Prefill 协同调度（Piggybacking）与 PagedAttention 显存交互机理</text>
+  <text x="35" y="56" class="text-sub">对比非分块（Baseline）的阻塞垄断 vs 分块预填充（Chunked Prefill）在统一 Batch 内算子协同的物理过程</text>
+
+  <!-- Part A: Baseline vs Chunked Prefill Scheduling (Top Half) -->
+  <g transform="translate(35, 75)">
+    <rect width="890" height="235" class="card-bg"/>
+
+    <!-- Left: Baseline (Monopoly) -->
+    <g transform="translate(20, 20)">
+      <rect width="400" height="195" rx="8" fill="#070d1e" stroke="#ef4444" stroke-width="1" stroke-dasharray="4,3"/>
+      <text x="16" y="24" class="text-h2" fill="#f87171">非分块基线 (Baseline: 纯批式调度)</text>
+      <text x="16" y="42" class="text-sub">长 Prompt (2048 Tokens) 独占单 Step 计算，Decode 请求遭遇饥饿</text>
+
+      <!-- Step 0 -->
+      <g transform="translate(16, 55)">
+        <rect width="368" height="38" rx="6" fill="#1e1b4b" stroke="#6366f1" stroke-width="1"/>
+        <text x="12" y="18" class="text-mono" font-weight="700" fill="#a5b4fc">Step 0 (巨型 Prefill GEMM)</text>
+        <text x="12" y="32" class="text-body" fill="#c7d2fe">全量 2048 Tokens 独霸 GPU 计算核心 | Decode 任务全部挂起排队 (阻塞)</text>
+      </g>
+
+      <!-- Step 1..N -->
+      <g transform="translate(16, 102)">
+        <rect width="368" height="38" rx="6" fill="#18181b" stroke="#3f3f46" stroke-width="1"/>
+        <text x="12" y="18" class="text-mono" font-weight="700" fill="#a1a1aa">Step 1..N (纯 Decode 自回归)</text>
+        <text x="12" y="32" class="text-body" fill="#71717a">每次仅处理几个 Token，转入 Memory-bound 显存搬运，算力利用率剧降</text>
+      </g>
+
+      <!-- Consequence tag -->
+      <rect x="16" y="152" width="368" height="28" rx="4" fill="#450a0a"/>
+      <text x="24" y="170" class="text-mono" font-weight="700" fill="#fca5a5">生产恶果：并发 8 下首字延迟飙升至 9136 ms，首字与解码互相掐死</text>
+    </g>
+
+    <!-- Right: Chunked Prefill (Piggybacking) -->
+    <g transform="translate(450, 20)">
+      <rect width="420" height="195" rx="8" fill="#070d1e" stroke="#10b981" stroke-width="1.5"/>
+      <text x="16" y="24" class="text-h2" fill="#34d399">分块预填充 (Chunked Prefill: 拼车调度 Piggybacking)</text>
+      <text x="16" y="42" class="text-sub">锁定 max_num_batched_tokens（如 512），在同一 Batch 内混部 Prefill 与 Decode</text>
+
+      <!-- Step 0 Batch -->
+      <g transform="translate(16, 55)">
+        <rect width="388" height="38" rx="6" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+        <text x="12" y="18" class="text-mono" font-weight="700" fill="#6ee7b7">Step 0: [Chunk 1: 504 tokens] + [8 Decode Tokens]</text>
+        <text x="12" y="32" class="text-body" fill="#a7f3d0">长 Prompt 被拆分切分执行，同时带跑在途请求，解码零等待</text>
+      </g>
+
+      <!-- Step 1 Batch -->
+      <g transform="translate(16, 102)">
+        <rect width="388" height="38" rx="6" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+        <text x="12" y="18" class="text-mono" font-weight="700" fill="#6ee7b7">Step 1: [Chunk 2: 504 tokens] + [8 Decode Tokens]</text>
+        <text x="12" y="32" class="text-body" fill="#a7f3d0">计算密集 (GEMM) 与访存密集 (KV Fetch) 完美互补，拉高计算能效</text>
+      </g>
+
+      <!-- Benefit tag -->
+      <rect x="16" y="152" width="388" height="28" rx="4" fill="#064e3b"/>
+      <text x="24" y="170" class="text-mono" font-weight="700" fill="#6ee7b7">实测突破：首字延迟斩落 91.6% (降至 770ms)，吞吐反增 +76.1% (70.5 t/s)</text>
+    </g>
+  </g>
+
+  <!-- Part B: Lower Half - PagedAttention Block Table & GEMM Arithmetic Intensity -->
+  <g transform="translate(35, 325)">
+    <rect width="890" height="230" class="card-bg"/>
+
+    <!-- Left Box: PagedAttention Block Allocation -->
+    <g transform="translate(20, 20)">
+      <rect width="420" height="190" rx="8" fill="#070d1e" stroke="#334155" stroke-width="1"/>
+      <text x="16" y="24" class="text-h2" fill="#38bdf8">PagedAttention 物理块动态映射 (Block Size = 16)</text>
+      <text x="16" y="42" class="text-sub">逻辑连续序列映射到显存非连续物理块，分块写入无缝衔接</text>
+
+      <!-- Logical Chunks -->
+      <g transform="translate(16, 58)">
+        <rect x="0" y="0" width="85" height="40" rx="4" fill="#1e293b" stroke="#38bdf8" stroke-width="1"/>
+        <text x="12" y="18" class="text-mono" fill="#bae6fd">Chunk 0</text>
+        <text x="12" y="32" class="text-sub">0~511 tok</text>
+
+        <text x="92" y="25" class="text-mono" fill="#64748b">→</text>
+
+        <rect x="110" y="0" width="85" height="40" rx="4" fill="#1e293b" stroke="#38bdf8" stroke-width="1"/>
+        <text x="122" y="18" class="text-mono" fill="#bae6fd">Chunk 1</text>
+        <text x="122" y="32" class="text-sub">512~1023</text>
+
+        <text x="202" y="25" class="text-mono" fill="#64748b">→</text>
+
+        <rect x="220" y="0" width="85" height="40" rx="4" fill="#1e293b" stroke="#38bdf8" stroke-width="1"/>
+        <text x="232" y="18" class="text-mono" fill="#bae6fd">Chunk 2</text>
+        <text x="232" y="32" class="text-sub">1024~1535</text>
+
+        <text x="312" y="25" class="text-mono" fill="#64748b">→</text>
+
+        <rect x="330" y="0" width="55" height="40" rx="4" fill="#1e293b" stroke="#818cf8" stroke-width="1"/>
+        <text x="340" y="25" class="text-mono" fill="#c7d2fe">...</text>
+      </g>
+
+      <!-- Physical Memory Blocks -->
+      <g transform="translate(16, 115)">
+        <rect width="388" height="60" rx="6" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
+        <text x="12" y="20" class="text-mono" font-weight="700" fill="#94a3b8">GPU DRAM Physical Block Pool (Page Table):</text>
+        <g transform="translate(12, 28)">
+          <rect x="0" y="0" width="60" height="22" rx="3" fill="#1e3a8a"/>
+          <text x="8" y="15" class="text-mono" fill="#93c5fd">Blk #42</text>
+
+          <rect x="68" y="0" width="60" height="22" rx="3" fill="#064e3b"/>
+          <text x="76" y="15" class="text-mono" fill="#a7f3d0">Blk #89</text>
+
+          <rect x="136" y="0" width="60" height="22" rx="3" fill="#1e3a8a"/>
+          <text x="144" y="15" class="text-mono" fill="#93c5fd">Blk #15</text>
+
+          <rect x="204" y="0" width="60" height="22" rx="3" fill="#312e81"/>
+          <text x="212" y="15" class="text-mono" fill="#c7d2fe">Blk #104</text>
+
+          <rect x="272" y="0" width="90" height="22" rx="3" fill="#1e293b"/>
+          <text x="280" y="15" class="text-mono" fill="#94a3b8">动态按需释放</text>
+        </g>
+      </g>
+    </g>
+
+    <!-- Right Box: GEMM Arithmetic Intensity & Flops Trap -->
+    <g transform="translate(460, 20)">
+      <rect width="410" height="190" rx="8" fill="#070d1e" stroke="#f59e0b" stroke-width="1"/>
+      <text x="16" y="24" class="text-h2" fill="#fbbf24">为什么 Chunk 绝不能切得太细？(GEMM 算力墙物理判定)</text>
+      <text x="16" y="42" class="text-sub">GPU Tensor Cores 算力饱和度取决于矩阵乘 $M 	imes K 	imes N$ 的 $M$ 维大小</text>
+
+      <g transform="translate(16, 58)">
+        <!-- Row 1: Chunk 256 -->
+        <rect width="378" height="36" rx="4" fill="#450a0a" stroke="#ef4444" stroke-width="0.5"/>
+        <text x="12" y="17" class="text-mono" font-weight="700" fill="#fca5a5">Chunk = 256 (M 维过窄)</text>
+        <text x="12" y="30" class="text-body" fill="#fecaca">算力不饱和，小算子发射开销高，GPU计算利用率暴跌至 44.2%，ITL 飙至 7.9s</text>
+
+        <!-- Row 2: Chunk 512~1024 -->
+        <g transform="translate(0, 44)">
+          <rect width="378" height="42" rx="4" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+          <text x="12" y="18" class="text-mono" font-weight="700" fill="#6ee7b7">Chunk = 512 ~ 1024 (黄金算力饱和区间)</text>
+          <text x="12" y="33" class="text-body" fill="#a7f3d0">充分喂饱 Tensor Cores 矩阵乘管线，GPU 利用率稳定在 88%~90%，吞吐登顶</text>
+        </g>
+
+        <!-- Row 3: Chunk 2048+ -->
+        <g transform="translate(0, 94)">
+          <rect width="378" height="34" rx="4" fill="#1e293b" stroke="#64748b" stroke-width="0.5"/>
+          <text x="12" y="16" class="text-mono" fill="#cbd5e1">Chunk ≥ 2048 (退化为批处理)</text>
+          <text x="12" y="28" class="text-sub">丧失切分隔离意义，首字延迟与抖动再次回弹抬升</text>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

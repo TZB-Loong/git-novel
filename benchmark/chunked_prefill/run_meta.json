@@ -1,0 +1,23 @@
+{
+  "kaggle_kernel": "loong3xu/topic1-chunked-prefill-probe",
+  "mode": "full",
+  "model": "Qwen/Qwen2.5-7B-Instruct",
+  "tensor_parallel_size": 2,
+  "vllm_version": "0.26.0",
+  "gpu": "Tesla T4, 15360 MiB, 580.178.04\nTesla T4, 15360 MiB, 580.178.04",
+  "flags": "--enforce-eager --gpu-memory-utilization 0.90 --max-model-len 4096 --max-num-batched-tokens <chunk>; chunked prefill 由 V1 引擎默认开启，基线档 = 预算 8192（2048 提示词不切分）",
+  "env": {
+    "HF_HOME": "/kaggle/temp/hf",
+    "PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True"
+  },
+  "prompts": {
+    "rag": "prompts_rag_2k.json (2048 in / 64 out)",
+    "code": "prompts_code_128.json (~128 in / 1024 out)"
+  },
+  "sampling": {
+    "temperature": 0.7,
+    "stream": true
+  },
+  "started": "2026-11-11T08:48:03Z",
+  "wall_clock_s": 2154.8
+}

@@ -1,0 +1,226 @@
+[
+  {
+    "id": "code_000",
+    "prompt": "You are an expert systems engineer. Complete the following task with exhaustive code, docstrings, and comments:\n\nTask 1: Implement a thread-safe, lock-free LRU Cache in modern C++20 using atomic shared_ptr and hazard pointers. Include class definition, node eviction logic, concurrency handling, and comprehensive unit tests with edge cases.\n\nRequirements: Provide a complete, fully compilable/runnable implementation without placeholders or ellipses.",
+    "max_tokens": 1024,
+    "min_tokens": 512,
+    "traffic_type": "short_input_long_output"
+  },
+  {
+    "id": "code_001",
+    "prompt": "You are an expert systems engineer. Complete the following task with exhaustive code, docstrings, and comments:\n\nTask 2: Write a complete production-grade asyncio rate limiter in Python 3.12 using the Token Bucket and Leaky Bucket algorithms. Support Redis cluster synchronization, sliding window fallback, and include full type annotations, docstrings, and tests.\n\nRequirements: Provide a complete, fully compilable/runnable implementation without placeholders or ellipses.",
+    "max_tokens": 1024,
+    "min_tokens": 512,
+    "traffic_type": "short_input_long_output"
+  },
+  {
+    "id": "code_002",
+    "prompt": "You are an expert systems engineer. Complete the following task with exhaustive code, docstrings, and comments:\n\nTask 3: Implement a high-performance B-Tree index from scratch in Rust with support for concurrent search, node splitting, key borrowing, and persistent binary serialization. Provide full code with thorough unit tests and benchmark examples.\n\nRequirements: Provide a complete, fully compilable/runnable implementation without placeholders or ellipses.",
+    "max_tokens": 1024,
+    "min_tokens": 512,
+    "traffic_type": "short_input_long_output"
+  },
+  {
+    "id": "code_003",
+    "prompt": "You are an expert systems engineer. Complete the following task with exhaustive code, docstrings, and comments:\n\nTask 4: Write a custom CUDA kernel in PyTorch (C++/CUDA extension) to perform chunked causal self-attention with fused softmax. Include shared memory tiling, warp shuffles, gradient backward pass, and Python binding wrapper.\n\nRequirements: Provide a complete, fully compilable/runnable implementation without placeholders or ellipses.",
+    "max_tokens": 1024,
+    "min_tokens": 512,
+    "traffic_type": "short_input_long_output"
+  },
+  {
+    "id": "code_004",
+    "prompt": "You are an expert systems engineer. Complete the following task with exhaustive code, docstrings, and comments:\n\nTask 5: Implement a thread-safe, lock-free LRU Cache in modern C++20 using atomic shared_ptr and hazard pointers. Include class definition, node eviction logic, concurrency handling, and comprehensive unit tests with edge cases.\n\nRequirements: Provide a complete, fully compilable/runnable implementation without placeholders or ellipses.",
+    "max_tokens": 1024,
+    "min_tokens": 512,
+    "traffic_type": "short_input_long_output"
+  },
+  {
+    "id": "code_005",
+    "prompt": "You are an expert systems engineer. Complete the following task with exhaustive code, docstrings, and comments:\n\nTask 6: Write a complete production-grade asyncio rate limiter in Python 3.12 using the Token Bucket and Leaky Bucket algorithms. Support Redis cluster synchronization, sliding window fallback, and include full type annotations, docstrings, and tests.\n\nRequirements: Provide a complete, fully compilable/runnable implementation without placeholders or ellipses.",
+    "max_tokens": 1024,
+    "min_tokens": 512,
+    "traffic_type": "short_input_long_output"
+  },
+  {
+    "id": "code_006",
+    "prompt": "You are an expert systems engineer. Complete the following task with exhaustive code, docstrings, and comments:\n\nTask 7: Implement a high-performance B-Tree index from scratch in Rust with support for concurrent search, node splitting, key borrowing, and persistent binary serialization. Provide full code with thorough unit tests and benchmark examples.\n\nRequirements: Provide a complete, fully compilable/runnable implementation without placeholders or ellipses.",
+    "max_tokens": 1024,
+    "min_tokens": 512,
+    "traffic_type": "short_input_long_output"
+  },
+  {
+    "id": "code_007",
+    "prompt": "You are an expert systems engineer. Complete the following task with exhaustive code, docstrings, and comments:\n\nTask 8: Write a custom CUDA kernel in PyTorch (C++/CUDA extension) to perform chunked causal self-attention with fused softmax. Include shared memory tiling, warp shuffles, gradient backward pass, and Python binding wrapper.\n\nRequirements: Provide a complete, fully compilable/runnable implementation without placeholders or ellipses.",
+    "max_tokens": 1024,
+    "min_tokens": 512,
+    "traffic_type": "short_input_long_output"
+  },
+  {
+    "id": "code_008",
+    "prompt": "You are an expert systems engineer. Complete the following task with exhaustive code, docstrings, and comments:\n\nTask 9: Implement a thread-safe, lock-free LRU Cache in modern C++20 using atomic shared_ptr and hazard pointers. Include class definition, node eviction logic, concurrency handling, and comprehensive unit tests with edge cases.\n\nRequirements: Provide a complete, fully compilable/runnable implementation without placeholders or ellipses.",
+    "max_tokens": 1024,
+    "min_tokens": 512,
+    "traffic_type": "short_input_long_output"
+  },
+  {
+    "id": "code_009",
+    "prompt": "You are an expert systems engineer. Complete the following task with exhaustive code, docstrings, and comments:\n\nTask 10: Write a complete production-grade asyncio rate limiter in Python 3.12 using the Token Bucket and Leaky Bucket algorithms. Support Redis cluster synchronization, sliding window fallback, and include full type annotations, docstrings, and tests.\n\nRequirements: Provide a complete, fully compilable/runnable implementation without placeholders or ellipses.",
+    "max_tokens": 1024,
+    "min_tokens": 512,
+    "traffic_type": "short_input_long_output"
+  },
+  {
+    "id": "code_010",
+    "prompt": "You are an expert systems engineer. Complete the following task with exhaustive code, docstrings, and comments:\n\nTask 11: Implement a high-performance B-Tree index from scratch in Rust with support for concurrent search, node splitting, key borrowing, and persistent binary serialization. Provide full code with thorough unit tests and benchmark examples.\n\nRequirements: Provide a complete, fully compilable/runnable implementation without placeholders or ellipses.",
+    "max_tokens": 1024,
+    "min_tokens": 512,
+    "traffic_type": "short_input_long_output"
+  },
+  {
+    "id": "code_011",
+    "prompt": "You are an expert systems engineer. Complete the following task with exhaustive code, docstrings, and comments:\n\nTask 12: Write a custom CUDA kernel in PyTorch (C++/CUDA extension) to perform chunked causal self-attention with fused softmax. Include shared memory tiling, warp shuffles, gradient backward pass, and Python binding wrapper.\n\nRequirements: Provide a complete, fully compilable/runnable implementation without placeholders or ellipses.",
+    "max_tokens": 1024,
+    "min_tokens": 512,
+    "traffic_type": "short_input_long_output"
+  },
+  {
+    "id": "code_012",
+    "prompt": "You are an expert systems engineer. Complete the following task with exhaustive code, docstrings, and comments:\n\nTask 13: Implement a thread-safe, lock-free LRU Cache in modern C++20 using atomic shared_ptr and hazard pointers. Include class definition, node eviction logic, concurrency handling, and comprehensive unit tests with edge cases.\n\nRequirements: Provide a complete, fully compilable/runnable implementation without placeholders or ellipses.",
+    "max_tokens": 1024,
+    "min_tokens": 512,
+    "traffic_type": "short_input_long_output"
+  },
+  {
+    "id": "code_013",
+    "prompt": "You are an expert systems engineer. Complete the following task with exhaustive code, docstrings, and comments:\n\nTask 14: Write a complete production-grade asyncio rate limiter in Python 3.12 using the Token Bucket and Leaky Bucket algorithms. Support Redis cluster synchronization, sliding window fallback, and include full type annotations, docstrings, and tests.\n\nRequirements: Provide a complete, fully compilable/runnable implementation without placeholders or ellipses.",
+    "max_tokens": 1024,
+    "min_tokens": 512,
+    "traffic_type": "short_input_long_output"
+  },
+  {
+    "id": "code_014",
+    "prompt": "You are an expert systems engineer. Complete the following task with exhaustive code, docstrings, and comments:\n\nTask 15: Implement a high-performance B-Tree index from scratch in Rust with support for concurrent search, node splitting, key borrowing, and persistent binary serialization. Provide full code with thorough unit tests and benchmark examples.\n\nRequirements: Provide a complete, fully compilable/runnable implementation without placeholders or ellipses.",
+    "max_tokens": 1024,
+    "min_tokens": 512,
+    "traffic_type": "short_input_long_output"
+  },
+  {
+    "id": "code_015",
+    "prompt": "You are an expert systems engineer. Complete the following task with exhaustive code, docstrings, and comments:\n\nTask 16: Write a custom CUDA kernel in PyTorch (C++/CUDA extension) to perform chunked causal self-attention with fused softmax. Include shared memory tiling, warp shuffles, gradient backward pass, and Python binding wrapper.\n\nRequirements: Provide a complete, fully compilable/runnable implementation without placeholders or ellipses.",
+    "max_tokens": 1024,
+    "min_tokens": 512,
+    "traffic_type": "short_input_long_output"
+  },
+  {
+    "id": "code_016",
+    "prompt": "You are an expert systems engineer. Complete the following task with exhaustive code, docstrings, and comments:\n\nTask 17: Implement a thread-safe, lock-free LRU Cache in modern C++20 using atomic shared_ptr and hazard pointers. Include class definition, node eviction logic, concurrency handling, and comprehensive unit tests with edge cases.\n\nRequirements: Provide a complete, fully compilable/runnable implementation without placeholders or ellipses.",
+    "max_tokens": 1024,
+    "min_tokens": 512,
+    "traffic_type": "short_input_long_output"
+  },
+  {
+    "id": "code_017",
+    "prompt": "You are an expert systems engineer. Complete the following task with exhaustive code, docstrings, and comments:\n\nTask 18: Write a complete production-grade asyncio rate limiter in Python 3.12 using the Token Bucket and Leaky Bucket algorithms. Support Redis cluster synchronization, sliding window fallback, and include full type annotations, docstrings, and tests.\n\nRequirements: Provide a complete, fully compilable/runnable implementation without placeholders or ellipses.",
+    "max_tokens": 1024,
+    "min_tokens": 512,
+    "traffic_type": "short_input_long_output"
+  },
+  {
+    "id": "code_018",
+    "prompt": "You are an expert systems engineer. Complete the following task with exhaustive code, docstrings, and comments:\n\nTask 19: Implement a high-performance B-Tree index from scratch in Rust with support for concurrent search, node splitting, key borrowing, and persistent binary serialization. Provide full code with thorough unit tests and benchmark examples.\n\nRequirements: Provide a complete, fully compilable/runnable implementation without placeholders or ellipses.",
+    "max_tokens": 1024,
+    "min_tokens": 512,
+    "traffic_type": "short_input_long_output"
+  },
+  {
+    "id": "code_019",
+    "prompt": "You are an expert systems engineer. Complete the following task with exhaustive code, docstrings, and comments:\n\nTask 20: Write a custom CUDA kernel in PyTorch (C++/CUDA extension) to perform chunked causal self-attention with fused softmax. Include shared memory tiling, warp shuffles, gradient backward pass, and Python binding wrapper.\n\nRequirements: Provide a complete, fully compilable/runnable implementation without placeholders or ellipses.",
+    "max_tokens": 1024,
+    "min_tokens": 512,
+    "traffic_type": "short_input_long_output"
+  },
+  {
+    "id": "code_020",
+    "prompt": "You are an expert systems engineer. Complete the following task with exhaustive code, docstrings, and comments:\n\nTask 21: Implement a thread-safe, lock-free LRU Cache in modern C++20 using atomic shared_ptr and hazard pointers. Include class definition, node eviction logic, concurrency handling, and comprehensive unit tests with edge cases.\n\nRequirements: Provide a complete, fully compilable/runnable implementation without placeholders or ellipses.",
+    "max_tokens": 1024,
+    "min_tokens": 512,
+    "traffic_type": "short_input_long_output"
+  },
+  {
+    "id": "code_021",
+    "prompt": "You are an expert systems engineer. Complete the following task with exhaustive code, docstrings, and comments:\n\nTask 22: Write a complete production-grade asyncio rate limiter in Python 3.12 using the Token Bucket and Leaky Bucket algorithms. Support Redis cluster synchronization, sliding window fallback, and include full type annotations, docstrings, and tests.\n\nRequirements: Provide a complete, fully compilable/runnable implementation without placeholders or ellipses.",
+    "max_tokens": 1024,
+    "min_tokens": 512,
+    "traffic_type": "short_input_long_output"
+  },
+  {
+    "id": "code_022",
+    "prompt": "You are an expert systems engineer. Complete the following task with exhaustive code, docstrings, and comments:\n\nTask 23: Implement a high-performance B-Tree index from scratch in Rust with support for concurrent search, node splitting, key borrowing, and persistent binary serialization. Provide full code with thorough unit tests and benchmark examples.\n\nRequirements: Provide a complete, fully compilable/runnable implementation without placeholders or ellipses.",
+    "max_tokens": 1024,
+    "min_tokens": 512,
+    "traffic_type": "short_input_long_output"
+  },
+  {
+    "id": "code_023",
+    "prompt": "You are an expert systems engineer. Complete the following task with exhaustive code, docstrings, and comments:\n\nTask 24: Write a custom CUDA kernel in PyTorch (C++/CUDA extension) to perform chunked causal self-attention with fused softmax. Include shared memory tiling, warp shuffles, gradient backward pass, and Python binding wrapper.\n\nRequirements: Provide a complete, fully compilable/runnable implementation without placeholders or ellipses.",
+    "max_tokens": 1024,
+    "min_tokens": 512,
+    "traffic_type": "short_input_long_output"
+  },
+  {
+    "id": "code_024",
+    "prompt": "You are an expert systems engineer. Complete the following task with exhaustive code, docstrings, and comments:\n\nTask 25: Implement a thread-safe, lock-free LRU Cache in modern C++20 using atomic shared_ptr and hazard pointers. Include class definition, node eviction logic, concurrency handling, and comprehensive unit tests with edge cases.\n\nRequirements: Provide a complete, fully compilable/runnable implementation without placeholders or ellipses.",
+    "max_tokens": 1024,
+    "min_tokens": 512,
+    "traffic_type": "short_input_long_output"
+  },
+  {
+    "id": "code_025",
+    "prompt": "You are an expert systems engineer. Complete the following task with exhaustive code, docstrings, and comments:\n\nTask 26: Write a complete production-grade asyncio rate limiter in Python 3.12 using the Token Bucket and Leaky Bucket algorithms. Support Redis cluster synchronization, sliding window fallback, and include full type annotations, docstrings, and tests.\n\nRequirements: Provide a complete, fully compilable/runnable implementation without placeholders or ellipses.",
+    "max_tokens": 1024,
+    "min_tokens": 512,
+    "traffic_type": "short_input_long_output"
+  },
+  {
+    "id": "code_026",
+    "prompt": "You are an expert systems engineer. Complete the following task with exhaustive code, docstrings, and comments:\n\nTask 27: Implement a high-performance B-Tree index from scratch in Rust with support for concurrent search, node splitting, key borrowing, and persistent binary serialization. Provide full code with thorough unit tests and benchmark examples.\n\nRequirements: Provide a complete, fully compilable/runnable implementation without placeholders or ellipses.",
+    "max_tokens": 1024,
+    "min_tokens": 512,
+    "traffic_type": "short_input_long_output"
+  },
+  {
+    "id": "code_027",
+    "prompt": "You are an expert systems engineer. Complete the following task with exhaustive code, docstrings, and comments:\n\nTask 28: Write a custom CUDA kernel in PyTorch (C++/CUDA extension) to perform chunked causal self-attention with fused softmax. Include shared memory tiling, warp shuffles, gradient backward pass, and Python binding wrapper.\n\nRequirements: Provide a complete, fully compilable/runnable implementation without placeholders or ellipses.",
+    "max_tokens": 1024,
+    "min_tokens": 512,
+    "traffic_type": "short_input_long_output"
+  },
+  {
+    "id": "code_028",
+    "prompt": "You are an expert systems engineer. Complete the following task with exhaustive code, docstrings, and comments:\n\nTask 29: Implement a thread-safe, lock-free LRU Cache in modern C++20 using atomic shared_ptr and hazard pointers. Include class definition, node eviction logic, concurrency handling, and comprehensive unit tests with edge cases.\n\nRequirements: Provide a complete, fully compilable/runnable implementation without placeholders or ellipses.",
+    "max_tokens": 1024,
+    "min_tokens": 512,
+    "traffic_type": "short_input_long_output"
+  },
+  {
+    "id": "code_029",
+    "prompt": "You are an expert systems engineer. Complete the following task with exhaustive code, docstrings, and comments:\n\nTask 30: Write a complete production-grade asyncio rate limiter in Python 3.12 using the Token Bucket and Leaky Bucket algorithms. Support Redis cluster synchronization, sliding window fallback, and include full type annotations, docstrings, and tests.\n\nRequirements: Provide a complete, fully compilable/runnable implementation without placeholders or ellipses.",
+    "max_tokens": 1024,
+    "min_tokens": 512,
+    "traffic_type": "short_input_long_output"
+  },
+  {
+    "id": "code_030",
+    "prompt": "You are an expert systems engineer. Complete the following task with exhaustive code, docstrings, and comments:\n\nTask 31: Implement a high-performance B-Tree index from scratch in Rust with support for concurrent search, node splitting, key borrowing, and persistent binary serialization. Provide full code with thorough unit tests and benchmark examples.\n\nRequirements: Provide a complete, fully compilable/runnable implementation without placeholders or ellipses.",
+    "max_tokens": 1024,
+    "min_tokens": 512,
+    "traffic_type": "short_input_long_output"
+  },
+  {
+    "id": "code_031",
+    "prompt": "You are an expert systems engineer. Complete the following task with exhaustive code, docstrings, and comments:\n\nTask 32: Write a custom CUDA kernel in PyTorch (C++/CUDA extension) to perform chunked causal self-attention with fused softmax. Include shared memory tiling, warp shuffles, gradient backward pass, and Python binding wrapper.\n\nRequirements: Provide a complete, fully compilable/runnable implementation without placeholders or ellipses.",
+    "max_tokens": 1024,
+    "min_tokens": 512,
+    "traffic_type": "short_input_long_output"
+  }
+]
