@@ -1,0 +1,146 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="580" viewBox="0 0 960 580">
+  <defs>
+    <style>
+      .bg { fill: #040813; rx: 14; }
+      .text-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 800; font-size: 16px; fill: #f8fafc; }
+      .text-sub { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 12px; fill: #94a3b8; }
+      .text-h2 { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 700; font-size: 13px; fill: #e2e8f0; }
+      .text-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 11px; fill: #cbd5e1; }
+      .text-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 11px; }
+      .card-bg { fill: #0b1329; stroke: #1e293b; stroke-width: 1; rx: 10; }
+    </style>
+  </defs>
+
+  <rect width="960" height="580" class="bg"/>
+
+  <!-- Header -->
+  <text x="35" y="36" class="text-title">图 1-1：扁平 P2P 网状死锁 vs 集中式事件总线拓扑机理</text>
+  <text x="35" y="56" class="text-sub">无界点对点私聊（Bag of Agents）在 &gt;3 节点时面临的 O(N²) 消息风暴、循环等待死锁，与集中式事件总线（Event Bus）的状态解耦</text>
+
+  <!-- Left: P2P Mesh Chaos (Anti-pattern) -->
+  <g transform="translate(35, 75)">
+    <rect width="430" height="470" rx="10" fill="#0b1329" stroke="#ef4444" stroke-width="1.2" stroke-dasharray="6,4"/>
+
+    <!-- Title Badge -->
+    <rect x="18" y="16" width="394" height="32" rx="6" fill="#311010" stroke="#ef4444" stroke-width="1"/>
+    <text x="30" y="37" class="text-mono" font-weight="700" fill="#fca5a5">❌ 扁平 P2P 网状派发 (Bag of Agents 反模式)</text>
+
+    <!-- Sub description -->
+    <text x="20" y="68" class="text-body" fill="#f87171">通信复杂度：O(N²) 爆炸 | 拓扑失控 | 依赖成环</text>
+
+    <!-- Mesh Visualization -->
+    <g transform="translate(215, 200)">
+      <!-- Mesh Connections with collision markers -->
+      <line x1="-120" y1="-70" x2="120" y2="-70" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="4,2"/>
+      <line x1="-120" y1="-70" x2="0" y2="90" stroke="#f97316" stroke-width="1.5" stroke-dasharray="4,2"/>
+      <line x1="120" y1="-70" x2="0" y2="90" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="4,2"/>
+      <line x1="-120" y1="-70" x2="0" y2="-100" stroke="#f43f5e" stroke-width="1.5"/>
+      <line x1="120" y1="-70" x2="0" y2="-100" stroke="#f43f5e" stroke-width="1.5"/>
+      <line x1="0" y1="90" x2="0" y2="-100" stroke="#ef4444" stroke-width="2" stroke-dasharray="4,2"/>
+
+      <!-- Deadlock cycle animation representation -->
+      <circle cx="0" cy="-5" r="45" fill="none" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="6,4"/>
+      <rect x="-55" y="-16" width="110" height="24" rx="4" fill="#450a0a" stroke="#f87171" stroke-width="1"/>
+      <text x="0" y="0" text-anchor="middle" class="text-mono" font-weight="700" font-size="10" fill="#fecaca">⚠️ 循环依赖死锁</text>
+
+      <!-- Bot Nodes -->
+      <g transform="translate(-120, -70)">
+        <circle cx="0" cy="0" r="28" fill="#1e1015" stroke="#ef4444" stroke-width="2"/>
+        <text x="0" y="-3" text-anchor="middle" class="text-mono" font-weight="700" fill="#fca5a5">Bot-A</text>
+        <text x="0" y="11" text-anchor="middle" class="text-mono" font-size="9" fill="#fda4af">等待 B 响应</text>
+      </g>
+
+      <g transform="translate(120, -70)">
+        <circle cx="0" cy="0" r="28" fill="#1e1015" stroke="#ef4444" stroke-width="2"/>
+        <text x="0" y="-3" text-anchor="middle" class="text-mono" font-weight="700" fill="#fca5a5">Bot-B</text>
+        <text x="0" y="11" text-anchor="middle" class="text-mono" font-size="9" fill="#fda4af">等待 C 释放</text>
+      </g>
+
+      <g transform="translate(0, 90)">
+        <circle cx="0" cy="0" r="28" fill="#1e1015" stroke="#ef4444" stroke-width="2"/>
+        <text x="0" y="-3" text-anchor="middle" class="text-mono" font-weight="700" fill="#fca5a5">Bot-C</text>
+        <text x="0" y="11" text-anchor="middle" class="text-mono" font-size="9" fill="#fda4af">等待 A 确认</text>
+      </g>
+
+      <g transform="translate(0, -100)">
+        <circle cx="0" cy="0" r="24" fill="#1e1015" stroke="#f97316" stroke-width="1.5"/>
+        <text x="0" y="4" text-anchor="middle" class="text-mono" font-weight="700" fill="#fdba74">Bot-D</text>
+      </g>
+    </g>
+
+    <!-- Problem analysis breakdown -->
+    <g transform="translate(20, 340)">
+      <rect width="390" height="110" rx="6" fill="#140a0e" stroke="#37171d" stroke-width="1"/>
+      <text x="14" y="22" class="text-mono" font-weight="700" fill="#f87171">致命缺陷拆解：</text>
+      <text x="14" y="42" class="text-body" fill="#fca5a5">1. <tspan font-weight="700">幽灵状态覆盖</tspan>：Bot A 与 B 同时修改相同本地文件引发 Race Condition。</text>
+      <text x="14" y="62" class="text-body" fill="#fca5a5">2. <tspan font-weight="700">级联会话风暴</tspan>：一个错误被复制并广播到所有对端，Token 呈指数吞噬。</text>
+      <text x="14" y="82" class="text-body" fill="#fca5a5">3. <tspan font-weight="700">三节点崩塌律</tspan>：在无中心裁判时，3 个以上自由决策 Bot 形成死锁概率 &gt;82%。</text>
+    </g>
+  </g>
+
+  <!-- Right: Event Bus & Central Arbiter (Production-Grade) -->
+  <g transform="translate(495, 75)">
+    <rect width="430" height="470" rx="10" fill="#0b1329" stroke="#3b82f6" stroke-width="1.2"/>
+
+    <!-- Title Badge -->
+    <rect x="18" y="16" width="394" height="32" rx="6" fill="#0a1d3b" stroke="#38bdf8" stroke-width="1"/>
+    <text x="30" y="37" class="text-mono" font-weight="700" fill="#7dd3fc">✔ 集中式事件总线 + 租约仲裁（Event Bus &amp; Lease）</text>
+
+    <!-- Sub description -->
+    <text x="20" y="68" class="text-body" fill="#60a5fa">通信复杂度：严格 O(N) 线性 | 单一状态源 | 租约超时熔断</text>
+
+    <!-- Bus Architecture Visualization -->
+    <g transform="translate(215, 200)">
+      <!-- The Central Spine: Event Bus -->
+      <rect x="-170" y="-25" width="340" height="50" rx="10" fill="#0d244d" stroke="#38bdf8" stroke-width="2"/>
+      <text x="0" y="4" text-anchor="middle" class="text-h2" fill="#e0f2fe">统一事件通道 (Room / Event Hub)</text>
+      <text x="0" y="18" text-anchor="middle" class="text-mono" font-size="9" fill="#93c5fd">状态唯一真相源 · 带超时锁机制 · 结构化 Hand-off 产物</text>
+
+      <!-- Worker lines to Bus -->
+      <line x1="-110" y1="-85" x2="-110" y2="-25" stroke="#38bdf8" stroke-width="2"/>
+      <line x1="110" y1="-85" x2="110" y2="-25" stroke="#38bdf8" stroke-width="2"/>
+      <line x1="-110" y1="25" x2="-110" y2="85" stroke="#34d399" stroke-width="2"/>
+      <line x1="110" y1="25" x2="110" y2="85" stroke="#a78bfa" stroke-width="2"/>
+
+      <!-- Direction arrows -->
+      <polygon points="-110,-30 -115,-40 -105,-40" fill="#38bdf8"/>
+      <polygon points="110,-80 105,-70 115,-70" fill="#38bdf8"/>
+      <polygon points="-110,80 -115,70 -105,70" fill="#34d399"/>
+      <polygon points="110,30 105,40 115,40" fill="#a78bfa"/>
+
+      <!-- Nodes attached to bus -->
+      <g transform="translate(-110, -95)">
+        <rect x="-55" y="-18" width="110" height="34" rx="6" fill="#091b36" stroke="#38bdf8" stroke-width="1.2"/>
+        <text x="0" y="2" text-anchor="middle" class="text-mono" font-weight="700" fill="#93c5fd">@主笔 Tuli</text>
+        <text x="0" y="12" text-anchor="middle" class="text-mono" font-size="8" fill="#64748b">[需求拆解与调度]</text>
+      </g>
+
+      <g transform="translate(110, -95)">
+        <rect x="-65" y="-18" width="130" height="34" rx="6" fill="#091b36" stroke="#38bdf8" stroke-width="1.2"/>
+        <text x="0" y="2" text-anchor="middle" class="text-mono" font-weight="700" fill="#93c5fd">@云端沙盒-Simular</text>
+        <text x="0" y="12" text-anchor="middle" class="text-mono" font-size="8" fill="#64748b">[环境准备/隔离执行]</text>
+      </g>
+
+      <g transform="translate(-110, 95)">
+        <rect x="-60" y="-18" width="120" height="34" rx="6" fill="#06221c" stroke="#34d399" stroke-width="1.2"/>
+        <text x="0" y="2" text-anchor="middle" class="text-mono" font-weight="700" fill="#6ee7b7">@Kaggle 算力手</text>
+        <text x="0" y="12" text-anchor="middle" class="text-mono" font-size="8" fill="#059669">[GPU 压测纯计算]</text>
+      </g>
+
+      <g transform="translate(110, 95)">
+        <rect x="-55" y="-18" width="110" height="34" rx="6" fill="#1e1035" stroke="#a78bfa" stroke-width="1.2"/>
+        <text x="0" y="2" text-anchor="middle" class="text-mono" font-weight="700" fill="#d8b4fe">@loong (人类)</text>
+        <text x="0" y="12" text-anchor="middle" class="text-mono" font-size="8" fill="#7c3aed">[拍板 / 关键门禁]</text>
+      </g>
+    </g>
+
+    <!-- Architecture Advantages breakdown -->
+    <g transform="translate(20, 340)">
+      <rect width="390" height="110" rx="6" fill="#07192c" stroke="#163860" stroke-width="1"/>
+      <text x="14" y="22" class="text-mono" font-weight="700" fill="#38bdf8">生产级工程收益：</text>
+      <text x="14" y="42" class="text-body" fill="#bfdbfe">1. <tspan font-weight="700">线性拓扑</tspan>：消息严格收敛至总线广播，无跨节点私信幽灵覆盖。</text>
+      <text x="14" y="62" class="text-body" fill="#bfdbfe">2. <tspan font-weight="700">带租约抢占 (Lease Lock)</tspan>：算力任务设超时释放，彻底避免无限挂起等待。</text>
+      <text x="14" y="82" class="text-body" fill="#bfdbfe">3. <tspan font-weight="700">零历史产物交接</tspan>：下游只消费磁盘文件/结构化 JSON，杜绝上下文污染。</text>
+    </g>
+  </g>
+</svg>

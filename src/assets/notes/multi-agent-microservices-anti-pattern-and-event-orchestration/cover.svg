@@ -1,0 +1,177 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#040814"/>
+      <stop offset="50%" stop-color="#0a1226"/>
+      <stop offset="100%" stop-color="#02040b"/>
+    </linearGradient>
+    <linearGradient id="glow-p2p" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ef4444"/>
+      <stop offset="100%" stop-color="#f97316"/>
+    </linearGradient>
+    <linearGradient id="glow-bus" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4"/>
+      <stop offset="50%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="title-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="70%" stop-color="#e2e8f0"/>
+      <stop offset="100%" stop-color="#94a3b8"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="12" flood-color="#000" flood-opacity="0.6"/>
+    </filter>
+    <style>
+      .title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 900; font-size: 38px; fill: url(#title-grad); }
+      .subtitle { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 500; font-size: 18px; fill: #94a3b8; }
+      .badge-text { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 11px; font-weight: 700; }
+      .tag { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 12px; fill: #64748b; }
+      .card-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 700; font-size: 15px; }
+      .card-sub { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 12px; fill: #94a3b8; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Subtle Grid Lines -->
+  <g stroke="#1e293b" stroke-width="0.5" opacity="0.3">
+    <line x1="0" y1="90" x2="1200" y2="90"/>
+    <line x1="0" y1="180" x2="1200" y2="180"/>
+    <line x1="0" y1="270" x2="1200" y2="270"/>
+    <line x1="0" y1="360" x2="1200" y2="360"/>
+    <line x1="0" y1="450" x2="1200" y2="450"/>
+    <line x1="0" y1="540" x2="1200" y2="540"/>
+    <line x1="150" y1="0" x2="150" y2="630"/>
+    <line x1="300" y1="0" x2="300" y2="630"/>
+    <line x1="450" y1="0" x2="450" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="750" y1="0" x2="750" y2="630"/>
+    <line x1="900" y1="0" x2="900" y2="630"/>
+    <line x1="1050" y1="0" x2="1050" y2="630"/>
+  </g>
+
+  <!-- Top Badges -->
+  <g transform="translate(70, 50)">
+    <rect width="145" height="26" rx="13" fill="#1e1b4b" stroke="#6366f1" stroke-width="1"/>
+    <text x="14" y="17" class="badge-text" fill="#a5b4fc">X 架构论战与实战</text>
+
+    <rect x="155" width="130" height="26" rx="13" fill="#311010" stroke="#ef4444" stroke-width="1"/>
+    <text x="169" y="17" class="badge-text" fill="#fca5a5">微服务反模式</text>
+
+    <rect x="295" width="140" height="26" rx="13" fill="#042f2e" stroke="#14b8a6" stroke-width="1"/>
+    <text x="309" y="17" class="badge-text" fill="#5eead4">事件总线 · 状态仲裁</text>
+  </g>
+
+  <!-- Title & Subtitle -->
+  <text x="70" y="125" class="title">多 Agent 架构：跃迁还是微服务倒退？</text>
+  <text x="70" y="160" class="subtitle">解构 P2P 通信风暴、分布式循环死锁与生产级事件总线破局之道</text>
+
+  <!-- Visual Representation Area: Left (P2P Chaos) vs Right (Event Bus Order) -->
+  <g transform="translate(70, 200)" filter="url(#shadow)">
+    <!-- Outer Container -->
+    <rect width="1060" height="340" rx="16" fill="#0b1329" stroke="#1e293b" stroke-width="1"/>
+
+    <!-- Left Box: P2P Mesh (The Anti-Pattern) -->
+    <g transform="translate(25, 25)">
+      <rect width="490" height="290" rx="12" fill="#070c1e" stroke="#ef4444" stroke-width="1.2" stroke-dasharray="6,4"/>
+      
+      <!-- Header -->
+      <circle cx="25" cy="25" r="7" fill="#ef4444"/>
+      <text x="42" y="30" class="card-title" fill="#fca5a5">反模式：扁平 P2P 点对点网状通信（Bag of Agents）</text>
+      <text x="42" y="48" class="card-sub">无中央调度器 | O(N²) 消息爆炸 | 循环等待死锁 | 幽灵状态覆盖</text>
+
+      <!-- Network Nodes (P2P Spiderweb) -->
+      <g transform="translate(245, 170)">
+        <!-- Connecting lines (tangled red mesh) -->
+        <line x1="-120" y1="-50" x2="120" y2="-50" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.8"/>
+        <line x1="-120" y1="-50" x2="0" y2="70" stroke="#f97316" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.8"/>
+        <line x1="120" y1="-50" x2="0" y2="70" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.8"/>
+        <line x1="-120" y1="-50" x2="0" y2="-75" stroke="#ef4444" stroke-width="1" opacity="0.5"/>
+        <line x1="120" y1="-50" x2="0" y2="-75" stroke="#ef4444" stroke-width="1" opacity="0.5"/>
+        <line x1="0" y1="70" x2="0" y2="-75" stroke="#f43f5e" stroke-width="2" stroke-dasharray="4,2"/>
+
+        <!-- Nodes -->
+        <!-- Bot A -->
+        <circle cx="-120" cy="-50" r="26" fill="#1e1215" stroke="#f43f5e" stroke-width="2"/>
+        <text x="-120" y="-46" text-anchor="middle" font-family="ui-monospace" font-size="11" font-weight="700" fill="#fca5a5">Bot-A</text>
+
+        <!-- Bot B -->
+        <circle cx="120" cy="-50" r="26" fill="#1e1215" stroke="#f43f5e" stroke-width="2"/>
+        <text x="120" y="-46" text-anchor="middle" font-family="ui-monospace" font-size="11" font-weight="700" fill="#fca5a5">Bot-B</text>
+
+        <!-- Bot C -->
+        <circle cx="0" cy="70" r="26" fill="#1e1215" stroke="#f43f5e" stroke-width="2"/>
+        <text x="0" y="74" text-anchor="middle" font-family="ui-monospace" font-size="11" font-weight="700" fill="#fca5a5">Bot-C</text>
+
+        <!-- Bot D -->
+        <circle cx="0" cy="-75" r="22" fill="#1e1215" stroke="#f97316" stroke-width="1.5"/>
+        <text x="0" y="-71" text-anchor="middle" font-family="ui-monospace" font-size="10" font-weight="700" fill="#fdba74">Bot-D</text>
+
+        <!-- Center Deadlock Indicator -->
+        <rect x="-65" y="-18" width="130" height="24" rx="4" fill="#450a0a" stroke="#ef4444" stroke-width="1"/>
+        <text x="0" y="-2" text-anchor="middle" font-family="ui-monospace" font-size="10" font-weight="700" fill="#fecaca">⚠️ 循环依赖死锁</text>
+      </g>
+
+      <!-- Bottom Tag -->
+      <rect x="15" y="248" width="460" height="28" rx="6" fill="#180c10"/>
+      <text x="245" y="266" text-anchor="middle" font-family="ui-monospace" font-size="11" fill="#fca5a5">痛点：&gt;3 个 Bot 级联派发时，Token 爆炸且上下文不可逆污染</text>
+    </g>
+
+    <!-- Right Box: Event Bus & Orchestrator (The Solution) -->
+    <g transform="translate(545, 25)">
+      <rect width="490" height="290" rx="12" fill="#070c1e" stroke="#3b82f6" stroke-width="1.2"/>
+      
+      <!-- Header -->
+      <circle cx="25" cy="25" r="7" fill="#3b82f6"/>
+      <text x="42" y="30" class="card-title" fill="#93c5fd">生产级解法：集中式事件总线与状态仲裁（Event Bus &amp; Arbiter）</text>
+      <text x="42" y="48" class="card-sub">单向事件订阅 | 产物契约交接 | 分布式排他租约 | 人机决策切面</text>
+
+      <!-- Central Event Bus Graphic -->
+      <g transform="translate(245, 150)">
+        <!-- The Bus Backbone -->
+        <rect x="-190" y="-22" width="380" height="44" rx="10" fill="#0f2147" stroke="#38bdf8" stroke-width="1.5"/>
+        <text x="0" y="5" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-weight="700" font-size="13" fill="#bae6fd">统一事件总线 (Event Bus / Room Session)</text>
+
+        <!-- Connecting lines from top and bottom to Bus -->
+        <line x1="-120" y1="-65" x2="-120" y2="-22" stroke="#38bdf8" stroke-width="2"/>
+        <line x1="120" y1="-65" x2="120" y2="-22" stroke="#38bdf8" stroke-width="2"/>
+        <line x1="-120" y1="22" x2="-120" y2="65" stroke="#34d399" stroke-width="2"/>
+        <line x1="120" y1="22" x2="120" y2="65" stroke="#a78bfa" stroke-width="2"/>
+
+        <!-- Top Nodes -->
+        <g transform="translate(-120, -75)">
+          <rect x="-45" y="-16" width="90" height="30" rx="6" fill="#0b1b36" stroke="#38bdf8" stroke-width="1"/>
+          <text x="0" y="4" text-anchor="middle" font-family="ui-monospace" font-size="11" font-weight="700" fill="#93c5fd">@主笔 Tuli</text>
+        </g>
+
+        <g transform="translate(120, -75)">
+          <rect x="-55" y="-16" width="110" height="30" rx="6" fill="#0b1b36" stroke="#38bdf8" stroke-width="1"/>
+          <text x="0" y="4" text-anchor="middle" font-family="ui-monospace" font-size="11" font-weight="700" fill="#93c5fd">@云端沙盒-Simular</text>
+        </g>
+
+        <!-- Bottom Nodes -->
+        <g transform="translate(-120, 75)">
+          <rect x="-50" y="-14" width="100" height="28" rx="6" fill="#06201a" stroke="#34d399" stroke-width="1"/>
+          <text x="0" y="4" text-anchor="middle" font-family="ui-monospace" font-size="11" font-weight="700" fill="#6ee7b7">@Kaggle 算力手</text>
+        </g>
+
+        <g transform="translate(120, 75)">
+          <rect x="-45" y="-14" width="90" height="28" rx="6" fill="#1b1236" stroke="#a78bfa" stroke-width="1"/>
+          <text x="0" y="4" text-anchor="middle" font-family="ui-monospace" font-size="11" font-weight="700" fill="#c4b5fd">@loong (决策)</text>
+        </g>
+      </g>
+
+      <!-- Bottom Tag -->
+      <rect x="15" y="248" width="460" height="28" rx="6" fill="#071b26"/>
+      <text x="245" y="266" text-anchor="middle" font-family="ui-monospace" font-size="11" fill="#7dd3fc">收益：线性复杂度 O(N)，上下文物理隔离，彻底斩断死锁</text>
+    </g>
+  </g>
+
+  <!-- Footer Branding -->
+  <g transform="translate(70, 585)">
+    <text x="0" y="0" class="tag">git-novel · 架构深思考系列 · Tuli 原创出品</text>
+    <text x="1060" y="0" class="tag" text-anchor="end">Distributed Multi-Agent Architecture Guide</text>
+  </g>
+</svg>

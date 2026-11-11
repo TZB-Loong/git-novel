@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="580" viewBox="0 0 960 580">
+  <defs>
+    <style>
+      .bg { fill: #040813; rx: 14; }
+      .text-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 800; font-size: 16px; fill: #f8fafc; }
+      .text-sub { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 12px; fill: #94a3b8; }
+      .text-h2 { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 700; font-size: 13px; fill: #e2e8f0; }
+      .text-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 11px; fill: #cbd5e1; }
+      .text-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 11px; }
+      .card-bg { fill: #0b1329; stroke: #1e293b; stroke-width: 1; rx: 10; }
+    </style>
+  </defs>
+
+  <rect width="960" height="580" class="bg"/>
+
+  <!-- Header -->
+  <text x="35" y="36" class="text-title">图 2-1：Cognition 单体工具模式 vs LangGraph 树状分权模式边界对比</text>
+  <text x="35" y="56" class="text-sub">解构 Devin 的“Don’t Build Multi-Agents”单体架构哲学，与工业级分层主管（Supervisor-Worker）在读写操作上的本质分水岭</text>
+
+  <!-- Left: Cognition / Devin Monolith Pattern -->
+  <g transform="translate(35, 75)">
+    <rect width="430" height="470" rx="10" fill="#0b1329" stroke="#10b981" stroke-width="1.2"/>
+
+    <!-- Title Badge -->
+    <rect x="18" y="16" width="394" height="32" rx="6" fill="#042a1f" stroke="#10b981" stroke-width="1"/>
+    <text x="30" y="37" class="text-mono" font-weight="700" fill="#6ee7b7">模式 A：Cognition 单体 Agent + Bash 工具链</text>
+
+    <!-- Sub description -->
+    <text x="20" y="68" class="text-body" fill="#34d399">核心哲学：“Don't Build Multi-Agents” | 强一致性单上下文</text>
+
+    <!-- Visual Architecture -->
+    <g transform="translate(20, 85)">
+      <!-- Central Agent Box -->
+      <rect width="390" height="115" rx="8" fill="#061c16" stroke="#059669" stroke-width="1"/>
+      <text x="16" y="24" class="text-h2" fill="#a7f3d0">单体全能主脑 (Single Monolithic Agent)</text>
+      <text x="16" y="42" class="text-body" fill="#6ee7b7">独占完整上下文窗口 (Context Window) | 具备全局记忆与因果连续性</text>
+
+      <!-- Internal Tool Loop -->
+      <g transform="translate(16, 55)">
+        <rect width="110" height="45" rx="5" fill="#0c3227" stroke="#10b981" stroke-width="1"/>
+        <text x="10" y="20" class="text-mono" font-weight="700" fill="#a7f3d0">Bash / Shell</text>
+        <text x="10" y="36" class="text-mono" font-size="9" fill="#6ee7b7">原生终端交互</text>
+
+        <rect x="125" width="110" height="45" rx="5" fill="#0c3227" stroke="#10b981" stroke-width="1"/>
+        <text x="135" y="20" class="text-mono" font-weight="700" fill="#a7f3d0">Editor / FS</text>
+        <text x="135" y="36" class="text-mono" font-size="9" fill="#6ee7b7">磁盘文件直写</text>
+
+        <rect x="250" width="105" height="45" rx="5" fill="#0c3227" stroke="#10b981" stroke-width="1"/>
+        <text x="260" y="20" class="text-mono" font-weight="700" fill="#a7f3d0">Compiler</text>
+        <text x="260" y="36" class="text-mono" font-size="9" fill="#6ee7b7">单测闭环反馈</text>
+      </g>
+    </g>
+
+    <!-- State Transition Feature -->
+    <g transform="translate(20, 220)">
+      <rect width="390" height="85" rx="6" fill="#091814" stroke="#134e4a" stroke-width="1"/>
+      <text x="14" y="22" class="text-mono" font-weight="700" fill="#34d399">执行特征：因果强绑定（Causal Cohesion）</text>
+      <text x="14" y="42" class="text-body" fill="#a7f3d0">• 代码改动与报错反馈处于同一上下文，无交接衰减。</text>
+      <text x="14" y="60" class="text-body" fill="#a7f3d0">• 依靠操作系统（Git / 文件系统）充当外部确定性存储。</text>
+      <text x="14" y="76" class="text-body" fill="#a7f3d0">• 零多机协调税，单步成功率即全局成功率。</text>
+    </g>
+
+    <!-- Sweet Spot -->
+    <g transform="translate(20, 320)">
+      <rect width="390" height="125" rx="6" fill="#031f18" stroke="#047857" stroke-width="1"/>
+      <text x="14" y="22" class="text-mono" font-weight="700" fill="#6ee7b7">适用场景：高内聚“写任务” (Write-Heavy Tasks)</text>
+      <text x="14" y="42" class="text-body" fill="#d1fae5">✔ <tspan font-weight="700">代码重构与 Bug 修复</tspan>：需要精细跨文件语义理解与本地单测循环。</text>
+      <text x="14" y="62" class="text-body" fill="#d1fae5">✔ <tspan font-weight="700">端到端全栈搭建</tspan>：极度依赖即时编译器反馈，任何交接都会丢失局部状态。</text>
+      <text x="14" y="82" class="text-body" fill="#f87171">✖ <tspan font-weight="700">局限</tspan>：长程（&gt;30轮）遭遇 Context Rot，无法高效并发扇出。</text>
+    </g>
+  </g>
+
+  <!-- Right: LangGraph / Anthropic Supervisor Pattern -->
+  <g transform="translate(495, 75)">
+    <rect width="430" height="470" rx="10" fill="#0b1329" stroke="#6366f1" stroke-width="1.2"/>
+
+    <!-- Title Badge -->
+    <rect x="18" y="16" width="394" height="32" rx="6" fill="#1e1b4b" stroke="#6366f1" stroke-width="1"/>
+    <text x="30" y="37" class="text-mono" font-weight="700" fill="#c7d2fe">模式 B：LangGraph / Anthropic 树状主管模式</text>
+
+    <!-- Sub description -->
+    <text x="20" y="68" class="text-body" fill="#818cf8">核心哲学：“Context Isolation” | 职责分立与并行扇出</text>
+
+    <!-- Visual Architecture: Supervisor & Workers -->
+    <g transform="translate(20, 85)">
+      <!-- Supervisor Box -->
+      <rect width="390" height="50" rx="8" fill="#1b1d42" stroke="#6366f1" stroke-width="1"/>
+      <text x="16" y="22" class="text-h2" fill="#e0e7ff">中央主管 (Central Supervisor / Orchestrator)</text>
+      <text x="16" y="38" class="text-mono" font-size="10" fill="#a5b4fc">负责意图分发、子任务委派 (Handoff Tool) 与聚合验收</text>
+
+      <!-- Connecting Lines -->
+      <line x1="80" y1="50" x2="80" y2="72" stroke="#6366f1" stroke-width="2"/>
+      <line x1="195" y1="50" x2="195" y2="72" stroke="#6366f1" stroke-width="2"/>
+      <line x1="310" y1="50" x2="310" y2="72" stroke="#6366f1" stroke-width="2"/>
+
+      <!-- Worker Subagents -->
+      <g transform="translate(0, 72)">
+        <rect x="15" width="115" height="45" rx="5" fill="#111827" stroke="#38bdf8" stroke-width="1"/>
+        <text x="25" y="18" class="text-mono" font-weight="700" fill="#7dd3fc">Subagent 1</text>
+        <text x="25" y="34" class="text-mono" font-size="9" fill="#38bdf8">研读文档/读代码</text>
+
+        <rect x="140" width="115" height="45" rx="5" fill="#111827" stroke="#38bdf8" stroke-width="1"/>
+        <text x="150" y="18" class="text-mono" font-weight="700" fill="#7dd3fc">Subagent 2</text>
+        <text x="150" y="34" class="text-mono" font-size="9" fill="#38bdf8">异构算力压测</text>
+
+        <rect x="265" width="110" height="45" rx="5" fill="#111827" stroke="#ec4899" stroke-width="1"/>
+        <text x="275" y="18" class="text-mono" font-weight="700" fill="#f472b6">Evaluator</text>
+        <text x="275" y="34" class="text-mono" font-size="9" fill="#f43f5e">单测/规则裁决</text>
+      </g>
+    </g>
+
+    <!-- State Transition Feature -->
+    <g transform="translate(20, 220)">
+      <rect width="390" height="85" rx="6" fill="#161536" stroke="#312e81" stroke-width="1"/>
+      <text x="14" y="22" class="text-mono" font-weight="700" fill="#a5b4fc">执行特征：上下文物理隔离（Context Sandboxing）</text>
+      <text x="14" y="42" class="text-body" fill="#c7d2fe">• 子 Agent 独立启动干净 Context，彻底隔绝废弃工具执行日志。</text>
+      <text x="14" y="60" class="text-body" fill="#c7d2fe">• 严格类型化交接（Typed State Transfer），不透传冗余对话。</text>
+      <text x="14" y="76" class="text-body" fill="#c7d2fe">• 支持大规模并行扇出（Fan-out），极大压缩总时延。</text>
+    </g>
+
+    <!-- Sweet Spot -->
+    <g transform="translate(20, 320)">
+      <rect width="390" height="125" rx="6" fill="#19163d" stroke="#4f46e5" stroke-width="1"/>
+      <text x="14" y="22" class="text-mono" font-weight="700" fill="#c7d2fe">适用场景：高吞吐“读与扇出” (Read-Heavy / Fan-Out)</text>
+      <text x="14" y="42" class="text-body" fill="#e0e7ff">✔ <tspan font-weight="700">多源异构深度调研</tspan>：并行抓取 20 个竞品网站/文档并提取关键字段。</text>
+      <text x="14" y="62" class="text-body" fill="#e0e7ff">✔ <tspan font-weight="700">批量单测 / 算力矩阵压测</tspan>：如调度 Kaggle/Colab 分片跑 36 组矩阵。</text>
+      <text x="14" y="82" class="text-body" fill="#fca5a5">✖ <tspan font-weight="700">局限</tspan>：协调税高；若用于多文件相互依赖的写操作，极易产生状态冲突。</text>
+    </g>
+  </g>
+</svg>
