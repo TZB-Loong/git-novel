@@ -1,0 +1,162 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="580" viewBox="0 0 960 580">
+  <defs>
+    <style>
+      .bg { fill: #040813; rx: 14; }
+      .text-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 800; font-size: 16px; fill: #f8fafc; }
+      .text-sub { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 12px; fill: #94a3b8; }
+      .text-h2 { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 700; font-size: 13px; fill: #e2e8f0; }
+      .text-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 11px; fill: #cbd5e1; }
+      .text-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 11px; }
+      .card-bg { fill: #0b1329; stroke: #1e293b; stroke-width: 1; rx: 10; }
+    </style>
+  </defs>
+
+  <rect width="960" height="580" class="bg"/>
+
+  <!-- Header -->
+  <text x="35" y="36" class="text-title">图 1-1：Aider Architect-Editor 双模型解耦执行流水线</text>
+  <text x="35" y="56" class="text-sub">将“深度逻辑推理（Thinking）”与“严格格式代码生成（Formatting）”物理分工，结合 AST Repo-Map 打造极简闭环</text>
+
+  <!-- Container -->
+  <g transform="translate(35, 75)">
+    <rect width="890" height="470" rx="10" class="card-bg"/>
+
+    <!-- Step 1: Repo Map Extraction (Left Box) -->
+    <g transform="translate(25, 25)">
+      <rect width="250" height="420" rx="8" fill="#070d1e" stroke="#1e293b" stroke-width="1"/>
+      <rect x="14" y="14" width="222" height="28" rx="4" fill="#0b233a" stroke="#38bdf8" stroke-width="0.8"/>
+      <text x="24" y="33" class="text-mono" font-weight="700" fill="#7dd3fc">1. 全库 AST 代码地图 (Repo-Map)</text>
+
+      <g transform="translate(14, 55)">
+        <text x="0" y="15" class="text-body" fill="#94a3b8">不使用向量数据库（No Vector DB）</text>
+        <text x="0" y="32" class="text-body" fill="#94a3b8">使用 Tree-sitter 提取关键符号：</text>
+
+        <!-- Code Snippet Box -->
+        <rect y="45" width="222" height="150" rx="4" fill="#030712" stroke="#1e293b" stroke-width="1"/>
+        <text x="10" y="65" class="text-mono" font-size="10" fill="#6ee7b7"># Repo-Map 符号提炼 (~1024 Tokens)</text>
+        <text x="10" y="82" class="text-mono" font-size="9" fill="#94a3b8">src/core/engine.py:</text>
+        <text x="16" y="96" class="text-mono" font-size="9" fill="#38bdf8">  class LLMEngine:</text>
+        <text x="24" y="110" class="text-mono" font-size="9" fill="#cbd5e1">    def step()</text>
+        <text x="24" y="124" class="text-mono" font-size="9" fill="#cbd5e1">    def abort_request()</text>
+        <text x="10" y="142" class="text-mono" font-size="9" fill="#94a3b8">src/sched/scheduler.py:</text>
+        <text x="16" y="156" class="text-mono" font-size="9" fill="#38bdf8">  class Scheduler:</text>
+        <text x="24" y="170" class="text-mono" font-size="9" fill="#cbd5e1">    def schedule()</text>
+        <text x="24" y="184" class="text-mono" font-size="9" fill="#cbd5e1">    def free_blocks()</text>
+
+        <!-- PageRank highlight -->
+        <g transform="translate(0, 210)">
+          <rect width="222" height="85" rx="4" fill="#061c28"/>
+          <text x="10" y="20" class="text-mono" font-weight="700" fill="#38bdf8">PageRank 语义图排序：</text>
+          <text x="10" y="38" class="text-body" fill="#bae6fd">• 计算文件间依赖引用有向图</text>
+          <text x="10" y="56" class="text-body" fill="#bae6fd">• 仅挑选最核心的 5% 接口签名</text>
+          <text x="10" y="74" class="text-body" fill="#bae6fd">• 将 10 万行代码压缩进 1K Tokens</text>
+        </g>
+
+        <!-- Stat -->
+        <g transform="translate(0, 310)">
+          <rect width="222" height="45" rx="4" fill="#031e16" stroke="#10b981" stroke-width="0.8"/>
+          <text x="10" y="20" class="text-mono" font-size="10" font-weight="700" fill="#6ee7b7">优势：100% 结构因果保真</text>
+          <text x="10" y="35" class="text-body" fill="#a7f3d0">零向量召回幻觉，定位速度 &lt;50ms</text>
+        </g>
+      </g>
+    </g>
+
+    <!-- Flow Arrow 1 -> 2 -->
+    <g transform="translate(285, 210)">
+      <line x1="0" y1="0" x2="25" y2="0" stroke="#10b981" stroke-width="2"/>
+      <polygon points="25,0 17,-4 17,4" fill="#10b981"/>
+    </g>
+
+    <!-- Step 2: Architect Model (Middle Top) -->
+    <g transform="translate(320, 25)">
+      <rect width="260" height="200" rx="8" fill="#061f18" stroke="#10b981" stroke-width="1.2"/>
+      <rect x="14" y="14" width="232" height="28" rx="4" fill="#0a3a2a" stroke="#34d399" stroke-width="0.8"/>
+      <text x="24" y="33" class="text-mono" font-weight="700" fill="#a7f3d0">2. 架构思考模型 (Architect Model)</text>
+
+      <g transform="translate(14, 55)">
+        <text x="0" y="16" class="text-mono" font-weight="700" fill="#6ee7b7">选型：DeepSeek R1 / o1 / Claude 3.7</text>
+        <text x="0" y="34" class="text-body" fill="#d1fae5">• 专注长链条推理（CoT）与根因排查</text>
+        <text x="0" y="52" class="text-body" fill="#d1fae5">• <tspan font-weight="700">完全免除写代码格式负担</tspan>：不需要精算</text>
+        <text x="10" y="68" class="text-body" fill="#d1fae5">行号或输出复杂搜索替换块</text>
+        <text x="0" y="90" class="text-body" fill="#d1fae5">• 产出自然语言修复策略与伪代码：</text>
+
+        <rect y="100" width="232" height="35" rx="4" fill="#03140f"/>
+        <text x="10" y="122" class="text-mono" font-size="9" fill="#a7f3d0">"在 free_blocks 前增加空指针校验"</text>
+      </g>
+    </g>
+
+    <!-- Flow Arrow Architect -> Editor -->
+    <g transform="translate(450, 230)">
+      <line x1="0" y1="0" x2="0" y2="30" stroke="#10b981" stroke-width="2"/>
+      <polygon points="0,30 -4,22 4,22" fill="#10b981"/>
+      <rect x="8" y="8" width="80" height="18" rx="3" fill="#062118"/>
+      <text x="12" y="21" class="text-mono" font-size="9" fill="#6ee7b7">策略交接</text>
+    </g>
+
+    <!-- Step 3: Editor Model (Middle Bottom) -->
+    <g transform="translate(320, 270)">
+      <rect width="260" height="175" rx="8" fill="#061c28" stroke="#38bdf8" stroke-width="1.2"/>
+      <rect x="14" y="14" width="232" height="28" rx="4" fill="#0a2a3e" stroke="#38bdf8" stroke-width="0.8"/>
+      <text x="24" y="33" class="text-mono" font-weight="700" fill="#bae6fd">3. 编辑格式模型 (Editor Model)</text>
+
+      <g transform="translate(14, 55)">
+        <text x="0" y="16" class="text-mono" font-weight="700" fill="#7dd3fc">选型：Sonnet 3.5 / GPT-4o-mini</text>
+        <text x="0" y="34" class="text-body" fill="#bae6fd">• 极速响应，100% 遵从 diff 格式语法</text>
+        <text x="0" y="52" class="text-body" fill="#bae6fd">• 产出标准化 SEARCH/REPLACE 块</text>
+        
+        <rect y="65" width="232" height="48" rx="4" fill="#03121d"/>
+        <text x="10" y="82" class="text-mono" font-size="9" fill="#fca5a5">&lt;&lt;&lt;&lt;&lt;&lt;&lt; SEARCH</text>
+        <text x="10" y="94" class="text-mono" font-size="9" fill="#94a3b8">  self.free_blocks(block_ids)</text>
+        <text x="10" y="106" class="text-mono" font-size="9" fill="#6ee7b7">=======</text>
+      </g>
+    </g>
+
+    <!-- Flow Arrow 3 -> 4 -->
+    <g transform="translate(590, 350)">
+      <line x1="0" y1="0" x2="25" y2="0" stroke="#38bdf8" stroke-width="2"/>
+      <polygon points="25,0 17,-4 17,4" fill="#38bdf8"/>
+    </g>
+
+    <!-- Step 4: Deterministic OS Sandbox & Linter (Right Box) -->
+    <g transform="translate(625, 25)">
+      <rect width="240" height="420" rx="8" fill="#0c1222" stroke="#6366f1" stroke-width="1"/>
+      <rect x="14" y="14" width="212" height="28" rx="4" fill="#1e1b4b" stroke="#818cf8" stroke-width="0.8"/>
+      <text x="24" y="33" class="text-mono" font-weight="700" fill="#c7d2fe">4. 确定性测试门禁 (Linter/Test)</text>
+
+      <g transform="translate(14, 55)">
+        <text x="0" y="15" class="text-body" fill="#c7d2fe">绝对不引入 LLM Reviewer！</text>
+        <text x="0" y="32" class="text-body" fill="#94a3b8">依靠真实操作系统与编译器校验：</text>
+
+        <!-- Command feedback items -->
+        <g transform="translate(0, 45)">
+          <rect width="212" height="55" rx="4" fill="#1e1b4b"/>
+          <text x="10" y="20" class="text-mono" font-weight="700" fill="#a5b4fc">git apply / diff</text>
+          <text x="10" y="38" class="text-body" fill="#e0e7ff">自动原子提交到本地临时分支</text>
+        </g>
+
+        <g transform="translate(0, 110)">
+          <rect width="212" height="65" rx="4" fill="#1e1b4b"/>
+          <text x="10" y="20" class="text-mono" font-weight="700" fill="#a5b4fc">pytest / npm test</text>
+          <text x="10" y="38" class="text-body" fill="#e0e7ff">真实单元测试套件反馈：</text>
+          <text x="10" y="54" class="text-mono" font-size="9" fill="#10b981">✓ 35 passed, 0 failed</text>
+        </g>
+
+        <g transform="translate(0, 185)">
+          <rect width="212" height="60" rx="4" fill="#1e1b4b"/>
+          <text x="10" y="20" class="text-mono" font-weight="700" fill="#a5b4fc">Linter / AST 语法检查</text>
+          <text x="10" y="38" class="text-body" fill="#e0e7ff">若有语法错误，仅抓取精简 Stderr</text>
+          <text x="10" y="52" class="text-body" fill="#e0e7ff">单步反馈给 Editor 重试</text>
+        </g>
+
+        <!-- Summary outcome -->
+        <g transform="translate(0, 260)">
+          <rect width="212" height="95" rx="4" fill="#042a1f" stroke="#10b981" stroke-width="1"/>
+          <text x="10" y="22" class="text-mono" font-weight="700" fill="#6ee7b7">闭环交付结果：</text>
+          <text x="10" y="42" class="text-body" fill="#a7f3d0">• 0 次 Agent 间无谓客套</text>
+          <text x="10" y="60" class="text-body" fill="#a7f3d0">• Token 损耗暴跌 85%</text>
+          <text x="10" y="78" class="text-body" fill="#a7f3d0">• 杜绝审查员代码倒退</text>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

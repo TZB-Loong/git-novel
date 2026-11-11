@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="580" viewBox="0 0 960 580">
+  <defs>
+    <style>
+      .bg { fill: #040813; rx: 14; }
+      .text-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 800; font-size: 16px; fill: #f8fafc; }
+      .text-sub { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 12px; fill: #94a3b8; }
+      .text-h2 { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 700; font-size: 13px; fill: #e2e8f0; }
+      .text-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 11px; fill: #cbd5e1; }
+      .text-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 11px; }
+      .card-bg { fill: #0b1329; stroke: #1e293b; stroke-width: 1; rx: 10; }
+    </style>
+  </defs>
+
+  <rect width="960" height="580" class="bg"/>
+
+  <!-- Header -->
+  <text x="35" y="36" class="text-title">图 2-1：多 Agent 委员会中的“审查员倒退死循环（Regression Loop）”</text>
+  <text x="35" y="56" class="text-sub">解剖为什么引入 Reviewer Agent 往往导致原本已修复的代码被推翻，最终演变为 Token 吞噬黑洞</text>
+
+  <!-- Container -->
+  <g transform="translate(35, 75)">
+    <rect width="890" height="470" rx="10" class="card-bg"/>
+
+    <!-- Left: Step Sequence & Regression Loop -->
+    <g transform="translate(35, 30)">
+      <rect width="480" height="410" rx="8" fill="#070c1e" stroke="#ef4444" stroke-width="1.2" stroke-dasharray="6,4"/>
+
+      <!-- Step 1: Coder generates correct fix -->
+      <g transform="translate(20, 20)">
+        <rect width="440" height="65" rx="6" fill="#0b291d" stroke="#10b981" stroke-width="1"/>
+        <text x="14" y="22" class="text-mono" font-weight="700" fill="#6ee7b7">Step 1: Coder Agent 生成了完全正确的单行补丁</text>
+        <text x="14" y="40" class="text-mono" font-size="10" fill="#a7f3d0">- return blocks[key].allocate()</text>
+        <text x="14" y="54" class="text-mono" font-size="10" fill="#34d399">+ return blocks[key].allocate() if key in blocks else None</text>
+        <rect x="330" y="10" width="95" height="20" rx="4" fill="#064e3b"/>
+        <text x="377" y="24" text-anchor="middle" class="text-mono" font-size="9" fill="#a7f3d0">通过单元测试</text>
+      </g>
+
+      <!-- Down Arrow with Lossy Context -->
+      <g transform="translate(240, 90)">
+        <line x1="0" y1="0" x2="0" y2="25" stroke="#f43f5e" stroke-width="2"/>
+        <polygon points="0,25 -4,17 4,17" fill="#f43f5e"/>
+        <text x="10" y="16" class="text-mono" font-size="9" fill="#fca5a5">丢失局部类型约束上下文</text>
+      </g>
+
+      <!-- Step 2: Reviewer Agent Overthinking -->
+      <g transform="translate(20, 120)">
+        <rect width="440" height="85" rx="6" fill="#311010" stroke="#ef4444" stroke-width="1"/>
+        <text x="14" y="22" class="text-mono" font-weight="700" fill="#fca5a5">Step 2: Reviewer Agent 介入审查（基于偏见与过度发散）</text>
+        <text x="14" y="40" class="text-body" fill="#fecaca">“你的补丁返回了 None，可能会导致调用方在解包时发生 AttributeError！</text>
+        <text x="14" y="56" class="text-body" fill="#fecaca">我建议定义一个完整的 DefaultBlock 并重写整个分配管理器，把这 3 个类全部重构！”</text>
+        <rect x="330" y="10" width="95" height="20" rx="4" fill="#7f1d1d"/>
+        <text x="377" y="24" text-anchor="middle" class="text-mono" font-size="9" fill="#fca5a5">主观过度工程</text>
+      </g>
+
+      <!-- Down Arrow -->
+      <g transform="translate(240, 210)">
+        <line x1="0" y1="0" x2="0" y2="25" stroke="#ef4444" stroke-width="2"/>
+        <polygon points="0,25 -4,17 4,17" fill="#ef4444"/>
+      </g>
+
+      <!-- Step 3: Coder Overwrites Fix with Broken Code -->
+      <g transform="translate(20, 240)">
+        <rect width="440" height="75" rx="6" fill="#2d1217" stroke="#f97316" stroke-width="1"/>
+        <text x="14" y="22" class="text-mono" font-weight="700" fill="#fdba74">Step 3: Coder 被迫推翻正确补丁，大范围重构引入新 Bug</text>
+        <text x="14" y="42" class="text-body" fill="#fed7aa">• 修改了 6 个无关文件，破坏了调用方签名契约</text>
+        <text x="14" y="60" class="text-mono" font-size="10" fill="#f87171">pytest 报错：ImportError: cannot import name 'DefaultBlock'</text>
+      </g>
+
+      <!-- Deadlock Return Loop -->
+      <path d="M 460,280 C 490,280 490,50 460,50" fill="none" stroke="#ef4444" stroke-width="2" stroke-dasharray="4,2"/>
+      <polygon points="460,50 468,46 468,54" fill="#ef4444"/>
+      <rect x="440" y="150" width="80" height="22" rx="4" fill="#450a0a" stroke="#ef4444" stroke-width="1"/>
+      <text x="480" y="165" text-anchor="middle" class="text-mono" font-size="9" font-weight="700" fill="#fecaca">死循环回退</text>
+
+      <!-- Step 4: Outcome -->
+      <g transform="translate(20, 330)">
+        <rect width="440" height="55" rx="6" fill="#170c10"/>
+        <text x="14" y="22" class="text-mono" font-weight="700" fill="#f87171">最终结果：12 轮争辩，消耗 68,000 Token，原本修复失败！</text>
+        <text x="14" y="40" class="text-body" fill="#fca5a5">Salesforce DEI 与学术界复盘证实：盲目引入 Reviewer 导致修复率平均倒退 14~18%。</text>
+      </g>
+    </g>
+
+    <!-- Right: Why Aider Wins (Architectural Analysis) -->
+    <g transform="translate(545, 30)">
+      <rect width="310" height="410" rx="8" fill="#071226" stroke="#2563eb" stroke-width="1"/>
+      <text x="18" y="30" class="text-h2" fill="#93c5fd">Aider 的去魅法则</text>
+      <line x1="18" y1="42" x2="292" y2="42" stroke="#1e3a8a" stroke-width="1"/>
+
+      <!-- Point 1 -->
+      <g transform="translate(18, 55)">
+        <rect width="274" height="75" rx="4" fill="#0b1e38"/>
+        <text x="12" y="20" class="text-mono" font-weight="700" fill="#38bdf8">1. 编译器是最无情的裁判</text>
+        <text x="12" y="38" class="text-body" fill="#bfdbfe">不需要 LLM 扮演 QA 来“点评好坏”；</text>
+        <text x="12" y="54" class="text-body" fill="#bfdbfe">让真实 test runner 跑一遍，Pass 即是真理，</text>
+        <text x="12" y="70" class="text-body" fill="#bfdbfe">杜绝语言模型在虚假规范上的过度发散。</text>
+      </g>
+
+      <!-- Point 2 -->
+      <g transform="translate(18, 140)">
+        <rect width="274" height="75" rx="4" fill="#0b1e38"/>
+        <text x="12" y="20" class="text-mono" font-weight="700" fill="#38bdf8">2. 局部代码差异（Diff）的确定性</text>
+        <text x="12" y="38" class="text-body" fill="#bfdbfe">Aider 从不要求模型重写整个 2000 行文件；</text>
+        <text x="12" y="54" class="text-body" fill="#bfdbfe">仅要求输出 SEARCH/REPLACE 差异块，</text>
+        <text x="12" y="70" class="text-body" fill="#bfdbfe">极大缩小动作空间，杜绝附带损伤。</text>
+      </g>
+
+      <!-- Point 3 -->
+      <g transform="translate(18, 225)">
+        <rect width="274" height="75" rx="4" fill="#0b1e38"/>
+        <text x="12" y="20" class="text-mono" font-weight="700" fill="#38bdf8">3. 单一因果链条（Single Causal Path）</text>
+        <text x="12" y="38" class="text-body" fill="#bfdbfe">Architect 给出策略，Editor 执行落盘，</text>
+        <text x="12" y="54" class="text-body" fill="#bfdbfe">单向流水线无横向干扰，</text>
+        <text x="12" y="70" class="text-body" fill="#bfdbfe">彻底消除多主体间的“沟通回音壁”。</text>
+      </g>
+
+      <!-- Point 4: Quote -->
+      <g transform="translate(18, 310)">
+        <rect width="274" height="85" rx="4" fill="#042a1f" stroke="#10b981" stroke-width="0.8"/>
+        <text x="12" y="22" class="text-mono" font-weight="700" fill="#6ee7b7">Paul Gauthier 的工程格言：</text>
+        <text x="12" y="42" class="text-body" fill="#a7f3d0">“给模型最好的地图（Repo-Map）、</text>
+        <text x="12" y="58" class="text-body" fill="#a7f3d0">最小的手术刀（Git Diff），</text>
+        <text x="12" y="74" class="text-body" fill="#a7f3d0">并让编译器成为唯一的裁决官。”</text>
+      </g>
+    </g>
+  </g>
+</svg>
