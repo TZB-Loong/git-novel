@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" width="1000" height="600">
+  <defs>
+    <linearGradient id="bgGradArchOH" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080E1A" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+    <linearGradient id="hostCardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#0F172A" stop-opacity="0.9" />
+    </linearGradient>
+    <linearGradient id="sandboxCardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#111E38" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#0A1128" stop-opacity="0.95" />
+    </linearGradient>
+    <filter id="shadowBoxArch" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <rect width="1000" height="600" fill="url(#bgGradArchOH)" rx="12" />
+
+  <!-- Title Area -->
+  <g transform="translate(50, 45)">
+    <rect width="8" height="28" rx="4" fill="#38BDF8" />
+    <text x="24" y="22" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="700">
+      OpenHands 双层沙盒架构：Controller 与 Docker 隔离环境契约
+    </text>
+    <text x="24" y="44" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13">
+      解耦规划思考与物理执行 · 宿主零污染 · cgroups 硬件约束 · 系统调用（Seccomp）过滤
+    </text>
+  </g>
+
+  <!-- Left Block: Host Machine / Controller Process -->
+  <g transform="translate(50, 115)">
+    <rect width="400" height="430" rx="14" fill="url(#hostCardGrad)" stroke="#38BDF8" stroke-width="1.5" filter="url(#shadowBoxArch)" />
+    
+    <rect x="20" y="20" width="130" height="28" rx="6" fill="#0284C7" fill-opacity="0.25" stroke="#0284C7" stroke-width="1" />
+    <text x="85" y="39" fill="#38BDF8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" text-anchor="middle">HOST CONTROLLER</text>
+    <text x="165" y="39" fill="#E2E8F0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="700">调度与决策中枢</text>
+
+    <!-- Sub Module 1: LLM Interface -->
+    <g transform="translate(20, 68)">
+      <rect width="360" height="65" rx="8" fill="#0B132B" stroke="#334155" stroke-width="1" />
+      <text x="16" y="26" fill="#F1F5F9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="600">🧠 LLM Client (LiteLLM / Claude / R1)</text>
+      <text x="16" y="48" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">意图解析 · 推理生成 · Token 统计 · 提示词组装</text>
+    </g>
+
+    <!-- Sub Module 2: Agent Runtime & State Machine -->
+    <g transform="translate(20, 145)">
+      <rect width="360" height="85" rx="8" fill="#0B132B" stroke="#334155" stroke-width="1" />
+      <text x="16" y="26" fill="#F1F5F9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="600">⚡ Agent 核心循环 (FastAPI / Runtime)</text>
+      <text x="16" y="48" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">• EventStream 异步事件派发与历史回放</text>
+      <text x="16" y="68" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">• CodeAct / SWE-Agent 决策状态机切换</text>
+    </g>
+
+    <!-- Sub Module 3: Security Guardrails -->
+    <g transform="translate(20, 242)">
+      <rect width="360" height="80" rx="8" fill="#0B132B" stroke="#E11D48" stroke-width="1" />
+      <text x="16" y="26" fill="#F43F5E" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="600">🛡️ 安全守门人 (Security Guardrails)</text>
+      <text x="16" y="48" fill="#CBD5E1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">• 阻断宿主文件跨卷挂载逃逸</text>
+      <text x="16" y="68" fill="#CBD5E1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">• 拦截 fork bomb、破坏性 rm 与未授权外联</text>
+    </g>
+
+    <!-- Bottom Host Note -->
+    <g transform="translate(20, 335)">
+      <rect width="360" height="75" rx="8" fill="#1E293B" fill-opacity="0.5" stroke="#334155" stroke-dasharray="4,4" />
+      <text x="16" y="25" fill="#38BDF8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600">🔒 宿主机数据绝对安全原则</text>
+      <text x="16" y="45" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">Controller 仅负责发令与接收观测，不直接在宿主机执行</text>
+      <text x="16" y="62" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">任何 Bash/Python/Git 命令，代码与测试全入容器。</text>
+    </g>
+  </g>
+
+  <!-- Middle Bridge: Protocol / Docker API -->
+  <g transform="translate(460, 200)">
+    <rect x="0" y="0" width="80" height="180" rx="10" fill="#0F172A" stroke="#64748B" stroke-width="1" />
+    <text x="40" y="25" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" text-anchor="middle">API 通道</text>
+    
+    <!-- Arrow Top: Action (Cmd / Code) -->
+    <path d="M -5 60 L 85 60" stroke="#38BDF8" stroke-width="2.5" marker-end="url(#arrowEnd)" />
+    <polygon points="85,60 76,55 76,65" fill="#38BDF8" />
+    <text x="40" y="52" fill="#38BDF8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" text-anchor="middle">Action</text>
+
+    <!-- Arrow Bottom: Observation (Output / Diff) -->
+    <path d="M 85 120 L -5 120" stroke="#10B981" stroke-width="2.5" />
+    <polygon points="-5,120 4,115 4,125" fill="#10B981" />
+    <text x="40" y="112" fill="#10B981" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" text-anchor="middle">Observation</text>
+
+    <text x="40" y="155" fill="#64748B" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" text-anchor="middle">Docker Socket</text>
+    <text x="40" y="168" fill="#64748B" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" text-anchor="middle">/ UNIX Domain</text>
+  </g>
+
+  <!-- Right Block: Execution Sandbox Container -->
+  <g transform="translate(550, 115)">
+    <rect width="400" height="430" rx="14" fill="url(#sandboxCardGrad)" stroke="#10B981" stroke-width="1.5" filter="url(#shadowBoxArch)" />
+
+    <rect x="20" y="20" width="165" height="28" rx="6" fill="#059669" fill-opacity="0.25" stroke="#10B981" stroke-width="1" />
+    <text x="102" y="39" fill="#10B981" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" text-anchor="middle">EXECUTION SANDBOX</text>
+    <text x="200" y="39" fill="#E2E8F0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="700">受限隔离容器</text>
+
+    <!-- Sub Module 1: Isolated Runtime Components -->
+    <g transform="translate(20, 68)">
+      <rect width="360" height="95" rx="8" fill="#071020" stroke="#1E293B" stroke-width="1" />
+      <text x="16" y="24" fill="#F1F5F9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="600">📦 运行时容器环境 (Debian/Ubuntu Core)</text>
+      <text x="16" y="46" fill="#A7F3D0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">• 独立 PTY 虚拟终端 (Bash 会话与持久状态)</text>
+      <text x="16" y="66" fill="#A7F3D0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">• Python / Node.js 编译器与代码执行环境</text>
+      <text x="16" y="86" fill="#A7F3D0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">• 内置 Git、diff 与 patch 工具链</text>
+    </g>
+
+    <!-- Sub Module 2: Mounted Workspaces & Readonly Mounts -->
+    <g transform="translate(20, 175)">
+      <rect width="360" height="85" rx="8" fill="#071020" stroke="#1E293B" stroke-width="1" />
+      <text x="16" y="24" fill="#F1F5F9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="600">📁 挂载与存储边界 (Storage Boundary)</text>
+      <text x="16" y="46" fill="#CBD5E1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">• <tspan fill="#38BDF8">/workspace</tspan> : 目标项目副本目录（读写隔离）</text>
+      <text x="16" y="66" fill="#CBD5E1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">• 根文件系统与系统敏感路径强制 <tspan fill="#F43F5E">Read-Only</tspan></text>
+    </g>
+
+    <!-- Sub Module 3: cgroups & Seccomp Limits -->
+    <g transform="translate(20, 272)">
+      <rect width="360" height="138" rx="8" fill="#071020" stroke="#10B981" stroke-width="1" />
+      <text x="16" y="24" fill="#10B981" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="600">⚙️ 工业级硬防护 (cgroups &amp; Linux Hardening)</text>
+      <g transform="translate(16, 38)">
+        <text x="0" y="16" fill="#94A3B8" font-family="monospace" font-size="11">--cpus="4.0" --memory="8g" --pids-limit=256</text>
+        <text x="0" y="34" fill="#64748B" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">限制 CPU / 显存占用，防止 Agent 死循环耗尽硬件</text>
+        
+        <text x="0" y="58" fill="#94A3B8" font-family="monospace" font-size="11">--security-opt=no-new-privileges:true</text>
+        <text x="0" y="76" fill="#64748B" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">禁止 SUID 提权；Seccomp 拦截危险系统调用</text>
+
+        <text x="0" y="100" fill="#10B981" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">✓ 销毁即重置：单次任务失败直接 rm 容器，0 残留</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Bottom Indicator -->
+  <g transform="translate(50, 560)">
+    <text x="0" y="16" fill="#475569" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">图 1：OpenHands 宿主 Controller 与沙盒 Sandbox 双向解耦拓扑</text>
+  </g>
+</svg>
