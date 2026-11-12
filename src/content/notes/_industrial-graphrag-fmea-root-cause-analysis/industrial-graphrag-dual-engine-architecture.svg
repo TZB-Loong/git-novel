@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="620" viewBox="0 0 960 620">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#030712"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <filter id="shadow2" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+    <style>
+      .arch-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 800; font-size: 20px; fill: #f8fafc; }
+      .arch-sub { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 13px; fill: #94a3b8; }
+      .layer-head { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 700; font-size: 13px; }
+      .comp-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 700; font-size: 12px; }
+      .comp-desc { font-family: ui-monospace, SFMono-Regular, monospace; font-size: 11px; fill: #94a3b8; }
+      .tag { font-family: ui-monospace, monospace; font-size: 10px; font-weight: 700; }
+    </style>
+  </defs>
+
+  <rect width="960" height="620" rx="16" fill="url(#bg2)" stroke="#1e293b" stroke-width="1.5"/>
+
+  <!-- Header -->
+  <g transform="translate(40, 25)">
+    <rect x="0" y="0" width="180" height="24" rx="4" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+    <text x="10" y="16" fill="#6ee7b7" class="tag">DUAL-ENGINE SYSTEM</text>
+    <text x="195" y="18" class="arch-title">基于 FMEA 本体知识图谱与 GraphRAG 双擎混合排障架构</text>
+    <text x="0" y="44" class="arch-sub">连接主义语义召回与符号主义物理拓扑推导的全链路闭环流转机制</text>
+  </g>
+
+  <!-- Layer 1: Ingestion & Equipment Ontology -->
+  <g transform="translate(40, 85)" filter="url(#shadow2)">
+    <rect width="880" height="95" rx="8" fill="#0b1329" stroke="#1e293b"/>
+    <rect x="0" y="0" width="130" height="95" rx="8" fill="#082f49"/>
+    <text x="16" y="42" fill="#38bdf8" class="layer-head">车间多源输入</text>
+    <text x="16" y="62" fill="#7dd3fc" font-size="11px">现场非结构化 + PLC</text>
+
+    <g transform="translate(145, 12)">
+      <rect width="225" height="70" rx="6" fill="#0f172a" stroke="#0284c7"/>
+      <text x="12" y="22" fill="#38bdf8" class="comp-title">一线工人口述 / 维保日志</text>
+      <text x="12" y="42" class="comp-desc">"3号立加主轴啸叫, 油压不稳"</text>
+      <text x="12" y="58" fill="#64748b" font-size="10px">自然语言口语化、车间行话与别名</text>
+    </g>
+
+    <g transform="translate(385, 12)">
+      <rect width="225" height="70" rx="6" fill="#0f172a" stroke="#0284c7"/>
+      <text x="12" y="22" fill="#38bdf8" class="comp-title">SCADA / PLC 遥测与代码</text>
+      <text x="12" y="42" class="comp-desc">Error Code: E-302, P_oil=0.18MPa</text>
+      <text x="12" y="58" fill="#64748b" font-size="10px">传感器时序异常与确定性报警帧</text>
+    </g>
+
+    <g transform="translate(625, 12)">
+      <rect width="240" height="70" rx="6" fill="#0f172a" stroke="#0284c7"/>
+      <text x="12" y="22" fill="#38bdf8" class="comp-title">实体对齐与设备树索引 (ER)</text>
+      <text x="12" y="42" class="comp-desc">Asset ID: CNC-VMC-03-SP</text>
+      <text x="12" y="58" fill="#64748b" font-size="10px">映射至制造装备层级分类树 (ISO 14224)</text>
+    </g>
+  </g>
+
+  <!-- Connective Arrows -->
+  <g transform="translate(480, 185)">
+    <path d="M-200,0 L-200,20 M200,0 L200,20" stroke="#06b6d4" stroke-width="2" stroke-dasharray="4" fill="none"/>
+  </g>
+
+  <!-- Layer 2: Dual Engine Core (Vector + Graph) -->
+  <g transform="translate(40, 210)" filter="url(#shadow2)">
+    <rect width="880" height="190" rx="8" fill="#0b1329" stroke="#334155"/>
+    <rect x="0" y="0" width="130" height="190" rx="8" fill="#1e1b4b"/>
+    <text x="16" y="85" fill="#a5b4fc" class="layer-head">双擎并行检索</text>
+    <text x="16" y="110" fill="#818cf8" font-size="11px">连接主义 + 符号主义</text>
+
+    <!-- Branch A: Dense + Sparse Vector Retrieval -->
+    <g transform="translate(145, 15)">
+      <rect width="345" height="160" rx="6" fill="#0f172a" stroke="#6366f1" stroke-width="1.5"/>
+      <rect x="0" y="0" width="345" height="28" rx="6" fill="#312e81"/>
+      <text x="12" y="18" fill="#c7d2fe" class="comp-title">引擎 A: 稠密向量 + 工业 BM25 混合检索</text>
+
+      <g transform="translate(12, 40)">
+        <text x="0" y="16" fill="#e0e7ff" font-size="11px" font-family="monospace">1. 专用 Embedding: 工业命名实体微调</text>
+        <text x="0" y="38" fill="#94a3b8" font-size="11px">2. 快速召回相关 SOP 切片与历史事故案例</text>
+        <text x="0" y="60" fill="#94a3b8" font-size="11px">3. 优点: 覆盖广、长文本意图理解强</text>
+        <text x="0" y="82" fill="#f87171" font-size="11px" font-weight="700">✘ 局限: 无法跨部件推导物理传导与因果链路</text>
+        <rect x="0" y="94" width="320" height="20" rx="3" fill="#1e1b4b"/>
+        <text x="8" y="108" fill="#a5b4fc" font-size="10px" font-family="monospace">Output: Top-20 文本 Chunk (候选集)</text>
+      </g>
+    </g>
+
+    <!-- Branch B: FMEA / CAPA Knowledge Graph Traversal -->
+    <g transform="translate(515, 15)">
+      <rect width="350" height="160" rx="6" fill="#0f172a" stroke="#06b6d4" stroke-width="1.5"/>
+      <rect x="0" y="0" width="350" height="28" rx="6" fill="#083344"/>
+      <text x="12" y="18" fill="#7dd3fc" class="comp-title">引擎 B: FMEA 制造本体知识图谱拓扑遍历</text>
+
+      <g transform="translate(12, 40)">
+        <text x="0" y="16" fill="#e0f2fe" font-size="11px" font-family="monospace">1. 子图抽取: 定位故障设备三跳以内部件</text>
+        <text x="0" y="38" fill="#94a3b8" font-size="11px">2. 物理关联: 机-电-液多物理域传导边遍历</text>
+        <text x="0" y="60" fill="#94a3b8" font-size="11px">3. 优点: 因果推导 100% 具备物理保真度</text>
+        <text x="0" y="82" fill="#34d399" font-size="11px" font-weight="700">✔ 核心: 自动串联 (报警 $ightarrow$ 部件 $ightarrow$ 历史根因)</text>
+        <rect x="0" y="94" width="325" height="20" rx="3" fill="#083344"/>
+        <text x="8" y="108" fill="#38bdf8" font-size="10px" font-family="monospace">Output: 有向无环因果子图 (Causal Subgraph)</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Connective Arrows -->
+  <g transform="translate(480, 405)">
+    <path d="M0,0 L0,20 M-5,15 L0,22 L5,15" stroke="#10b981" stroke-width="2" fill="none"/>
+  </g>
+
+  <!-- Layer 3: Causal Pruning & Grounded Generation -->
+  <g transform="translate(40, 430)" filter="url(#shadow2)">
+    <rect width="880" height="160" rx="8" fill="#0b1329" stroke="#10b981" stroke-width="1.5"/>
+    <rect x="0" y="0" width="130" height="160" rx="8" fill="#064e3b"/>
+    <text x="16" y="75" fill="#6ee7b7" class="layer-head">因果剪枝与生成</text>
+    <text x="16" y="98" fill="#a7f3d0" font-size="11px">消除幻觉 · 确定性交付</text>
+
+    <g transform="translate(145, 15)">
+      <rect width="345" height="130" rx="6" fill="#0f172a" stroke="#334155"/>
+      <text x="12" y="22" fill="#10b981" class="comp-title">因果交集剪枝与重排序 (Causal Pruning)</text>
+      <text x="12" y="44" class="comp-desc">• 丢弃与图谱拓扑物理不符的伪相似 Chunk</text>
+      <text x="12" y="64" class="comp-desc">• 保留符合物理因果路径的高相关技术参数</text>
+      <text x="12" y="84" class="comp-desc">• 组装结构化 Prompt (包含图纸、公差、备件号)</text>
+      <text x="12" y="110" fill="#38bdf8" font-size="10px" font-family="monospace">Context 压缩率: 82% | 幻觉率降低至 0.4%</text>
+    </g>
+
+    <g transform="translate(515, 15)">
+      <rect width="350" height="130" rx="6" fill="#061a23" stroke="#10b981"/>
+      <text x="12" y="22" fill="#6ee7b7" class="comp-title">工控边缘 LLM 生成排障操作卡 (Action Guide)</text>
+      <text x="12" y="44" fill="#cbd5e1" class="comp-desc">✔ Step 1: 关闭回路 B 冷却总阀 (位号 V-01)</text>
+      <text x="12" y="64" fill="#cbd5e1" class="comp-desc">✔ Step 2: 拆卸减压阀 V-04，检查阀芯杂质与磨损</text>
+      <text x="12" y="84" fill="#cbd5e1" class="comp-desc">✔ Step 3: 更换备件 #VALVE-3301 并施加 45N·m 扭矩</text>
+      <text x="12" y="110" fill="#34d399" font-size="10px" font-family="monospace">带图纸索引、备件编号与可追溯安全规程</text>
+    </g>
+  </g>
+</svg>

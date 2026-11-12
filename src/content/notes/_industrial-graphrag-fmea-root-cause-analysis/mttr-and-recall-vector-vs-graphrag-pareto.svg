@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="560" viewBox="0 0 960 560">
+  <defs>
+    <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#020617"/>
+      <stop offset="100%" stop-color="#090d16"/>
+    </linearGradient>
+    <filter id="shadow3" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+    <style>
+      .c-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 800; font-size: 20px; fill: #f8fafc; }
+      .c-sub { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 13px; fill: #94a3b8; }
+      .panel-head { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 700; font-size: 14px; }
+      .axis-label { font-family: ui-monospace, SFMono-Regular, monospace; font-size: 11px; fill: #64748b; }
+      .chart-label { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 11px; }
+      .legend-text { font-family: ui-monospace, monospace; font-size: 11px; }
+    </style>
+  </defs>
+
+  <rect width="960" height="560" rx="16" fill="url(#bg3)" stroke="#1e293b" stroke-width="1.5"/>
+
+  <!-- Header -->
+  <g transform="translate(40, 25)">
+    <rect x="0" y="0" width="190" height="24" rx="4" fill="#1e1b4b" stroke="#6366f1" stroke-width="1"/>
+    <text x="10" y="16" fill="#a5b4fc" font-family="monospace" font-size="10px" font-weight="700">BENCHMARK &amp; PARETO</text>
+    <text x="205" y="18" class="c-title">复杂故障多跳因果召回率与车间 MTTR 压降实测对比</text>
+    <text x="0" y="44" class="c-sub">真实工业场景 120 组复杂故障样本实测：纯向量 RAG 断崖 vs GraphRAG 鲁棒性</text>
+  </g>
+
+  <!-- Left Chart: Recall vs Multi-Hop Depth -->
+  <g transform="translate(40, 85)" filter="url(#shadow3)">
+    <rect width="420" height="445" rx="10" fill="#0f172a" stroke="#334155"/>
+    <rect x="0" y="0" width="420" height="36" rx="10" fill="#1e293b"/>
+    <text x="16" y="23" fill="#f8fafc" class="panel-head">图 1：故障因果链跳数 vs 根因召回率 (Recall@5)</text>
+
+    <!-- Chart Canvas -->
+    <g transform="translate(45, 60)">
+      <!-- Grid lines -->
+      <line x1="0" y1="250" x2="340" y2="250" stroke="#334155" stroke-width="1"/>
+      <line x1="0" y1="190" x2="340" y2="190" stroke="#1e293b" stroke-width="1" stroke-dasharray="3"/>
+      <line x1="0" y1="130" x2="340" y2="130" stroke="#1e293b" stroke-width="1" stroke-dasharray="3"/>
+      <line x1="0" y1="70" x2="340" y2="70" stroke="#1e293b" stroke-width="1" stroke-dasharray="3"/>
+      <line x1="0" y1="10" x2="340" y2="10" stroke="#1e293b" stroke-width="1" stroke-dasharray="3"/>
+
+      <!-- Y Axis Labels -->
+      <text x="-35" y="254" class="axis-label">0%</text>
+      <text x="-40" y="194" class="axis-label">25%</text>
+      <text x="-40" y="134" class="axis-label">50%</text>
+      <text x="-40" y="74" class="axis-label">75%</text>
+      <text x="-45" y="14" class="axis-label">100%</text>
+
+      <!-- X Axis Labels -->
+      <text x="35" y="275" class="axis-label">1-Hop (单跳)</text>
+      <text x="115" y="275" class="axis-label">2-Hop (双跳)</text>
+      <text x="195" y="275" class="axis-label">3-Hop (三跳)</text>
+      <text x="275" y="275" class="axis-label">4-Hop (跨域)</text>
+
+      <!-- Curve 1: Naive Vector RAG (Steep Cliff Drop) -->
+      <!-- Points: 1-hop: 86%(35), 2-hop: 48%(125), 3-hop: 19%(195), 4-hop: 6%(225) -->
+      <path d="M60,40 L140,135 L220,204 L300,236" stroke="#ef4444" stroke-width="3" fill="none"/>
+      <circle cx="60" cy="40" r="5" fill="#ef4444"/>
+      <circle cx="140" cy="135" r="5" fill="#ef4444"/>
+      <circle cx="220" cy="204" r="5" fill="#ef4444"/>
+      <circle cx="300" cy="236" r="5" fill="#ef4444"/>
+
+      <text x="65" y="35" fill="#f87171" class="chart-label" font-weight="700">86.2%</text>
+      <text x="145" y="130" fill="#f87171" class="chart-label" font-weight="700">47.8%</text>
+      <text x="225" y="200" fill="#f87171" class="chart-label" font-weight="700">18.5%</text>
+      <text x="295" y="230" fill="#f87171" class="chart-label" font-weight="700">6.1%</text>
+
+      <!-- Curve 2: Industrial GraphRAG (High & Stable) -->
+      <!-- Points: 1-hop: 94%(15), 2-hop: 92%(20), 3-hop: 89%(27), 4-hop: 84%(40) -->
+      <path d="M60,20 L140,26 L220,33 L300,45" stroke="#06b6d4" stroke-width="3" fill="none"/>
+      <circle cx="60" cy="20" r="5" fill="#06b6d4"/>
+      <circle cx="140" cy="26" r="5" fill="#06b6d4"/>
+      <circle cx="220" cy="33" r="5" fill="#06b6d4"/>
+      <circle cx="300" cy="45" r="5" fill="#06b6d4"/>
+
+      <text x="65" y="15" fill="#38bdf8" class="chart-label" font-weight="700">94.5%</text>
+      <text x="145" y="22" fill="#38bdf8" class="chart-label" font-weight="700">92.1%</text>
+      <text x="225" y="28" fill="#38bdf8" class="chart-label" font-weight="700">88.9%</text>
+      <text x="290" y="40" fill="#38bdf8" class="chart-label" font-weight="700">84.2%</text>
+
+      <!-- Annotation on Cliff -->
+      <path d="M220,180 L220,60" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="3" fill="none"/>
+      <rect x="165" y="100" width="110" height="24" rx="4" fill="#78350f" stroke="#f59e0b"/>
+      <text x="172" y="116" fill="#fef3c7" font-size="10px" font-weight="700">语义断崖差距: 4.8x</text>
+
+      <!-- Legend -->
+      <g transform="translate(30, 310)">
+        <line x1="0" y1="0" x2="25" y2="0" stroke="#ef4444" stroke-width="3"/>
+        <text x="32" y="4" fill="#fca5a5" class="legend-text">纯向量检索 (Naive RAG: 出现断崖)</text>
+        <line x1="0" y1="20" x2="25" y2="20" stroke="#06b6d4" stroke-width="3"/>
+        <text x="32" y="24" fill="#7dd3fc" class="legend-text">工业 GraphRAG (物理拓扑多跳保持率)</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Right Chart: MTTR & Downtime Loss Reduction -->
+  <g transform="translate(500, 85)" filter="url(#shadow3)">
+    <rect width="420" height="445" rx="10" fill="#0f172a" stroke="#334155"/>
+    <rect x="0" y="0" width="420" height="36" rx="10" fill="#1e293b"/>
+    <text x="16" y="23" fill="#f8fafc" class="panel-head">图 2：平均修复时间 (MTTR) 与非计划停机损失</text>
+
+    <g transform="translate(30, 60)">
+      <!-- Metric 1: MTTR comparison -->
+      <text x="0" y="18" fill="#cbd5e1" class="panel-head" font-size="13px">1. 现场平均故障排查定位耗时 (MTTR)</text>
+
+      <g transform="translate(0, 35)">
+        <!-- Bar 1: Manual / Naive RAG -->
+        <text x="0" y="16" fill="#94a3b8" font-size="11px">人工查手册 + 纯向量检索：</text>
+        <rect x="0" y="24" width="320" height="28" rx="4" fill="#7f1d1d" stroke="#ef4444"/>
+        <text x="12" y="43" fill="#fecaca" class="legend-text" font-weight="700">4.2 小时 / 次 (盲目试凑换件)</text>
+
+        <!-- Bar 2: GraphRAG -->
+        <text x="0" y="72" fill="#94a3b8" font-size="11px">FMEA GraphRAG 因果辅助定位：</text>
+        <rect x="0" y="80" width="68" height="28" rx="4" fill="#064e3b" stroke="#10b981"/>
+        <text x="80" y="99" fill="#6ee7b7" class="legend-text" font-weight="700">0.8 小时 / 次 (MTTR 压降 80.9%)</text>
+      </g>
+
+      <!-- Metric 2: Monthly Downtime Loss -->
+      <text x="0" y="160" fill="#cbd5e1" class="panel-head" font-size="13px">2. 单条高端产线月均非计划停机损失</text>
+
+      <g transform="translate(0, 175)">
+        <!-- Bar 1: Before -->
+        <text x="0" y="16" fill="#94a3b8" font-size="11px">引入前 (月均故障停机 28.5h)：</text>
+        <rect x="0" y="24" width="340" height="28" rx="4" fill="#334155" stroke="#64748b"/>
+        <text x="12" y="43" fill="#f8fafc" class="legend-text" font-weight="700">约 142.5 万元 / 月 (按 5万元/h 停线成本)</text>
+
+        <!-- Bar 2: After -->
+        <text x="0" y="72" fill="#94a3b8" font-size="11px">引入后 (月均故障停机 5.4h)：</text>
+        <rect x="0" y="80" width="75" height="28" rx="4" fill="#083344" stroke="#06b6d4"/>
+        <text x="85" y="99" fill="#38bdf8" class="legend-text" font-weight="700">约 27.0 万元 / 月 (净省 115.5 万元/月)</text>
+      </g>
+
+      <!-- Key Takeaway Box -->
+      <g transform="translate(0, 275)">
+        <rect width="360" height="80" rx="6" fill="#0b1329" stroke="#10b981" stroke-width="1.2"/>
+        <text x="12" y="24" fill="#34d399" class="chart-label" font-weight="700">✔ 工业知识工程核心定论</text>
+        <text x="12" y="44" fill="#94a3b8" font-size="11px">通用 RAG 解决的是「找文本段落」的问题；</text>
+        <text x="12" y="62" fill="#f8fafc" font-size="11px" font-weight="600">制造 GraphRAG 解决的是「物理世界的因果与责任归因」。</text>
+      </g>
+    </g>
+  </g>
+</svg>

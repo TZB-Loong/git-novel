@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="580" viewBox="0 0 960 580">
+  <defs>
+    <linearGradient id="bg1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#020617"/>
+      <stop offset="100%" stop-color="#0b1120"/>
+    </linearGradient>
+    <filter id="shadow1" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+    <style>
+      .t-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 800; font-size: 20px; fill: #f8fafc; }
+      .t-sub { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 13px; fill: #94a3b8; }
+      .box-head { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 700; font-size: 14px; }
+      .box-p { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 12px; fill: #94a3b8; }
+      .code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 11px; }
+      .badge-txt { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 10px; font-weight: 700; }
+    </style>
+  </defs>
+
+  <rect width="960" height="580" rx="16" fill="url(#bg1)" stroke="#1e293b" stroke-width="1.5"/>
+
+  <!-- Header -->
+  <g transform="translate(40, 30)">
+    <rect x="0" y="0" width="170" height="24" rx="4" fill="#083344" stroke="#06b6d4" stroke-width="1"/>
+    <text x="10" y="16" fill="#22d3ee" class="badge-txt">CAUSAL VS VECTOR</text>
+    <text x="185" y="18" class="t-title">工业现场排障：扁平向量空间 vs 物理多跳因果链路</text>
+    <text x="0" y="44" class="t-sub">语义距离与物理因果的天然割裂：为什么通用 RAG 面对机械/电气连锁反应时完全失效</text>
+  </g>
+
+  <!-- Left: Naive Vector Retrieval failure -->
+  <g transform="translate(40, 95)" filter="url(#shadow1)">
+    <rect width="420" height="445" rx="10" fill="#0f172a" stroke="#ef4444" stroke-width="1.5"/>
+    <rect x="0" y="0" width="420" height="36" rx="10" fill="#2b1216"/>
+    <text x="16" y="23" fill="#fca5a5" class="box-head">✘ 传统向量检索：陷于“字面语义距离”的死胡同</text>
+
+    <g transform="translate(20, 55)">
+      <rect width="380" height="70" rx="8" fill="#1e293b" stroke="#334155"/>
+      <text x="12" y="22" fill="#f8fafc" class="code" font-weight="700">用户输入 / 车间报警：</text>
+      <text x="12" y="42" fill="#f87171" class="code">"3号立式加工中心主轴温升报警 E-302，伴随异响"</text>
+      <text x="12" y="60" fill="#64748b" font-size="11px">Embedding 向量编码空间余弦相似度计算 (Cosine Similarity)</text>
+
+      <path d="M190,80 L190,115 M185,110 L190,120 L195,110" stroke="#ef4444" stroke-width="2" fill="none"/>
+
+      <g transform="translate(0, 130)">
+        <rect width="380" height="105" rx="8" fill="#1c1917" stroke="#7f1d1d"/>
+        <text x="12" y="20" fill="#fca5a5" class="code" font-weight="700">Top-K 相似度召回切片 (表面高度相似，毫无排障价值)：</text>
+        <text x="12" y="40" fill="#f87171" class="code">[Rank 1] 《机床手册》: "E-302 代码含义为加工中心主轴温度超限..."</text>
+        <text x="12" y="60" fill="#f87171" class="code">[Rank 2] 《安全须知》: "主轴温升超限时应立即停机避免烧蚀..."</text>
+        <text x="12" y="80" fill="#f87171" class="code">[Rank 3] 《车间规定》: "主轴发热属于一级设备隐患需报备..."</text>
+      </g>
+
+      <path d="M190,245 L190,270 M185,265 L190,275 L195,265" stroke="#ef4444" stroke-width="2" fill="none"/>
+
+      <g transform="translate(0, 285)">
+        <rect width="380" height="95" rx="8" fill="#2d1217" stroke="#ef4444"/>
+        <text x="12" y="20" fill="#f87171" class="code" font-weight="700">致命缺陷：真实物理根因被丢弃</text>
+        <text x="12" y="40" fill="#fca5a5" font-size="11px">真实根因在手册第 185 页的冷却系统回路中：</text>
+        <text x="12" y="60" fill="#fca5a5" class="code" font-weight="700">"冷却液减压阀 V-04 杂质卡死导致流量不足"</text>
+        <text x="12" y="80" fill="#94a3b8" font-size="11px">由于语义与 "E-302 主轴" 几乎无交集，余弦相似度极低直接被过滤！</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Right: Multi-Hop Physical Causal Chain (GraphRAG) -->
+  <g transform="translate(500, 95)" filter="url(#shadow1)">
+    <rect width="420" height="445" rx="10" fill="#0b1329" stroke="#06b6d4" stroke-width="1.5"/>
+    <rect x="0" y="0" width="420" height="36" rx="10" fill="#083344"/>
+    <text x="16" y="23" fill="#38bdf8" class="box-head">✔ GraphRAG 因果图谱：多跳物理因果拓扑穿透</text>
+
+    <g transform="translate(20, 55)">
+      <!-- Step 1 -->
+      <rect width="380" height="55" rx="8" fill="#082f49" stroke="#0284c7"/>
+      <text x="12" y="20" fill="#38bdf8" class="code" font-weight="700">[Hop 0] 实体消歧与设备拓扑定位</text>
+      <text x="12" y="40" fill="#e0f2fe" class="code">设备节点: Machine-03 $ightarrow$ 部件: Spindle-Unit (主轴单元)</text>
+
+      <path d="M190,60 L190,80 M185,75 L190,85 L195,75" stroke="#06b6d4" stroke-width="2" fill="none"/>
+
+      <!-- Step 2 -->
+      <g transform="translate(0, 90)">
+        <rect width="380" height="55" rx="8" fill="#0f172a" stroke="#38bdf8"/>
+        <text x="12" y="20" fill="#38bdf8" class="code" font-weight="700">[Hop 1] 报警信号与功能子系统关联 (KG Edge)</text>
+        <text x="12" y="40" fill="#94a3b8" class="code">Alarm E-302 --[triggers_by]--&gt; TempSensor-S12 (读数: 84°C)</text>
+      </g>
+
+      <path d="M190,150 L190,170 M185,165 L190,175 L195,165" stroke="#06b6d4" stroke-width="2" fill="none"/>
+
+      <!-- Step 3 -->
+      <g transform="translate(0, 180)">
+        <rect width="380" height="55" rx="8" fill="#0f172a" stroke="#38bdf8"/>
+        <text x="12" y="20" fill="#38bdf8" class="code" font-weight="700">[Hop 2] 流体与润滑物理耦合回路 (FMEA Ontology)</text>
+        <text x="12" y="40" fill="#94a3b8" class="code">Spindle --[cooled_by]--&gt; Chiller-Circuit-B --[controlled_by]--&gt; Valve-V04</text>
+      </g>
+
+      <path d="M190,240 L190,260 M185,255 L190,265 L195,255" stroke="#06b6d4" stroke-width="2" fill="none"/>
+
+      <!-- Step 4 -->
+      <g transform="translate(0, 270)">
+        <rect width="380" height="110" rx="8" fill="#064e3b" stroke="#10b981"/>
+        <text x="12" y="20" fill="#6ee7b7" class="code" font-weight="700">[Hop 3] 历史工单与 FMEA 根因剪枝匹配</text>
+        <text x="12" y="40" fill="#a7f3d0" class="code">历史 CAPA 工单 WO-2025-1108: "回油滤网破损致阀芯杂质卡死"</text>
+        <text x="12" y="65" fill="#f8fafc" class="code" font-weight="700">输出精准处置建议：</text>
+        <text x="12" y="85" fill="#6ee7b7" font-size="11px">1. 检查 Valve-V04 开度; 2. 清洗过滤器 F-02; 3. 备件号: #VALVE-3301</text>
+      </g>
+    </g>
+  </g>
+</svg>
