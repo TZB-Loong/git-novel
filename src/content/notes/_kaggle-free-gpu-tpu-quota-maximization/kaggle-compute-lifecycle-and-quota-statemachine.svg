@@ -1,0 +1,186 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="560" viewBox="0 0 1000 560">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#040711"/>
+      <stop offset="50%" stop-color="#091024"/>
+      <stop offset="100%" stop-color="#030610"/>
+    </linearGradient>
+    <linearGradient id="danger-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ef4444"/>
+      <stop offset="100%" stop-color="#f97316"/>
+    </linearGradient>
+    <linearGradient id="active-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+    <style>
+      .title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 22px; font-weight: 800; fill: #f8fafc; }
+      .desc { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 13px; fill: #94a3b8; }
+      .box-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 15px; font-weight: 700; fill: #f8fafc; }
+      .box-desc { font-family: ui-monospace, SFMono-Regular, monospace; font-size: 11px; fill: #cbd5e1; }
+      .tag { font-family: ui-monospace, SFMono-Regular, monospace; font-size: 11px; font-weight: 700; }
+      .edge-label { font-family: ui-monospace, SFMono-Regular, monospace; font-size: 10px; fill: #38bdf8; font-weight: 600; }
+      .danger-label { font-family: ui-monospace, SFMono-Regular, monospace; font-size: 10px; fill: #f87171; font-weight: 600; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1000" height="560" fill="url(#bg)"/>
+
+  <!-- Top Title Area -->
+  <g transform="translate(40, 35)">
+    <text x="0" y="0" class="title">Kaggle 免费算力生命周期与配额计费状态机</text>
+    <text x="0" y="24" class="desc">揭示挂钟计费（Clock Hour）、双轨独立计数器、空转超时锁死与 12 小时硬性中断机制</text>
+  </g>
+
+  <!-- Flowchart Diagram -->
+  <!-- State 0: Unverified -->
+  <g transform="translate(40, 95)" filter="url(#shadow)">
+    <rect width="160" height="110" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+    <rect width="160" height="4" rx="2" fill="#64748b"/>
+    <text x="14" y="28" class="box-title">0. 未短信验证账号</text>
+    <text x="14" y="48" class="box-desc">· 仅能使用基础 CPU</text>
+    <text x="14" y="66" class="box-desc">· GPU/TPU 选项置灰</text>
+    <text x="14" y="84" class="box-desc">· 禁用 Internet 出网</text>
+    <rect x="14" y="92" width="60" height="14" rx="3" fill="#334155"/>
+    <text x="18" y="103" class="tag" fill="#94a3b8">LOCKED</text>
+  </g>
+
+  <!-- Arrow 0 -> 1 -->
+  <g stroke="#38bdf8" stroke-width="1.5" fill="none">
+    <path d="M 200 150 L 250 150"/>
+    <polygon points="250,146 258,150 250,154" fill="#38bdf8"/>
+  </g>
+  <text x="204" y="142" class="edge-label">实体SIM认证</text>
+
+  <!-- State 1: Active Quotas Allocated -->
+  <g transform="translate(260, 95)" filter="url(#shadow)">
+    <rect width="200" height="110" rx="10" fill="#0b1736" stroke="#0284c7" stroke-width="1.5"/>
+    <rect width="200" height="4" rx="2" fill="#38bdf8"/>
+    <text x="14" y="28" class="box-title" fill="#38bdf8">1. 独立双轨配额激活</text>
+    <text x="14" y="48" class="box-desc">· GPU 配额：30h/周 (重置)</text>
+    <text x="14" y="66" class="box-desc">· TPU 配额：20h/周 (独立)</text>
+    <text x="14" y="84" class="box-desc">· 出网权限解封 (pip/git)</text>
+    <rect x="14" y="92" width="95" height="14" rx="3" fill="#0369a1"/>
+    <text x="18" y="103" class="tag" fill="#e0f2fe">READY (50h/wk)</text>
+  </g>
+
+  <!-- Fork Branches: Interactive vs Background -->
+  <!-- Branch A: Interactive Notebook -->
+  <g transform="translate(530, 80)" filter="url(#shadow)">
+    <rect width="220" height="140" rx="10" fill="#0c1e3d" stroke="#2563eb" stroke-width="1.5"/>
+    <rect width="220" height="4" rx="2" fill="#60a5fa"/>
+    <text x="14" y="26" class="box-title">2A. 交互式会话运行中</text>
+    <text x="14" y="46" class="box-desc">· 实时占用 GPU/TPU 资源</text>
+    <text x="14" y="64" class="box-desc">· 2× T4 = 1h 挂钟时间/小时</text>
+    <text x="14" y="82" class="box-desc">· 交互最大连续执行：12h</text>
+    <text x="14" y="100" class="box-desc">· 算力计时器：每秒累加扣费</text>
+    <rect x="14" y="112" width="85" height="16" rx="4" fill="#1d4ed8"/>
+    <text x="20" y="124" class="tag" fill="#ffffff">RUNNING (扣费)</text>
+  </g>
+
+  <!-- Branch B: Background Commit / Headless -->
+  <g transform="translate(530, 260)" filter="url(#shadow)">
+    <rect width="220" height="135" rx="10" fill="#0a2528" stroke="#0d9488" stroke-width="1.5"/>
+    <rect width="220" height="4" rx="2" fill="#14b8a6"/>
+    <text x="14" y="26" class="box-title" fill="#2dd4bf">2B. 后台无头容器执行</text>
+    <text x="14" y="46" class="box-desc">· Save &amp; Run All / CLI push</text>
+    <text x="14" y="64" class="box-desc">· 网页关闭不影响执行</text>
+    <text x="14" y="82" class="box-desc">· 最长执行上限：12h 硬中断</text>
+    <text x="14" y="100" class="box-desc">· 跑完自动停机，产物持久化</text>
+    <rect x="14" y="110" width="90" height="16" rx="4" fill="#0f766e"/>
+    <text x="18" y="122" class="tag" fill="#ccfbf1">AUTO-TERMINATE</text>
+  </g>
+
+  <!-- Connecting Lines from State 1 to 2A and 2B -->
+  <g stroke="#38bdf8" stroke-width="1.5" fill="none">
+    <path d="M 460 140 L 495 140 L 495 120 L 530 120"/>
+    <polygon points="522,116 530,120 522,124" fill="#38bdf8"/>
+
+    <path d="M 460 160 L 495 160 L 495 320 L 530 320"/>
+    <polygon points="522,316 530,320 522,324" fill="#38bdf8"/>
+  </g>
+  <text x="470" y="112" class="edge-label">网页开启</text>
+  <text x="465" y="240" class="edge-label">后台提交</text>
+
+  <!-- Danger Loop: Idle Leak -->
+  <g transform="translate(800, 80)" filter="url(#shadow)">
+    <rect width="160" height="140" rx="10" fill="#260f14" stroke="#e11d48" stroke-width="1.5"/>
+    <rect width="160" height="4" rx="2" fill="#f43f5e"/>
+    <text x="12" y="26" class="box-title" fill="#f43f5e">3. 空转漏电陷阱</text>
+    <text x="12" y="46" class="box-desc">· 仅关网页标签不关机</text>
+    <text x="12" y="64" class="box-desc">· 保持占用持续扣费</text>
+    <text x="12" y="82" class="box-desc">· 20~60min 触发超时</text>
+    <text x="12" y="100" class="box-desc" fill="#fda4af">· 白白损失 1h 贵重算力</text>
+    <rect x="12" y="112" width="80" height="16" rx="4" fill="#9f1239"/>
+    <text x="16" y="124" class="tag" fill="#ffe4e6">LEAK RISK</text>
+  </g>
+
+  <!-- Arrow 2A -> 3 -->
+  <g stroke="#f43f5e" stroke-width="1.5" stroke-dasharray="4 3" fill="none">
+    <path d="M 750 140 L 800 140"/>
+    <polygon points="792,136 800,140 792,144" fill="#f43f5e"/>
+  </g>
+  <text x="752" y="132" class="danger-label">直接关Tab</text>
+
+  <!-- State 4: Clean Termination -->
+  <g transform="translate(670, 430)" filter="url(#shadow)">
+    <rect width="290" height="95" rx="10" fill="#0f172a" stroke="#10b981" stroke-width="1.5"/>
+    <rect width="290" height="4" rx="2" fill="#10b981"/>
+    <text x="14" y="26" class="box-title" fill="#34d399">4. 规范终止与配额结算</text>
+    <text x="14" y="46" class="box-desc">· 主动点击 Stop Session 或脚本调停机 API</text>
+    <text x="14" y="64" class="box-desc">· 计费精准按秒结算截断，0 算力浪费</text>
+    <text x="14" y="82" class="box-desc">· 每周滚动重置周期注入新配额 (GPU 30h / TPU 20h)</text>
+  </g>
+
+  <!-- Flow down to Termination -->
+  <g stroke="#10b981" stroke-width="1.5" fill="none">
+    <!-- From 2A clean exit -->
+    <path d="M 640 220 L 640 460 L 670 460"/>
+    <polygon points="662,456 670,460 662,464" fill="#10b981"/>
+
+    <!-- From 2B auto exit -->
+    <path d="M 750 340 L 780 340 L 780 430"/>
+    <polygon points="776,422 780,430 784,422" fill="#10b981"/>
+
+    <!-- From 3 timeout exit -->
+    <path d="M 880 220 L 880 430"/>
+    <polygon points="876,422 880,430 884,422" fill="#10b981"/>
+  </g>
+  <text x="646" y="250" class="edge-label" fill="#10b981">手动主动停机</text>
+  <text x="888" y="320" class="danger-label">超时强制停机</text>
+
+  <!-- Left Bottom Explanatory Box -->
+  <g transform="translate(40, 245)" filter="url(#shadow)">
+    <rect width="380" height="280" rx="10" fill="#070d1e" stroke="#1e293b" stroke-width="1.5"/>
+    <rect width="380" height="4" rx="2" fill="#38bdf8"/>
+    <text x="18" y="30" class="box-title">计费硬性铁律（避坑必读）</text>
+    
+    <g transform="translate(18, 55)">
+      <circle cx="5" cy="5" r="3" fill="#38bdf8"/>
+      <text x="16" y="9" class="box-desc" fill="#f1f5f9">1. 挂钟计时（Wall-clock）：双卡 T4 不翻倍扣费！</text>
+      <text x="16" y="25" class="box-desc" fill="#94a3b8">运行 1 小时 2× T4 仅扣 1 小时 GPU 额度，白赚 32GB 显存。</text>
+    </g>
+
+    <g transform="translate(18, 110)">
+      <circle cx="5" cy="5" r="3" fill="#10b981"/>
+      <text x="16" y="9" class="box-desc" fill="#f1f5f9">2. 双轨独立：GPU 与 TPU 配额互不侵占！</text>
+      <text x="16" y="25" class="box-desc" fill="#94a3b8">GPU 用完 30 小时后，TPU 的 20 小时完全满格可用。</text>
+    </g>
+
+    <g transform="translate(18, 165)">
+      <circle cx="5" cy="5" r="3" fill="#f43f5e"/>
+      <text x="16" y="9" class="box-desc" fill="#f1f5f9">3. 严禁滥用接码号：违规封禁连坐设备指纹！</text>
+      <text x="16" y="25" class="box-desc" fill="#94a3b8">Kaggle 会风控拦截 VoIP 虚拟号并永久标记账户与 IP。</text>
+    </g>
+
+    <g transform="translate(18, 220)">
+      <circle cx="5" cy="5" r="3" fill="#fbbf24"/>
+      <text x="16" y="9" class="box-desc" fill="#f1f5f9">4. 12 小时硬中断：长时间任务必须做 Checkpoint！</text>
+      <text x="16" y="25" class="box-desc" fill="#94a3b8">单次容器生命周期严格上限 12h，超时无预警强杀容器。</text>
+    </g>
+  </g>
+</svg>

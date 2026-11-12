@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050811"/>
+      <stop offset="50%" stop-color="#0a1128"/>
+      <stop offset="100%" stop-color="#030611"/>
+    </linearGradient>
+    <linearGradient id="accent-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#20BEFF"/>
+      <stop offset="50%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+    <linearGradient id="tpu-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <filter id="card-shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000" flood-opacity="0.6"/>
+    </filter>
+    <style>
+      .badge { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 13px; font-weight: 700; fill: #38bdf8; letter-spacing: 2px; }
+      .main-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 42px; font-weight: 900; fill: #f8fafc; }
+      .sub-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 20px; fill: #94a3b8; font-weight: 500; }
+      .card-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 15px; font-weight: 700; }
+      .card-sub { font-family: ui-monospace, SFMono-Regular, monospace; font-size: 12px; }
+      .metric-val { font-family: ui-monospace, SFMono-Regular, monospace; font-size: 32px; font-weight: 900; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Subtle Grid Lines -->
+  <g stroke="#1e293b" stroke-width="1" opacity="0.35">
+    <line x1="0" y1="105" x2="1200" y2="105"/>
+    <line x1="0" y1="210" x2="1200" y2="210"/>
+    <line x1="0" y1="315" x2="1200" y2="315"/>
+    <line x1="0" y1="420" x2="1200" y2="420"/>
+    <line x1="0" y1="525" x2="1200" y2="525"/>
+    <line x1="150" y1="0" x2="150" y2="630"/>
+    <line x1="300" y1="0" x2="300" y2="630"/>
+    <line x1="450" y1="0" x2="450" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="750" y1="0" x2="750" y2="630"/>
+    <line x1="900" y1="0" x2="900" y2="630"/>
+    <line x1="1050" y1="0" x2="1050" y2="630"/>
+  </g>
+
+  <!-- Ambient Glows -->
+  <circle cx="200" cy="180" r="180" fill="#0284c7" opacity="0.12" filter="url(#glow)"/>
+  <circle cx="1020" cy="380" r="220" fill="#6366f1" opacity="0.1" filter="url(#glow)"/>
+
+  <!-- Top Badge -->
+  <g transform="translate(80, 75)">
+    <rect width="360" height="30" rx="15" fill="#0369a1" fill-opacity="0.2" stroke="#0284c7" stroke-width="1.2"/>
+    <circle cx="16" cy="15" r="5" fill="#38bdf8"/>
+    <text x="32" y="20" class="badge">KAGGLE ACCELERATOR INFRASTRUCTURE</text>
+  </g>
+
+  <!-- Main Title & Subtitle -->
+  <text x="80" y="152" class="main-title">白嫖 50 小时加速卡：Kaggle 算力最大化实战</text>
+  <text x="80" y="196" class="sub-title">GPU/TPU 独立配额拆解 · 手机防风控认证 · 2× T4 (32GB) 显存吞吐翻倍之道</text>
+
+  <!-- 4 Core Metric Cards -->
+  <g transform="translate(80, 245)" filter="url(#card-shadow)">
+    <!-- Card 1: GPU Quota -->
+    <g transform="translate(0, 0)">
+      <rect width="242" height="280" rx="14" fill="#0b1329" stroke="#1e293b" stroke-width="1.5"/>
+      <rect width="242" height="6" rx="3" fill="#38bdf8"/>
+      <g transform="translate(24, 34)">
+        <text x="0" y="0" class="card-title" fill="#38bdf8">GPU 独立配额</text>
+        <text x="0" y="20" class="card-sub" fill="#64748b">WEEKLY CLOCK HOURS</text>
+        <text x="0" y="70" class="metric-val" fill="#f8fafc">30h<tspan font-size="14" fill="#94a3b8">/周</tspan></text>
+        <line x1="0" y1="95" x2="194" y2="95" stroke="#1e293b" stroke-width="1"/>
+        <text x="0" y="125" class="card-sub" fill="#cbd5e1">· 1× Tesla P100 (16GB)</text>
+        <text x="0" y="150" class="card-sub" fill="#38bdf8" font-weight="700">· 2× Tesla T4 (32GB)</text>
+        <text x="0" y="175" class="card-sub" fill="#94a3b8">· 挂钟计费：双卡不加扣</text>
+        <text x="0" y="200" class="card-sub" fill="#e2e8f0">· 单次最长 12h 连续执行</text>
+      </g>
+    </g>
+
+    <!-- Card 2: TPU Quota -->
+    <g transform="translate(266, 0)">
+      <rect width="242" height="280" rx="14" fill="#0b1329" stroke="#1e293b" stroke-width="1.5"/>
+      <rect width="242" height="6" rx="3" fill="#10b981"/>
+      <g transform="translate(24, 34)">
+        <text x="0" y="0" class="card-title" fill="#10b981">TPU 独立配额</text>
+        <text x="0" y="20" class="card-sub" fill="#64748b">ISOLATED COUNTER</text>
+        <text x="0" y="70" class="metric-val" fill="#f8fafc">20h<tspan font-size="14" fill="#94a3b8">/周</tspan></text>
+        <line x1="0" y1="95" x2="194" y2="95" stroke="#1e293b" stroke-width="1"/>
+        <text x="0" y="125" class="card-sub" fill="#cbd5e1">· TPU v3-8 (128GB HBM)</text>
+        <text x="0" y="150" class="card-sub" fill="#10b981" font-weight="700">· 与 GPU 完全解耦独立</text>
+        <text x="0" y="175" class="card-sub" fill="#94a3b8">· torch_xla / JAX 原生</text>
+        <text x="0" y="200" class="card-sub" fill="#e2e8f0">· 单次最长 9h 连续执行</text>
+      </g>
+    </g>
+
+    <!-- Card 3: Memory & Throughput -->
+    <g transform="translate(532, 0)">
+      <rect width="242" height="280" rx="14" fill="#0b1329" stroke="#1e293b" stroke-width="1.5"/>
+      <rect width="242" height="6" rx="3" fill="#6366f1"/>
+      <g transform="translate(24, 34)">
+        <text x="0" y="0" class="card-title" fill="#818cf8">显存翻倍榨取</text>
+        <text x="0" y="20" class="card-sub" fill="#64748b">VRAM AGGREGATION</text>
+        <text x="0" y="70" class="metric-val" fill="#f8fafc">32GB<tspan font-size="14" fill="#94a3b8"> 总量</tspan></text>
+        <line x1="0" y1="95" x2="194" y2="95" stroke="#1e293b" stroke-width="1"/>
+        <text x="0" y="125" class="card-sub" fill="#cbd5e1">· PyTorch DDP 双卡并行</text>
+        <text x="0" y="150" class="card-sub" fill="#818cf8" font-weight="700">· Batch Size 吞吐翻倍</text>
+        <text x="0" y="175" class="card-sub" fill="#94a3b8">· LoRA / Long-Context 友好</text>
+        <text x="0" y="200" class="card-sub" fill="#e2e8f0">· 主卡显存不均衡优化</text>
+      </g>
+    </g>
+
+    <!-- Card 4: Anti-Leak & Verification -->
+    <g transform="translate(798, 0)">
+      <rect width="242" height="280" rx="14" fill="#0b1329" stroke="#1e293b" stroke-width="1.5"/>
+      <rect width="242" height="6" rx="3" fill="#f59e0b"/>
+      <g transform="translate(24, 34)">
+        <text x="0" y="0" class="card-title" fill="#fbbf24">防风控与零漏电</text>
+        <text x="0" y="20" class="card-sub" fill="#64748b">ZERO-LEAK PIPELINE</text>
+        <text x="0" y="70" class="metric-val" fill="#f8fafc">100%<tspan font-size="14" fill="#94a3b8"> 合规</tspan></text>
+        <line x1="0" y1="95" x2="194" y2="95" stroke="#1e293b" stroke-width="1"/>
+        <text x="0" y="125" class="card-sub" fill="#cbd5e1">· 实体 SIM 卡合规过审</text>
+        <text x="0" y="150" class="card-sub" fill="#fbbf24" font-weight="700">· CPU 调试 / GPU 生产</text>
+        <text x="0" y="175" class="card-sub" fill="#94a3b8">· 脚本主动销毁杜绝空转</text>
+        <text x="0" y="200" class="card-sub" fill="#e2e8f0">· 杜绝多账号黑产封号</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Bottom Meta Info -->
+  <g transform="translate(80, 575)">
+    <text x="0" y="0" class="card-sub" fill="#475569">GIT-NOVEL TECH DEEP DIVE · 2026</text>
+    <text x="1040" y="0" class="card-sub" fill="#475569" text-anchor="end">KAGGLE RUNTIME OPTIMIZATION</text>
+  </g>
+</svg>
