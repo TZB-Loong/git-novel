@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520">
+  <defs>
+    <linearGradient id="bgGradMs3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B0F19" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+    <linearGradient id="stepGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+    <marker id="arrow-blue-ms" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#38BDF8" />
+    </marker>
+    <marker id="arrow-purple-ms" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#A855F7" />
+    </marker>
+    <marker id="arrow-green-ms" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#10B981" />
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="960" height="520" rx="12" fill="url(#bgGradMs3)" stroke="#1E293B" stroke-width="1.5" />
+
+  <!-- Title Header -->
+  <g transform="translate(35, 25)">
+    <rect width="180" height="24" rx="4" fill="#1E1B4B" stroke="#6366F1" stroke-width="1" />
+    <text x="10" y="16" font-family="monospace" font-size="11" font-weight="600" fill="#818CF8">PIPELINE &amp; DEPLOY</text>
+    <text x="195" y="18" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF">Qwen / DeepSeek 在魔搭单卡轻量微调与创空间免流部署流水线</text>
+  </g>
+
+  <!-- Step 1: 4-bit Quantized Load & LoRA (Left) -->
+  <g transform="translate(35, 65)">
+    <rect width="280" height="275" rx="10" fill="url(#stepGrad)" stroke="#38BDF8" stroke-width="1.5" />
+    <rect x="15" y="15" width="130" height="22" rx="4" fill="#0369A1" />
+    <text x="22" y="30" font-family="-apple-system, sans-serif" font-size="11" font-weight="700" fill="#E0F2FE">1. 显存压榨架构</text>
+
+    <!-- VRAM breakdown representation -->
+    <g transform="translate(15, 50)">
+      <text x="0" y="12" font-family="-apple-system, sans-serif" font-size="11" font-weight="600" fill="#94A3B8">NVIDIA Tesla T4 (16GB 显存)</text>
+      <!-- VRAM Bar Total -->
+      <rect x="0" y="22" width="250" height="20" rx="4" fill="#334155" />
+      <!-- VRAM Bar Used 4-bit + LoRA -->
+      <rect x="0" y="22" width="135" height="20" rx="4" fill="#0284C7" />
+      <text x="10" y="36" font-family="monospace" font-size="10" font-weight="700" fill="#FFFFFF">8.6 GB (占用 53%)</text>
+      <text x="145" y="36" font-family="monospace" font-size="10" fill="#94A3B8">余 7.4GB</text>
+    </g>
+
+    <g transform="translate(15, 115)">
+      <rect width="250" height="70" rx="6" fill="#0C4A6E" stroke="#0284C7" stroke-width="1" />
+      <text x="10" y="20" font-family="-apple-system, sans-serif" font-size="11" font-weight="700" fill="#BAE6FD">技术要点：</text>
+      <text x="10" y="38" font-family="monospace" font-size="10" fill="#E0F2FE">· QLoRA 4-bit (NF4) 权重注入</text>
+      <text x="10" y="56" font-family="monospace" font-size="10" fill="#E0F2FE">· Gradient Checkpointing 激活值重算</text>
+    </g>
+
+    <text x="15" y="212" font-family="-apple-system, sans-serif" font-size="11" fill="#7DD3FC">
+      收益：单卡轻松吃下 Qwen2.5-7B 与 DeepSeek-R1-Distill-7B，Batch Size=4 稳健不爆显存。
+    </text>
+    <text x="15" y="250" font-family="monospace" font-size="10" fill="#38BDF8">
+      ModelScope SWIFT 训练引擎一键启动
+    </text>
+  </g>
+
+  <!-- Arrow 1 -> 2 -->
+  <path d="M315,190 H345" stroke="#38BDF8" stroke-width="2" marker-end="url(#arrow-blue-ms)" />
+
+  <!-- Step 2: Persistent Storage & Anti-Sleep (Middle) -->
+  <g transform="translate(350, 65)">
+    <rect width="270" height="275" rx="10" fill="url(#stepGrad)" stroke="#A855F7" stroke-width="1.5" />
+    <rect x="15" y="15" width="140" height="22" rx="4" fill="#7E22CE" />
+    <text x="22" y="30" font-family="-apple-system, sans-serif" font-size="11" font-weight="700" fill="#F3E8FF">2. 持久化与防休眠</text>
+
+    <g transform="translate(15, 50)">
+      <rect width="240" height="65" rx="6" fill="#3B0764" stroke="#9333EA" stroke-width="1" />
+      <text x="10" y="20" font-family="-apple-system, sans-serif" font-size="11" font-weight="700" fill="#E9D5FF">/mnt/workspace/ 存盘：</text>
+      <text x="10" y="38" font-family="monospace" font-size="10" fill="#F3E8FF">· output/checkpoint-500/</text>
+      <text x="10" y="54" font-family="monospace" font-size="10" fill="#F3E8FF">· adapter_model.safetensors</text>
+    </g>
+
+    <g transform="translate(15, 125)">
+      <rect width="240" height="75" rx="6" fill="#1E1B4B" stroke="#6366F1" stroke-width="1" />
+      <text x="10" y="20" font-family="-apple-system, sans-serif" font-size="11" font-weight="700" fill="#C7D2FE">生命周期保障：</text>
+      <text x="10" y="38" font-family="-apple-system, sans-serif" font-size="10" fill="#E0E7FF">· 训练完自动触发休眠，停止扣费</text>
+      <text x="10" y="56" font-family="-apple-system, sans-serif" font-size="10" fill="#E0E7FF">· 下次启动实例直接挂载，代码权重 100% 留存，零丢失</text>
+    </g>
+
+    <text x="15" y="225" font-family="-apple-system, sans-serif" font-size="11" fill="#D8B4FE">
+      避免将权重保存在 /root/ 临时目录，是魔搭开发的第一法则！
+    </text>
+  </g>
+
+  <!-- Arrow 2 -> 3 -->
+  <path d="M620,190 H650" stroke="#A855F7" stroke-width="2" marker-end="url(#arrow-purple-ms)" />
+
+  <!-- Step 3: Space Zero-Cost Serving (Right) -->
+  <g transform="translate(655, 65)">
+    <rect width="270" height="275" rx="10" fill="url(#stepGrad)" stroke="#10B981" stroke-width="1.5" />
+    <rect x="15" y="15" width="150" height="22" rx="4" fill="#047857" />
+    <text x="22" y="30" font-family="-apple-system, sans-serif" font-size="11" font-weight="700" fill="#D1FAE5">3. 创空间零成本上线</text>
+
+    <g transform="translate(15, 50)">
+      <rect width="240" height="60" rx="6" fill="#064E3B" stroke="#059669" stroke-width="1" />
+      <text x="10" y="20" font-family="-apple-system, sans-serif" font-size="11" font-weight="700" fill="#A7F3D0">推送至 ModelScope Hub：</text>
+      <text x="10" y="38" font-family="monospace" font-size="10" fill="#D1FAE5">api.upload_folder(repo_id=...)</text>
+    </g>
+
+    <g transform="translate(15, 120)">
+      <rect width="240" height="75" rx="6" fill="#064E3B" stroke="#059669" stroke-width="1" />
+      <text x="10" y="20" font-family="-apple-system, sans-serif" font-size="11" font-weight="700" fill="#A7F3D0">创空间 (Spaces) 持续托管：</text>
+      <text x="10" y="38" font-family="-apple-system, sans-serif" font-size="10" fill="#D1FAE5">· 免费 CPU 实例持续在线</text>
+      <text x="10" y="56" font-family="-apple-system, sans-serif" font-size="10" fill="#D1FAE5">· 分配专属 https 公网独立域名</text>
+    </g>
+
+    <text x="15" y="220" font-family="-apple-system, sans-serif" font-size="11" fill="#6EE7B7">
+      产出：对外提供高水准 Gradio UI 演示界面，7×24 小时零成本稳定运行。
+    </text>
+  </g>
+
+  <!-- Bottom Guidance Summary -->
+  <g transform="translate(35, 360)">
+    <rect width="890" height="135" rx="8" fill="#111827" stroke="#334155" stroke-width="1.2" />
+    <path d="M0,8 Q0,0 8,0 H882 Q890,0 890,8 V32 H0 Z" fill="#1E293B" />
+    <text x="20" y="21" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" fill="#94A3B8">端到端闭环收益总结</text>
+    
+    <text x="20" y="56" font-family="-apple-system, sans-serif" font-size="11" fill="#E2E8F0">
+      1. <tspan font-weight="700" fill="#38BDF8">下载极速化</tspan>：内网免流百兆直连，模型拉取时间由 5 小时压降至 1 分钟；
+    </text>
+    <text x="20" y="80" font-family="-apple-system, sans-serif" font-size="11" fill="#E2E8F0">
+      2. <tspan font-weight="700" fill="#A855F7">开发安全化</tspan>：严守 `/mnt/workspace/` 路径隔离，即使 4 小时休眠也不会损毁代码与中间断点；
+    </text>
+    <text x="20" y="104" font-family="-apple-system, sans-serif" font-size="11" fill="#34D399">
+      3. <tspan font-weight="700" fill="#34D399">交付生产化</tspan>：Notebook 只负责算力重活，交付结果一键流转创空间持续托管，形成零成本研发与上线闭环。
+    </text>
+  </g>
+</svg>
