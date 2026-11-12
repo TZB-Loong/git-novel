@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520">
+  <defs>
+    <linearGradient id="bgGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B0F19" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+    <linearGradient id="cardGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#0F172A" stop-opacity="0.9" />
+    </linearGradient>
+    <!-- Arrowhead markers -->
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#38BDF8" />
+    </marker>
+    <marker id="arrow-amber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#F59E0B" />
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#10B981" />
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#EF4444" />
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="960" height="520" rx="12" fill="url(#bgGrad1)" stroke="#1E293B" stroke-width="1.5" />
+
+  <!-- Title Header -->
+  <g transform="translate(35, 30)">
+    <rect width="180" height="24" rx="4" fill="#1E293B" stroke="#38BDF8" stroke-width="1" />
+    <text x="10" y="16" font-family="monospace" font-size="11" font-weight="600" fill="#38BDF8">SCHEDULER &amp; LIFE-CYCLE</text>
+    <text x="195" y="18" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF">Google Colab 动态配额与信誉衰减状态机</text>
+  </g>
+
+  <!-- State 1: Pristine Tier (Green) -->
+  <g transform="translate(40, 85)">
+    <rect width="240" height="110" rx="10" fill="#064E3B" stroke="#10B981" stroke-width="1.8" />
+    <circle cx="22" cy="24" r="6" fill="#10B981" />
+    <text x="36" y="28" font-family="-apple-system, sans-serif" font-size="14" font-weight="700" fill="#A7F3D0">1. 高信誉池 (Pristine Tier)</text>
+    <text x="18" y="54" font-family="monospace" font-size="11" fill="#D1FAE5">· 分配速度：秒级（&lt; 5s）</text>
+    <text x="18" y="74" font-family="monospace" font-size="11" fill="#D1FAE5">· 硬件机型：Tesla T4 (15GB)</text>
+    <text x="18" y="94" font-family="monospace" font-size="11" fill="#6EE7B7">· 账号画像：低频调用 / 长期空闲</text>
+  </g>
+
+  <!-- Arrow 1 -> 2 (Heavy burst usage) -->
+  <path d="M280,140 H350" stroke="#F59E0B" stroke-width="2" marker-end="url(#arrow-amber)" />
+  <text x="285" y="132" font-family="-apple-system, sans-serif" font-size="10" font-weight="600" fill="#FBBF24">持续高负荷调用</text>
+
+  <!-- State 2: Burst Accumulated (Amber) -->
+  <g transform="translate(360, 85)">
+    <rect width="250" height="110" rx="10" fill="#78350F" stroke="#F59E0B" stroke-width="1.8" />
+    <circle cx="22" cy="24" r="6" fill="#F59E0B" />
+    <text x="36" y="28" font-family="-apple-system, sans-serif" font-size="14" font-weight="700" fill="#FDE68A">2. 突发累积池 (Bursted)</text>
+    <text x="18" y="54" font-family="monospace" font-size="11" fill="#FEF3C7">· 信誉权重：累计消耗积分上升</text>
+    <text x="18" y="74" font-family="monospace" font-size="11" fill="#FEF3C7">· 排队延迟：中等（30s ~ 5min）</text>
+    <text x="18" y="94" font-family="monospace" font-size="11" fill="#FCD34D">· 抢占风险：高峰期极易被驱逐</text>
+  </g>
+
+  <!-- Arrow 2 -> 3 (Resource exhausted or high congestion) -->
+  <path d="M610,140 H670" stroke="#F59E0B" stroke-width="2" marker-end="url(#arrow-amber)" />
+  <text x="615" y="132" font-family="-apple-system, sans-serif" font-size="10" font-weight="600" fill="#FBBF24">达到动态上限</text>
+
+  <!-- State 3: Throttled / CPU Fallback (Purple) -->
+  <g transform="translate(680, 85)">
+    <rect width="240" height="110" rx="10" fill="#312E81" stroke="#818CF8" stroke-width="1.8" />
+    <circle cx="22" cy="24" r="6" fill="#818CF8" />
+    <text x="36" y="28" font-family="-apple-system, sans-serif" font-size="14" font-weight="700" fill="#E0E7FF">3. 动态受限池 (Throttled)</text>
+    <text x="18" y="54" font-family="monospace" font-size="11" fill="#C7D2FE">· GPU 状态：报错无法连接</text>
+    <text x="18" y="74" font-family="monospace" font-size="11" fill="#C7D2FE">· 降级策略：仅允许连接纯 CPU</text>
+    <text x="18" y="94" font-family="monospace" font-size="11" fill="#A5B4FC">· 提示：Exceeded limits</text>
+  </g>
+
+  <!-- State 4: TOS Restricted / Ban (Red) - Bottom Right -->
+  <g transform="translate(680, 240)">
+    <rect width="240" height="100" rx="10" fill="#450A0A" stroke="#EF4444" stroke-width="1.8" />
+    <circle cx="22" cy="24" r="6" fill="#EF4444" />
+    <text x="36" y="28" font-family="-apple-system, sans-serif" font-size="14" font-weight="700" fill="#FECACA">4. 风控熔断 (TOS Ban)</text>
+    <text x="18" y="52" font-family="monospace" font-size="11" fill="#FEE2E2">· 诱因：JS模拟点击/违规WebUI</text>
+    <text x="18" y="72" font-family="monospace" font-size="11" fill="#FCA5A5">· 惩罚：封禁 GPU 数天至永久</text>
+    <text x="18" y="90" font-family="monospace" font-size="10" fill="#EF4444">· 无法通过自然冷却快速恢复</text>
+  </g>
+
+  <!-- Arrow 2 -> 4 (Anti-Idle violation) -->
+  <path d="M485,195 V290 H670" fill="none" stroke="#EF4444" stroke-width="2" stroke-dasharray="4 4" marker-end="url(#arrow-red)" />
+  <text x="500" y="280" font-family="-apple-system, sans-serif" font-size="10" font-weight="600" fill="#F87171">检测到前端 JS 模拟点击</text>
+
+  <!-- Natural Recovery: State 3 -> State 1 (Exponential Decay) -->
+  <path d="M800,85 V45 H160 V75" fill="none" stroke="#10B981" stroke-width="2" marker-end="url(#arrow-green)" />
+  <text x="390" y="38" font-family="-apple-system, sans-serif" font-size="11" font-weight="700" fill="#34D399">12 小时 ~ 24 小时自然离线静置（历史负荷指数级衰减，信誉分自动复苏）</text>
+
+  <!-- Recovery: State 2 -> State 1 (Short idle) -->
+  <path d="M485,85 V65 H220 V75" fill="none" stroke="#10B981" stroke-width="1.5" stroke-dasharray="3 3" marker-end="url(#arrow-green)" />
+  <text x="250" y="60" font-family="-apple-system, sans-serif" font-size="9" fill="#6EE7B7">主动释放并静置 2~4h</text>
+
+  <!-- Bottom Comparison Table -->
+  <g transform="translate(40, 360)">
+    <rect width="880" height="135" rx="8" fill="url(#cardGrad1)" stroke="#334155" stroke-width="1.2" />
+    
+    <!-- Table Header -->
+    <path d="M0,8 Q0,0 8,0 H872 Q880,0 880,8 V32 H0 Z" fill="#1E293B" />
+    <text x="20" y="21" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" fill="#94A3B8">特性维度</text>
+    <text x="180" y="21" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" fill="#60A5FA">Google Colab (免费层 Free Tier)</text>
+    <text x="540" y="21" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" fill="#34D399">Kaggle (认证用户 Verified Tier)</text>
+    
+    <!-- Row 1 -->
+    <line x1="0" y1="32" x2="880" y2="32" stroke="#334155" stroke-width="1" />
+    <text x="20" y="52" font-family="-apple-system, sans-serif" font-size="11" font-weight="600" fill="#CBD5E1">配额计算逻辑</text>
+    <text x="180" y="52" font-family="-apple-system, sans-serif" font-size="11" fill="#F59E0B">黑盒动态积分（使用时长与全局负载共同决定，无固定额度）</text>
+    <text x="540" y="52" font-family="-apple-system, sans-serif" font-size="11" fill="#10B981">透明挂钟时间（GPU 30h/周 + TPU 20h/周，独立计时器）</text>
+
+    <!-- Row 2 -->
+    <line x1="0" y1="66" x2="880" y2="66" stroke="#334155" stroke-width="1" />
+    <text x="20" y="86" font-family="-apple-system, sans-serif" font-size="11" font-weight="600" fill="#CBD5E1">单次最大生命周期</text>
+    <text x="180" y="86" font-family="-apple-system, sans-serif" font-size="11" fill="#F87171">12 小时硬上限（空闲 90 分钟强行断开并清理容器环境）</text>
+    <text x="540" y="86" font-family="-apple-system, sans-serif" font-size="11" fill="#38BDF8">交互式 12 小时 / 后台 Save &amp; Run All 也是 12 小时</text>
+
+    <!-- Row 3 -->
+    <line x1="0" y1="100" x2="880" y2="100" stroke="#334155" stroke-width="1" />
+    <text x="20" y="120" font-family="-apple-system, sans-serif" font-size="11" font-weight="600" fill="#CBD5E1">最佳工程防掉线法则</text>
+    <text x="180" y="120" font-family="-apple-system, sans-serif" font-size="11" fill="#38BDF8">代码级 Checkpoint 轮转存盘 + 本地盘缓存打包（严禁前端JS模拟点击）</text>
+    <text x="540" y="120" font-family="-apple-system, sans-serif" font-size="11" fill="#34D399">本地 CLI `kaggle kernels push` 后台静默执行，无需开浏览器</text>
+  </g>
+</svg>
