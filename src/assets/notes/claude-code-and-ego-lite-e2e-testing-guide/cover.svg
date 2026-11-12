@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bgGradCoverEgo" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080D1A" />
+      <stop offset="50%" stop-color="#0F172A" />
+      <stop offset="100%" stop-color="#030712" />
+    </linearGradient>
+    <linearGradient id="claudeOrangeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#D97706" />
+    </linearGradient>
+    <linearGradient id="egoCyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06B6D4" />
+      <stop offset="100%" stop-color="#3B82F6" />
+    </linearGradient>
+    <linearGradient id="purplePinkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8B5CF6" />
+      <stop offset="100%" stop-color="#EC4899" />
+    </linearGradient>
+    <linearGradient id="cardBgEgo" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#0F172A" stop-opacity="0.75" />
+    </linearGradient>
+    <filter id="glowEgo" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="16" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="675" fill="url(#bgGradCoverEgo)" />
+
+  <!-- Grid overlay -->
+  <g opacity="0.12">
+    <path d="M0,75 H1200 M0,150 H1200 M0,225 H1200 M0,300 H1200 M0,375 H1200 M0,450 H1200 M0,525 H1200 M0,600 H1200" stroke="#06B6D4" stroke-width="1" stroke-dasharray="4 8" />
+    <path d="M100,0 V675 M200,0 V675 M300,0 V675 M400,0 V675 M500,0 V675 M600,0 V675 M700,0 V675 M800,0 V675 M900,0 V675 M1000,0 V675 M1100,0 V675" stroke="#F59E0B" stroke-width="1" stroke-dasharray="4 8" />
+  </g>
+
+  <!-- Ambient light blobs -->
+  <circle cx="240" cy="180" r="140" fill="#F59E0B" opacity="0.08" filter="url(#glowEgo)" />
+  <circle cx="960" cy="220" r="160" fill="#06B6D4" opacity="0.09" filter="url(#glowEgo)" />
+
+  <!-- Top Badge -->
+  <g transform="translate(60, 48)">
+    <rect width="520" height="34" rx="17" fill="#1E293B" stroke="#334155" stroke-width="1.2" />
+    <circle cx="20" cy="17" r="6" fill="#F59E0B" />
+    <circle cx="36" cy="17" r="6" fill="#06B6D4" />
+    <text x="56" y="22" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" letter-spacing="1.5">CLAUDE CODE × EGO LITE · RUNTIME TELEMETRY &amp; E2E TESTING</text>
+  </g>
+
+  <!-- Main Titles -->
+  <g transform="translate(60, 130)">
+    <text x="0" y="50" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="44" font-weight="800" letter-spacing="-0.5">
+      终端 Coding Agent 补齐视觉之眼
+    </text>
+    <text x="0" y="105" fill="url(#egoCyanGrad)" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="34" font-weight="700">
+      Claude Code + ego lite 打造真机端到端测试与自愈闭环
+    </text>
+    <text x="0" y="145" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="400">
+      告别纯文本盲目改写 · 消除 Mock 虚假绿灯 · 运行时异常实时嗅探 · 独立 Spaces 后台静默自愈验证
+    </text>
+  </g>
+
+  <!-- 3 Architecture Feature Cards -->
+  <!-- Card 1: Claude Code CLI Terminal -->
+  <g transform="translate(60, 310)">
+    <rect width="335" height="230" rx="14" fill="url(#cardBgEgo)" stroke="#F59E0B" stroke-width="1.5" stroke-opacity="0.6" />
+    <rect x="20" y="20" width="34" height="34" rx="8" fill="#F59E0B" fill-opacity="0.15" />
+    <text x="37" y="42" fill="#F59E0B" font-family="monospace" font-size="16" font-weight="700" text-anchor="middle">&gt;_</text>
+    <text x="68" y="42" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="17" font-weight="700">Claude Code 终端中枢</text>
+
+    <text x="20" y="85" fill="#CBD5E1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13.5" font-weight="500">· 原生 CLI Skill 极速注入</text>
+    <text x="20" y="108" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">  npx skills add citrolabs/ego-lite</text>
+    <text x="20" y="136" fill="#CBD5E1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13.5" font-weight="500">· 跨进程双向 JSON-RPC</text>
+    <text x="20" y="159" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">  打破文本限制，直通底层 Chromium</text>
+    <text x="20" y="187" fill="#CBD5E1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13.5" font-weight="500">· 自动化用例即兴推导生成</text>
+    <text x="20" y="210" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">  无需手写繁琐 Playwright 样板脚本</text>
+  </g>
+
+  <!-- Card 2: ego lite Isolated Spaces -->
+  <g transform="translate(432, 310)">
+    <rect width="335" height="230" rx="14" fill="url(#cardBgEgo)" stroke="#06B6D4" stroke-width="1.5" stroke-opacity="0.6" />
+    <rect x="20" y="20" width="34" height="34" rx="8" fill="#06B6D4" fill-opacity="0.15" />
+    <circle cx="37" cy="37" r="9" fill="none" stroke="#06B6D4" stroke-width="2" />
+    <path d="M37,32 V42 M32,37 H42" stroke="#06B6D4" stroke-width="1.8" />
+    <text x="68" y="42" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="17" font-weight="700">ego-lite 独立 Spaces</text>
+
+    <text x="20" y="85" fill="#CBD5E1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13.5" font-weight="500">· 零侵入后台隔离视口</text>
+    <text x="20" y="108" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">  不抢鼠标光标，不破坏开发桌面焦点</text>
+    <text x="20" y="136" fill="#CBD5E1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13.5" font-weight="500">· 一键无损会话继承</text>
+    <text x="20" y="159" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">  复用本地真实 Cookies，免登穿透受限区</text>
+    <text x="20" y="187" fill="#CBD5E1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13.5" font-weight="500">· 轻量语义 DOM 快照</text>
+    <text x="20" y="210" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">  毫秒级语义索引，拒绝昂贵图像循环</text>
+  </g>
+
+  <!-- Card 3: Runtime Telemetry & Self-Healing -->
+  <g transform="translate(805, 310)">
+    <rect width="335" height="230" rx="14" fill="url(#cardBgEgo)" stroke="#8B5CF6" stroke-width="1.5" stroke-opacity="0.6" />
+    <rect x="20" y="20" width="34" height="34" rx="8" fill="#8B5CF6" fill-opacity="0.15" />
+    <path d="M28,42 L34,28 L40,38 L46,31" fill="none" stroke="#8B5CF6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="68" y="42" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="17" font-weight="700">实时遥测与闭环自愈</text>
+
+    <text x="20" y="85" fill="#CBD5E1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13.5" font-weight="500">· Console / Network 异常旁路监听</text>
+    <text x="20" y="108" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">  捕获未捕获异常与 5xx 接口崩溃</text>
+    <text x="20" y="136" fill="#CBD5E1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13.5" font-weight="500">· 源码级调用栈（Sourcemap）映射</text>
+    <text x="20" y="159" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">  精准回溯 TypeScript 原始文件行号</text>
+    <text x="20" y="187" fill="#CBD5E1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13.5" font-weight="500">· HMR 热更新后自动二次校验</text>
+    <text x="20" y="210" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">  确认页面绿灯方可交付提交</text>
+  </g>
+
+  <!-- Bottom Metric Bar -->
+  <g transform="translate(60, 570)">
+    <rect width="1080" height="60" rx="10" fill="#0F172A" stroke="#1E293B" stroke-width="1" />
+    
+    <!-- Metric 1 -->
+    <g transform="translate(30, 18)">
+      <text x="0" y="18" fill="#F59E0B" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="800">100%</text>
+      <text x="75" y="16" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">零鼠标争抢 / 零弹窗焦点打扰</text>
+    </g>
+
+    <!-- Metric 2 -->
+    <g transform="translate(380, 18)">
+      <text x="0" y="18" fill="#06B6D4" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="800">-92%</text>
+      <text x="75" y="16" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">语义 DOM 剪枝 vs 纯视觉抓图 Token 损耗</text>
+    </g>
+
+    <!-- Metric 3 -->
+    <g transform="translate(740, 18)">
+      <text x="0" y="18" fill="#10B981" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="800">30 秒</text>
+      <text x="65" y="16" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">从代码改写到真机 E2E 验证全自治闭环</text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,206 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 620" width="1100" height="620">
+  <defs>
+    <linearGradient id="bgGradTopo" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080D1A" />
+      <stop offset="50%" stop-color="#0F172A" />
+      <stop offset="100%" stop-color="#060911" />
+    </linearGradient>
+    <linearGradient id="claudeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#D97706" />
+    </linearGradient>
+    <linearGradient id="egoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06B6D4" />
+      <stop offset="100%" stop-color="#3B82F6" />
+    </linearGradient>
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8B5CF6" />
+      <stop offset="100%" stop-color="#6366F1" />
+    </linearGradient>
+    <linearGradient id="boxBgDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#0F172A" stop-opacity="0.75" />
+    </linearGradient>
+    <filter id="glowTopo" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1100" height="620" fill="url(#bgGradTopo)" rx="12" />
+
+  <!-- Header -->
+  <g transform="translate(40, 35)">
+    <text x="0" y="20" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="700">
+      Claude Code + ego lite 双向感知与闭环自愈拓扑架构
+    </text>
+    <text x="0" y="44" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13">
+      解构跨进程 IPC 协议总线、后台独立 Spaces 渲染与真机运行时遥测闭环链路
+    </text>
+  </g>
+
+  <!-- Zone 1: Claude Code CLI Environment -->
+  <g transform="translate(40, 95)">
+    <rect width="310" height="420" rx="10" fill="url(#boxBgDark)" stroke="#F59E0B" stroke-width="1.4" stroke-opacity="0.7" />
+    <path d="M0,0 H310 V38 H0 Z" fill="#F59E0B" fill-opacity="0.12" rx="10" />
+    <circle cx="20" cy="19" r="5" fill="#EF4444" />
+    <circle cx="34" cy="19" r="5" fill="#F59E0B" />
+    <circle cx="48" cy="19" r="5" fill="#10B981" />
+    <text x="68" y="24" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700">Claude Code 终端中枢</text>
+
+    <!-- Sub-block 1: Code Gen & AST Patch -->
+    <g transform="translate(18, 55)">
+      <rect width="274" height="74" rx="6" fill="#0B132B" stroke="#334155" stroke-width="1" />
+      <text x="14" y="24" fill="#F59E0B" font-family="monospace" font-size="12" font-weight="700">代码生成与 AST 补丁</text>
+      <text x="14" y="44" fill="#CBD5E1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5">· 读写本地代码仓库 (`/src/`)</text>
+      <text x="14" y="62" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">· 触发 Dev Server 热重载 (HMR)</text>
+    </g>
+
+    <!-- Sub-block 2: Skill Agent Loop -->
+    <g transform="translate(18, 142)">
+      <rect width="274" height="88" rx="6" fill="#0B132B" stroke="#334155" stroke-width="1" />
+      <text x="14" y="24" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">Agent 意图推导与决策</text>
+      <text x="14" y="44" fill="#CBD5E1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5">· 解析用户需求：“修复支付弹窗”</text>
+      <text x="14" y="62" fill="#CBD5E1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5">· 自主生成 E2E 测试路径意图</text>
+      <text x="14" y="79" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">· 派发浏览器动作至 ego-browser Skill</text>
+    </g>
+
+    <!-- Sub-block 3: Telemetry Consumer & Self-Healing -->
+    <g transform="translate(18, 244)">
+      <rect width="274" height="98" rx="6" fill="#0B132B" stroke="#8B5CF6" stroke-width="1.2" />
+      <text x="14" y="24" fill="#A78BFA" font-family="monospace" font-size="12" font-weight="700">运行时遥测分析与自愈</text>
+      <text x="14" y="44" fill="#E2E8F0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5">· 消费 Console / Network 报错</text>
+      <text x="14" y="62" fill="#E2E8F0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5">· Sourcemap 逆向定位至原始行号</text>
+      <text x="14" y="80" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">· 触发自我修正闭环（Self-Healing）</text>
+    </g>
+
+    <!-- Sub-block 4: Status Indicator -->
+    <g transform="translate(18, 356)">
+      <rect width="274" height="48" rx="6" fill="#111827" stroke="#10B981" stroke-width="1" />
+      <circle cx="20" cy="24" r="6" fill="#10B981" />
+      <text x="36" y="28" fill="#10B981" font-family="monospace" font-size="12" font-weight="700">Status: Autonomous Cycle Active</text>
+    </g>
+  </g>
+
+  <!-- Zone 2: Middle IPC & Skill Bus -->
+  <g transform="translate(380, 130)">
+    <rect width="210" height="350" rx="10" fill="#0E1726" stroke="#334155" stroke-width="1" />
+    <text x="105" y="32" fill="#38BDF8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" text-anchor="middle">跨进程双向通信总线</text>
+    <text x="105" y="50" fill="#64748B" font-family="monospace" font-size="11" text-anchor="middle">Local IPC / JSON-RPC</text>
+
+    <!-- Top Flow Arrow: Command Dispatch -->
+    <g transform="translate(15, 80)">
+      <rect width="180" height="85" rx="6" fill="#1E293B" stroke="#06B6D4" stroke-width="1.2" />
+      <text x="90" y="24" fill="#06B6D4" font-family="monospace" font-size="11.5" font-weight="700" text-anchor="middle">&gt;&gt; 动作派发通道 &gt;&gt;</text>
+      <text x="14" y="46" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">· open(url)</text>
+      <text x="14" y="62" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">· click("@e12") / fill(...) </text>
+      <text x="14" y="78" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">· evaluate(js_script)</text>
+    </g>
+
+    <!-- Bottom Flow Arrow: Telemetry Stream -->
+    <g transform="translate(15, 195)">
+      <rect width="180" height="95" rx="6" fill="#1E293B" stroke="#8B5CF6" stroke-width="1.2" />
+      <text x="90" y="24" fill="#A78BFA" font-family="monospace" font-size="11.5" font-weight="700" text-anchor="middle">&lt;&lt; 遥测回传通道 &lt;&lt;</text>
+      <text x="14" y="46" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">· Console.error &amp; Stacks</text>
+      <text x="14" y="62" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">· Network 5xx / 4xx Fails</text>
+      <text x="14" y="78" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">· A11y 语义树快照</text>
+      <text x="14" y="92" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">· 关键节点截图 (Base64)</text>
+    </g>
+
+    <!-- Speed / Protocol Metric -->
+    <text x="105" y="325" fill="#10B981" font-family="monospace" font-size="11" text-anchor="middle">RTT &lt; 4.2ms · 零网络损耗</text>
+  </g>
+
+  <!-- Zone 3: ego lite Chromium Runtime -->
+  <g transform="translate(620, 95)">
+    <rect width="440" height="420" rx="10" fill="url(#boxBgDark)" stroke="#06B6D4" stroke-width="1.4" stroke-opacity="0.7" />
+    <path d="M0,0 H440 V38 H0 Z" fill="#06B6D4" fill-opacity="0.12" rx="10" />
+    <rect x="18" y="10" width="18" height="18" rx="4" fill="#06B6D4" />
+    <circle cx="27" cy="19" r="4" fill="#0F172A" />
+    <text x="46" y="24" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700">ego-lite Chromium 定制运行时 (citrolabs/ego-lite)</text>
+
+    <!-- Sub 1: Human Active Workspace vs Agent Background Space -->
+    <g transform="translate(18, 52)">
+      <!-- Human Space -->
+      <g transform="translate(0, 0)">
+        <rect width="195" height="120" rx="6" fill="#111827" stroke="#334155" stroke-width="1" />
+        <text x="12" y="24" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">人类常规浏览窗口</text>
+        <text x="12" y="46" fill="#64748B" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">· 拥有操作系统主焦点</text>
+        <text x="12" y="64" fill="#64748B" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">· 开发者正常查阅文档/工作</text>
+        <text x="12" y="82" fill="#10B981" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">· 零打扰 / 绝不抢鼠标</text>
+        <rect x="12" y="94" width="170" height="18" rx="4" fill="#0F172A" />
+        <text x="97" y="107" fill="#64748B" font-family="monospace" font-size="10" text-anchor="middle">Focus: User Native Mouse</text>
+      </g>
+
+      <!-- Agent Space -->
+      <g transform="translate(208, 0)">
+        <rect width="195" height="120" rx="6" fill="#0B132B" stroke="#06B6D4" stroke-width="1.2" />
+        <text x="12" y="24" fill="#38BDF8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">Agent 独立 Space 空间</text>
+        <text x="12" y="46" fill="#CBD5E1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">· 独立虚拟视口 (Detached)</text>
+        <text x="12" y="64" fill="#CBD5E1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">· Blink 引擎真实渲染管线</text>
+        <text x="12" y="82" fill="#CBD5E1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">· 虚拟 PointerEvent 注入</text>
+        <rect x="12" y="94" width="170" height="18" rx="4" fill="#082F49" />
+        <text x="97" y="107" fill="#38BDF8" font-family="monospace" font-size="10" text-anchor="middle">Space: Background Headless</text>
+      </g>
+    </g>
+
+    <!-- Sub 2: Session & Profile Inheritance -->
+    <g transform="translate(18, 185)">
+      <rect width="404" height="74" rx="6" fill="#111827" stroke="#334155" stroke-width="1" />
+      <text x="14" y="24" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">会话无损继承引擎 (Session Mirroring)</text>
+      <text x="14" y="44" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">· 自动挂载主 Chrome Cookies / IndexedDB / LocalStorage</text>
+      <text x="14" y="62" fill="#10B981" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">· 零手动登录 / 穿透私有后台、GitHub 与 OAuth 受限路由</text>
+    </g>
+
+    <!-- Sub 3: Telemetry Sniffer Hub -->
+    <g transform="translate(18, 270)">
+      <rect width="404" height="134" rx="6" fill="#0B132B" stroke="#8B5CF6" stroke-width="1" />
+      <text x="14" y="24" fill="#A78BFA" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">真机运行时嗅探器 (Telemetry Sniffer)</text>
+      
+      <g transform="translate(14, 38)">
+        <rect width="118" height="82" rx="4" fill="#1E1B4B" stroke="#4338CA" stroke-width="1" />
+        <text x="10" y="20" fill="#C7D2FE" font-family="monospace" font-size="11" font-weight="700">Console Hook</text>
+        <text x="10" y="38" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">· error / warn 拦截</text>
+        <text x="10" y="54" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">· UnhandledReject</text>
+        <text x="10" y="70" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">· 抓取 Error 对象</text>
+      </g>
+
+      <g transform="translate(142, 38)">
+        <rect width="118" height="82" rx="4" fill="#1E1B4B" stroke="#4338CA" stroke-width="1" />
+        <text x="10" y="20" fill="#C7D2FE" font-family="monospace" font-size="11" font-weight="700">Network Trap</text>
+        <text x="10" y="38" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">· XHR / Fetch 5xx</text>
+        <text x="10" y="54" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">· CORS 跨域报错</text>
+        <text x="10" y="70" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">· 请求 Payload 暂存</text>
+      </g>
+
+      <g transform="translate(270, 38)">
+        <rect width="120" height="82" rx="4" fill="#1E1B4B" stroke="#4338CA" stroke-width="1" />
+        <text x="10" y="20" fill="#C7D2FE" font-family="monospace" font-size="11" font-weight="700">A11y &amp; Screen</text>
+        <text x="10" y="38" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">· 紧凑可访问性树</text>
+        <text x="10" y="54" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">· @eN 语义引用</text>
+        <text x="10" y="70" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">· 差异快照计算</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Bottom Closed-loop Navigation Bar -->
+  <g transform="translate(40, 535)">
+    <rect width="1020" height="56" rx="8" fill="#0F172A" stroke="#1E293B" stroke-width="1" />
+    <text x="30" y="34" fill="#F59E0B" font-family="monospace" font-size="12" font-weight="700">闭环流动：</text>
+    
+    <text x="110" y="33" fill="#E2E8F0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">1. 修改前端代码</text>
+    <path d="M210,30 L235,30" stroke="#F59E0B" stroke-width="1.5" stroke-dasharray="3 3" />
+    
+    <text x="250" y="33" fill="#E2E8F0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">2. Dev Server HMR</text>
+    <path d="M370,30 L395,30" stroke="#06B6D4" stroke-width="1.5" stroke-dasharray="3 3" />
+    
+    <text x="410" y="33" fill="#E2E8F0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">3. ego Space 静默重载</text>
+    <path d="M560,30 L585,30" stroke="#06B6D4" stroke-width="1.5" stroke-dasharray="3 3" />
+    
+    <text x="600" y="33" fill="#E2E8F0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">4. 嗅探运行时报错 / DOM 校验</text>
+    <path d="M800,30 L825,30" stroke="#8B5CF6" stroke-width="1.5" stroke-dasharray="3 3" />
+    
+    <text x="840" y="33" fill="#10B981" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">5. Claude 自动自愈重写</text>
+  </g>
+</svg>
