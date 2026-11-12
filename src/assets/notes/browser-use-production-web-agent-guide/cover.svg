@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bgGradCoverBu" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080D1A" />
+      <stop offset="50%" stop-color="#0E1726" />
+      <stop offset="100%" stop-color="#060911" />
+    </linearGradient>
+    <linearGradient id="emeraldCyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981" />
+      <stop offset="50%" stop-color="#06B6D4" />
+      <stop offset="100%" stop-color="#3B82F6" />
+    </linearGradient>
+    <linearGradient id="purpleIndigoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8B5CF6" />
+      <stop offset="100%" stop-color="#6366F1" />
+    </linearGradient>
+    <linearGradient id="cardBgCoverBu" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#0F172A" stop-opacity="0.75" />
+    </linearGradient>
+    <filter id="glowCoverBu" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="15" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="675" fill="url(#bgGradCoverBu)" />
+
+  <!-- Grid overlay -->
+  <g opacity="0.12">
+    <path d="M0,75 H1200 M0,150 H1200 M0,225 H1200 M0,300 H1200 M0,375 H1200 M0,450 H1200 M0,525 H1200 M0,600 H1200" stroke="#10B981" stroke-width="1" stroke-dasharray="4 8" />
+    <path d="M100,0 V675 M200,0 V675 M300,0 V675 M400,0 V675 M500,0 V675 M600,0 V675 M700,0 V675 M800,0 V675 M900,0 V675 M1000,0 V675 M1100,0 V675" stroke="#06B6D4" stroke-width="1" stroke-dasharray="4 8" />
+  </g>
+
+  <!-- Ambient Glow -->
+  <circle cx="280" cy="200" r="180" fill="#10B981" opacity="0.12" filter="url(#glowCoverBu)" />
+  <circle cx="950" cy="400" r="220" fill="#3B82F6" opacity="0.10" filter="url(#glowCoverBu)" />
+
+  <!-- Category Badge -->
+  <g transform="translate(80, 75)">
+    <rect width="250" height="34" rx="6" fill="#064E3B" stroke="#10B981" stroke-width="1.2" />
+    <circle cx="18" cy="17" r="5" fill="#34D399" />
+    <text x="32" y="22" font-family="monospace" font-size="13" font-weight="700" fill="#6EE7B7" letter-spacing="1.5">OPEN-SOURCE AGENT AI</text>
+  </g>
+
+  <!-- Main Title -->
+  <text x="80" y="165" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="44" font-weight="800" fill="#FFFFFF" letter-spacing="-0.5">
+    真实 Web 不是玩具靶场
+  </text>
+  <text x="80" y="225" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="38" font-weight="800" fill="url(#emeraldCyanGrad)" letter-spacing="-0.5">
+    Browser-Use 生产级落地与工程防死循环实战
+  </text>
+
+  <!-- Subtitle -->
+  <text x="80" y="275" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="19" font-weight="400" fill="#94A3B8">
+    从 10 万 DOM Token 压缩到 800 语义节点 · 会话复用防风控 · 状态指纹熔断机制
+  </text>
+
+  <!-- Visual Feature Cards -->
+  <g transform="translate(80, 320)">
+    <!-- Card 1: Tree Pruning -->
+    <g transform="translate(0, 0)">
+      <rect width="325" height="270" rx="12" fill="url(#cardBgCoverBu)" stroke="#10B981" stroke-width="1.5" />
+      <rect x="20" y="20" width="44" height="44" rx="8" fill="#064E3B" />
+      <text x="34" y="48" font-family="monospace" font-size="20" fill="#34D399">&lt;/&gt;</text>
+      <text x="76" y="47" font-family="-apple-system, sans-serif" font-size="17" font-weight="700" fill="#F8FAFC">可访问性树语义剪枝</text>
+      
+      <text x="20" y="95" font-family="-apple-system, sans-serif" font-size="13" font-weight="600" fill="#CBD5E1">剔除无意义嵌套，提取 @eN 标定：</text>
+      <rect x="20" y="110" width="285" height="42" rx="6" fill="#091422" stroke="#1E293B" />
+      <text x="32" y="128" font-family="monospace" font-size="11" fill="#F43F5E">Raw DOM: 85,000 Tokens (OOM/缓慢)</text>
+      <text x="32" y="144" font-family="monospace" font-size="11" fill="#10B981">A11y Tree: 780 Tokens (91% 压缩比)</text>
+
+      <path d="M 20 170 L 305 170" stroke="#1E293B" stroke-width="1" />
+      <text x="20" y="198" font-family="monospace" font-size="12" fill="#38BDF8">· CDP Snapshot 动态视口过滤</text>
+      <text x="20" y="222" font-family="monospace" font-size="12" fill="#38BDF8">· 交互式元素投影与坐标映射</text>
+      <text x="20" y="246" font-family="monospace" font-size="12" fill="#A7F3D0">✔ 彻底规避 Vision API 昂贵开销</text>
+    </g>
+
+    <!-- Card 2: Session Stealing -->
+    <g transform="translate(355, 0)">
+      <rect width="325" height="270" rx="12" fill="url(#cardBgCoverBu)" stroke="#06B6D4" stroke-width="1.5" />
+      <rect x="20" y="20" width="44" height="44" rx="8" fill="#083344" />
+      <text x="32" y="48" font-family="monospace" font-size="20" fill="#22D3EE">🔒</text>
+      <text x="76" y="47" font-family="-apple-system, sans-serif" font-size="17" font-weight="700" fill="#F8FAFC">会话复用与防风控</text>
+
+      <text x="20" y="95" font-family="-apple-system, sans-serif" font-size="13" font-weight="600" fill="#CBD5E1">绕过 Cloudflare 与验证码死锁：</text>
+      <rect x="20" y="110" width="285" height="42" rx="6" fill="#091422" stroke="#1E293B" />
+      <text x="32" y="128" font-family="monospace" font-size="11" fill="#94A3B8">Storage State: Cookies + LocalStorage</text>
+      <text x="32" y="144" font-family="monospace" font-size="11" fill="#06B6D4">Playwright Stealth + CDP 协议钩子</text>
+
+      <path d="M 20 170 L 305 170" stroke="#1E293B" stroke-width="1" />
+      <text x="20" y="198" font-family="monospace" font-size="12" fill="#67E8F9">· 人类预登录凭证安全注入</text>
+      <text x="20" y="222" font-family="monospace" font-size="12" fill="#67E8F9">· WebGL/Canvas 指纹合规伪装</text>
+      <text x="20" y="246" font-family="monospace" font-size="12" fill="#A5F3FC">✔ 零触发验证码，开箱即入业务态</text>
+    </g>
+
+    <!-- Card 3: Loop Breaker -->
+    <g transform="translate(710, 0)">
+      <rect width="330" height="270" rx="12" fill="url(#cardBgCoverBu)" stroke="#8B5CF6" stroke-width="1.5" />
+      <rect x="20" y="20" width="44" height="44" rx="8" fill="#2E1065" />
+      <text x="34" y="48" font-family="monospace" font-size="20" fill="#C084FC">⚡</text>
+      <text x="76" y="47" font-family="-apple-system, sans-serif" font-size="17" font-weight="700" fill="#F8FAFC">状态指纹与防死循环</text>
+
+      <text x="20" y="95" font-family="-apple-system, sans-serif" font-size="13" font-weight="600" fill="#CBD5E1">消灭 Agent 无限点击死结：</text>
+      <rect x="20" y="110" width="290" height="42" rx="6" fill="#091422" stroke="#1E293B" />
+      <text x="32" y="128" font-family="monospace" font-size="11" fill="#F59E0B">Fingerprint: Hash(URL + A11y Tree)</text>
+      <text x="32" y="144" font-family="monospace" font-size="11" fill="#A855F7">连续 3 步重复触发 Loop Breaker 熔断</text>
+
+      <path d="M 20 170 L 310 170" stroke="#1E293B" stroke-width="1" />
+      <text x="20" y="198" font-family="monospace" font-size="12" fill="#D8B4FE">· 瞬态视觉回退（Fallback to Vision）</text>
+      <text x="20" y="222" font-family="monospace" font-size="12" fill="#D8B4FE">· 动作历史反向修剪与回滚</text>
+      <text x="20" y="246" font-family="monospace" font-size="12" fill="#E9D5FF">✔ 生产任务自动恢复成功率 &gt; 92%</text>
+    </g>
+  </g>
+</svg>

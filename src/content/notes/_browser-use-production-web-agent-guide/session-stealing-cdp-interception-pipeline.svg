@@ -1,0 +1,174 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520">
+  <defs>
+    <linearGradient id="bgGradBu3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080D1A" />
+      <stop offset="100%" stop-color="#0E1726" />
+    </linearGradient>
+    <linearGradient id="boxAuth" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#083344" />
+      <stop offset="100%" stop-color="#041E28" />
+    </linearGradient>
+    <linearGradient id="boxCdp" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E1B4B" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+    <linearGradient id="boxCheckpoint" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#064E3B" />
+      <stop offset="100%" stop-color="#04281E" />
+    </linearGradient>
+    <marker id="arrow-cyan3" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#06B6D4" />
+    </marker>
+    <marker id="arrow-purple3" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#818CF8" />
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="960" height="520" rx="12" fill="url(#bgGradBu3)" stroke="#1E293B" stroke-width="1.5" />
+
+  <!-- Title Header -->
+  <g transform="translate(35, 25)">
+    <rect width="210" height="24" rx="4" fill="#083344" stroke="#06B6D4" stroke-width="1" />
+    <text x="10" y="16" font-family="monospace" font-size="11" font-weight="600" fill="#67E8F9">RESILIENT ARCHITECTURE</text>
+    <text x="225" y="18" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF">会话复用（Session Stealing）、CDP 拦截与幂等断点恢复流水线</text>
+  </g>
+
+  <!-- Phase 1: Authentication & Stealth -->
+  <g transform="translate(35, 65)">
+    <rect width="285" height="295" rx="10" fill="url(#boxAuth)" stroke="#06B6D4" stroke-width="1.5" />
+    <rect x="15" y="15" width="255" height="24" rx="4" fill="#0E7490" />
+    <text x="25" y="31" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" fill="#CFFAFE">Phase 1: 预认证会话与指纹伪装</text>
+
+    <!-- Sub-box 1 -->
+    <g transform="translate(15, 50)">
+      <rect width="255" height="60" rx="5" fill="#06202A" stroke="#155E75" />
+      <text x="10" y="18" font-family="monospace" font-size="10" font-weight="700" fill="#22D3EE">1. 凭证抽离 (Storage State Export)</text>
+      <text x="10" y="34" font-family="-apple-system, sans-serif" font-size="10" fill="#94A3B8">人类预登录或日常浏览器提取 Cookies、</text>
+      <text x="10" y="48" font-family="monospace" font-size="10" fill="#67E8F9">LocalStorage 与 SessionToken 导出 json</text>
+    </g>
+
+    <!-- Sub-box 2 -->
+    <g transform="translate(15, 120)">
+      <rect width="255" height="75" rx="5" fill="#06202A" stroke="#155E75" />
+      <text x="10" y="18" font-family="monospace" font-size="10" font-weight="700" fill="#22D3EE">2. Playwright Stealth 指纹掩护</text>
+      <text x="10" y="34" font-family="monospace" font-size="10" fill="#38BDF8">· navigator.webdriver = undefined</text>
+      <text x="10" y="50" font-family="monospace" font-size="10" fill="#38BDF8">· WebGL 真实显卡信息欺骗注入</text>
+      <text x="10" y="66" font-family="monospace" font-size="10" fill="#38BDF8">· Canvas / AudioFingerprint 微扰动</text>
+    </g>
+
+    <!-- Result -->
+    <g transform="translate(15, 205)">
+      <rect width="255" height="70" rx="5" fill="#042F2E" stroke="#0D9488" />
+      <text x="10" y="20" font-family="monospace" font-size="11" font-weight="700" fill="#2DD4BF">✔ 穿透 Cloudflare 防护</text>
+      <text x="10" y="38" font-family="-apple-system, sans-serif" font-size="10" fill="#CCFBF1">直接携带认证态进入业务深水区，</text>
+      <text x="10" y="54" font-family="-apple-system, sans-serif" font-size="10" fill="#CCFBF1">彻底绕过验证码（CAPTCHA）死锁</text>
+    </g>
+  </g>
+
+  <!-- Phase 2: CDP Interception & Slicing -->
+  <g transform="translate(338, 65)">
+    <rect width="285" height="295" rx="10" fill="url(#boxCdp)" stroke="#818CF8" stroke-width="1.5" />
+    <rect x="15" y="15" width="255" height="24" rx="4" fill="#3730A3" />
+    <text x="25" y="31" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" fill="#E0E7FF">Phase 2: CDP 拦截与流量削减</text>
+
+    <!-- Sub-box 1 -->
+    <g transform="translate(15, 50)">
+      <rect width="255" height="60" rx="5" fill="#111827" stroke="#312E81" />
+      <text x="10" y="18" font-family="monospace" font-size="10" font-weight="700" fill="#A5B4FC">1. 静态重资源屏蔽 (Route Block)</text>
+      <text x="10" y="34" font-family="-apple-system, sans-serif" font-size="10" fill="#94A3B8">屏蔽 .mp4, .png, .woff2, trackers</text>
+      <text x="10" y="48" font-family="monospace" font-size="10" fill="#818CF8">首屏网络等待耗时压降 70% 以上</text>
+    </g>
+
+    <!-- Sub-box 2 -->
+    <g transform="translate(15, 120)">
+      <rect width="255" height="75" rx="5" fill="#111827" stroke="#312E81" />
+      <text x="10" y="18" font-family="monospace" font-size="10" font-weight="700" fill="#A5B4FC">2. XHR/Fetch API 静默数据旁路</text>
+      <text x="10" y="34" font-family="-apple-system, sans-serif" font-size="10" fill="#94A3B8">监听底层的 /api/v1/data 响应：</text>
+      <text x="10" y="50" font-family="-apple-system, sans-serif" font-size="10" fill="#C7D2FE">无需在复杂表格 DOM 中费力抓取，</text>
+      <text x="10" y="66" font-family="monospace" font-size="10" fill="#A5B4FC">直接捕获底层纯净 JSON 业务数据</text>
+    </g>
+
+    <!-- Result -->
+    <g transform="translate(15, 205)">
+      <rect width="255" height="70" rx="5" fill="#1E1B4B" stroke="#4F46E5" />
+      <text x="10" y="20" font-family="monospace" font-size="11" font-weight="700" fill="#C7D2FE">✔ 零解析开销直通数据</text>
+      <text x="10" y="38" font-family="-apple-system, sans-serif" font-size="10" fill="#E0E7FF">单页面解析速度提高 3.5 倍，</text>
+      <text x="10" y="54" font-family="-apple-system, sans-serif" font-size="10" fill="#E0E7FF">彻底规避前端样式变动导致的提取失效</text>
+    </g>
+  </g>
+
+  <!-- Phase 3: Idempotent & Resilient Recovery -->
+  <g transform="translate(640, 65)">
+    <rect width="285" height="295" rx="10" fill="url(#boxCheckpoint)" stroke="#10B981" stroke-width="1.5" />
+    <rect x="15" y="15" width="255" height="24" rx="4" fill="#047857" />
+    <text x="25" y="31" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" fill="#D1FAE5">Phase 3: 幂等执行与断点热恢复</text>
+
+    <!-- Sub-box 1 -->
+    <g transform="translate(15, 50)">
+      <rect width="255" height="60" rx="5" fill="#041E17" stroke="#059669" />
+      <text x="10" y="18" font-family="monospace" font-size="10" font-weight="700" fill="#34D399">1. 状态机分步存盘 (Checkpointing)</text>
+      <text x="10" y="34" font-family="-apple-system, sans-serif" font-size="10" fill="#94A3B8">每完成一个操作步骤，将当前 URL、</text>
+      <text x="10" y="48" font-family="monospace" font-size="10" fill="#6EE7B7">表单缓存与步骤序号落盘 checkpoint.json</text>
+    </g>
+
+    <!-- Sub-box 2 -->
+    <g transform="translate(15, 120)">
+      <rect width="255" height="75" rx="5" fill="#041E17" stroke="#059669" />
+      <text x="10" y="18" font-family="monospace" font-size="10" font-weight="700" fill="#34D399">2. 动作幂等性守护 (Idempotency Guard)</text>
+      <text x="10" y="34" font-family="-apple-system, sans-serif" font-size="10" fill="#94A3B8">执行危险动作（如下单/提交）前：</text>
+      <text x="10" y="50" font-family="-apple-system, sans-serif" font-size="10" fill="#A7F3D0">先校验已勾选状态与目标订单号，</text>
+      <text x="10" y="66" font-family="monospace" font-size="10" fill="#34D399">防止网络波动重发造成重复提交</text>
+    </g>
+
+    <!-- Result -->
+    <g transform="translate(15, 205)">
+      <rect width="255" height="70" rx="5" fill="#064E3B" stroke="#10B981" />
+      <text x="10" y="20" font-family="monospace" font-size="11" font-weight="700" fill="#6EE7B7">✔ 3 秒原地无感断点恢复</text>
+      <text x="10" y="38" font-family="-apple-system, sans-serif" font-size="10" fill="#ECFDF5">即使浏览器意外崩溃或进程被 Kill，</text>
+      <text x="10" y="54" font-family="-apple-system, sans-serif" font-size="10" fill="#ECFDF5">重启后直读快照跳过前序步骤</text>
+    </g>
+  </g>
+
+  <!-- Arrows between Phases -->
+  <path d="M 320 210 L 338 210" stroke="#06B6D4" stroke-width="2" marker-end="url(#arrow-cyan3)" />
+  <path d="M 623 210 L 640 210" stroke="#818CF8" stroke-width="2" marker-end="url(#arrow-purple3)" />
+
+  <!-- Bottom: End-to-End Execution Lifeline -->
+  <g transform="translate(35, 380)">
+    <rect width="890" height="115" rx="8" fill="#0F172A" stroke="#1E293B" stroke-width="1.2" />
+
+    <text x="20" y="24" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" fill="#94A3B8">生产级 Web Agent 端到端可靠性执行防线：</text>
+
+    <!-- Pipeline Step Indicators -->
+    <g transform="translate(20, 42)">
+      <rect width="195" height="55" rx="6" fill="#1E293B" stroke="#0891B2" />
+      <text x="10" y="20" font-family="monospace" font-size="11" font-weight="700" fill="#22D3EE">Step 1: 凭证与指纹就绪</text>
+      <text x="10" y="38" font-family="-apple-system, sans-serif" font-size="10" fill="#94A3B8">加载存储态，避开人机验证</text>
+    </g>
+
+    <path d="M 220 70 L 240 70" stroke="#0891B2" stroke-width="2" />
+
+    <g transform="translate(245, 42)">
+      <rect width="195" height="55" rx="6" fill="#1E293B" stroke="#4F46E5" />
+      <text x="10" y="20" font-family="monospace" font-size="11" font-weight="700" fill="#818CF8">Step 2: CDP 极速精简加载</text>
+      <text x="10" y="38" font-family="-apple-system, sans-serif" font-size="10" fill="#94A3B8">路由熔断杂质，提取接口数据</text>
+    </g>
+
+    <path d="M 445 70 L 465 70" stroke="#4F46E5" stroke-width="2" />
+
+    <g transform="translate(470, 42)">
+      <rect width="195" height="55" rx="6" fill="#1E293B" stroke="#059669" />
+      <text x="10" y="20" font-family="monospace" font-size="11" font-weight="700" fill="#34D399">Step 3: A11y 树交互执行</text>
+      <text x="10" y="38" font-family="-apple-system, sans-serif" font-size="10" fill="#94A3B8">@eN 标定精确定位，零像素漂移</text>
+    </g>
+
+    <path d="M 670 70 L 690 70" stroke="#059669" stroke-width="2" />
+
+    <g transform="translate(695, 42)">
+      <rect width="175" height="55" rx="6" fill="#064E3B" stroke="#10B981" />
+      <text x="10" y="20" font-family="monospace" font-size="11" font-weight="700" fill="#6EE7B7">Step 4: 快照存盘完成</text>
+      <text x="10" y="38" font-family="-apple-system, sans-serif" font-size="10" fill="#A7F3D0">幂等提交并落盘日志</text>
+    </g>
+  </g>
+</svg>

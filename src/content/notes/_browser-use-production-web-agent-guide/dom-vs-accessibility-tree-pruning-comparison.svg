@@ -1,0 +1,150 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520">
+  <defs>
+    <linearGradient id="bgGradBu1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080D1A" />
+      <stop offset="100%" stop-color="#0E1726" />
+    </linearGradient>
+    <linearGradient id="boxRawDom" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2D1215" />
+      <stop offset="100%" stop-color="#14080A" />
+    </linearGradient>
+    <linearGradient id="boxA11yTree" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#064E3B" />
+      <stop offset="100%" stop-color="#062820" />
+    </linearGradient>
+    <linearGradient id="boxFilterPipe" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+    <marker id="arrow-emerald" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#10B981" />
+    </marker>
+    <marker id="arrow-cyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#06B6D4" />
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="960" height="520" rx="12" fill="url(#bgGradBu1)" stroke="#1E293B" stroke-width="1.5" />
+
+  <!-- Title Header -->
+  <g transform="translate(35, 25)">
+    <rect width="195" height="24" rx="4" fill="#064E3B" stroke="#10B981" stroke-width="1" />
+    <text x="10" y="16" font-family="monospace" font-size="11" font-weight="600" fill="#6EE7B7">TOKEN &amp; DOM COMPRESSION</text>
+    <text x="210" y="18" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF">全量 DOM 树 vs 可访问性树（Accessibility Tree）语义剪枝流水线</text>
+  </g>
+
+  <!-- Left: Raw Full DOM -->
+  <g transform="translate(35, 65)">
+    <rect width="265" height="270" rx="10" fill="url(#boxRawDom)" stroke="#EF4444" stroke-width="1.5" />
+    <rect x="15" y="15" width="235" height="24" rx="4" fill="#7F1D1D" />
+    <text x="25" y="31" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" fill="#FECACA">原始全量 DOM（传统反模式）</text>
+
+    <!-- Raw HTML snippet representation -->
+    <rect x="15" y="48" width="235" height="135" rx="6" fill="#0A0304" stroke="#450A0A" />
+    <text x="25" y="68" font-family="monospace" font-size="10" fill="#F87171">&lt;div class="css-901xj flex-col..."&gt;</text>
+    <text x="35" y="84" font-family="monospace" font-size="10" fill="#FCA5A5">  &lt;div style="opacity: 1;"&gt;</text>
+    <text x="45" y="100" font-family="monospace" font-size="10" fill="#FCA5A5">    &lt;span class="wrapper-23a"&gt;</text>
+    <text x="55" y="116" font-family="monospace" font-size="10" fill="#EF4444">      &lt;button aria-label="..."&gt;</text>
+    <text x="65" y="132" font-family="monospace" font-size="10" fill="#FFFFFF">        提交申请</text>
+    <text x="25" y="152" font-family="monospace" font-size="10" fill="#7F1D1D">&lt;!-- 数千层冗余 div/svg/script --&gt;</text>
+    <text x="25" y="170" font-family="monospace" font-size="10" fill="#991B1B">&lt;!-- 伴随大量隐藏图层与内联样式 --&gt;</text>
+
+    <text x="15" y="202" font-family="monospace" font-size="11" fill="#F87171">⚠ 节点数量：~4,500+ 个 DOM 节点</text>
+    <text x="15" y="222" font-family="monospace" font-size="11" font-weight="700" fill="#EF4444">⚠ 消耗 Token：60,000 ~ 120,000</text>
+    <text x="15" y="242" font-family="monospace" font-size="11" fill="#FCA5A5">⚠ 首字延迟（TTFT）：8.5s ~ 15.0s</text>
+    <text x="15" y="260" font-family="monospace" font-size="11" fill="#EF4444">✖ 极易发生幻觉，丢失点击目标</text>
+  </g>
+
+  <!-- Center: Pruning & Pipeline -->
+  <g transform="translate(325, 65)">
+    <rect width="295" height="270" rx="10" fill="url(#boxFilterPipe)" stroke="#06B6D4" stroke-width="1.5" />
+    <rect x="15" y="15" width="265" height="24" rx="4" fill="#0E7490" />
+    <text x="25" y="31" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" fill="#CFFAFE">Browser-Use 核心剪枝引擎</text>
+
+    <!-- Pipeline Step 1 -->
+    <g transform="translate(15, 48)">
+      <rect width="265" height="46" rx="5" fill="#0B132B" stroke="#164E63" />
+      <text x="10" y="18" font-family="monospace" font-size="10" font-weight="700" fill="#22D3EE">1. CDP Accessibility API 提取</text>
+      <text x="10" y="34" font-family="-apple-system, sans-serif" font-size="10" fill="#94A3B8">调用 Accessibility.getFullAXTree 剥离样式</text>
+    </g>
+
+    <!-- Pipeline Step 2 -->
+    <g transform="translate(15, 102)">
+      <rect width="265" height="46" rx="5" fill="#0B132B" stroke="#164E63" />
+      <text x="10" y="18" font-family="monospace" font-size="10" font-weight="700" fill="#22D3EE">2. 视口与交互语义过滤（Culling）</text>
+      <text x="10" y="34" font-family="-apple-system, sans-serif" font-size="10" fill="#94A3B8">排除 offscreen/hidden，保留 button/input/link</text>
+    </g>
+
+    <!-- Pipeline Step 3 -->
+    <g transform="translate(15, 156)">
+      <rect width="265" height="46" rx="5" fill="#0B132B" stroke="#164E63" />
+      <text x="10" y="18" font-family="monospace" font-size="10" font-weight="700" fill="#22D3EE">3. 动态虚拟引用标定（@eN Tagging）</text>
+      <text x="10" y="34" font-family="-apple-system, sans-serif" font-size="10" fill="#94A3B8">注入高亮反查锚点，绑定真实 XPath 坐标</text>
+    </g>
+
+    <!-- Pipeline Step 4 -->
+    <g transform="translate(15, 210)">
+      <rect width="265" height="46" rx="5" fill="#0B132B" stroke="#164E63" />
+      <text x="10" y="18" font-family="monospace" font-size="10" font-weight="700" fill="#38BDF8">4. 纯文本平铺序列化</text>
+      <text x="10" y="34" font-family="-apple-system, sans-serif" font-size="10" fill="#94A3B8">将复杂嵌套树拍平成行级简洁指令清单</text>
+    </g>
+  </g>
+
+  <!-- Right: Compact A11y Tree Output -->
+  <g transform="translate(645, 65)">
+    <rect width="280" height="270" rx="10" fill="url(#boxA11yTree)" stroke="#10B981" stroke-width="1.5" />
+    <rect x="15" y="15" width="250" height="24" rx="4" fill="#047857" />
+    <text x="25" y="31" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" fill="#D1FAE5">剪枝后 Accessibility Tree</text>
+
+    <!-- Compact Text representation -->
+    <rect x="15" y="48" width="250" height="135" rx="6" fill="#041F16" stroke="#065F46" />
+    <text x="25" y="68" font-family="monospace" font-size="10" fill="#A7F3D0">[@e1] heading '用户登录控制台' (level=1)</text>
+    <text x="25" y="86" font-family="monospace" font-size="10" fill="#34D399">[@e2] textbox '邮箱地址' (val="user@corp")</text>
+    <text x="25" y="104" font-family="monospace" font-size="10" fill="#34D399">[@e3] textbox '密码' (type="password")</text>
+    <text x="25" y="122" font-family="monospace" font-size="10" fill="#6EE7B7">[@e4] button '提交申请' (cursor: pointer)</text>
+    <text x="25" y="140" font-family="monospace" font-size="10" fill="#A7F3D0">[@e5] link '忘记密码？' (href="/reset")</text>
+    <text x="25" y="160" font-family="monospace" font-size="10" fill="#10B981">&lt;!-- 仅保留当前屏幕 20~40 个交互元素 --&gt;</text>
+
+    <text x="15" y="202" font-family="monospace" font-size="11" fill="#34D399">✔ 节点数量：仅 25~45 个语义节点</text>
+    <text x="15" y="222" font-family="monospace" font-size="11" font-weight="700" fill="#10B981">✔ 消耗 Token：仅 500 ~ 950 Tokens</text>
+    <text x="15" y="242" font-family="monospace" font-size="11" fill="#6EE7B7">✔ 首字延迟（TTFT）：0.4s ~ 0.9s</text>
+    <text x="15" y="260" font-family="monospace" font-size="11" fill="#34D399">✔ 动作命中率（Precision）：&gt; 96.8%</text>
+  </g>
+
+  <!-- Connective Arrows -->
+  <path d="M 300 200 L 325 200" stroke="#06B6D4" stroke-width="2" marker-end="url(#arrow-cyan)" />
+  <path d="M 620 200 L 645 200" stroke="#10B981" stroke-width="2" marker-end="url(#arrow-emerald)" />
+
+  <!-- Bottom: Metrics Comparison Table -->
+  <g transform="translate(35, 355)">
+    <rect width="890" height="140" rx="8" fill="#0F172A" stroke="#1E293B" stroke-width="1.2" />
+
+    <!-- Table Header -->
+    <rect x="0" y="0" width="890" height="32" rx="8" fill="#1E293B" />
+    <text x="20" y="21" font-family="-apple-system, sans-serif" font-size="11" font-weight="700" fill="#94A3B8">指标维度 (Metrics)</text>
+    <text x="230" y="21" font-family="-apple-system, sans-serif" font-size="11" font-weight="700" fill="#F87171">方案 A：原始全量 HTML / DOM</text>
+    <text x="490" y="21" font-family="-apple-system, sans-serif" font-size="11" font-weight="700" fill="#F59E0B">方案 B：纯截图 Vision 视觉输入</text>
+    <text x="710" y="21" font-family="-apple-system, sans-serif" font-size="11" font-weight="700" fill="#34D399">方案 C：A11y 树剪枝 (Browser-Use)</text>
+
+    <!-- Row 1: Token Usage -->
+    <text x="20" y="55" font-family="monospace" font-size="11" fill="#E2E8F0">单步 Token 消耗</text>
+    <text x="230" y="55" font-family="monospace" font-size="11" fill="#F87171">60,000 ~ 120,000 Tokens (极易超限)</text>
+    <text x="490" y="55" font-family="monospace" font-size="11" fill="#F59E0B">1,600 ~ 3,200 Tokens (高分辨率切片)</text>
+    <text x="710" y="55" font-family="monospace" font-size="11" font-weight="700" fill="#34D399">500 ~ 950 Tokens (降幅达 99%)</text>
+    <path d="M 0 66 L 890 66" stroke="#1E293B" stroke-width="0.8" />
+
+    <!-- Row 2: Step Latency -->
+    <text x="20" y="88" font-family="monospace" font-size="11" fill="#E2E8F0">单步执行耗时 (Latency)</text>
+    <text x="230" y="88" font-family="monospace" font-size="11" fill="#F87171">10 ~ 18 秒 / 步</text>
+    <text x="490" y="88" font-family="monospace" font-size="11" fill="#F59E0B">4 ~ 7 秒 / 步</text>
+    <text x="710" y="88" font-family="monospace" font-size="11" font-weight="700" fill="#34D399">0.8 ~ 1.5 秒 / 步 (极致敏捷)</text>
+    <path d="M 0 99 L 890 99" stroke="#1E293B" stroke-width="0.8" />
+
+    <!-- Row 3: Coordinate Accuracy -->
+    <text x="20" y="122" font-family="monospace" font-size="11" fill="#E2E8F0">定位精度与坐标漂移</text>
+    <text x="230" y="122" font-family="-apple-system, sans-serif" font-size="11" fill="#F87171">容易产生假选择器，丢失内层真实事件</text>
+    <text x="490" y="122" font-family="-apple-system, sans-serif" font-size="11" fill="#F59E0B">高分屏缩放比例易偏差，小按钮误点</text>
+    <text x="710" y="122" font-family="-apple-system, sans-serif" font-size="11" font-weight="700" fill="#34D399">精准直连底层 CDP NodeId，零像素偏移</text>
+  </g>
+</svg>
