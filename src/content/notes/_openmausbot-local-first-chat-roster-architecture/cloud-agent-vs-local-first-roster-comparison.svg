@@ -104,7 +104,7 @@
     <!-- Row 4 -->
     <line x1="0" y1="131" x2="880" y2="131" stroke="#1e293b" stroke-width="1"/>
     <text x="24" y="153" class="metric-label">防误操与爆炸半径</text>
-    <text x="250" y="121" class="metric-bad" y="153">✘ 授权即放开，无法做精细切面人机拦截</text>
-    <text x="560" y="121" class="metric-good" y="153">✔ 物理人机门禁 (Human Gate: push/删改必确认)</text>
+    <text x="250" y="153" class="metric-bad">✘ 授权即放开，无法做精细切面人机拦截</text>
+    <text x="560" y="153" class="metric-good">✔ 物理人机门禁 (Human Gate: push/删改必确认)</text>
   </g>
 </svg>
