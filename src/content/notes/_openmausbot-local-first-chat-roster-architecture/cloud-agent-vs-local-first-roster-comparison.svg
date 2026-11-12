@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="580" viewBox="0 0 960 580">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#020617"/>
+      <stop offset="100%" stop-color="#0b1120"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+    <style>
+      .title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 800; font-size: 20px; fill: #f8fafc; }
+      .subtitle { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 13px; fill: #94a3b8; }
+      .box-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 700; font-size: 14px; }
+      .box-desc { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 12px; fill: #94a3b8; }
+      .code-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 11px; }
+      .badge-text { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 10px; font-weight: 700; }
+      .metric-label { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 12px; font-weight: 600; fill: #cbd5e1; }
+      .metric-bad { font-family: ui-monospace, SFMono-Regular, monospace; font-size: 11px; font-weight: 700; fill: #f87171; }
+      .metric-good { font-family: ui-monospace, SFMono-Regular, monospace; font-size: 11px; font-weight: 700; fill: #34d399; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="960" height="580" rx="16" fill="url(#bg)" stroke="#1e293b" stroke-width="1.5"/>
+
+  <!-- Header -->
+  <g transform="translate(40, 30)">
+    <rect x="0" y="0" width="160" height="24" rx="4" fill="#083344" stroke="#06b6d4" stroke-width="1"/>
+    <text x="10" y="16" fill="#22d3ee" class="badge-text">PARADIGM MATRIX</text>
+    <text x="175" y="18" class="title">闭源云端 Agent vs 本地优先开源架构对比</text>
+    <text x="0" y="44" class="subtitle">数据所有权 · 生产级成本模型 · 动作执行力与故障爆炸半径全方位实测</text>
+  </g>
+
+  <!-- Left: Closed-Source Cloud Agents (Red/Danger) -->
+  <g transform="translate(40, 95)" filter="url(#shadow)">
+    <rect width="420" height="270" rx="10" fill="#0f172a" stroke="#ef4444" stroke-width="1.2"/>
+    <rect x="0" y="0" width="420" height="36" rx="10" fill="#2d1217"/>
+    <text x="16" y="23" fill="#fca5a5" class="box-title">传统闭源云端 Agent（Grok Bot / Meta Muse / 厂商云中枢）</text>
+
+    <g transform="translate(16, 48)">
+      <text x="0" y="16" fill="#f87171" class="code-mono" font-weight="700">1. 数据流动: 全量源码与凭证出境</text>
+      <text x="12" y="34" class="box-desc">本地仓库、.env 密钥与架构文档必须打包推送到云端黑盒。</text>
+
+      <text x="0" y="68" fill="#f87171" class="code-mono" font-weight="700">2. 成本结构: 中间件毛利 + 双重 Token 计费</text>
+      <text x="12" y="86" class="box-desc">平台加收 30%~100% 溢价；无形消耗大量固定轮询与握手消耗。</text>
+
+      <text x="0" y="120" fill="#f87171" class="code-mono" font-weight="700">3. 工具执行: 远程伪终端与网络往返延迟</text>
+      <text x="12" y="138" class="box-desc">每个 bash 命令都要在云端微容器执行再回传，网络抖动即卡死。</text>
+
+      <text x="0" y="172" fill="#f87171" class="code-mono" font-weight="700">4. 扩展限制: 强制锁定专属模型与协议</text>
+      <text x="12" y="190" class="box-desc">无法挂载本地已安装的独立 CLI（如 Claude Code CLI、Codex）。</text>
+    </g>
+  </g>
+
+  <!-- Right: OpenMausBot Local-First (Emerald/Cyan) -->
+  <g transform="translate(500, 95)" filter="url(#shadow)">
+    <rect width="420" height="270" rx="10" fill="#0b1329" stroke="#10b981" stroke-width="1.5"/>
+    <rect x="0" y="0" width="420" height="36" rx="10" fill="#064e3b"/>
+    <text x="16" y="23" fill="#6ee7b7" class="box-title">OpenMausBot: 本地优先通讯录开源架构（Chat Roster）</text>
+
+    <g transform="translate(16, 48)">
+      <text x="0" y="16" fill="#34d399" class="code-mono" font-weight="700">1. 数据流动: 源码物理驻留，零数据出境</text>
+      <text x="12" y="34" class="box-desc">代码留在 /Volumes/ssd/ 物理磁盘，仅 Prompt 走已配置模型通道。</text>
+
+      <text x="0" y="68" fill="#34d399" class="code-mono" font-weight="700">2. 成本结构: 直连厂商官方原价 / 零中间商税</text>
+      <text x="12" y="86" class="box-desc">可自由调度免费通道（如魔搭每日 2000 次 API）或本地离线模型。</text>
+
+      <text x="0" y="120" fill="#34d399" class="code-mono" font-weight="700">3. 工具执行: 宿主机原生 CLI 秒级执行</text>
+      <text x="12" y="138" class="box-desc">直接调用本地 npm、git、vitest 与 shell，零网络延迟与协议序列化。</text>
+
+      <text x="0" y="172" fill="#34d399" class="code-mono" font-weight="700">4. 扩展自由: 无缝纳管任意 CLI 与异构节点</text>
+      <text x="12" y="190" class="box-desc">将 Claude CLI、Simular 隔离沙盒、Kaggle 显卡无缝编入通讯录。</text>
+    </g>
+  </g>
+
+  <!-- Bottom: Deep Comparison Matrix Table -->
+  <g transform="translate(40, 385)" filter="url(#shadow)">
+    <rect width="880" height="165" rx="8" fill="#0f172a" stroke="#334155"/>
+    <rect x="0" y="0" width="880" height="32" rx="8" fill="#1e293b"/>
+    
+    <!-- Table Header -->
+    <text x="24" y="21" fill="#f8fafc" class="code-mono" font-weight="700">对比维度 (Dimension)</text>
+    <text x="250" y="21" fill="#f87171" class="code-mono" font-weight="700">闭源商业云端 Agent 方案</text>
+    <text x="560" y="21" fill="#34d399" class="code-mono" font-weight="700">OpenMausBot 本地优先架构</text>
+
+    <!-- Row 1 -->
+    <line x1="0" y1="32" x2="880" y2="32" stroke="#334155" stroke-width="1"/>
+    <text x="24" y="55" class="metric-label">隐私与合规边界</text>
+    <text x="250" y="55" class="metric-bad">✘ 源码/密钥全量上传至第三方公有云</text>
+    <text x="560" y="55" class="metric-good">✔ 宿主物理驻留，源码脱敏与零出境</text>
+
+    <!-- Row 2 -->
+    <line x1="0" y1="65" x2="880" y2="65" stroke="#1e293b" stroke-width="1"/>
+    <text x="24" y="88" class="metric-label">综合支出成本</text>
+    <text x="250" y="88" class="metric-bad">✘ 平台月租费 + Token 溢价 ($100~$500/人月)</text>
+    <text x="560" y="88" class="metric-good">✔ 官方直连底价 + 结合免费推理通道 ($0~$30/月)</text>
+
+    <!-- Row 3 -->
+    <line x1="0" y1="98" x2="880" y2="98" stroke="#1e293b" stroke-width="1"/>
+    <text x="24" y="121" class="metric-label">工具链与执行力</text>
+    <text x="250" y="121" class="metric-bad">✘ 依赖云端环境模拟，无法访问本地深层工具</text>
+    <text x="560" y="121" class="metric-good">✔ 原生宿主机环境，直接驱动系统级 CLI 与硬件</text>
+
+    <!-- Row 4 -->
+    <line x1="0" y1="131" x2="880" y2="131" stroke="#1e293b" stroke-width="1"/>
+    <text x="24" y="153" class="metric-label">防误操与爆炸半径</text>
+    <text x="250" y="121" class="metric-bad" y="153">✘ 授权即放开，无法做精细切面人机拦截</text>
+    <text x="560" y="121" class="metric-good" y="153">✔ 物理人机门禁 (Human Gate: push/删改必确认)</text>
+  </g>
+</svg>

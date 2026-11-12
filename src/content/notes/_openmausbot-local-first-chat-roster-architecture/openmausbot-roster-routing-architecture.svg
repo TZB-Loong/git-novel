@@ -1,0 +1,177 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="600" viewBox="0 0 960 600">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#020617"/>
+      <stop offset="100%" stop-color="#0b1120"/>
+    </linearGradient>
+    <linearGradient id="indigo-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#a855f7"/>
+    </linearGradient>
+    <linearGradient id="cyan-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+    <style>
+      .title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 800; font-size: 20px; fill: #f8fafc; }
+      .subtitle { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 13px; fill: #94a3b8; }
+      .box-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 700; font-size: 14px; fill: #f1f5f9; }
+      .box-desc { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 11px; fill: #94a3b8; }
+      .code-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 11px; }
+      .badge-text { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 10px; font-weight: 700; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="960" height="600" rx="16" fill="url(#bg)" stroke="#1e293b" stroke-width="1.5"/>
+
+  <!-- Header -->
+  <g transform="translate(40, 30)">
+    <rect x="0" y="0" width="180" height="24" rx="4" fill="#1e1b4b" stroke="#6366f1" stroke-width="1"/>
+    <text x="10" y="16" fill="#a5b4fc" class="badge-text">ROSTER TOPOLOGY ARCH</text>
+    <text x="195" y="18" class="title">OpenMausBot 本地优先通讯录（Chat Roster）拓扑架构</text>
+    <text x="0" y="44" class="subtitle">解构无中心化多智能体：原生联系人映射 · 物理工作区隔离 · 独立 SOUL.md 与点对点通道</text>
+  </g>
+
+  <!-- Left: Human & Room Interface -->
+  <g transform="translate(40, 100)" filter="url(#shadow)">
+    <rect width="230" height="460" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+    <rect x="0" y="0" width="230" height="38" rx="10" fill="#1e293b"/>
+    <text x="16" y="24" fill="#f8fafc" class="box-title">客户端与房间面板</text>
+
+    <!-- Human User -->
+    <g transform="translate(14, 52)">
+      <rect width="202" height="74" rx="6" fill="#020617" stroke="#38bdf8"/>
+      <circle cx="28" cy="28" r="14" fill="#0369a1"/>
+      <text x="23" y="33" fill="#ffffff" font-weight="700" font-size="14">L</text>
+      <text x="50" y="26" fill="#e0f2fe" class="code-mono" font-weight="700">loong (人类负责人)</text>
+      <text x="50" y="44" fill="#94a3b8" class="box-desc">终审裁决 · 门禁把关人</text>
+      <text x="50" y="60" fill="#38bdf8" class="badge-text">审批权: push / 资金 / 删改</text>
+    </g>
+
+    <!-- Group Room vs Direct Chat -->
+    <g transform="translate(14, 138)">
+      <rect width="202" height="130" rx="6" fill="#020617" stroke="#6366f1"/>
+      <text x="12" y="22" fill="#a5b4fc" class="code-mono" font-weight="700">Room: "git-x播客转写"</text>
+      <text x="12" y="38" fill="#64748b" class="box-desc">3+ Bot 接力或拍板时进群</text>
+      
+      <rect x="10" y="48" width="182" height="32" rx="4" fill="#1e1b4b"/>
+      <text x="18" y="68" fill="#c7d2fe" class="code-mono">@Tuli 选题，关于openmaus</text>
+
+      <rect x="10" y="86" width="182" height="34" rx="4" fill="#18181b"/>
+      <text x="18" y="102" fill="#71717a" class="badge-text">点对点私发优先 (P2P)</text>
+      <text x="18" y="114" fill="#a1a1aa" class="box-desc">常规协作走 Bot 间私信</text>
+    </g>
+
+    <!-- Global Human Gates -->
+    <g transform="translate(14, 280)">
+      <rect width="202" height="160" rx="6" fill="#451a03" stroke="#f59e0b"/>
+      <text x="12" y="22" fill="#fde68a" class="box-title">安全门禁 (Human Gate)</text>
+      <text x="12" y="40" fill="#fef08a" class="box-desc">拦截所有外发与毁灭性调用：</text>
+      <text x="16" y="62" fill="#fef3c7" class="code-mono">• git push --force 拦截</text>
+      <text x="16" y="82" fill="#fef3c7" class="code-mono">• 外部网络发送审批</text>
+      <text x="16" y="102" fill="#fef3c7" class="code-mono">• 云端产生计费开销拦截</text>
+      <text x="16" y="122" fill="#fef3c7" class="code-mono">• 生产文件危险物理删除</text>
+      <rect x="12" y="132" width="178" height="20" rx="3" fill="#78350f"/>
+      <text x="24" y="146" fill="#fef08a" class="badge-text">STATUS: STRICT ENFORCED</text>
+    </g>
+  </g>
+
+  <!-- Middle: Roster Directory & Dispatcher -->
+  <g transform="translate(290, 100)" filter="url(#shadow)">
+    <rect width="290" height="460" rx="10" fill="#0f172a" stroke="#3b82f6" stroke-width="1.5"/>
+    <rect x="0" y="0" width="290" height="38" rx="10" fill="#1e3a8a"/>
+    <text x="16" y="24" fill="#f8fafc" class="box-title">通讯录路由引擎 (Roster Core)</text>
+    <rect x="200" y="8" width="80" height="22" rx="4" fill="#082f49"/>
+    <text x="208" y="23" fill="#38bdf8" class="badge-text">DISPATCH</text>
+
+    <!-- Dispatch Logic -->
+    <g transform="translate(14, 50)">
+      <rect width="262" height="85" rx="6" fill="#020617" stroke="#1e293b"/>
+      <text x="12" y="20" fill="#93c5fd" class="code-mono" font-weight="700">1. Target Matching 契约</text>
+      <text x="12" y="38" fill="#94a3b8" class="box-desc">解析 @mention 标识与目标 ID</text>
+      <text x="12" y="54" fill="#94a3b8" class="box-desc">调用 list_room_targets 映射</text>
+      <text x="12" y="70" fill="#10b981" class="code-mono">coordinate_bots 传递职责与产物</text>
+    </g>
+
+    <g transform="translate(14, 145)">
+      <rect width="262" height="120" rx="6" fill="#020617" stroke="#1e293b"/>
+      <text x="12" y="20" fill="#c084fc" class="code-mono" font-weight="700">2. 状态注入与隔离</text>
+      <text x="12" y="38" fill="#94a3b8" class="box-desc">• 加载受指派 Bot 的专用 SOUL.md</text>
+      <text x="12" y="56" fill="#94a3b8" class="box-desc">• 挂载专属 MEMORY.md 与工作路径</text>
+      <text x="12" y="74" fill="#94a3b8" class="box-desc">• 阻断上下文污染：禁止越权翻阅</text>
+      <text x="12" y="92" fill="#94a3b8" class="box-desc">• 共享只读 Team Memory 事实库</text>
+      <rect x="12" y="100" width="238" height="15" rx="2" fill="#2e1065"/>
+      <text x="18" y="112" fill="#d8b4fe" class="badge-text">ZERO CONTEXT SPILLOVER</text>
+    </g>
+
+    <g transform="translate(14, 275)">
+      <rect width="262" height="85" rx="6" fill="#020617" stroke="#1e293b"/>
+      <text x="12" y="20" fill="#facc15" class="code-mono" font-weight="700">3. 异步排队与响应唤醒</text>
+      <text x="12" y="38" fill="#94a3b8" class="box-desc">• 忙碌 Worker 自动排队</text>
+      <text x="12" y="54" fill="#94a3b8" class="box-desc">• 结果生成后 Reactive Wakeup 唤醒</text>
+      <text x="12" y="70" fill="#facc15" class="code-mono">无需在主线程死循环轮询 (No Polling)</text>
+    </g>
+
+    <g transform="translate(14, 370)">
+      <rect width="262" height="74" rx="6" fill="#030712" stroke="#334155"/>
+      <text x="12" y="22" fill="#e2e8f0" class="code-mono" font-weight="700">4. 产物契约（Artifact Hand-off）</text>
+      <text x="12" y="42" fill="#94a3b8" class="box-desc">跨 Bot 传递绝对文件路径与校验和</text>
+      <text x="12" y="60" fill="#38bdf8" class="code-mono">产物物理落盘，拒绝千字废话倾倒</text>
+    </g>
+  </g>
+
+  <!-- Right: Heterogeneous Bot Workers -->
+  <g transform="translate(600, 100)" filter="url(#shadow)">
+    <rect width="320" height="460" rx="10" fill="#0f172a" stroke="#10b981" stroke-width="1.5"/>
+    <rect x="0" y="0" width="320" height="38" rx="10" fill="#064e3b"/>
+    <text x="16" y="24" fill="#f8fafc" class="box-title">异构智能体集群 (Isolated Contacts)</text>
+    <rect x="230" y="8" width="80" height="22" rx="4" fill="#042f2e"/>
+    <text x="238" y="23" fill="#34d399" class="badge-text">EXECUTION</text>
+
+    <!-- Bot 1: Tuli -->
+    <g transform="translate(14, 50)">
+      <rect width="292" height="120" rx="6" fill="#020617" stroke="#38bdf8"/>
+      <text x="14" y="22" fill="#38bdf8" class="code-mono" font-weight="700">@Tuli (git-novel 主笔 · 图文博主)</text>
+      <text x="14" y="40" fill="#94a3b8" class="box-desc">职责: 研讨转写 / SVG架构图 / Astro 静态构建</text>
+      <text x="14" y="58" fill="#64748b" class="code-mono">Working Dir: /Volumes/ssd/git-novel</text>
+      <text x="14" y="74" fill="#64748b" class="code-mono">SOUL.md: 永不打破的五条质量红线</text>
+      <rect x="14" y="86" width="264" height="24" rx="4" fill="#0c4a6e"/>
+      <text x="20" y="102" fill="#7dd3fc" class="badge-text">Local CLI: Native Bash / npm test / git</text>
+    </g>
+
+    <!-- Bot 2: Simular Box -->
+    <g transform="translate(14, 180)">
+      <rect width="292" height="120" rx="6" fill="#020617" stroke="#10b981"/>
+      <text x="14" y="22" fill="#10b981" class="code-mono" font-weight="700">@云端沙盒-Simular (Box 操作手)</text>
+      <text x="14" y="40" fill="#94a3b8" class="box-desc">职责: 远程不信任网络爬取 / 风险网页审查</text>
+      <text x="14" y="58" fill="#64748b" class="code-mono">Working Dir: Isolated Simular Cloud VM</text>
+      <text x="14" y="74" fill="#64748b" class="code-mono">SOUL.md: 沙盒安全边界 · 宿主机穿透防御</text>
+      <rect x="14" y="86" width="264" height="24" rx="4" fill="#064e3b"/>
+      <text x="20" y="102" fill="#6ee7b7" class="badge-text">Remote Tools: box_* / browser_navigate</text>
+    </g>
+
+    <!-- Bot 3: Compute Workers -->
+    <g transform="translate(14, 310)">
+      <rect width="292" height="135" rx="6" fill="#020617" stroke="#f59e0b"/>
+      <text x="14" y="22" fill="#f59e0b" class="code-mono" font-weight="700">@Kaggle / @Colab (算力手)</text>
+      <text x="14" y="40" fill="#94a3b8" class="box-desc">职责: GPU 批量转写 / 3D渲染 / 音频合成</text>
+      <text x="14" y="58" fill="#64748b" class="code-mono">Target: 云端免费 GPU 实例调度</text>
+      <text x="14" y="74" fill="#64748b" class="code-mono">SOUL.md: 异步重计算与数据分片规范</text>
+      <rect x="14" y="86" width="264" height="34" rx="4" fill="#451a03"/>
+      <text x="20" y="100" fill="#fcd34d" class="badge-text">Remote Compute: Whisper / PyTorch / WebGL</text>
+      <text x="20" y="114" fill="#fbbf24" class="box-desc">零占用开发者宿主机 CPU &amp; 显存</text>
+    </g>
+  </g>
+
+  <!-- Connective Arrows -->
+  <g stroke="#38bdf8" stroke-width="2" fill="none" opacity="0.7">
+    <path d="M 270 170 L 290 170" marker-end="url(#arrow)"/>
+    <path d="M 580 200 L 600 200"/>
+    <path d="M 580 330 L 600 330"/>
+    <path d="M 580 460 L 600 460"/>
+  </g>
+</svg>

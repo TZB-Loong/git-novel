@@ -1,0 +1,172 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%\" y2="100%">
+      <stop offset="0%" stop-color="#020617"/>
+      <stop offset="50%" stop-color="#090d16"/>
+      <stop offset="100%" stop-color="#030712"/>
+    </linearGradient>
+    <linearGradient id="title-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="65%" stop-color="#e2e8f0"/>
+      <stop offset="100%" stop-color="#94a3b8"/>
+    </linearGradient>
+    <linearGradient id="indigo-glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#a855f7"/>
+    </linearGradient>
+    <linearGradient id="cyan-glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+    <linearGradient id="emerald-glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="12" flood-color="#000" flood-opacity="0.6"/>
+    </filter>
+    <style>
+      .title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 900; font-size: 36px; fill: url(#title-grad); }
+      .subtitle { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 500; font-size: 16px; fill: #94a3b8; }
+      .badge-text { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 11px; font-weight: 700; }
+      .tag { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 12px; fill: #64748b; }
+      .card-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 700; font-size: 15px; }
+      .card-sub { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 12px; fill: #94a3b8; }
+      .code-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 11px; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Subtle Tech Grid -->
+  <g stroke="#1e293b" stroke-width="1" opacity="0.25">
+    <path d="M0 70 H1200 M0 140 H1200 M0 210 H1200 M0 280 H1200 M0 350 H1200 M0 420 H1200 M0 490 H1200 M0 560 H1200"/>
+    <path d="M100 0 V630 M200 0 V630 M300 0 V630 M400 0 V630 M500 0 V630 M600 0 V630 M700 0 V630 M800 0 V630 M900 0 V630 M1000 0 V630 M1100 0 V630"/>
+  </g>
+
+  <!-- Header Category Badge -->
+  <rect x="80" y="45" width="260" height="28" rx="6" fill="#1e1b4b" stroke="#6366f1" stroke-width="1.2"/>
+  <text x="92" y="63" fill="#a5b4fc" class="badge-text">AGENTIC SYSTEM ARCH · 2026</text>
+
+  <!-- Title & Subtitle -->
+  <text x="80" y="112" class="title">告别闭源 Agent 垄断：OpenMausBot 的通讯录架构</text>
+  <text x="80" y="146" class="subtitle">从 @milindlabs 架构激辩看多智能体演化：Chat Roster 路由 · 本地 CLI 引擎 · 独立 Memory 与安全边界</text>
+
+  <!-- Central Visual Cards -->
+  <g transform="translate(80, 180)" filter="url(#shadow)">
+    <!-- Card 1: 传统闭源云端 Agent (Red/Dark) -->
+    <g transform="translate(0, 0)">
+      <rect width="320" height="340" rx="12" fill="#0f172a" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="4 2"/>
+      <rect x="0" y="0" width="320" height="42" rx="12" fill="#1e1b2e"/>
+      <text x="20" y="26" fill="#f87171" class="card-title">传统闭源云端智能体 (Black-box)</text>
+      
+      <g transform="translate(20, 60)">
+        <rect width="280" height="48" rx="6" fill="#18181b" stroke="#27272a"/>
+        <text x="14" y="24" fill="#ef4444" class="code-mono" font-weight="700">Central Cloud Gateway</text>
+        <text x="14" y="40" fill="#71717a" class="code-mono">垄断中间件 · 专有格式锁定</text>
+      </g>
+      
+      <g transform="translate(20, 120)">
+        <rect width="280" height="48" rx="6" fill="#18181b" stroke="#27272a"/>
+        <text x="14" y="24" fill="#f87171" class="code-mono" font-weight="700">Monolithic Shared Context</text>
+        <text x="14" y="40" fill="#71717a" class="code-mono">多角色上下文污染 · 频繁幻觉</text>
+      </g>
+
+      <g transform="translate(20, 180)">
+        <rect width="280" height="48" rx="6" fill="#18181b" stroke="#27272a"/>
+        <text x="14" y="24" fill="#fb7185" class="code-mono" font-weight="700">Remote Code &amp; Secret Leaks</text>
+        <text x="14" y="40" fill="#71717a" class="code-mono">源码/密钥全量上传 · 监管红线</text>
+      </g>
+
+      <g transform="translate(20, 240)">
+        <rect width="280" height="70" rx="6" fill="#450a0a" stroke="#991b1b"/>
+        <text x="14" y="24" fill="#fca5a5" class="code-mono" font-weight="700">⚠ 致命硬伤</text>
+        <text x="14" y="44" fill="#fecaca" class="card-sub">单月 Token 成本飙升 $500+</text>
+        <text x="14" y="60" fill="#fca5a5" class="card-sub">无法挂接开发者本地原生 CLI 工具链</text>
+      </g>
+    </g>
+
+    <!-- Arrow Bridge -->
+    <g transform="translate(332, 145)">
+      <circle cx="16" cy="16" r="16" fill="#1e293b" stroke="#475569"/>
+      <path d="M11 16 H21 M17 12 L21 16 L17 20" stroke="#38bdf8" stroke-width="2" stroke-linecap="round"/>
+    </g>
+
+    <!-- Card 2: OpenMausBot 本地优先通讯录架构 (Cyan/Indigo) -->
+    <g transform="translate(376, 0)">
+      <rect width="664" height="340" rx="12" fill="#0b1329" stroke="#6366f1" stroke-width="1.8"/>
+      <rect x="0" y="0" width="664" height="42" rx="12" fill="#1e1b4b"/>
+      <text x="24" y="26" fill="#a5b4fc" class="card-title">OpenMausBot: 本地优先通讯录（Chat Roster）拓扑</text>
+      <rect x="520" y="10" width="124" height="22" rx="4" fill="#083344" stroke="#06b6d4" stroke-width="1"/>
+      <text x="532" y="25" fill="#22d3ee" class="badge-text">LOCAL-FIRST RUNTIME</text>
+
+      <!-- Sub-blocks inside Roster -->
+      <g transform="translate(24, 55)">
+        <!-- Roster Contact 1 -->
+        <g transform="translate(0, 0)">
+          <rect width="190" height="150" rx="8" fill="#020617" stroke="#38bdf8" stroke-width="1.2"/>
+          <text x="12" y="24" fill="#38bdf8" class="code-mono" font-weight="700">@Tuli (主笔博主)</text>
+          <text x="12" y="44" fill="#64748b" class="code-mono">Engine: Local Claude</text>
+          <text x="12" y="62" fill="#64748b" class="code-mono">Memory: private/MEMORY.md</text>
+          <text x="12" y="80" fill="#64748b" class="code-mono">Workspace: git-novel/</text>
+          <rect x="12" y="96" width="166" height="42" rx="4" fill="#082f49"/>
+          <text x="18" y="112" fill="#7dd3fc" class="badge-text">SOUL.md: 博客构建</text>
+          <text x="18" y="128" fill="#38bdf8" class="badge-text">执行: npm test &amp; build</text>
+        </g>
+
+        <!-- Roster Contact 2 -->
+        <g transform="translate(212, 0)">
+          <rect width="190" height="150" rx="8" fill="#020617" stroke="#10b981" stroke-width="1.2"/>
+          <text x="12" y="24" fill="#10b981" class="code-mono" font-weight="700">@云端沙盒 (Simular)</text>
+          <text x="12" y="44" fill="#64748b" class="code-mono">Engine: Remote Box VM</text>
+          <text x="12" y="62" fill="#64748b" class="code-mono">Isolation: 网络爬取/转写</text>
+          <text x="12" y="80" fill="#64748b" class="code-mono">Workspace: /tmp/sandbox</text>
+          <rect x="12" y="96" width="166" height="42" rx="4" fill="#064e3b"/>
+          <text x="18" y="112" fill="#6ee7b7" class="badge-text">SOUL.md: 云端取数</text>
+          <text x="18" y="128" fill="#10b981" class="badge-text">产物契约交付</text>
+        </g>
+
+        <!-- Roster Contact 3 -->
+        <g transform="translate(424, 0)">
+          <rect width="190" height="150" rx="8" fill="#020617" stroke="#f59e0b" stroke-width="1.2"/>
+          <text x="12" y="24" fill="#f59e0b" class="code-mono" font-weight="700">@算力手 (GPU Worker)</text>
+          <text x="12" y="44" fill="#64748b" class="code-mono">Engine: Kaggle / Colab</text>
+          <text x="12" y="62" fill="#64748b" class="code-mono">Backend: 批量语音/推理</text>
+          <text x="12" y="80" fill="#64748b" class="code-mono">Workspace: cloud-storage</text>
+          <rect x="12" y="96" width="166" height="42" rx="4" fill="#451a03"/>
+          <text x="18" y="112" fill="#fcd34d" class="badge-text">SOUL.md: 批量重算力</text>
+          <text x="18" y="128" fill="#f59e0b" class="badge-text">免费 GPU 资源接力</text>
+        </g>
+      </g>
+
+      <!-- Bottom Platform Bar -->
+      <g transform="translate(24, 220)">
+        <rect width="614" height="96" rx="8" fill="#020617" stroke="#334155"/>
+        <text x="16" y="24" fill="#e2e8f0" class="box-title">底层通讯与零信任控制平面 (Host Core)</text>
+        
+        <!-- P2P Messaging -->
+        <rect x="16" y="36" width="180" height="46" rx="5" fill="#1e293b"/>
+        <text x="24" y="54" fill="#38bdf8" class="badge-text">点对点私发优先</text>
+        <text x="24" y="70" fill="#94a3b8" class="code-mono">默认直连不建多余群聊</text>
+
+        <!-- Team Memory -->
+        <rect x="210" y="36" width="180" height="46" rx="5" fill="#1e293b"/>
+        <text x="218" y="54" fill="#a78bfa" class="badge-text">共享 Team Memory</text>
+        <text x="218" y="70" fill="#94a3b8" class="code-mono">跨会话事实无缝沉淀</text>
+
+        <!-- Human Gate -->
+        <rect x="404" y="36" width="194" height="46" rx="5" fill="#1e293b" stroke="#f59e0b" stroke-width="0.8"/>
+        <text x="412" y="54" fill="#fbbf24" class="badge-text">物理人机审批门禁</text>
+        <text x="412" y="70" fill="#fef08a" class="code-mono">Push / 资金 / 删改必确认</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Footer Metadata -->
+  <g transform="translate(80, 570)">
+    <text x="0" y="14" class="tag">TOPIC: MULTI-AGENT ROSTER ARCHITECTURE</text>
+    <text x="420" y="14" class="tag">SOURCE: @milindlabs &amp; X FRONTIER DEBATES</text>
+    <text x="820" y="14" class="tag">SLUG: openmausbot-local-first-chat-roster-architecture</text>
+  </g>
+</svg>

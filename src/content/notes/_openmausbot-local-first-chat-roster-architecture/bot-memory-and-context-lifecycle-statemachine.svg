@@ -1,0 +1,206 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="580" viewBox="0 0 960 580">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#020617"/>
+      <stop offset="100%" stop-color="#0b1120"/>
+    </linearGradient>
+    <linearGradient id="purple-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#d946ef"/>
+    </linearGradient>
+    <linearGradient id="blue-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <linearGradient id="emerald-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+    <style>
+      .title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 800; font-size: 20px; fill: #f8fafc; }
+      .subtitle { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 13px; fill: #94a3b8; }
+      .box-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 700; font-size: 14px; }
+      .box-desc { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 11.5px; fill: #94a3b8; }
+      .code-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 11px; }
+      .badge-text { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 10px; font-weight: 700; }
+      .step-num { font-family: ui-monospace, SFMono-Regular, monospace; font-weight: 800; font-size: 11px; fill: #f8fafc; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="960" height="580" rx="16" fill="url(#bg)" stroke="#1e293b" stroke-width="1.5"/>
+
+  <!-- Header -->
+  <g transform="translate(40, 36)">
+    <rect width="40" height="24" rx="6" fill="#8b5cf6" fill-opacity="0.2" stroke="#8b5cf6" stroke-opacity="0.4"/>
+    <text x="20" y="16" text-anchor="middle" class="badge-text" fill="#c084fc">LIFECYCLE</text>
+    <text x="52" y="17" class="title">OpenMausBot 联系人（Bot）内存与上下文状态机</text>
+    <text x="0" y="42" class="subtitle">从静态 SOUL 注入、本地会话冷启动、工具环路执行，到增量持久化（Local-Only Memory Writeback）的全闭环流转</text>
+  </g>
+
+  <!-- Main Pipeline Stages (4 Columns) -->
+
+  <!-- Stage 1: Static Persona & Cold Storage -->
+  <g transform="translate(40, 115)">
+    <rect width="200" height="390" rx="12" fill="#0f172a" stroke="#334155" stroke-width="1.2" filter="url(#shadow)"/>
+    
+    <!-- Stage Header -->
+    <rect x="12" y="14" width="24" height="20" rx="5" fill="#6366f1"/>
+    <text x="24" y="28" text-anchor="middle" class="step-num">01</text>
+    <text x="44" y="29" class="box-title" fill="#a5b4fc">基底注入与契约</text>
+    <text x="14" y="52" class="box-desc">不可变原则与长期记忆载入</text>
+
+    <!-- Sub-cards -->
+    <g transform="translate(14, 70)">
+      <rect width="172" height="85" rx="8" fill="#1e293b" stroke="#4338ca" stroke-dasharray="3 2"/>
+      <text x="12" y="22" class="code-mono" fill="#818cf8" font-weight="700">SOUL.md</text>
+      <text x="12" y="40" class="box-desc">· 角色定位与职责边界</text>
+      <text x="12" y="58" class="box-desc">· 绝对底线（禁越权指令）</text>
+      <text x="12" y="74" class="box-desc">· 协同规则（经人类审批）</text>
+    </g>
+
+    <g transform="translate(14, 170)">
+      <rect width="172" height="95" rx="8" fill="#1e293b" stroke="#334155"/>
+      <text x="12" y="22" class="code-mono" fill="#38bdf8" font-weight="700">MEMORY.md (私有)</text>
+      <text x="12" y="40" class="box-desc">· 本地磁盘隔离持久化</text>
+      <text x="12" y="58" class="box-desc">· 历史决策与偏好条目</text>
+      <text x="12" y="76" class="box-desc">· 用户硬性铁律（事实表）</text>
+    </g>
+
+    <g transform="translate(14, 280)">
+      <rect width="172" height="85" rx="8" fill="#1e293b" stroke="#334155"/>
+      <text x="12" y="22" class="code-mono" fill="#34d399" font-weight="700">Team Memory (共享)</text>
+      <text x="12" y="40" class="box-desc">· 团队共享知识（如 Token）</text>
+      <text x="12" y="58" class="box-desc">· <tspan class="code-mono" fill="#94a3b8">propose_team_memory</tspan></text>
+      <text x="12" y="74" class="box-desc">· 机器人生态全局只读</text>
+    </g>
+  </g>
+
+  <!-- Flow Arrow 1 -> 2 -->
+  <path d="M 242 300 L 268 300" stroke="#6366f1" stroke-width="2" stroke-dasharray="4 3"/>
+  <polygon points="268,296 276,300 268,304" fill="#6366f1"/>
+
+  <!-- Stage 2: Hydration & Session Init -->
+  <g transform="translate(280, 115)">
+    <rect width="200" height="390" rx="12" fill="#0f172a" stroke="#0369a1" stroke-width="1.2" filter="url(#shadow)"/>
+    
+    <!-- Stage Header -->
+    <rect x="12" y="14" width="24" height="20" rx="5" fill="#0284c7"/>
+    <text x="24" y="28" text-anchor="middle" class="step-num">02</text>
+    <text x="44" y="29" class="box-title" fill="#38bdf8">会话水合与映射</text>
+    <text x="14" y="52" class="box-desc">绑定独立沙盒与工作区</text>
+
+    <!-- Sub-cards -->
+    <g transform="translate(14, 70)">
+      <rect width="172" height="95" rx="8" fill="#1e293b" stroke="#0284c7" stroke-opacity="0.5"/>
+      <text x="12" y="22" class="box-title" fill="#7dd3fc" font-size="12px">工作区隔离挂载</text>
+      <text x="12" y="42" class="box-desc">· 绑定宿主专属路径：</text>
+      <text x="12" y="60" class="code-mono" fill="#cbd5e1" font-size="9.5px">/Volumes/ssd/git-novel</text>
+      <text x="12" y="78" class="box-desc">· 独立会话进程，杜绝混淆</text>
+    </g>
+
+    <g transform="translate(14, 180)">
+      <rect width="172" height="95" rx="8" fill="#1e293b" stroke="#334155"/>
+      <text x="12" y="22" class="box-title" fill="#7dd3fc" font-size="12px">上下文压缩组装</text>
+      <text x="12" y="42" class="box-desc">· SOUL + Memory 前置注入</text>
+      <text x="12" y="60" class="box-desc">· 仅注入当前活跃会话转写</text>
+      <text x="12" y="78" class="box-desc">· 严格裁剪无关历史上下文</text>
+    </g>
+
+    <g transform="translate(14, 290)">
+      <rect width="172" height="75" rx="8" fill="#1e293b" stroke="#334155"/>
+      <text x="12" y="22" class="box-title" fill="#7dd3fc" font-size="12px">CLI 引擎唤醒</text>
+      <text x="12" y="42" class="box-desc">· 子进程/本地模型即时起调</text>
+      <text x="12" y="60" class="box-desc">· 状态变更为 <tspan fill="#34d399">RUNNING</tspan></text>
+    </g>
+  </g>
+
+  <!-- Flow Arrow 2 -> 3 -->
+  <path d="M 482 300 L 508 300" stroke="#0284c7" stroke-width="2" stroke-dasharray="4 3"/>
+  <polygon points="508,296 516,300 508,304" fill="#0284c7"/>
+
+  <!-- Stage 3: Autonomous Loop & Safety Gate -->
+  <g transform="translate(520, 115)">
+    <rect width="200" height="390" rx="12" fill="#0f172a" stroke="#d97706" stroke-width="1.2" filter="url(#shadow)"/>
+    
+    <!-- Stage Header -->
+    <rect x="12" y="14" width="24" height="20" rx="5" fill="#d97706"/>
+    <text x="24" y="28" text-anchor="middle" class="step-num">03</text>
+    <text x="44" y="29" class="box-title" fill="#fbbf24">执行循环与门禁</text>
+    <text x="14" y="52" class="box-desc">工具分发与人机双重闭环</text>
+
+    <!-- Sub-cards -->
+    <g transform="translate(14, 70)">
+      <rect width="172" height="85" rx="8" fill="#1e293b" stroke="#d97706" stroke-opacity="0.4"/>
+      <text x="12" y="22" class="box-title" fill="#fde68a" font-size="12px">本地工具链调度</text>
+      <text x="12" y="40" class="box-desc">· Bash Shell 脚本执行</text>
+      <text x="12" y="58" class="box-desc">· 本地文件读取与替换</text>
+      <text x="12" y="74" class="box-desc">· 无头浏览器自动化</text>
+    </g>
+
+    <g transform="translate(14, 170)">
+      <rect width="172" height="95" rx="8" fill="#2d1b10" stroke="#f59e0b"/>
+      <text x="12" y="22" class="box-title" fill="#fbbf24" font-size="12px">安全拦截闸口 (Gate)</text>
+      <text x="12" y="40" class="box-desc" fill="#fcd34d">· 高危动作：<tspan class="code-mono">git push</tspan>、资金</text>
+      <text x="12" y="58" class="box-desc" fill="#fcd34d">· 强制触发人类人工确认</text>
+      <text x="12" y="76" class="box-desc" fill="#fde68a">· 杜绝 Bot 自主提权暴走</text>
+    </g>
+
+    <g transform="translate(14, 280)">
+      <rect width="172" height="85" rx="8" fill="#1e293b" stroke="#334155"/>
+      <text x="12" y="22" class="box-title" fill="#fde68a" font-size="12px">产物契约交付</text>
+      <text x="12" y="40" class="box-desc">· 落盘工程源码与 Markdown</text>
+      <text x="12" y="58" class="box-desc">· 产物路径直接移交下道工序</text>
+      <text x="12" y="74" class="box-desc">· 无黑盒序列化丢失</text>
+    </g>
+  </g>
+
+  <!-- Flow Arrow 3 -> 4 -->
+  <path d="M 722 300 L 748 300" stroke="#d97706" stroke-width="2" stroke-dasharray="4 3"/>
+  <polygon points="748,296 756,300 748,304" fill="#d97706"/>
+
+  <!-- Stage 4: Durable Writeback & Teardown -->
+  <g transform="translate(760, 115)">
+    <rect width="160" height="390" rx="12" fill="#0f172a" stroke="#059669" stroke-width="1.2" filter="url(#shadow)"/>
+    
+    <!-- Stage Header -->
+    <rect x="12" y="14" width="24" height="20" rx="5" fill="#059669"/>
+    <text x="24" y="28" text-anchor="middle" class="step-num">04</text>
+    <text x="44" y="29" class="box-title" fill="#34d399">回写与休眠</text>
+    <text x="14" y="52" class="box-desc">零泄露磁盘固化</text>
+
+    <!-- Sub-cards -->
+    <g transform="translate(12, 70)">
+      <rect width="136" height="85" rx="8" fill="#1e293b" stroke="#059669" stroke-opacity="0.4"/>
+      <text x="10" y="22" class="code-mono" fill="#6ee7b7" font-weight="700">memory_update</text>
+      <text x="10" y="42" class="box-desc">· 抽取核心认知条目</text>
+      <text x="10" y="60" class="box-desc">· 增量更新 MEMORY</text>
+      <text x="10" y="76" class="box-desc">· 绝对留存在本地</text>
+    </g>
+
+    <g transform="translate(12, 170)">
+      <rect width="136" height="95" rx="8" fill="#1e293b" stroke="#334155"/>
+      <text x="10" y="22" class="box-title" fill="#6ee7b7" font-size="12px">瞬态上下文丢弃</text>
+      <text x="10" y="42" class="box-desc">· 释放内存缓存</text>
+      <text x="10" y="60" class="box-desc">· 终端子进程退出</text>
+      <text x="10" y="78" class="box-desc">· 零 Token 残留泄露</text>
+    </g>
+
+    <g transform="translate(12, 280)">
+      <rect width="136" height="85" rx="8" fill="#1e293b" stroke="#334155"/>
+      <text x="10" y="22" class="box-title" fill="#6ee7b7" font-size="12px">常驻调度/就绪</text>
+      <text x="10" y="42" class="box-desc">· 等待下次唤醒</text>
+      <text x="10" y="60" class="box-desc">· 或由 Cron 触发</text>
+      <text x="10" y="76" class="box-desc">· 状态置为 <tspan fill="#94a3b8">IDLE</tspan></text>
+    </g>
+  </g>
+
+  <!-- Bottom Return Loop Path (4 back to 1) -->
+  <path d="M 840 507 C 840 535, 140 535, 140 507" fill="none" stroke="#10b981" stroke-width="1.8" stroke-dasharray="5 4"/>
+  <polygon points="144,510 140,503 136,510" fill="#10b981"/>
+  <rect x="420" y="525" width="180" height="22" rx="4" fill="#020617" stroke="#10b981" stroke-width="1"/>
+  <text x="510" y="540" text-anchor="middle" class="badge-text" fill="#34d399">跨会话增量记忆迭代闭环 (Local Disk Loop)</text>
+</svg>
