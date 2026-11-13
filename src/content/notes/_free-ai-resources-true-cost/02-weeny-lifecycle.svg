@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0a0a14"/><stop offset="100%" stop-color="#080812"/></linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1f293d" stroke-width="1" stroke-opacity="0.45"/></pattern>
+  </defs>
+  <rect width="1200" height="700" fill="url(#bg)"/><rect width="1200" height="700" fill="url(#grid)"/>
+  <rect x="50" y="45" width="1100" height="610" rx="20" fill="none" stroke="#2e384d" stroke-width="2" stroke-dasharray="10,6"/>
+  <rect x="88" y="78" width="286" height="34" rx="8" fill="#1e2433" stroke="#475569"/><circle cx="108" cy="95" r="5" fill="#f59e0b"/>
+  <text x="122" y="101" font-family="monospace" font-size="13" font-weight="700" fill="#94a3b8" letter-spacing="1">WEENY.CLOUD / LIFECYCLE</text>
+  <text x="88" y="166" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="32" font-weight="800" fill="#f8fafc">从排队到休眠：一台免费云主机的实际状态机</text>
+  <text x="88" y="204" font-family="-apple-system,'PingFang SC',sans-serif" font-size="17" fill="#94a3b8">官方写的是规格，实测走的是状态；「能跑 systemd」不等于「能跑常驻服务」。</text>
+
+  <g font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif">
+    <rect x="88" y="256" width="190" height="118" rx="12" fill="#1a1a24" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="106" y="286" font-family="monospace" font-size="12" fill="#fbbf24">STEP 1</text>
+    <text x="106" y="314" font-size="17" font-weight="700" fill="#f8fafc">注册</text>
+    <text x="106" y="340" font-size="14" fill="#94a3b8">第 863 位排队</text>
+    <text x="106" y="360" font-size="13" fill="#fca5a5">当时无免费名额</text>
+
+    <rect x="303" y="256" width="190" height="118" rx="12" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="321" y="286" font-family="monospace" font-size="12" fill="#7dd3fc">STEP 2</text>
+    <text x="321" y="314" font-size="17" font-weight="700" fill="#f8fafc">收到邮件</text>
+    <text x="321" y="340" font-size="14" fill="#94a3b8">名额保留 24 小时</text>
+
+    <rect x="518" y="256" width="190" height="118" rx="12" fill="#0c1a17" stroke="#34d399" stroke-width="2"/>
+    <text x="536" y="286" font-family="monospace" font-size="12" fill="#86efac">STEP 3 · RUNNING</text>
+    <text x="536" y="314" font-size="17" font-weight="700" fill="#f8fafc">机器开出</text>
+    <text x="536" y="340" font-size="13" fill="#94a3b8">1 vCPU / 1 GB / 10 GiB</text>
+    <text x="536" y="360" font-size="13" fill="#94a3b8">root + SSH + systemd + apt</text>
+
+    <rect x="733" y="256" width="190" height="118" rx="12" fill="#1a1a24" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="751" y="286" font-family="monospace" font-size="12" fill="#fbbf24">STEP 4</text>
+    <text x="751" y="314" font-size="17" font-weight="700" fill="#f8fafc">闲置 30 分钟</text>
+    <text x="751" y="340" font-size="14" fill="#94a3b8">触发自动休眠</text>
+
+    <rect x="948" y="256" width="164" height="118" rx="12" fill="#201317" stroke="#ef4444" stroke-width="2"/>
+    <text x="966" y="286" font-family="monospace" font-size="12" fill="#fca5a5">STEP 5 · SLEEP</text>
+    <text x="966" y="314" font-size="17" font-weight="700" fill="#f8fafc">睡着</text>
+    <text x="966" y="340" font-size="13" fill="#fca5a5">定时任务不可跑</text>
+    <text x="966" y="360" font-size="13" fill="#fca5a5">长连接不可保持</text>
+  </g>
+  <g font-family="monospace" font-size="20" fill="#64748b">
+    <text x="283" y="320">→</text><text x="498" y="320">→</text><text x="713" y="320">→</text><text x="928" y="320">→</text>
+  </g>
+
+  <g font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif">
+    <rect x="88" y="404" width="520" height="106" rx="12" fill="#0c1a17" stroke="#34d399" stroke-width="2"/>
+    <text x="110" y="436" font-family="monospace" font-size="12" font-weight="700" fill="#34d399">HTTPS DEPLOY · 不受影响</text>
+    <text x="110" y="466" font-size="16" fill="#d1fae5">部署走 HTTPS 正常，每个应用一个 *.onweeny.com</text>
+    <text x="110" y="490" font-size="14" fill="#94a3b8">云盒的 HTTP 代理足以完成部署链路</text>
+
+    <rect x="628" y="404" width="484" height="106" rx="12" fill="#201317" stroke="#ef4444" stroke-width="2"/>
+    <text x="650" y="436" font-family="monospace" font-size="12" font-weight="700" fill="#ef4444">SSH CLI · ENOTFOUND</text>
+    <text x="650" y="466" font-size="16" fill="#fca5a5">weeny-cloud ssh 在盒子里直接报 ENOTFOUND</text>
+    <text x="650" y="490" font-size="14" fill="#94a3b8">只有 HTTP 代理，解析不了 SSH 域名</text>
+  </g>
+
+  <rect x="88" y="536" width="1024" height="52" rx="10" fill="#141420" stroke="#2e384d"/>
+  <text x="106" y="568" font-family="-apple-system,'PingFang SC',sans-serif" font-size="14" fill="#cbd5e1">7 天 4 GB 试用后自动降回 1 GB　·　不绑卡　·　使用政策禁止开放代理 / VPN 出口 / 流量中转</text>
+  <text x="88" y="620" font-family="monospace" font-size="12" fill="#475569">判定：适合一次性 HTTPS 演示，不适合常驻服务与定时任务</text>
+</svg>

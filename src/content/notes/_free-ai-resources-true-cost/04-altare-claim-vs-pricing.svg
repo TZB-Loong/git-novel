@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0a0a14"/><stop offset="100%" stop-color="#080812"/></linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1f293d" stroke-width="1" stroke-opacity="0.45"/></pattern>
+  </defs>
+  <rect width="1200" height="700" fill="url(#bg)"/><rect width="1200" height="700" fill="url(#grid)"/>
+  <rect x="50" y="45" width="1100" height="610" rx="20" fill="none" stroke="#2e384d" stroke-width="2" stroke-dasharray="10,6"/>
+  <rect x="88" y="78" width="302" height="34" rx="8" fill="#1e2433" stroke="#475569"/><circle cx="108" cy="95" r="5" fill="#ef4444"/>
+  <text x="122" y="101" font-family="monospace" font-size="13" font-weight="700" fill="#94a3b8" letter-spacing="1">ALTARE / CLAIM VS PRICING</text>
+  <text x="88" y="166" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="32" font-weight="800" fill="#f8fafc">推文说错了：官方定价里根本不存在免费期</text>
+  <text x="88" y="204" font-family="-apple-system,'PingFang SC',sans-serif" font-size="17" fill="#94a3b8">同一家产品，AI 平台的计费和 Always Free 云平台是两套东西，别混为一谈。</text>
+
+  <g font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif">
+    <rect x="88" y="238" width="500" height="176" rx="12" fill="#201317" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="5,4"/>
+    <text x="110" y="270" font-family="monospace" font-size="12" font-weight="700" fill="#ef4444">推文（韩语 · 8.4k 浏览）</text>
+    <text x="110" y="304" font-size="18" fill="#fca5a5">12 月 1 日前「无限量免费 API」</text>
+    <text x="110" y="334" font-size="18" fill="#fca5a5">之后「每月 $100 免费额度」</text>
+    <line x1="110" y1="352" x2="566" y2="352" stroke="#7f1d1d" stroke-width="1"/>
+    <text x="110" y="382" font-size="14" fill="#94a3b8">评论区那条「最低 10 美元」才是对的。</text>
+    <text x="110" y="402" font-size="13" fill="#ef4444">✕ 两处宣称均与官方计费不符</text>
+
+    <rect x="608" y="238" width="504" height="176" rx="12" fill="#0f172a" stroke="#38bdf8" stroke-width="2"/>
+    <text x="630" y="270" font-family="monospace" font-size="12" font-weight="700" fill="#38bdf8">官方计费（只有两种）</text>
+    <text x="630" y="304" font-size="18" fill="#e2e8f0">Token Plan：每月 $10 起</text>
+    <text x="630" y="334" font-size="18" fill="#e2e8f0">或按量付费</text>
+    <line x1="630" y1="352" x2="1090" y2="352" stroke="#334155" stroke-width="1"/>
+    <text x="630" y="382" font-size="14" fill="#94a3b8">没有任何免费期，也没有 $100 / 月。</text>
+    <text x="630" y="402" font-size="13" fill="#38bdf8">✓ 以定价页原文为准</text>
+  </g>
+
+  <text x="88" y="452" font-family="-apple-system,'PingFang SC',sans-serif" font-size="16" font-weight="700" fill="#cbd5e1">但 Always Free 云平台是真的</text>
+  <rect x="88" y="464" width="1024" height="46" rx="8" fill="#0c1a17" stroke="#34d399"/>
+  <text x="106" y="493" font-family="-apple-system,'PingFang SC',sans-serif" font-size="14" fill="#d1fae5">6 GiB 内存　·　150% CPU　·　10 GiB 磁盘　·　4 台服务器　·　可 SSH 的 Linux 沙盒　·　Postgres / MySQL / Valkey</text>
+
+  <g font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif">
+    <rect x="88" y="526" width="1024" height="88" rx="12" fill="#201317" stroke="#ef4444" stroke-width="2"/>
+    <text x="110" y="556" font-family="monospace" font-size="12" font-weight="700" fill="#ef4444">实测卡点 · 前端 bug</text>
+    <text x="110" y="584" font-size="15" fill="#fca5a5">创建沙盒选中 Ubuntu 24.04 → 摘要显示「已选 Not 个」→ 继续按钮恒灰；换 Node.js 同一位置按钮正常亮。</text>
+    <text x="110" y="606" font-size="13" fill="#94a3b8">控制台持续 [useSSE] Connection error；换区域、先加 SSH 密钥、直点隐藏单选、键盘回车均无效。</text>
+  </g>
+  <text x="88" y="640" font-family="monospace" font-size="12" fill="#475569">判定：额度可用但控制台存在确定性前端故障，结论以「能否走完流程」为准，不以规格表为准</text>
+</svg>

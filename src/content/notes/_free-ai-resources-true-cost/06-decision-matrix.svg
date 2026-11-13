@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0a0a14"/><stop offset="100%" stop-color="#080812"/></linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1f293d" stroke-width="1" stroke-opacity="0.45"/></pattern>
+  </defs>
+  <rect width="1200" height="720" fill="url(#bg)"/><rect width="1200" height="720" fill="url(#grid)"/>
+  <rect x="50" y="45" width="1100" height="630" rx="20" fill="none" stroke="#2e384d" stroke-width="2" stroke-dasharray="10,6"/>
+  <rect x="88" y="78" width="300" height="34" rx="8" fill="#1e2433" stroke="#475569"/><circle cx="108" cy="95" r="5" fill="#34d399"/>
+  <text x="122" y="101" font-family="monospace" font-size="13" font-weight="700" fill="#94a3b8" letter-spacing="1">VERDICT / DECISION MATRIX</text>
+  <text x="88" y="166" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="32" font-weight="800" fill="#f8fafc">不是推荐清单，是一张判断依据表</text>
+  <text x="88" y="204" font-family="-apple-system,'PingFang SC',sans-serif" font-size="17" fill="#94a3b8">按「代价类型」分类，而不是按「哪家更好」排序；结论只来自 2026-11-13 这一轮实测。</text>
+
+  <g font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif">
+    <rect x="88" y="236" width="500" height="164" rx="12" fill="#0c1a17" stroke="#34d399" stroke-width="2"/>
+    <text x="110" y="270" font-family="monospace" font-size="12" font-weight="700" fill="#34d399">值得领 · 但按一次性资源对待</text>
+    <text x="110" y="302" font-size="16" font-weight="700" fill="#d1fae5">Dahl Inference（1 亿 token）</text>
+    <text x="110" y="328" font-size="14" fill="#e2e8f0">真实赠送、调用实测成功，已跑通 OpenAI 兼容接入</text>
+    <text x="110" y="352" font-size="13" fill="#94a3b8">前提：手动 allocate、7 天内要有请求、充值只收加密货币</text>
+    <text x="110" y="378" font-size="14" font-weight="700" fill="#d1fae5">Kiroween 4000 credits</text>
+    <text x="110" y="398" font-size="12" fill="#94a3b8">唯一走完流程领到的；先到先得、不保证，三个硬期限</text>
+
+    <rect x="608" y="236" width="504" height="164" rx="12" fill="#1a150f" stroke="#f59e0b" stroke-width="2"/>
+    <text x="630" y="270" font-family="monospace" font-size="12" font-weight="700" fill="#fbbf24">只当玩具 · 别接生产</text>
+    <text x="630" y="302" font-size="16" font-weight="700" fill="#fde68a">weeny.cloud（免费云主机）</text>
+    <text x="630" y="328" font-size="14" fill="#e2e8f0">30 分钟闲置休眠，定时任务 / 长连接不可承载</text>
+    <text x="630" y="352" font-size="13" fill="#94a3b8">禁开放代理 / VPN 出口 / 流量中转；SSH 域名在盒子里解析不了</text>
+    <text x="630" y="378" font-size="14" font-weight="700" fill="#fde68a">Altare Always Free 云平台</text>
+    <text x="630" y="398" font-size="12" fill="#94a3b8">规格是真的，但 Ubuntu 24.04 那条创建链路存在确定性前端故障</text>
+  </g>
+
+  <g font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif">
+    <rect x="88" y="416" width="1024" height="112" rx="12" fill="#201317" stroke="#ef4444" stroke-width="2"/>
+    <text x="110" y="450" font-family="monospace" font-size="12" font-weight="700" fill="#ef4444">别碰项目数据</text>
+    <text x="110" y="482" font-size="16" font-weight="700" fill="#fca5a5">coarena.ai（每天 $5 额度）· Meta Muse（地区墙 + 通行密钥墙）</text>
+    <text x="110" y="508" font-size="14" fill="#e2e8f0">coarena 官方明文：提示词与输出永久保存、授权给 AI 实验室、不可撤回，并主动劝退代码 / 密钥 / 私有仓库 / 个人信息；本轮决定放弃。</text>
+  </g>
+
+  <rect x="88" y="546" width="1024" height="86" rx="12" fill="#141420" stroke="#2e384d"/>
+  <text x="110" y="578" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="15" font-weight="700" fill="#cbd5e1">四条可复用的判断规则</text>
+  <text x="110" y="604" font-family="-apple-system,'PingFang SC',sans-serif" font-size="13" fill="#94a3b8">① 额度看倒计时与领取动作，不看宣传数字　②「免费」先读数据授权条款　③ 规格表不算数，流程能走完才算数</text>
+  <text x="110" y="624" font-family="-apple-system,'PingFang SC',sans-serif" font-size="13" fill="#94a3b8">④ 推文里出现「无限 / 永久 / $100 每月」这类绝对化措辞时，先去定价页核一遍</text>
+
+  <text x="88" y="660" font-family="monospace" font-size="12" fill="#475569">来源均为文末列出的官方页面；本文不含任何推荐返利、不含任何密钥或指纹的具体值</text>
+</svg>

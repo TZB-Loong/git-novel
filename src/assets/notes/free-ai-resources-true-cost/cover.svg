@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0a14"/><stop offset="55%" stop-color="#121324"/><stop offset="100%" stop-color="#05050d"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b"/><stop offset="55%" stop-color="#ef4444"/><stop offset="100%" stop-color="#ec4899"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1f293d" stroke-width="1" stroke-opacity="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect x="50" y="50" width="1100" height="530" rx="20" fill="none" stroke="#2e384d" stroke-width="2" stroke-dasharray="10,6"/>
+
+  <rect x="90" y="86" width="300" height="36" rx="8" fill="#1e2433" stroke="#475569" stroke-width="1"/>
+  <circle cx="112" cy="104" r="6" fill="#f59e0b"/>
+  <text x="128" y="110" font-family="monospace" font-size="14" font-weight="700" fill="#94a3b8" letter-spacing="1">FIELD AUDIT / 2026-11-13</text>
+
+  <text x="90" y="188" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="46" font-weight="800" fill="#f8fafc">「免费」的真实价签</text>
+  <text x="90" y="236" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="23" font-weight="600" fill="url(#accent)">把「无限免费」推文逐条拆到官方条款与实测</text>
+  <text x="90" y="270" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="15" fill="#64748b">六家资源 · 一手实测 · 三列对照 · 不写安利</text>
+
+  <g font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif">
+    <rect x="90" y="300" width="320" height="112" rx="12" fill="#18181b" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="5,4"/>
+    <text x="112" y="328" font-family="monospace" font-size="12" font-weight="700" fill="#ef4444">01 / CLAIM</text>
+    <text x="112" y="358" font-size="19" font-weight="700" fill="#fca5a5">传播口径</text>
+    <text x="112" y="386" font-size="14" fill="#94a3b8">「无限免费」「送 1 亿」</text>
+
+    <text x="424" y="362" font-size="26" fill="#64748b">→</text>
+
+    <rect x="455" y="300" width="320" height="112" rx="12" fill="#0f172a" stroke="#38bdf8" stroke-width="2"/>
+    <text x="477" y="328" font-family="monospace" font-size="12" font-weight="700" fill="#38bdf8">02 / TERMS</text>
+    <text x="477" y="358" font-size="19" font-weight="700" fill="#e2e8f0">官方条款原文</text>
+    <text x="477" y="386" font-size="14" fill="#94a3b8">定价页 · 使用政策 · 数据授权</text>
+
+    <text x="789" y="362" font-size="26" fill="#64748b">→</text>
+
+    <rect x="820" y="300" width="290" height="112" rx="12" fill="#0c1a17" stroke="#34d399" stroke-width="2"/>
+    <text x="842" y="328" font-family="monospace" font-size="12" font-weight="700" fill="#34d399">03 / OBSERVED</text>
+    <text x="842" y="358" font-size="19" font-weight="700" fill="#d1fae5">实测结果</text>
+    <text x="842" y="386" font-size="14" fill="#94a3b8">注册 · 调用 · 部署</text>
+  </g>
+
+  <g font-family="-apple-system, 'PingFang SC', sans-serif">
+    <rect x="90" y="448" width="170" height="44" rx="8" fill="#1a1a24" stroke="#2e384d"/>
+    <circle cx="108" cy="470" r="5" fill="#f59e0b"/><text x="122" y="476" font-size="13" fill="#e2e8f0">weeny · 排队</text>
+    <rect x="272" y="448" width="170" height="44" rx="8" fill="#1a1a24" stroke="#2e384d"/>
+    <circle cx="290" cy="470" r="5" fill="#34d399"/><text x="304" y="476" font-size="13" fill="#e2e8f0">Dahl · 真送</text>
+    <rect x="454" y="448" width="170" height="44" rx="8" fill="#1a1a24" stroke="#2e384d"/>
+    <circle cx="472" cy="470" r="5" fill="#ef4444"/><text x="486" y="476" font-size="13" fill="#e2e8f0">Altare · 打脸</text>
+    <rect x="636" y="448" width="170" height="44" rx="8" fill="#1a1a24" stroke="#2e384d"/>
+    <circle cx="654" cy="470" r="5" fill="#ef4444"/><text x="668" y="476" font-size="13" fill="#e2e8f0">coarena · 留档</text>
+    <rect x="818" y="448" width="170" height="44" rx="8" fill="#1a1a24" stroke="#2e384d"/>
+    <circle cx="836" cy="470" r="5" fill="#ef4444"/><text x="850" y="476" font-size="13" fill="#e2e8f0">Muse · 地区墙</text>
+    <rect x="1000" y="448" width="170" height="44" rx="8" fill="#1a1a24" stroke="#2e384d"/>
+    <circle cx="1018" cy="470" r="5" fill="#34d399"/><text x="1032" y="476" font-size="13" fill="#e2e8f0">Kiro · 领到</text>
+  </g>
+
+  <text x="90" y="532" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="16" fill="#94a3b8">真正的成本：名额 / 时间 · 额度有效期 · 数据授权 · 地区与身份 · 前端是否点得下去</text>
+  <text x="90" y="566" font-family="monospace" font-size="12" fill="#475569">git-novel / field note / 推文宣称 vs 官方条款</text>
+</svg>

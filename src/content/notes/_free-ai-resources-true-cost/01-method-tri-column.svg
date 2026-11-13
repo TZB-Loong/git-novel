@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="660" viewBox="0 0 1200 660">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0a0a14"/><stop offset="100%" stop-color="#080812"/></linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1f293d" stroke-width="1" stroke-opacity="0.45"/></pattern>
+  </defs>
+  <rect width="1200" height="660" fill="url(#bg)"/><rect width="1200" height="660" fill="url(#grid)"/>
+  <rect x="50" y="45" width="1100" height="570" rx="20" fill="none" stroke="#2e384d" stroke-width="2" stroke-dasharray="10,6"/>
+  <rect x="88" y="80" width="272" height="34" rx="8" fill="#1e2433" stroke="#475569"/><circle cx="108" cy="97" r="5" fill="#38bdf8"/>
+  <text x="122" y="103" font-family="monospace" font-size="13" font-weight="700" fill="#94a3b8" letter-spacing="1">METHOD / THREE COLUMNS</text>
+  <text x="88" y="168" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="32" font-weight="800" fill="#f8fafc">三列并排：以官方条款与一次真实调用为准</text>
+  <text x="88" y="206" font-family="-apple-system,'PingFang SC',sans-serif" font-size="17" fill="#94a3b8">推文是待验证的宣称，不是结论；三列不一致时，直接标差异，不替任何一方圆场。</text>
+
+  <g font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif">
+    <rect x="88" y="240" width="330" height="266" rx="14" fill="#18181b" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="5,4"/>
+    <text x="112" y="276" font-family="monospace" font-size="13" font-weight="700" fill="#ef4444">① CLAIM / 传播口径</text>
+    <text x="112" y="312" font-size="15" fill="#fca5a5">「12 月 1 日前无限量免费 API」</text>
+    <text x="112" y="342" font-size="15" fill="#fca5a5">「免费搭工作台」</text>
+    <text x="112" y="372" font-size="15" fill="#fca5a5">「注册送 1 亿 token」</text>
+    <text x="112" y="402" font-size="15" fill="#fca5a5">「每天 $5 额度」</text>
+    <line x1="112" y1="424" x2="394" y2="424" stroke="#3f3f46" stroke-width="1"/>
+    <text x="112" y="452" font-size="13" fill="#71717a">本轮未逐字存档的推文，</text>
+    <text x="112" y="474" font-size="13" fill="#71717a">只记其主张，不补文案细节。</text>
+
+    <rect x="435" y="240" width="330" height="266" rx="14" fill="#0f172a" stroke="#38bdf8" stroke-width="2"/>
+    <text x="459" y="276" font-family="monospace" font-size="13" font-weight="700" fill="#38bdf8">② TERMS / 官方条款原文</text>
+    <text x="459" y="312" font-size="15" fill="#e2e8f0">定价页 / 文档 / 使用政策</text>
+    <text x="459" y="342" font-size="15" fill="#e2e8f0">Token Plan 每月 $10 起，或按量付费</text>
+    <text x="459" y="372" font-size="15" fill="#e2e8f0">提示词与输出永久保存、授权给实验室</text>
+    <text x="459" y="402" font-size="15" fill="#e2e8f0">7 天不发请求，赠送额度清零</text>
+    <line x1="459" y1="424" x2="741" y2="424" stroke="#334155" stroke-width="1"/>
+    <text x="459" y="452" font-size="13" fill="#94a3b8">条款写了什么，就是什么；</text>
+    <text x="459" y="474" font-size="13" fill="#94a3b8">「评论区有人纠正」也一并记下。</text>
+
+    <rect x="782" y="240" width="330" height="266" rx="14" fill="#0c1a17" stroke="#34d399" stroke-width="2"/>
+    <text x="806" y="276" font-family="monospace" font-size="13" font-weight="700" fill="#34d399">③ OBSERVED / 实测结果</text>
+    <text x="806" y="312" font-size="15" fill="#d1fae5">注册第 863 位排队</text>
+    <text x="806" y="342" font-size="15" fill="#d1fae5">继续按钮恒灰，选中项显示异常</text>
+    <text x="806" y="372" font-size="15" fill="#d1fae5">「尚未在你的国家或地区开放」</text>
+    <text x="806" y="402" font-size="15" fill="#d1fae5">调用成功，消耗 63 token</text>
+    <line x1="806" y1="424" x2="1088" y2="424" stroke="#334155" stroke-width="1"/>
+    <text x="806" y="452" font-size="13" fill="#94a3b8">2026-11-13 当天，</text>
+    <text x="806" y="474" font-size="13" fill="#94a3b8">注册 / 调用 / 部署的真实回执。</text>
+  </g>
+
+  <text x="410" y="230" font-family="monospace" font-size="12" fill="#64748b">核对 →</text>
+  <text x="757" y="230" font-family="monospace" font-size="12" fill="#64748b">验证 →</text>
+
+  <text x="88" y="546" font-family="-apple-system,'PingFang SC',sans-serif" font-size="15" font-weight="700" fill="#cbd5e1">四类代价，逐家都要落到这四条上</text>
+  <g font-family="-apple-system,'PingFang SC',sans-serif" font-size="14">
+    <rect x="88" y="560" width="248" height="44" rx="8" fill="#1a1a24" stroke="#f59e0b"/><text x="106" y="588" fill="#fbbf24">名额 / 排队 / 时间</text>
+    <rect x="348" y="560" width="248" height="44" rx="8" fill="#1a1a24" stroke="#38bdf8"/><text x="366" y="588" fill="#7dd3fc">额度有效期与领取动作</text>
+    <rect x="608" y="560" width="248" height="44" rx="8" fill="#1a1a24" stroke="#ef4444"/><text x="626" y="588" fill="#fca5a5">数据授权条款</text>
+    <rect x="868" y="560" width="244" height="44" rx="8" fill="#1a1a24" stroke="#34d399"/><text x="886" y="588" fill="#86efac">可用性：地区·身份·前端</text>
+  </g>
+</svg>
