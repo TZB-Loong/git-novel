@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bgGradH3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#030712" />
+      <stop offset="50%" stop-color="#0B1329" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+    <linearGradient id="cyanGradH3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06B6D4" />
+      <stop offset="100%" stop-color="#3B82F6" />
+    </linearGradient>
+    <linearGradient id="emeraldGradH3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+    <linearGradient id="amberGradH3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#D97706" />
+    </linearGradient>
+    <linearGradient id="cardGradH3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#0F172A" stop-opacity="0.8" />
+    </linearGradient>
+    <filter id="glowH3" x="-25%" y="-25%" width="150%" height="150%">
+      <feGaussianBlur stdDeviation="22" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bgGradH3)" />
+
+  <g opacity="0.12" stroke="#64748B" stroke-width="1">
+    <path d="M0,75 H1200 M0,150 H1200 M0,225 H1200 M0,300 H1200 M0,375 H1200 M0,450 H1200 M0,525 H1200 M0,600 H1200" />
+    <path d="M100,0 V675 M200,0 V675 M300,0 V675 M400,0 V675 M500,0 V675 M600,0 V675 M700,0 V675 M800,0 V675 M900,0 V675 M1000,0 V675 M1100,0 V675" />
+  </g>
+
+  <circle cx="180" cy="180" r="150" fill="#3B82F6" opacity="0.13" filter="url(#glowH3)" />
+  <circle cx="560" cy="380" r="200" fill="#06B6D4" opacity="0.10" filter="url(#glowH3)" />
+  <circle cx="1010" cy="500" r="180" fill="#10B981" opacity="0.12" filter="url(#glowH3)" />
+  <circle cx="900" cy="150" r="140" fill="#F59E0B" opacity="0.10" filter="url(#glowH3)" />
+
+  <g transform="translate(80, 56)">
+    <rect width="392" height="34" rx="17" fill="#1E293B" stroke="#38BDF8" stroke-width="1.2" opacity="0.95" />
+    <circle cx="18" cy="17" r="5" fill="#38BDF8" />
+    <text x="34" y="22" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#E2E8F0" letter-spacing="0.5">LOCAL BENCHMARK · MiniMax-H3 on 48GB Mac</text>
+  </g>
+
+  <text x="80" y="145" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="46" font-weight="800" fill="#FFFFFF" letter-spacing="-0.5">MiniMax-H3 本地实测</text>
+  <text x="80" y="196" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="600" fill="#38BDF8" letter-spacing="0.2">33B 全模态模型在 48GB Mac 上的三条落地路线</text>
+  <text x="80" y="236" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" fill="#94A3B8">全量 33B · 剪枝 13.7B · two-time 少步采样 · 身份一致性 · 许可证边界</text>
+
+  <g transform="translate(80, 300)">
+    <rect width="196" height="132" rx="14" fill="url(#cardGradH3)" stroke="#3B82F6" stroke-width="1.4" />
+    <text x="16" y="26" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" font-weight="700" fill="#93C5FD">33B Q8 · MLX 分阶段</text>
+    <text x="16" y="76" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="34" font-weight="800" fill="#FFFFFF">32m16s</text>
+    <text x="16" y="102" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10.5" fill="#94A3B8">896×512 / 124f / 6 evals</text>
+    <text x="16" y="120" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10.5" fill="#64748B">采样占 83%</text>
+  </g>
+
+  <g transform="translate(300, 300)">
+    <rect width="196" height="132" rx="14" fill="url(#cardGradH3)" stroke="#10B981" stroke-width="1.4" />
+    <text x="16" y="26" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" font-weight="700" fill="#6EE7B7">13.7B Q4 · ComfyUI MPS</text>
+    <text x="16" y="76" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="34" font-weight="800" fill="#FFFFFF">296.7s</text>
+    <text x="16" y="102" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10.5" fill="#94A3B8">672×384 / 73f / 4 步</text>
+    <text x="16" y="120" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10.5" fill="#64748B">含 110s 加载</text>
+  </g>
+
+  <g transform="translate(520, 300)">
+    <rect width="196" height="132" rx="14" fill="url(#cardGradH3)" stroke="#F59E0B" stroke-width="1.4" />
+    <text x="16" y="26" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" font-weight="700" fill="#FCD34D">单步成本</text>
+    <text x="16" y="76" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="34" font-weight="800" fill="#FFFFFF">46.6s</text>
+    <text x="16" y="102" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10.5" fill="#94A3B8">4,788 token → 9.7 ms/token</text>
+    <text x="16" y="120" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10.5" fill="#64748B">约 4090 的 12–16 倍</text>
+  </g>
+
+  <g transform="translate(760, 292)">
+    <text x="0" y="14" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" font-weight="800" fill="#E2E8F0">48GB 内存台阶</text>
+
+    <path d="M0,196 H340" stroke="#EF4444" stroke-width="1.6" stroke-dasharray="6,4" />
+    <text x="0" y="192" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9.5" font-weight="700" fill="#F87171">48GB 上限</text>
+
+    <rect x="12" y="40" width="44" height="156" rx="5" fill="#7F1D1D" />
+    <text x="34" y="32" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10" font-weight="700" fill="#FCA5A5">113.5</text>
+    <text x="34" y="212" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9" fill="#64748B">bf16</text>
+
+    <rect x="86" y="126" width="44" height="70" rx="5" fill="#9A3412" />
+    <text x="108" y="118" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10" font-weight="700" fill="#FDBA74">63.5</text>
+    <text x="108" y="212" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9" fill="#64748B">int8</text>
+
+    <rect x="160" y="157" width="44" height="39" rx="5" fill="#B45309" />
+    <text x="182" y="149" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10" font-weight="700" fill="#FCD34D">41.1</text>
+    <text x="182" y="212" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9" fill="#64748B">Q8</text>
+
+    <rect x="234" y="167" width="44" height="29" rx="5" fill="url(#emeraldGradH3)" />
+    <text x="256" y="159" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10" font-weight="700" fill="#6EE7B7">31.2</text>
+    <text x="256" y="212" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9" fill="#64748B">Q4</text>
+
+    <rect x="300" y="169" width="44" height="27" rx="5" fill="url(#emeraldGradH3)" opacity="0.85" />
+    <text x="322" y="161" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10" font-weight="700" fill="#6EE7B7">30.2</text>
+    <text x="322" y="212" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9" fill="#64748B">13.7B</text>
+  </g>
+
+  <g transform="translate(80, 470)">
+    <rect width="636" height="62" rx="10" fill="#0B1220" stroke="#1E293B" stroke-width="1" />
+    <text x="16" y="25" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" fill="#E2E8F0">开源的只有生成主干：Context-IR 与 Regenerate-2K 仍在云端</text>
+    <text x="16" y="46" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" fill="#94A3B8">输入文本 / 图 / 视频 / 音频 → 输出带原生 32kHz 立体声的视频（4–15 秒，最高 2K）</text>
+  </g>
+
+  <g transform="translate(760, 470)">
+    <rect width="360" height="62" rx="10" fill="#2A1215" stroke="#7F1D1D" stroke-width="1" />
+    <text x="14" y="24" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" font-weight="700" fill="#FCA5A5">实测爆点 51.7GB</text>
+    <text x="14" y="44" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10" fill="#F87171">峰值出现在加载阶段，不是采样阶段</text>
+  </g>
+
+  <text x="80" y="610" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="700" fill="#38BDF8">git-novel</text>
+  <text x="160" y="610" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" fill="#475569">· 本地实测记录 · Mac mini M4 Pro / 48GB 统一内存</text>
+</svg>

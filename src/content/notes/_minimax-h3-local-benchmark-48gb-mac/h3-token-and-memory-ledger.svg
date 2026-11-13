@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540">
+  <defs>
+    <linearGradient id="bgGradF2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050B14" />
+      <stop offset="50%" stop-color="#0D192E" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+    <linearGradient id="barCyanF2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0E7490" />
+      <stop offset="100%" stop-color="#22D3EE" />
+    </linearGradient>
+    <linearGradient id="barGreenF2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#34D399" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+    <linearGradient id="barAmberF2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FBBF24" />
+      <stop offset="100%" stop-color="#D97706" />
+    </linearGradient>
+    <linearGradient id="barRedF2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#F87171" />
+      <stop offset="100%" stop-color="#B91C1C" />
+    </linearGradient>
+    <filter id="glowF2" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="12" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <rect width="960" height="540" fill="url(#bgGradF2)" />
+
+  <g opacity="0.09" stroke="#64748B" stroke-width="1">
+    <path d="M0,60 H960 M0,120 H960 M0,180 H960 M0,240 H960 M0,300 H960 M0,360 H960 M0,420 H960 M0,480 H960" />
+    <path d="M80,0 V540 M160,0 V540 M240,0 V540 M320,0 V540 M400,0 V540 M480,0 V540 M560,0 V540 M640,0 V540 M720,0 V540 M800,0 V540 M880,0 V540" />
+  </g>
+
+  <circle cx="220" cy="300" r="150" fill="#06B6D4" opacity="0.08" filter="url(#glowF2)" />
+  <circle cx="760" cy="280" r="150" fill="#F59E0B" opacity="0.08" filter="url(#glowF2)" />
+
+  <text x="480" y="38" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="20" font-weight="800" fill="#F8FAFC">两本账：token 规模决定算力，权重体积决定能否装下</text>
+  <text x="480" y="62" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#94A3B8">左：同一段视频在不同分辨率/帧数下的 token 数　右：各量化组合的权重合计与 48GB 天花板</text>
+
+  <g transform="translate(30, 88)">
+    <rect width="430" height="424" rx="12" fill="#0B1220" stroke="#1E293B" stroke-width="1" />
+    <text x="18" y="28" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="800" fill="#22D3EE">Token 账本（32× 空间 / 4× 时间压缩）</text>
+    <text x="18" y="48" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10.5" fill="#64748B">tokens = (W/32) × (H/32) × (⌊(F−1)/4⌋ + 1)，帧数必须落在 17n+5 网格</text>
+
+    <g transform="translate(18, 74)">
+      <text x="0" y="10" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" fill="#CBD5E1">672×384 · 73f · 3.0s</text>
+      <rect x="0" y="18" width="395" height="26" rx="6" fill="#0F172A" />
+      <rect x="0" y="18" width="21" height="26" rx="6" fill="url(#barCyanF2)" />
+      <text x="30" y="36" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" font-weight="700" fill="#A5F3FC">4,788</text>
+    </g>
+
+    <g transform="translate(18, 136)">
+      <text x="0" y="10" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" fill="#CBD5E1">896×512 · 124f · 5.2s</text>
+      <rect x="0" y="18" width="395" height="26" rx="6" fill="#0F172A" />
+      <rect x="0" y="18" width="60" height="26" rx="6" fill="url(#barCyanF2)" />
+      <text x="70" y="36" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" font-weight="700" fill="#A5F3FC">13,888</text>
+    </g>
+
+    <g transform="translate(18, 198)">
+      <text x="0" y="10" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" fill="#CBD5E1">1344×768 · 124f · 5.2s</text>
+      <rect x="0" y="18" width="395" height="26" rx="6" fill="#0F172A" />
+      <rect x="0" y="18" width="135" height="26" rx="6" fill="url(#barCyanF2)" />
+      <text x="145" y="36" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" font-weight="700" fill="#A5F3FC">31,248</text>
+    </g>
+
+    <g transform="translate(18, 260)">
+      <text x="0" y="10" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" fill="#CBD5E1">1344×768 · 362f · 15.1s（上限）</text>
+      <rect x="0" y="18" width="395" height="26" rx="6" fill="#0F172A" />
+      <rect x="0" y="18" width="394" height="26" rx="6" fill="url(#barAmberF2)" />
+      <text x="286" y="36" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" font-weight="800" fill="#1F2937">91,248</text>
+    </g>
+
+    <rect x="18" y="312" width="394" height="94" rx="8" fill="#0B1220" stroke="#334155" stroke-width="1" />
+    <text x="30" y="334" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" fill="#F8FAFC">同一段 5 秒：从 672×384 提到 1344×768</text>
+    <text x="30" y="356" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" fill="#FBBF24">token ×6.5，注意力成本按超线性继续放大</text>
+    <text x="30" y="380" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10.5" fill="#94A3B8">所以“本地能不能出 768p”不是画质选择题，</text>
+    <text x="30" y="398" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10.5" fill="#94A3B8">而是算力预算题。</text>
+  </g>
+
+  <g transform="translate(500, 88)">
+    <rect width="430" height="424" rx="12" fill="#0B1220" stroke="#1E293B" stroke-width="1" />
+    <text x="18" y="28" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="800" fill="#FBBF24">权重账本（主干 + 编码器 + VAE）</text>
+    <text x="18" y="48" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10.5" fill="#64748B">横线是 48GB 物理上限；虚线是扣掉系统占用后的可用预算</text>
+
+    <g transform="translate(0, 0)">
+      <path d="M60,320 H410" stroke="#475569" stroke-width="1" stroke-dasharray="4,4" />
+      <path d="M60,272 H410" stroke="#EF4444" stroke-width="1.6" stroke-dasharray="6,4" />
+      <text x="18" y="324" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10" fill="#64748B">38GB</text>
+      <text x="12" y="268" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10" font-weight="700" fill="#F87171">48GB</text>
+    </g>
+
+    <g transform="translate(80, 0)">
+      <rect x="0" y="96" width="52" height="224" rx="5" fill="url(#barRedF2)" />
+      <text x="26" y="88" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" font-weight="800" fill="#FCA5A5">113.5</text>
+      <text x="26" y="336" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9.5" fill="#94A3B8">bf16 全</text>
+    </g>
+    <g transform="translate(160, 0)">
+      <rect x="0" y="232" width="52" height="88" rx="5" fill="url(#barRedF2)" />
+      <text x="26" y="224" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" font-weight="800" fill="#FCA5A5">63.5</text>
+      <text x="26" y="336" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9.5" fill="#94A3B8">int8</text>
+    </g>
+    <g transform="translate(240, 0)">
+      <rect x="0" y="276" width="52" height="44" rx="5" fill="url(#barAmberF2)" />
+      <text x="26" y="268" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" font-weight="800" fill="#FCD34D">41.1</text>
+      <text x="26" y="336" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9.5" fill="#94A3B8">Q8+fp4</text>
+    </g>
+    <g transform="translate(320, 0)">
+      <rect x="0" y="294" width="52" height="26" rx="5" fill="url(#barGreenF2)" />
+      <text x="26" y="286" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" font-weight="800" fill="#6EE7B7">31.2</text>
+      <text x="26" y="336" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9.5" fill="#94A3B8">Q4+fp4</text>
+    </g>
+    <g transform="translate(400, 0)">
+      <rect x="0" y="297" width="52" height="23" rx="5" fill="url(#barGreenF2)" />
+      <text x="26" y="289" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" font-weight="800" fill="#6EE7B7">30.2</text>
+      <text x="26" y="336" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9.5" fill="#94A3B8">13.7B Q4</text>
+    </g>
+
+    <g transform="translate(18, 356)">
+      <rect width="394" height="52" rx="8" fill="#2A1215" stroke="#7F1D1D" stroke-width="1" />
+      <text x="12" y="20" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10.5" fill="#FCA5A5">实测爆点：512p 用 bf16 文本编码器，加载期峰值 51.7GB → 已越线</text>
+      <text x="12" y="40" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10.5" fill="#FCA5A5">换 8bit resident 编码器后，采样期才装得下（每步 ~260s）</text>
+    </g>
+  </g>
+</svg>

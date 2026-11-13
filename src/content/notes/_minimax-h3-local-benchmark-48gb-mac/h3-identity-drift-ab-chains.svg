@@ -1,0 +1,149 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540">
+  <defs>
+    <linearGradient id="bgGradF5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050B14" />
+      <stop offset="50%" stop-color="#0D192E" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+    <linearGradient id="cardAF5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7F1D1D" />
+      <stop offset="100%" stop-color="#450A0A" />
+    </linearGradient>
+    <linearGradient id="cardBF5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#065F46" />
+      <stop offset="100%" stop-color="#022C22" />
+    </linearGradient>
+    <linearGradient id="rangeGoodF5" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669" />
+      <stop offset="100%" stop-color="#34D399" />
+    </linearGradient>
+    <filter id="glowF5" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="10" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <marker id="arrowRedF5" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#F87171" />
+    </marker>
+    <marker id="arrowGreenF5" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#34D399" />
+    </marker>
+  </defs>
+
+  <rect width="960" height="540" fill="url(#bgGradF5)" />
+
+  <g opacity="0.08" stroke="#64748B" stroke-width="1">
+    <path d="M0,60 H960 M0,120 H960 M0,180 H960 M0,240 H960 M0,300 H960 M0,360 H960 M0,420 H960 M0,480 H960" />
+    <path d="M80,0 V540 M160,0 V540 M240,0 V540 M320,0 V540 M400,0 V540 M480,0 V540 M560,0 V540 M640,0 V540 M720,0 V540 M800,0 V540 M880,0 V540" />
+  </g>
+
+  <text x="480" y="38" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="20" font-weight="800" fill="#F8FAFC">身份漂移的两条链路：接力会把错误传下去，固定参考不会</text>
+  <text x="480" y="62" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#94A3B8">左：FL2VA 首尾帧接力 vs Ref2VA 固定参考　右：本机 arcface 余弦实测分布（同人判定）</text>
+
+  <g transform="translate(30, 88)">
+    <rect width="520" height="424" rx="12" fill="#0B1220" stroke="#1E293B" stroke-width="1" />
+    <text x="18" y="26" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" font-weight="800" fill="#F87171">A 链 · FL2VA 首尾帧接力</text>
+
+    <g transform="translate(18, 40)">
+      <rect x="0" y="0" width="118" height="58" rx="8" fill="url(#cardAF5)" stroke="#B91C1C" stroke-width="1" />
+      <text x="10" y="22" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" font-weight="700" fill="#FECACA">镜 S1</text>
+      <text x="10" y="40" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9.5" fill="#FCA5A5">首帧 + 尾帧生成</text>
+
+      <rect x="160" y="0" width="118" height="58" rx="8" fill="url(#cardAF5)" stroke="#B91C1C" stroke-width="1" />
+      <text x="10" y="22" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" font-weight="700" fill="#FECACA">镜 S2</text>
+      <text x="10" y="40" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9.5" fill="#FCA5A5">首帧 = S1 实际尾帧</text>
+
+      <rect x="320" y="0" width="118" height="58" rx="8" fill="url(#cardAF5)" stroke="#B91C1C" stroke-width="1" />
+      <text x="10" y="22" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" font-weight="700" fill="#FECACA">镜 S3</text>
+      <text x="10" y="40" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9.5" fill="#FCA5A5">首帧 = S2 实际尾帧</text>
+
+      <path d="M120,29 H156" stroke="#F87171" stroke-width="1.8" marker-end="url(#arrowRedF5)" />
+      <path d="M280,29 H316" stroke="#F87171" stroke-width="1.8" marker-end="url(#arrowRedF5)" />
+    </g>
+
+    <path d="M78,104 C120,132 180,132 218,104" stroke="#F87171" stroke-width="1.4" fill="none" stroke-dasharray="4,4" opacity="0.6" />
+    <text x="150" y="140" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9.5" fill="#FCA5A5">上一镜的偏差被当成条件写进下一镜</text>
+
+    <g transform="translate(18, 158)">
+      <rect width="484" height="40" rx="8" fill="#2A1215" stroke="#7F1D1D" stroke-width="1" />
+      <text x="12" y="16" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10.5" font-weight="700" fill="#FCA5A5">误差累积 · 构图稳，身份不稳</text>
+      <text x="12" y="32" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10" fill="#F87171">跨镜 0.735 / 0.868 / 0.782 的“稳定”，主要来自锁构图，不等于身份更强。</text>
+    </g>
+
+    <line x1="18" y1="214" x2="502" y2="214" stroke="#1E293B" stroke-width="1" />
+
+    <text x="18" y="238" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" font-weight="800" fill="#34D399">B 链 · Ref2VA 固定参考</text>
+
+    <g transform="translate(18, 252)">
+      <rect x="0" y="34" width="104" height="52" rx="8" fill="#0F172A" stroke="#0D9488" stroke-width="1.4" />
+      <text x="10" y="55" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10.5" font-weight="700" fill="#5EEAD4">同一张</text>
+      <text x="10" y="72" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10.5" font-weight="700" fill="#5EEAD4">高清锚图</text>
+
+      <g transform="translate(140, 0)">
+        <rect width="106" height="40" rx="7" fill="url(#cardBF5)" stroke="#059669" stroke-width="1" />
+        <text x="10" y="17" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10.5" font-weight="700" fill="#A7F3D0">镜 S1</text>
+        <text x="10" y="32" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9" fill="#6EE7B7">锚图 + 提示词</text>
+
+        <rect x="0" y="46" width="106" height="40" rx="7" fill="url(#cardBF5)" stroke="#059669" stroke-width="1" />
+        <text x="10" y="63" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10.5" font-weight="700" fill="#A7F3D0">镜 S2</text>
+        <text x="10" y="78" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9" fill="#6EE7B7">锚图 + 提示词</text>
+
+        <rect x="0" y="92" width="106" height="40" rx="7" fill="url(#cardBF5)" stroke="#059669" stroke-width="1" />
+        <text x="10" y="109" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10.5" font-weight="700" fill="#A7F3D0">镜 S3</text>
+        <text x="10" y="124" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9" fill="#6EE7B7">锚图 + 提示词</text>
+      </g>
+
+      <path d="M108,60 L136,48" stroke="#34D399" stroke-width="1.6" marker-end="url(#arrowGreenF5)" />
+      <path d="M108,60 L136,94" stroke="#34D399" stroke-width="1.6" marker-end="url(#arrowGreenF5)" />
+      <path d="M108,60 L136,140" stroke="#34D399" stroke-width="1.6" marker-end="url(#arrowGreenF5)" />
+    </g>
+
+    <g transform="translate(18, 390)">
+      <rect width="484" height="34" rx="8" fill="#052E2B" stroke="#0D9488" stroke-width="1" />
+      <text x="12" y="22" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10.5" fill="#99F6E4">结构上不继承上一镜的错误：锚点是什么，每一镜就锚回什么。</text>
+    </g>
+  </g>
+
+  <g transform="translate(570, 88)">
+    <rect width="360" height="424" rx="12" fill="#0B1220" stroke="#1E293B" stroke-width="1" />
+    <text x="18" y="26" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" font-weight="800" fill="#F8FAFC">arcface 实测（余弦相似度）</text>
+    <text x="18" y="46" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10" fill="#64748B">0 = 无关，1 = 同一张脸；0.6 以上视为强同人</text>
+
+    <g transform="translate(30, 66)">
+      <path d="M30,0 V300" stroke="#334155" stroke-width="1" />
+      <path d="M30,270 H310" stroke="#334155" stroke-width="1" />
+      <path d="M30,108 H310" stroke="#F59E0B" stroke-width="1.2" stroke-dasharray="5,4" />
+      <text x="314" y="112" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9" fill="#FCD34D">0.6</text>
+      <text x="4" y="274" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9" fill="#475569">0</text>
+      <text x="0" y="112" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9" fill="#475569">.6</text>
+      <text x="0" y="-6" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9" fill="#475569">cosine</text>
+
+      <g transform="translate(0, 0)">
+        <text x="70" y="288" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9.5" fill="#94A3B8">384p · 31px 锚</text>
+        <rect x="52" y="189" width="16" height="16" rx="4" fill="#7F1D1D" stroke="#B91C1C" stroke-width="1" />
+        <text x="42" y="199" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9" fill="#FCA5A5">A</text>
+        <rect x="84" y="159" width="16" height="51" rx="4" fill="#78350F" stroke="#B45309" stroke-width="1" />
+        <text x="102" y="188" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9" fill="#FCD34D">B</text>
+        <text x="70" y="150" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9" fill="#64748B">A .24–.30 / B .22–.41</text>
+
+        <text x="70" y="130" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9" fill="#F87171">不可判别</text>
+      </g>
+
+      <g transform="translate(160, 0)">
+        <text x="70" y="288" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9.5" fill="#94A3B8">512p · 184px 锚</text>
+        <rect x="70" y="42" width="18" height="59" rx="4" fill="url(#rangeGoodF5)" filter="url(#glowF5)" />
+        <text x="100" y="30" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9.5" font-weight="700" fill="#6EE7B7">0.63–0.85</text>
+        <circle cx="79" cy="42" r="3" fill="#ECFDF5" />
+        <circle cx="79" cy="49" r="3" fill="#ECFDF5" />
+        <circle cx="79" cy="101" r="3" fill="#ECFDF5" />
+        <text x="96" y="46" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="8.5" fill="#A7F3D0">S3 .85</text>
+        <text x="96" y="62" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="8.5" fill="#A7F3D0">S1 .82</text>
+        <text x="96" y="105" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="8.5" fill="#A7F3D0">S2 .63</text>
+      </g>
+    </g>
+
+    <g transform="translate(18, 390)">
+      <rect width="324" height="30" rx="7" fill="#1C1917" stroke="#B45309" stroke-width="1" />
+      <text x="10" y="19" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9.5" fill="#FCD34D">陷阱：同人不同姿态可低至 0.216 → 小脸+低分辨率不能做阈值</text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540">
+  <defs>
+    <linearGradient id="bgGradF4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050B14" />
+      <stop offset="50%" stop-color="#0D192E" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+    <filter id="glowF4" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="10" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <rect width="960" height="540" fill="url(#bgGradF4)" />
+
+  <g opacity="0.08" stroke="#64748B" stroke-width="1">
+    <path d="M0,60 H960 M0,120 H960 M0,180 H960 M0,240 H960 M0,300 H960 M0,360 H960 M0,420 H960 M0,480 H960" />
+    <path d="M80,0 V540 M160,0 V540 M240,0 V540 M320,0 V540 M400,0 V540 M480,0 V540 M560,0 V540 M640,0 V540 M720,0 V540 M800,0 V540 M880,0 V540" />
+  </g>
+
+  <text x="480" y="38" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="20" font-weight="800" fill="#F8FAFC">两种物理机制：小模型量化近乎线性，大模型全注意力随规模变陡</text>
+  <text x="480" y="62" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#94A3B8">横轴为 token 数（对数），纵轴为单步耗时（对数）· 实心为本机实测，虚线为外推</text>
+
+  <g transform="translate(0, 0)">
+    <rect x="70" y="96" width="760" height="330" rx="10" fill="#0B1220" stroke="#1E293B" stroke-width="1" />
+
+    <g stroke="#1E293B" stroke-width="1">
+      <path d="M100,299 H830" stroke-dasharray="3,4" />
+      <path d="M100,191 H830" stroke-dasharray="3,4" />
+      <path d="M100,386 H830" stroke-dasharray="3,4" />
+    </g>
+    <text x="836" y="295" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9.5" fill="#475569">60s</text>
+    <text x="836" y="187" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9.5" fill="#475569">5min</text>
+    <text x="836" y="382" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9.5" fill="#475569">16s</text>
+
+    <g stroke="#334155" stroke-width="1">
+      <path d="M120,420 V430" />
+      <path d="M256,420 V430" />
+      <path d="M447,420 V430" />
+      <path d="M592,420 V430" />
+      <path d="M784,420 V430" />
+    </g>
+    <text x="120" y="446" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9.5" fill="#64748B">2.2k</text>
+    <text x="256" y="446" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9.5" fill="#64748B">4.8k</text>
+    <text x="447" y="446" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9.5" fill="#94A3B8">13.9k</text>
+    <text x="592" y="446" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9.5" fill="#64748B">31.2k</text>
+    <text x="784" y="446" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9.5" fill="#64748B">91.2k</text>
+    <text x="452" y="466" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10" fill="#64748B">token 数（672×384·73f → 1344×768·362f）</text>
+    <text x="52" y="270" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10" fill="#64748B" transform="rotate(-90 52 270)">单步耗时</text>
+
+    <path d="M120,365 L256,316 L447,225" stroke="#22D3EE" stroke-width="2.6" />
+    <path d="M447,225 Q520,186 592,153" stroke="#22D3EE" stroke-width="2" stroke-dasharray="7,5" opacity="0.75" />
+
+    <path d="M256,235 L447,199" stroke="#F59E0B" stroke-width="2.6" />
+    <path d="M447,199 Q520,160 592,120" stroke="#F59E0B" stroke-width="2" stroke-dasharray="7,5" opacity="0.75" />
+
+    <circle cx="120" cy="365" r="5" fill="#22D3EE" filter="url(#glowF4)" />
+    <circle cx="256" cy="316" r="5" fill="#22D3EE" filter="url(#glowF4)" />
+    <circle cx="447" cy="225" r="5" fill="#22D3EE" filter="url(#glowF4)" />
+    <circle cx="592" cy="153" r="4" fill="#22D3EE" opacity="0.55" />
+
+    <circle cx="256" cy="235" r="5" fill="#F59E0B" filter="url(#glowF4)" />
+    <circle cx="447" cy="199" r="5" fill="#F59E0B" filter="url(#glowF4)" />
+    <circle cx="592" cy="120" r="4" fill="#F59E0B" opacity="0.55" />
+
+    <path d="M441,355 L453,355 M447,349 L447,361" stroke="#94A3B8" stroke-width="2" />
+    <path d="M441,386 L453,386 M447,380 L447,392" stroke="#94A3B8" stroke-width="2" />
+    <path d="M441,334 L453,334 M447,328 L447,340" stroke="#94A3B8" stroke-width="2" />
+    <text x="462" y="358" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9.5" fill="#94A3B8">4090 · 26s</text>
+    <text x="462" y="389" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9.5" fill="#94A3B8">5090 · 17s</text>
+    <text x="462" y="337" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9.5" fill="#94A3B8">H200 · 6s</text>
+
+    <g transform="translate(140, 330)">
+      <rect width="170" height="24" rx="6" fill="#0B1220" stroke="#0E7490" stroke-width="1" />
+      <text x="8" y="16" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10" fill="#A5F3FC">13.7B Q4 · 10 → 13 ms/token，开始上翘</text>
+    </g>
+    <g transform="translate(300, 178)">
+      <rect width="196" height="24" rx="6" fill="#0B1220" stroke="#B45309" stroke-width="1" />
+      <text x="8" y="16" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10" fill="#FCD34D">33B Q8 · 19–33 ms/token 且变陡</text>
+    </g>
+  </g>
+
+  <g transform="translate(70, 480)">
+    <rect width="760" height="40" rx="8" fill="#0B1220" stroke="#334155" stroke-width="1" />
+    <text x="14" y="17" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10.5" fill="#94A3B8">读法：13.7B 在低 token 区间笔直（Q4 权重搬运主导），过万 token 后上翘（全注意力开始接管）；33B 更陡，因为权重与全注意力双重放大。</text>
+    <text x="14" y="33" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10.5" fill="#94A3B8">GPU 点位取自厂商 1344×768 / 124f / 6 步的基准，按每步折算。</text>
+  </g>
+</svg>
