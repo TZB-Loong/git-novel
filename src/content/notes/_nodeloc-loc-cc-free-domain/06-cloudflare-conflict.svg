@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="660" viewBox="0 0 1200 660">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0a0a14"/><stop offset="100%" stop-color="#080812"/></linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1f293d" stroke-width="1" stroke-opacity="0.45"/></pattern>
+  </defs>
+  <rect width="1200" height="660" fill="url(#bg)"/><rect width="1200" height="660" fill="url(#grid)"/>
+  <rect x="50" y="45" width="1100" height="570" rx="20" fill="none" stroke="#2e384d" stroke-width="2" stroke-dasharray="10,6"/>
+
+  <rect x="88" y="78" width="360" height="34" rx="8" fill="#1e2433" stroke="#475569"/><circle cx="108" cy="95" r="5" fill="#8b5cf6"/>
+  <text x="122" y="101" font-family="monospace" font-size="13" font-weight="700" fill="#94a3b8" letter-spacing="1">CLOUDFLARE / CONFLICTING CLAIMS</text>
+  <text x="88" y="160" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="32" font-weight="800" fill="#f8fafc">能不能托管到 Cloudflare：两套口径</text>
+  <text x="88" y="196" font-family="-apple-system,'PingFang SC',sans-serif" font-size="16" fill="#94a3b8">官方新平台说可以，社区历史说不行。本轮没有做到 NS 切换，所以这里只并排放证据。</text>
+
+  <!-- left: official -->
+  <g font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif">
+    <rect x="88" y="230" width="500" height="212" rx="14" fill="#0c1a17" stroke="#34d399" stroke-width="2"/>
+    <text x="110" y="260" font-family="monospace" font-size="12" font-weight="700" fill="#34d399">官方口径 / yunamo.com 现行文档</text>
+    <text x="110" y="292" font-size="14.5" fill="#d1fae5">首页 FAQ：「可以。在控制台把名字切换为自定义</text>
+    <text x="110" y="316" font-size="14.5" fill="#d1fae5">DNS 服务器，然后在任意地方管理记录，例如</text>
+    <text x="110" y="340" font-size="14.5" fill="#d1fae5">Cloudflare」</text>
+    <text x="110" y="370" font-size="14" fill="#94a3b8">· 文档称支持 NS 记录与 DNSSEC</text>
+    <text x="110" y="394" font-size="14" fill="#94a3b8">· 切到第三方 NS 后，平台 DNS 面板锁定</text>
+    <text x="110" y="418" font-size="14" fill="#94a3b8">· 前提：loc.cc 已被 PSL 收录</text>
+
+    <rect x="612" y="230" width="500" height="212" rx="14" fill="#18181b" stroke="#ef4444" stroke-width="2"/>
+    <text x="634" y="260" font-family="monospace" font-size="12" font-weight="700" fill="#ef4444">社区历史 / 2025 年 5–6 月帖子</text>
+    <text x="634" y="292" font-size="14.5" fill="#fca5a5">2025-05 改版公告：「Cloudflare 暂时还不支持哈」</text>
+    <text x="634" y="322" font-size="14" fill="#94a3b8">· 6 月反馈：改 NS 不生效</text>
+    <text x="634" y="346" font-size="14" fill="#94a3b8">· SOA 需一并修改才生效</text>
+    <text x="634" y="370" font-size="14" fill="#94a3b8">· 自带 NS 后部分区域解析不到</text>
+    <text x="634" y="394" font-size="14" fill="#94a3b8">· 只有 Google 能查到记录</text>
+    <text x="634" y="418" font-size="14" fill="#94a3b8">· 第三方汇总仍将其归入「不支持 CF 托管」</text>
+  </g>
+
+  <!-- middle: unverified -->
+  <rect x="88" y="462" width="1024" height="52" rx="10" fill="#1a1206" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="5,4"/>
+  <text x="110" y="494" font-family="-apple-system,'PingFang SC',sans-serif" font-size="14.5" font-weight="600" fill="#fcd34d">本轮未验证：领到的域名为 0 条记录，未做 NS 切换实测 —— 因此不下「支持 / 不支持」的结论。</text>
+
+  <!-- verdict -->
+  <g font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif">
+    <rect x="88" y="532" width="1024" height="58" rx="10" fill="#101018" stroke="#2e384d"/>
+    <text x="110" y="558" font-family="monospace" font-size="12" font-weight="700" fill="#64748b">判定规则</text>
+    <text x="110" y="580" font-size="14" fill="#e2e8f0">PSL 已收录、文档已改口，都只是「允许」的条件；真正要用，请自己跑一遍 NS 切换 + 生效验证，别把它当确定到手的福利。</text>
+  </g>
+</svg>

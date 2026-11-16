@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="660" viewBox="0 0 1200 660">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0a0a14"/><stop offset="100%" stop-color="#080812"/></linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1f293d" stroke-width="1" stroke-opacity="0.45"/></pattern>
+  </defs>
+  <rect width="1200" height="660" fill="url(#bg)"/><rect width="1200" height="660" fill="url(#grid)"/>
+  <rect x="50" y="45" width="1100" height="570" rx="20" fill="none" stroke="#2e384d" stroke-width="2" stroke-dasharray="10,6"/>
+
+  <rect x="88" y="78" width="300" height="34" rx="8" fill="#1e2433" stroke="#475569"/><circle cx="108" cy="95" r="5" fill="#f59e0b"/>
+  <text x="122" y="101" font-family="monospace" font-size="13" font-weight="700" fill="#94a3b8" letter-spacing="1">CLAIM vs TERMS / 4 ROWS</text>
+  <text x="88" y="160" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="32" font-weight="800" fill="#f8fafc">「终身免费」与官方条款，逐条对齐</text>
+  <text x="88" y="196" font-family="-apple-system,'PingFang SC',sans-serif" font-size="16" fill="#94a3b8">左边是传播口径，右边是 Yunamo 服务条款与免费域名使用规则的原文要点。</text>
+
+  <g font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif">
+    <text x="88" y="240" font-family="monospace" font-size="13" font-weight="700" fill="#ef4444">传播口径 / CLAIM</text>
+    <text x="640" y="240" font-family="monospace" font-size="13" font-weight="700" fill="#34d399">官方条款 / TERMS · 规则原文</text>
+
+    <!-- row 1 -->
+    <rect x="88" y="256" width="500" height="76" rx="10" fill="#18181b" stroke="#3f3f46"/>
+    <text x="108" y="288" font-size="17" font-weight="600" fill="#fca5a5">「终身免费，域名永久归你」</text>
+    <text x="108" y="314" font-size="13" fill="#71717a">推文与结算页商品名</text>
+    <rect x="620" y="256" width="492" height="76" rx="10" fill="#0c1a17" stroke="#34d399" stroke-width="1.5"/>
+    <text x="640" y="284" font-size="14" font-weight="600" fill="#d1fae5">§4：A free subdomain is a “license to use,”</text>
+    <text x="640" y="308" font-size="14" font-weight="600" fill="#d1fae5">not a transfer of ownership　→ 使用权，非所有权</text>
+
+    <!-- row 2 -->
+    <rect x="88" y="344" width="500" height="76" rx="10" fill="#18181b" stroke="#3f3f46"/>
+    <text x="108" y="376" font-size="17" font-weight="600" fill="#fca5a5">「一次付款，永久归你」</text>
+    <text x="108" y="402" font-size="13" fill="#71717a">NL0.00 一次性付款字面含义</text>
+    <rect x="620" y="344" width="492" height="76" rx="10" fill="#0c1a17" stroke="#34d399" stroke-width="1.5"/>
+    <text x="640" y="372" font-size="14" font-weight="600" fill="#d1fae5">§4 Revocation：平台有权单方随时暂停或删除，</text>
+    <text x="640" y="396" font-size="14" font-weight="600" fill="#d1fae5">无需事先通知；理由含连续 90 天不活跃</text>
+
+    <!-- row 3 -->
+    <rect x="88" y="432" width="500" height="76" rx="10" fill="#18181b" stroke="#3f3f46"/>
+    <text x="108" y="464" font-size="17" font-weight="600" fill="#fca5a5">「终身」</text>
+    <text x="108" y="490" font-size="13" fill="#71717a">商品名与 2126 年到期显示</text>
+    <rect x="620" y="432" width="492" height="76" rx="10" fill="#0c1a17" stroke="#34d399" stroke-width="1.5"/>
+    <text x="640" y="460" font-size="14" font-weight="600" fill="#d1fae5">§5：按 AS IS / AS AVAILABLE 提供，</text>
+    <text x="640" y="484" font-size="14" font-weight="600" fill="#d1fae5">不保证 uptime、稳定性或永久可用性</text>
+
+    <!-- row 4 -->
+    <rect x="88" y="520" width="500" height="76" rx="10" fill="#18181b" stroke="#3f3f46"/>
+    <text x="108" y="552" font-size="17" font-weight="600" fill="#fca5a5">2126/11/16 到期</text>
+    <text x="108" y="578" font-size="13" fill="#71717a">控制台「正常 / 已同步」状态</text>
+    <rect x="620" y="520" width="492" height="76" rx="10" fill="#1a1206" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="5,4"/>
+    <text x="640" y="548" font-size="14" font-weight="600" fill="#fcd34d">使用规则：默认有效期 1–5 年、无 SLA，</text>
+    <text x="640" y="572" font-size="14" font-weight="600" fill="#fcd34d">服务最早可能于 2034 年 1 月终止</text>
+  </g>
+</svg>

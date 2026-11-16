@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="660" viewBox="0 0 1200 660">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0a0a14"/><stop offset="100%" stop-color="#080812"/></linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1f293d" stroke-width="1" stroke-opacity="0.45"/></pattern>
+  </defs>
+  <rect width="1200" height="660" fill="url(#bg)"/><rect width="1200" height="660" fill="url(#grid)"/>
+  <rect x="50" y="45" width="1100" height="570" rx="20" fill="none" stroke="#2e384d" stroke-width="2" stroke-dasharray="10,6"/>
+
+  <rect x="88" y="78" width="300" height="34" rx="8" fill="#1e2433" stroke="#475569"/><circle cx="108" cy="95" r="5" fill="#38bdf8"/>
+  <text x="122" y="101" font-family="monospace" font-size="13" font-weight="700" fill="#94a3b8" letter-spacing="1">WHAT TO PUT / 判断依据</text>
+  <text x="88" y="160" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="32" font-weight="800" fill="#f8fafc">什么可以放，什么不该放</text>
+  <text x="88" y="196" font-family="-apple-system,'PingFang SC',sans-serif" font-size="16" fill="#94a3b8">判断依据不是「反正是免费的」，而是这条解析丢失时的损失有多大。</text>
+
+  <g font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif">
+    <!-- ok -->
+    <rect x="88" y="230" width="330" height="240" rx="14" fill="#0c1a17" stroke="#34d399" stroke-width="2"/>
+    <text x="110" y="262" font-family="monospace" font-size="12" font-weight="700" fill="#34d399">可以放 / SAFE ENOUGH</text>
+    <text x="110" y="298" font-size="14.5" fill="#d1fae5">· 演示页</text>
+    <text x="110" y="328" font-size="14.5" fill="#d1fae5">· 开源项目落地页</text>
+    <text x="110" y="358" font-size="14.5" fill="#d1fae5">· 临时跳转</text>
+    <text x="110" y="388" font-size="14.5" fill="#d1fae5">· 备用域名</text>
+    <line x1="110" y1="410" x2="396" y2="410" stroke="#334155"/>
+    <text x="110" y="436" font-size="13" fill="#94a3b8">丢了不心疼，重建成本为 0。</text>
+    <text x="110" y="458" font-size="13" fill="#94a3b8">典型用途就是「先用着」。</text>
+
+    <!-- caution -->
+    <rect x="434" y="230" width="330" height="240" rx="14" fill="#1a1206" stroke="#f59e0b" stroke-width="2"/>
+    <text x="456" y="262" font-family="monospace" font-size="12" font-weight="700" fill="#f59e0b">要谨慎 / VERIFY FIRST</text>
+    <text x="456" y="298" font-size="14.5" fill="#fcd34d">· 需要 CF 托管的场景</text>
+    <text x="456" y="328" font-size="14.5" fill="#fcd34d">· 需要长期稳定解析</text>
+    <text x="456" y="358" font-size="14.5" fill="#fcd34d">· 需要邮件收发 / SPF</text>
+    <text x="456" y="388" font-size="14.5" fill="#fcd34d">· 已对外公布过的地址</text>
+    <line x1="456" y1="410" x2="742" y2="410" stroke="#3f3f46"/>
+    <text x="456" y="436" font-size="13" fill="#94a3b8">先跑通 NS 切换与生效验证，</text>
+    <text x="456" y="458" font-size="13" fill="#94a3b8">再决定要不要把入口指过来。</text>
+
+    <!-- no -->
+    <rect x="780" y="230" width="332" height="240" rx="14" fill="#18181b" stroke="#ef4444" stroke-width="2"/>
+    <text x="802" y="262" font-family="monospace" font-size="12" font-weight="700" fill="#ef4444">别放 / DO NOT</text>
+    <text x="802" y="298" font-size="14.5" fill="#fca5a5">· 主站与正式业务</text>
+    <text x="802" y="328" font-size="14.5" fill="#fca5a5">· 依赖长期可用性的服务</text>
+    <text x="802" y="358" font-size="14.5" fill="#fca5a5">· 唯一入口的业务域名</text>
+    <text x="802" y="388" font-size="14.5" fill="#fca5a5">· 任何用于登录 / 回信的地址</text>
+    <line x1="802" y1="410" x2="1088" y2="410" stroke="#3f3f46"/>
+    <text x="802" y="436" font-size="13" fill="#94a3b8">条款明写可单方删除、无 SLA，</text>
+    <text x="802" y="458" font-size="13" fill="#94a3b8">把它当唯一的家就是赌运气。</text>
+  </g>
+
+  <!-- red lines -->
+  <g font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif">
+    <rect x="88" y="496" width="1024" height="96" rx="12" fill="#18181b" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="6,4"/>
+    <text x="110" y="524" font-family="monospace" font-size="12" font-weight="700" fill="#ef4444">用途红线 / 触发即失去全部域名</text>
+    <text x="110" y="552" font-size="14" fill="#fca5a5">钓鱼 · 恶意软件 · 诈骗 · 垃圾信息 · 冒充 · 抢注转售 · 批量领取</text>
+    <text x="110" y="576" font-size="13" fill="#94a3b8">官方明确：抢注占坑将删除该用户全部域名，并禁止再次注册。</text>
+  </g>
+</svg>

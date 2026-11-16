@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="660" viewBox="0 0 1200 660">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0a0a14"/><stop offset="100%" stop-color="#080812"/></linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1f293d" stroke-width="1" stroke-opacity="0.45"/></pattern>
+    <marker id="arw3" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0,0 L0,7 L8,3.5 z" fill="#475569"/></marker>
+  </defs>
+  <rect width="1200" height="660" fill="url(#bg)"/><rect width="1200" height="660" fill="url(#grid)"/>
+  <rect x="50" y="45" width="1100" height="570" rx="20" fill="none" stroke="#2e384d" stroke-width="2" stroke-dasharray="10,6"/>
+
+  <rect x="88" y="78" width="304" height="34" rx="8" fill="#1e2433" stroke="#475569"/><circle cx="108" cy="95" r="5" fill="#f59e0b"/>
+  <text x="122" y="101" font-family="monospace" font-size="13" font-weight="700" fill="#94a3b8" letter-spacing="1">NAMING / IRREVERSIBLE</text>
+  <text x="88" y="160" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="32" font-weight="800" fill="#f8fafc">前缀一旦提交，就是终局</text>
+  <text x="88" y="196" font-family="-apple-system,'PingFang SC',sans-serif" font-size="16" fill="#94a3b8">域名操作菜单只有三项，没有「重命名」。改名的唯一路径是删掉再花钱买一个新的。</text>
+
+  <!-- three menu items -->
+  <g font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif">
+    <rect x="88" y="228" width="330" height="92" rx="12" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="110" y="258" font-size="16" font-weight="700" fill="#e2e8f0">修改 NS 记录</text>
+    <text x="110" y="286" font-size="13" fill="#94a3b8">切自定义 DNS，平台面板随之锁定</text>
+    <text x="110" y="308" font-size="13" fill="#94a3b8">——不改变域名本身</text>
+
+    <rect x="434" y="228" width="330" height="92" rx="12" fill="#1a1206" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="456" y="258" font-size="16" font-weight="700" fill="#fcd34d">转移域名</text>
+    <text x="456" y="286" font-size="13" fill="#94a3b8">把所有权转给另一个 Yunamo 账号</text>
+    <text x="456" y="308" font-size="13" fill="#fca5a5">转完自己失去访问权</text>
+
+    <rect x="780" y="228" width="332" height="92" rx="12" fill="#18181b" stroke="#ef4444" stroke-width="1.5"/>
+    <text x="802" y="258" font-size="16" font-weight="700" fill="#fca5a5">删除</text>
+    <text x="802" y="286" font-size="13" fill="#94a3b8">界面明确标注不可撤销</text>
+    <text x="802" y="308" font-size="13" fill="#fca5a5">名额不回退、优惠码不复原</text>
+  </g>
+
+  <!-- decision flow -->
+  <g font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif">
+    <rect x="88" y="348" width="256" height="82" rx="12" fill="#101018" stroke="#475569"/>
+    <text x="108" y="376" font-family="monospace" font-size="11" fill="#64748b">STEP 1</text>
+    <text x="108" y="400" font-size="15" font-weight="600" fill="#e2e8f0">首页查名</text>
+    <text x="108" y="420" font-size="12" fill="#94a3b8">逐个核对候选变体</text>
+
+    <line x1="344" y1="389" x2="378" y2="389" stroke="#475569" stroke-width="2" marker-end="url(#arw3)"/>
+
+    <rect x="380" y="348" width="256" height="82" rx="12" fill="#101018" stroke="#475569"/>
+    <text x="400" y="376" font-family="monospace" font-size="11" fill="#64748b">STEP 2</text>
+    <text x="400" y="400" font-size="15" font-weight="600" fill="#e2e8f0">提交并支付</text>
+    <text x="400" y="420" font-size="12" fill="#94a3b8">服务端记账，码即用掉</text>
+
+    <line x1="636" y1="389" x2="670" y2="389" stroke="#ef4444" stroke-width="2" marker-end="url(#arw3)"/>
+
+    <rect x="672" y="340" width="240" height="98" rx="12" fill="#18181b" stroke="#ef4444" stroke-width="2"/>
+    <text x="692" y="370" font-family="monospace" font-size="11" fill="#ef4444">TERMINAL</text>
+    <text x="692" y="396" font-size="16" font-weight="800" fill="#fca5a5">不可逆</text>
+    <text x="692" y="418" font-size="12" fill="#94a3b8">前缀固化，无重命名</text>
+
+    <rect x="936" y="340" width="176" height="98" rx="12" fill="#0c1a17" stroke="#34d399" stroke-width="1.5"/>
+    <text x="956" y="370" font-family="monospace" font-size="11" fill="#34d399">唯一出路</text>
+    <text x="956" y="396" font-size="13" font-weight="600" fill="#d1fae5">按标价再买</text>
+    <text x="956" y="418" font-size="12" fill="#94a3b8">NL100 / NL1000</text>
+  </g>
+
+  <!-- measured case -->
+  <rect x="88" y="462" width="1024" height="128" rx="12" fill="#101018" stroke="#2e384d"/>
+  <text x="110" y="492" font-family="monospace" font-size="12" font-weight="700" fill="#64748b">本次实测 / 想从 git-novel 换成 loong</text>
+  <g font-family="-apple-system,'PingFang SC',sans-serif" font-size="13.5" fill="#e2e8f0">
+    <text x="110" y="520">loong.loc.cc：已被注册　→　退而检查的 8 个变体全部可注册：</text>
+    <text x="110" y="546" font-family="monospace" font-size="13" fill="#7dd3fc">loong3 · xuloong3 · loongxu · loong-dev · my-loong · loong-app · loong-lab · loong-site</text>
+    <text x="110" y="572" font-size="13" fill="#94a3b8">结论：8 个备选全在，但优惠码已用尽；换名字＝开始付费，故保留原名，不做任何删除。</text>
+  </g>
+</svg>

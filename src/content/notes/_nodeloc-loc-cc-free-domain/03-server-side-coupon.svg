@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="660" viewBox="0 0 1200 660">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0a0a14"/><stop offset="100%" stop-color="#080812"/></linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1f293d" stroke-width="1" stroke-opacity="0.45"/></pattern>
+    <marker id="arw2" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0,0 L0,7 L8,3.5 z" fill="#475569"/></marker>
+  </defs>
+  <rect width="1200" height="660" fill="url(#bg)"/><rect width="1200" height="660" fill="url(#grid)"/>
+  <rect x="50" y="45" width="1100" height="570" rx="20" fill="none" stroke="#2e384d" stroke-width="2" stroke-dasharray="10,6"/>
+
+  <rect x="88" y="78" width="330" height="34" rx="8" fill="#1e2433" stroke="#475569"/><circle cx="108" cy="95" r="5" fill="#ef4444"/>
+  <text x="122" y="101" font-family="monospace" font-size="13" font-weight="700" fill="#94a3b8" letter-spacing="1">COUPON / CLIENT vs SERVER</text>
+  <text x="88" y="160" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="32" font-weight="800" fill="#f8fafc">0 元是前端画的，校验发生在下单那一刻</text>
+  <text x="88" y="196" font-family="-apple-system,'PingFang SC',sans-serif" font-size="16" fill="#94a3b8">同一个优惠码第二次使用时：结算页照常显示「已应用／合计 NL0.00」，点支付才被拒。</text>
+
+  <!-- dividers -->
+  <line x1="88" y1="222" x2="1112" y2="222" stroke="#2e384d" stroke-width="1"/>
+  <text x="88" y="252" font-family="monospace" font-size="13" font-weight="700" fill="#38bdf8">浏览器 / CLIENT</text>
+  <text x="700" y="252" font-family="monospace" font-size="13" font-weight="700" fill="#34d399">服务端 / SERVER</text>
+
+  <g font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif">
+    <!-- client: address+checkout -->
+    <rect x="88" y="270" width="440" height="96" rx="12" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="108" y="298" font-size="15" font-weight="600" fill="#e2e8f0">地址栏 https://yunamo.com…</text>
+    <text x="108" y="324" font-size="13" fill="#94a3b8">控制台真实状态：0 / 2 可用，1 个已领取</text>
+    <text x="108" y="348" font-size="13" fill="#94a3b8">输入新前缀 → 结算页</text>
+
+    <!-- client checkout card -->
+    <rect x="88" y="386" width="440" height="120" rx="12" fill="#0f172a" stroke="#f59e0b" stroke-width="2" stroke-dasharray="6,4"/>
+    <text x="108" y="414" font-family="monospace" font-size="12" font-weight="700" fill="#f59e0b">优惠码框 / COUPON FIELD</text>
+    <text x="108" y="442" font-size="14" fill="#fcd34d">「优惠码已应用，节省 NL1000.00」</text>
+    <text x="108" y="466" font-size="14" fill="#fcd34d">订单摘要：合计 NL0.00　一次性付款</text>
+    <text x="108" y="490" font-size="13" fill="#94a3b8">看上去完全可用 —— 前端不查使用记录</text>
+
+    <!-- server card -->
+    <rect x="700" y="386" width="412" height="120" rx="12" fill="#18181b" stroke="#ef4444" stroke-width="2"/>
+    <text x="720" y="414" font-family="monospace" font-size="12" font-weight="700" fill="#ef4444">POST 创建订单 → 校验失败</text>
+    <text x="720" y="442" font-family="monospace" font-size="12.5" fill="#fca5a5">You have already used this coupon</text>
+    <text x="720" y="462" font-family="monospace" font-size="12.5" fill="#fca5a5">on 2026-11-16T02:35:30Z.</text>
+    <text x="720" y="482" font-family="monospace" font-size="12.5" fill="#fca5a5">This coupon can only be used once per user</text>
+    <text x="720" y="500" font-size="12" fill="#71717a">按「用户已使用过」记账</text>
+
+    <!-- arrows -->
+    <line x1="528" y1="446" x2="700" y2="446" stroke="#475569" stroke-width="2" marker-end="url(#arw2)"/>
+    <text x="556" y="438" font-family="monospace" font-size="11" fill="#64748b">下单</text>
+    <line x1="700" y1="478" x2="528" y2="478" stroke="#ef4444" stroke-width="2" marker-end="url(#arw2)"/>
+    <text x="560" y="498" font-family="monospace" font-size="11" fill="#ef4444">拒绝</text>
+  </g>
+
+  <!-- bottom rule -->
+  <rect x="88" y="528" width="1024" height="64" rx="12" fill="#1a1206" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="5,4"/>
+  <text x="110" y="556" font-family="-apple-system,'PingFang SC',sans-serif" font-size="15" font-weight="700" fill="#fcd34d">推论：删掉已领域名不退还次数（记账对象是「用户已使用」），先删后领两头落空。</text>
+  <text x="110" y="580" font-family="-apple-system,'PingFang SC',sans-serif" font-size="13" fill="#94a3b8">想换名字的真实代价不是「再领一次」，而是从标价开始付钱：1 年 NL100 / 终身 NL1000。</text>
+</svg>

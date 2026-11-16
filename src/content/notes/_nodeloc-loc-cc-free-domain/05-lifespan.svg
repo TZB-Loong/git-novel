@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="660" viewBox="0 0 1200 660">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0a0a14"/><stop offset="100%" stop-color="#080812"/></linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1f293d" stroke-width="1" stroke-opacity="0.45"/></pattern>
+  </defs>
+  <rect width="1200" height="660" fill="url(#bg)"/><rect width="1200" height="660" fill="url(#grid)"/>
+  <rect x="50" y="45" width="1100" height="570" rx="20" fill="none" stroke="#2e384d" stroke-width="2" stroke-dasharray="10,6"/>
+
+  <rect x="88" y="78" width="352" height="34" rx="8" fill="#1e2433" stroke="#475569"/><circle cx="108" cy="95" r="5" fill="#f59e0b"/>
+  <text x="122" y="101" font-family="monospace" font-size="13" font-weight="700" fill="#94a3b8" letter-spacing="1">LIFETIME / WHAT THE CLOCK SAYS</text>
+  <text x="88" y="160" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="32" font-weight="800" fill="#f8fafc">「2126 年到期」与「最早 2034 年终止」</text>
+  <text x="88" y="196" font-family="-apple-system,'PingFang SC',sans-serif" font-size="16" fill="#94a3b8">两条时间线并列：上面是控制台显示的商品期限，下面是条款与规则给出的真实边界。</text>
+
+  <!-- lane A -->
+  <text x="88" y="240" font-family="monospace" font-size="13" font-weight="700" fill="#34d399">A / 控制台显示（商品字段）</text>
+  <line x1="88" y1="286" x2="1112" y2="286" stroke="#34d399" stroke-width="2"/>
+  <g font-family="-apple-system,'PingFang SC',sans-serif">
+    <circle cx="120" cy="286" r="7" fill="#34d399"/>
+    <text x="120" y="270" font-size="13" font-weight="700" fill="#d1fae5">2026-11-16</text>
+    <text x="120" y="312" font-size="12" fill="#94a3b8">领取</text>
+    <circle cx="1080" cy="286" r="7" fill="#34d399"/>
+    <text x="1002" y="270" font-size="13" font-weight="700" fill="#d1fae5">2126-11-16</text>
+    <text x="1016" y="312" font-size="12" fill="#94a3b8">显示到期</text>
+    <text x="520" y="270" font-size="13" fill="#64748b">← 系统把「终身」按 100 年落账，不是合同承诺 →</text>
+  </g>
+
+  <!-- lane B -->
+  <text x="88" y="380" font-family="monospace" font-size="13" font-weight="700" fill="#ef4444">B / 条款与规则（真实边界）</text>
+  <line x1="88" y1="426" x2="1112" y2="426" stroke="#475569" stroke-width="2" stroke-dasharray="7,5"/>
+  <g font-family="-apple-system,'PingFang SC',sans-serif">
+    <circle cx="120" cy="426" r="7" fill="#f59e0b"/>
+    <text x="120" y="410" font-size="13" font-weight="700" fill="#fcd34d">D+0</text>
+    <text x="120" y="452" font-size="12" fill="#94a3b8">生效</text>
+
+    <circle cx="392" cy="426" r="7" fill="#ef4444"/>
+    <text x="346" y="410" font-size="13" font-weight="700" fill="#fca5a5">连续 90 天不活跃</text>
+    <text x="352" y="452" font-size="12" fill="#94a3b8">可被暂停 / 删除</text>
+
+    <circle cx="700" cy="426" r="7" fill="#ef4444"/>
+    <text x="640" y="410" font-size="13" font-weight="700" fill="#fca5a5">默认有效期 1–5 年</text>
+    <text x="652" y="452" font-size="12" fill="#94a3b8">到期需申请续期</text>
+
+    <circle cx="1010" cy="426" r="7" fill="#ef4444"/>
+    <text x="928" y="410" font-size="13" font-weight="700" fill="#fca5a5">最早 2034-01 终止</text>
+    <text x="946" y="452" font-size="12" fill="#94a3b8">无 SLA 保证</text>
+  </g>
+
+  <!-- clauses -->
+  <g font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif">
+    <rect x="88" y="486" width="330" height="104" rx="12" fill="#0c1a17" stroke="#34d399" stroke-width="1.5"/>
+    <text x="108" y="514" font-family="monospace" font-size="11" font-weight="700" fill="#34d399">§4 OWNERSHIP</text>
+    <text x="108" y="540" font-size="13" fill="#d1fae5">“license to use”</text>
+    <text x="108" y="562" font-size="13" fill="#d1fae5">不是所有权转移</text>
+
+    <rect x="434" y="486" width="330" height="104" rx="12" fill="#18181b" stroke="#ef4444" stroke-width="1.5"/>
+    <text x="454" y="514" font-family="monospace" font-size="11" font-weight="700" fill="#ef4444">§4 REVOCATION</text>
+    <text x="454" y="540" font-size="13" fill="#fca5a5">可单方随时暂停 / 删除，</text>
+    <text x="454" y="562" font-size="13" fill="#fca5a5">无需事先通知</text>
+
+    <rect x="780" y="486" width="332" height="104" rx="12" fill="#1a1206" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="800" y="514" font-family="monospace" font-size="11" font-weight="700" fill="#f59e0b">§5 AVAILABILITY</text>
+    <text x="800" y="540" font-size="13" fill="#fcd34d">AS IS / AS AVAILABLE</text>
+    <text x="800" y="562" font-size="13" fill="#fcd34d">不保证 uptime 与永久可用</text>
+  </g>
+</svg>

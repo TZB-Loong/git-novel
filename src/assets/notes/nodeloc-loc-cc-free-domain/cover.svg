@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0a14"/><stop offset="55%" stop-color="#121324"/><stop offset="100%" stop-color="#05050d"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8"/><stop offset="55%" stop-color="#8b5cf6"/><stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1f293d" stroke-width="1" stroke-opacity="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect x="50" y="50" width="1100" height="530" rx="20" fill="none" stroke="#2e384d" stroke-width="2" stroke-dasharray="10,6"/>
+
+  <rect x="90" y="86" width="322" height="36" rx="8" fill="#1e2433" stroke="#475569" stroke-width="1"/>
+  <circle cx="112" cy="104" r="6" fill="#38bdf8"/>
+  <text x="128" y="110" font-family="monospace" font-size="14" font-weight="700" fill="#94a3b8" letter-spacing="1">FIELD NOTE / 2026-11-16</text>
+
+  <text x="90" y="188" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="46" font-weight="800" fill="#f8fafc">零成本，但不是你的资产</text>
+  <text x="90" y="236" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="23" font-weight="600" fill="url(#accent)">免费 .loc.cc 二级域名：领取实录与四条硬约束</text>
+  <text x="90" y="270" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="15" fill="#64748b">yunamo.com · 每月 16 日 · 优惠码 FREENOV2026 · 一手实机记录</text>
+
+  <g font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif">
+    <rect x="90" y="300" width="320" height="112" rx="12" fill="#0c1a17" stroke="#34d399" stroke-width="1.5"/>
+    <text x="112" y="328" font-family="monospace" font-size="12" font-weight="700" fill="#34d399">01 / PAID</text>
+    <text x="112" y="368" font-size="26" font-weight="800" fill="#d1fae5">NL0.00</text>
+    <text x="112" y="394" font-size="13" fill="#94a3b8">原价 NL1000.00，优惠全额抵掉</text>
+
+    <rect x="440" y="300" width="320" height="112" rx="12" fill="#1a1206" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="5,4"/>
+    <text x="462" y="328" font-family="monospace" font-size="12" font-weight="700" fill="#f59e0b">02 / SHOWN</text>
+    <text x="462" y="368" font-size="24" font-weight="800" fill="#fcd34d">2126/11/16</text>
+    <text x="462" y="394" font-size="13" fill="#94a3b8">控制台显示的「到期」，非合同期限</text>
+
+    <rect x="790" y="300" width="322" height="112" rx="12" fill="#18181b" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="5,4"/>
+    <text x="812" y="328" font-family="monospace" font-size="12" font-weight="700" fill="#ef4444">03 / TERMS</text>
+    <text x="812" y="358" font-size="17" font-weight="700" fill="#fca5a5">license to use</text>
+    <text x="812" y="386" font-size="13" fill="#94a3b8">不是所有权转移</text>
+  </g>
+
+  <line x1="90" y1="452" x2="1110" y2="452" stroke="#2e384d" stroke-width="1"/>
+  <text x="90" y="492" font-family="monospace" font-size="14" font-weight="700" fill="#64748b">◆ 前缀一旦提交即终局</text>
+  <text x="440" y="492" font-family="monospace" font-size="14" font-weight="700" fill="#64748b">◆ 优惠码每人一次，服务端才校验</text>
+  <text x="90" y="524" font-family="monospace" font-size="14" font-weight="700" fill="#64748b">◆ 连续 90 天不活跃可被删除</text>
+  <text x="440" y="524" font-family="monospace" font-size="14" font-weight="700" fill="#64748b">◆ 无 SLA，最早 2034 年 1 月终止</text>
+</svg>
