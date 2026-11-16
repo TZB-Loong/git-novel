@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="-apple-system, BlinkMacSystemFont, sans-serif">
+  <defs>
+    <linearGradient id="bgGradTw4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050B14" />
+      <stop offset="50%" stop-color="#0D192E" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+    <marker id="arwTw4" markerWidth="8" markerHeight="8" refX="6.5" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#64748B" />
+    </marker>
+  </defs>
+  <rect width="960" height="540" fill="url(#bgGradTw4)" />
+  <text x="24" y="30" font-size="19" font-weight="600" fill="#EAF1FB">前端集成：LineTwinScene 数据流 —— 模板库 · 关键字选型 · 归一化 · 状态驱动</text>
+  <text x="24" y="52" font-size="10.5" fill="#8FA3C2">8 个 GLB 并发加载，pickModel(desc) 按工位描述路由模板 —— 模型是死的，状态是活的</text>
+
+  <rect x="24" y="70" width="286" height="76" rx="10" fill="#0F1B30" stroke="#24344F" />
+  <text x="40" y="94" font-size="11" font-weight="600" fill="#E6EDF8">src/project/demo/assets/models</text>
+  <text x="40" y="112" font-size="9.5" fill="#9FB1CE">8 个设备模板 · 单台 500~700 KB</text>
+  <text x="40" y="128" font-size="9.5" fill="#9FB1CE">press / laser / vision / screw 等</text>
+
+  <line x1="312" y1="108" x2="330" y2="108" stroke="#64748B" stroke-width="1.4" marker-end="url(#arwTw4)" />
+
+  <rect x="336" y="70" width="286" height="76" rx="10" fill="#0F1B30" stroke="#24344F" />
+  <text x="352" y="94" font-size="11" font-weight="600" fill="#E6EDF8">Promise.all 并发加载</text>
+  <text x="352" y="112" font-size="9.5" fill="#9FB1CE">three 独立 chunk · 不阻塞首屏</text>
+  <text x="352" y="128" font-size="9.5" fill="#9FB1CE">defineAsyncComponent 异步组件</text>
+
+  <line x1="624" y1="108" x2="642" y2="108" stroke="#64748B" stroke-width="1.4" marker-end="url(#arwTw4)" />
+
+  <rect x="648" y="70" width="288" height="76" rx="10" fill="#0F1B30" stroke="#24344F" />
+  <text x="664" y="94" font-size="11" font-weight="600" fill="#E6EDF8">GLB 模板库（常驻 8 模板）</text>
+  <text x="664" y="112" font-size="9.5" fill="#9FB1CE">pickModel 按工位描述克隆实例</text>
+  <text x="664" y="128" font-size="9.5" fill="#9FB1CE">同型号多机位复用同一份资产</text>
+
+  <rect x="24" y="176" width="470" height="180" rx="10" fill="#0F1B30" stroke="#24344F" />
+  <text x="40" y="200" font-size="12" font-weight="600" fill="#60A5FA">pickModel(desc) 关键字路由</text>
+  <rect x="304" y="186" width="176" height="18" rx="9" fill="#10233B" stroke="#1F7A50" />
+  <text x="392" y="199" text-anchor="middle" font-size="9.5" fill="#34D399">新增产线只加映射 · 不改加载逻辑</text>
+  <text x="40" y="226" font-size="10.5" fill="#D7E1F2">压合 → press_machine</text>
+  <text x="40" y="243" font-size="10.5" fill="#D7E1F2">镭雕 → laser_machine</text>
+  <text x="40" y="260" font-size="10.5" fill="#D7E1F2">AOI → vision_machine</text>
+  <text x="40" y="277" font-size="10.5" fill="#D7E1F2">异音 → inspection_cell</text>
+  <text x="40" y="294" font-size="10.5" fill="#D7E1F2">测试 → inspection_machine</text>
+  <text x="40" y="311" font-size="10.5" fill="#D7E1F2">锁付 → screw_inspection</text>
+  <text x="40" y="328" font-size="10.5" fill="#D7E1F2">热熔 / 键盘 → line_machine</text>
+  <text x="40" y="345" font-size="10.5" fill="#9FB1CE">其余兜底 → inspection_machine</text>
+
+  <rect x="518" y="176" width="418" height="180" rx="10" fill="#0F1B30" stroke="#24344F" />
+  <text x="534" y="200" font-size="12" font-weight="600" fill="#34D399">实例归一化 · 落地 · 环境反射</text>
+  <text x="534" y="224" font-size="10.5" fill="#D7E1F2">包围盒高度统一 → TARGET_H</text>
+  <text x="534" y="246" font-size="10.5" fill="#D7E1F2">水平边超 MAX_W 再压缩</text>
+  <text x="534" y="268" font-size="10.5" fill="#D7E1F2">box.min.y 贴地（零悬浮）</text>
+  <text x="534" y="290" font-size="10.5" fill="#D7E1F2">PMREM 程序化环境贴图 → 金属反射</text>
+  <text x="534" y="312" font-size="10.5" fill="#D7E1F2">GLB 内置塔灯按名前缀剥离</text>
+  <text x="534" y="338" font-size="9.5" fill="#7C90B0">不同批次模型的尺度差异，在加载时一次性抹平</text>
+
+  <line x1="259" y1="356" x2="259" y2="380" stroke="#64748B" stroke-width="1.4" marker-end="url(#arwTw4)" />
+  <line x1="727" y1="356" x2="727" y2="380" stroke="#64748B" stroke-width="1.4" marker-end="url(#arwTw4)" />
+
+  <rect x="24" y="386" width="290" height="124" rx="10" fill="#0F1B30" stroke="#24344F" />
+  <text x="40" y="408" font-size="11.5" font-weight="600" fill="#FBBF24">状态驱动 · 每帧</text>
+  <text x="40" y="428" font-size="10" fill="#D7E1F2">塔灯三色材质按帧驱动</text>
+  <text x="40" y="446" font-size="10" fill="#D7E1F2">运行 / 待机 / 报警 三态</text>
+  <text x="40" y="464" font-size="10" fill="#D7E1F2">spindle 网格主轴旋转</text>
+
+  <rect x="334" y="386" width="290" height="124" rx="10" fill="#0F1B30" stroke="#24344F" />
+  <text x="350" y="408" font-size="11.5" font-weight="600" fill="#60A5FA">点击交互</text>
+  <text x="350" y="428" font-size="10" fill="#D7E1F2">Raycaster 拾取设备</text>
+  <text x="350" y="446" font-size="10" fill="#D7E1F2">emit('device-click', code) 上浮高亮</text>
+  <text x="350" y="464" font-size="10" fill="#D7E1F2">拖拽 &gt;6px 抬起不触发点击</text>
+
+  <rect x="644" y="386" width="290" height="124" rx="10" fill="#0F1B30" stroke="#24344F" />
+  <text x="660" y="408" font-size="11.5" font-weight="600" fill="#22D3EE">漫游与性能</text>
+  <text x="660" y="428" font-size="10" fill="#D7E1F2">OrbitControls 左键环绕 · 右键平移</text>
+  <text x="660" y="446" font-size="10" fill="#D7E1F2">滚轮以光标地面点为中心缩放</text>
+  <text x="660" y="464" font-size="10" fill="#D7E1F2">范围 8~90 · 模板 Promise.all 预取</text>
+
+  <text x="24" y="528" font-size="9.5" fill="#7C90B0">模型是资产 · 状态是代码 —— GLB 里不带灯光与相机，孪生的「活」全部由前端驱动</text>
+</svg>

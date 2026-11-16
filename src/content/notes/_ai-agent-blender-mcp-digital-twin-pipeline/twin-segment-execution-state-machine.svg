@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="-apple-system, BlinkMacSystemFont, sans-serif">
+  <defs>
+    <linearGradient id="bgGradTw3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050B14" />
+      <stop offset="50%" stop-color="#0D192E" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+    <marker id="arwGreyTw3" markerWidth="8" markerHeight="8" refX="6.5" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#64748B" />
+    </marker>
+    <marker id="arwRedTw3" markerWidth="8" markerHeight="8" refX="6.5" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#F87171" />
+    </marker>
+    <marker id="arwGreenTw3" markerWidth="8" markerHeight="8" refX="6.5" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#34D399" />
+    </marker>
+  </defs>
+  <rect width="960" height="540" fill="url(#bgGradTw3)" />
+  <text x="24" y="30" font-size="19" font-weight="600" fill="#EAF1FB">单段执行状态机：脚本 → 校验 → 渲染 → 比对 → 通过 / 导出</text>
+  <text x="24" y="52" font-size="10.5" fill="#8FA3C2">run_script 要么整段执行完成、要么中途死亡 —— OBJCOUNT 是每个批次最便宜的存活信号</text>
+
+  <rect x="24" y="76" width="340" height="44" rx="8" fill="#0F1B30" stroke="#24344F" />
+  <text x="40" y="93" font-size="11.5" font-weight="600" fill="#E6EDF8">计划分段</text>
+  <text x="40" y="109" font-size="9.5" fill="#9FB1CE">七段批次表 · 每段 ≤50</text>
+  <line x1="194" y1="120" x2="194" y2="134" stroke="#64748B" stroke-width="1.4" marker-end="url(#arwGreyTw3)" />
+
+  <rect x="24" y="138" width="340" height="44" rx="8" fill="#0F1B30" stroke="#24344F" />
+  <text x="40" y="155" font-size="11.5" font-weight="600" fill="#E6EDF8">生成 bpy 脚本</text>
+  <text x="40" y="171" font-size="9.5" fill="#9FB1CE">helper + 材质工厂 + 前缀命名</text>
+  <line x1="194" y1="182" x2="194" y2="196" stroke="#64748B" stroke-width="1.4" marker-end="url(#arwGreyTw3)" />
+
+  <rect x="24" y="200" width="340" height="44" rx="8" fill="#0F1B30" stroke="#24344F" />
+  <text x="40" y="217" font-size="11.5" font-weight="600" fill="#E6EDF8">run_script 执行</text>
+  <text x="40" y="233" font-size="9.5" fill="#9FB1CE">经 Blender MCP 桥接进程</text>
+  <line x1="194" y1="244" x2="194" y2="258" stroke="#64748B" stroke-width="1.4" marker-end="url(#arwGreyTw3)" />
+
+  <rect x="24" y="262" width="340" height="44" rx="8" fill="#0F1B30" stroke="#FBBF24" />
+  <text x="40" y="279" font-size="11.5" font-weight="600" fill="#FBBF24">OBJCOUNT 校验</text>
+  <text x="40" y="295" font-size="9.5" fill="#9FB1CE">与该段预期增量比对</text>
+  <line x1="194" y1="306" x2="194" y2="320" stroke="#64748B" stroke-width="1.4" marker-end="url(#arwGreyTw3)" />
+
+  <rect x="24" y="324" width="340" height="44" rx="8" fill="#0F1B30" stroke="#24344F" />
+  <text x="40" y="341" font-size="11.5" font-weight="600" fill="#E6EDF8">Eevee 渲染</text>
+  <text x="40" y="357" font-size="9.5" fill="#9FB1CE">720×560 · 前左 3/4 视角</text>
+  <line x1="194" y1="368" x2="194" y2="382" stroke="#64748B" stroke-width="1.4" marker-end="url(#arwGreyTw3)" />
+
+  <rect x="24" y="386" width="340" height="44" rx="8" fill="#0F1B30" stroke="#24344F" />
+  <text x="40" y="403" font-size="11.5" font-weight="600" fill="#E6EDF8">读图比对</text>
+  <text x="40" y="419" font-size="9.5" fill="#9FB1CE">位置 · 比例 · 配色</text>
+  <line x1="194" y1="430" x2="194" y2="444" stroke="#64748B" stroke-width="1.4" marker-end="url(#arwGreyTw3)" />
+
+  <rect x="24" y="448" width="340" height="44" rx="8" fill="#0F1B30" stroke="#34D399" />
+  <text x="40" y="465" font-size="11.5" font-weight="600" fill="#34D399">全部段通过 → 导出 GLB</text>
+  <text x="40" y="481" font-size="9.5" fill="#9FB1CE">convert MESH · use_selection · +Y up</text>
+
+  <path d="M364 284 L404 284 L404 160 L368 160" fill="none" stroke="#F87171" stroke-width="1.4" marker-end="url(#arwRedTw3)" />
+  <text x="410" y="226" font-size="9.5" fill="#F87171">数量不符 → 重发该段</text>
+
+  <path d="M364 408 L430 408 L430 172 L368 172" fill="none" stroke="#34D399" stroke-width="1.4" marker-end="url(#arwGreenTw3)" />
+  <text x="436" y="300" font-size="9.5" fill="#34D399">本段通过 → 下一段</text>
+
+  <path d="M364 222 L460 222 L460 132 L556 132" fill="none" stroke="#F87171" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#arwRedTw3)" />
+
+  <rect x="560" y="76" width="376" height="112" rx="10" fill="#1A0E12" stroke="#7F1D1D" />
+  <text x="576" y="98" font-size="12" font-weight="600" fill="#F87171">失败分支 · 唯一不可自动恢复</text>
+  <text x="576" y="118" font-size="10" fill="#D7E1F2">脚本超时 / 中断 → MCP CONNECTION_CLOSED</text>
+  <text x="576" y="136" font-size="10" fill="#D7E1F2">桥接进程已死 · 远程重试无意义</text>
+  <text x="576" y="154" font-size="10" fill="#D7E1F2">唯一恢复：人在 Blender 内重启 MCP 服务</text>
+
+  <rect x="560" y="204" width="376" height="104" rx="10" fill="#0F1B30" stroke="#24344F" />
+  <text x="576" y="226" font-size="12" font-weight="600" fill="#34D399">存活信号 · OBJCOUNT</text>
+  <text x="576" y="246" font-size="10" fill="#D7E1F2">每段末尾 print('OBJCOUNT', len(bpy.data.objects))</text>
+  <text x="576" y="264" font-size="10" fill="#D7E1F2">要么整段执行完成 · 要么中途死亡</text>
+  <text x="576" y="282" font-size="10" fill="#D7E1F2">数量不符 → 本段未完整执行 · 立即重查</text>
+
+  <rect x="560" y="324" width="376" height="96" rx="10" fill="#0F1B30" stroke="#24344F" />
+  <text x="576" y="346" font-size="12" font-weight="600" fill="#22D3EE">渲染验证闭环</text>
+  <text x="576" y="366" font-size="10" fill="#D7E1F2">Eevee 秒级出图 · 孪生资产要形准</text>
+  <text x="576" y="384" font-size="10" fill="#D7E1F2">与参考图比对位置 / 比例 / 配色 → 修正轮</text>
+  <text x="576" y="402" font-size="10" fill="#D7E1F2">Cycles 在此纯属浪费时间</text>
+
+  <rect x="560" y="436" width="376" height="84" rx="10" fill="#0F1B30" stroke="#24344F" />
+  <text x="576" y="458" font-size="12" font-weight="600" fill="#A78BFA">导出约定</text>
+  <text x="576" y="478" font-size="10" fill="#D7E1F2">曲线先 convert MESH · use_selection 只导 lm_*</text>
+  <text x="576" y="496" font-size="10" fill="#D7E1F2">export_apply 烘焙修改器 · 灯光 / 相机 / 动画不带走</text>
+</svg>

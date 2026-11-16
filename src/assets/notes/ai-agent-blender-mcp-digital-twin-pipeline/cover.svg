@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" font-family="-apple-system, BlinkMacSystemFont, sans-serif">
+  <defs>
+    <linearGradient id="bgGradCover" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#030712" />
+      <stop offset="50%" stop-color="#0B1329" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+    <linearGradient id="cyanGradCover" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06B6D4" />
+      <stop offset="100%" stop-color="#3B82F6" />
+    </linearGradient>
+    <marker id="arwCover" markerWidth="8" markerHeight="8" refX="6.5" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#4C617F" />
+    </marker>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bgGradCover)" />
+
+  <path d="M1040 106 L1078.1 128 L1040 150 L1001.9 128 Z" fill="#6FB1FF" />
+  <path d="M1001.9 128 L1001.9 172 L1040 194 L1040 150 Z" fill="#2E5FA3" />
+  <path d="M1078.1 128 L1078.1 172 L1040 194 L1040 150 Z" fill="#3D77C9" />
+  <path d="M1120 198 L1147.7 214 L1120 230 L1092.3 214 Z" fill="#57D9A3" />
+  <path d="M1092.3 214 L1092.3 246 L1120 262 L1120 230 Z" fill="#1F7A50" />
+  <path d="M1147.7 214 L1147.7 246 L1120 262 L1120 230 Z" fill="#2C9B68" />
+  <path d="M985 226 L1007.5 239 L985 252 L962.5 239 Z" fill="#F5B36B" />
+  <path d="M962.5 239 L962.5 265 L985 278 L985 252 Z" fill="#A35A1E" />
+  <path d="M1007.5 239 L1007.5 265 L985 278 L985 252 Z" fill="#D97E35" />
+
+  <text x="64" y="176" font-size="15" fill="#22D3EE" font-weight="600" letter-spacing="4">AI AGENT · BLENDER MCP · DIGITAL TWIN</text>
+  <text x="64" y="228" font-size="46" font-weight="700" fill="#F1F6FF">AI 3D 数字孪生实战</text>
+  <text x="64" y="272" font-size="19" fill="#A9BDDD">AI Agent + Blender MCP：从参考图纸到产线级 GLB 的全流程自动化</text>
+
+  <rect x="64" y="298" width="164" height="30" rx="15" fill="#0F1B30" stroke="#2E4062" />
+  <text x="146" y="318" text-anchor="middle" font-size="12" fill="#9FB1CE">七段式分段建模 SOP</text>
+  <rect x="242" y="298" width="170" height="30" rx="15" fill="#0F1B30" stroke="#2E4062" />
+  <text x="327" y="318" text-anchor="middle" font-size="12" fill="#9FB1CE">OBJCOUNT 增量校验</text>
+  <rect x="426" y="298" width="170" height="30" rx="15" fill="#0F1B30" stroke="#2E4062" />
+  <text x="511" y="318" text-anchor="middle" font-size="12" fill="#9FB1CE">Eevee 渲染比对闭环</text>
+  <rect x="610" y="298" width="182" height="30" rx="15" fill="#0F1B30" stroke="#2E4062" />
+  <text x="701" y="318" text-anchor="middle" font-size="12" fill="#9FB1CE">pickModel 关键字选型</text>
+  <rect x="806" y="298" width="140" height="30" rx="15" fill="#0F1B30" stroke="#2E4062" />
+  <text x="876" y="318" text-anchor="middle" font-size="12" fill="#9FB1CE">塔灯状态驱动</text>
+
+  <rect x="64" y="390" width="190" height="76" rx="10" fill="#0F1B30" stroke="#24344F" />
+  <rect x="64" y="390" width="3" height="76" fill="#22D3EE" />
+  <text x="159" y="422" text-anchor="middle" font-size="13.5" font-weight="600" fill="#E8EEF9">参考图纸</text>
+  <text x="159" y="444" text-anchor="middle" font-size="10" fill="#8FA3C2">三视图 · 渲染图</text>
+  <line x1="258" y1="428" x2="282" y2="428" stroke="#4C617F" stroke-width="1.4" marker-end="url(#arwCover)" />
+
+  <rect x="290" y="390" width="190" height="76" rx="10" fill="#0F1B30" stroke="#24344F" />
+  <rect x="290" y="390" width="3" height="76" fill="#60A5FA" />
+  <text x="385" y="422" text-anchor="middle" font-size="13.5" font-weight="600" fill="#E8EEF9">TraeCode Agent</text>
+  <text x="385" y="444" text-anchor="middle" font-size="10" fill="#8FA3C2">读图 · 批次计划 · bpy 脚本</text>
+  <line x1="484" y1="428" x2="508" y2="428" stroke="#4C617F" stroke-width="1.4" marker-end="url(#arwCover)" />
+
+  <rect x="516" y="390" width="190" height="76" rx="10" fill="#0F1B30" stroke="#24344F" />
+  <rect x="516" y="390" width="3" height="76" fill="#A78BFA" />
+  <text x="611" y="422" text-anchor="middle" font-size="13.5" font-weight="600" fill="#E8EEF9">Blender MCP</text>
+  <text x="611" y="444" text-anchor="middle" font-size="10" fill="#8FA3C2">run_script · ≤50/批</text>
+  <line x1="710" y1="428" x2="734" y2="428" stroke="#4C617F" stroke-width="1.4" marker-end="url(#arwCover)" />
+
+  <rect x="742" y="390" width="190" height="76" rx="10" fill="#0F1B30" stroke="#24344F" />
+  <rect x="742" y="390" width="3" height="76" fill="#FBBF24" />
+  <text x="837" y="422" text-anchor="middle" font-size="13.5" font-weight="600" fill="#E8EEF9">GLB ×8</text>
+  <text x="837" y="444" text-anchor="middle" font-size="10" fill="#8FA3C2">500~700 KB · +Y up</text>
+  <line x1="936" y1="428" x2="960" y2="428" stroke="#4C617F" stroke-width="1.4" marker-end="url(#arwCover)" />
+
+  <rect x="968" y="390" width="190" height="76" rx="10" fill="#0F1B30" stroke="#24344F" />
+  <rect x="968" y="390" width="3" height="76" fill="#34D399" />
+  <text x="1063" y="422" text-anchor="middle" font-size="13.5" font-weight="600" fill="#E8EEF9">three.js 场景</text>
+  <text x="1063" y="444" text-anchor="middle" font-size="10" fill="#8FA3C2">LineTwinScene · 塔灯驱动</text>
+
+  <rect x="64" y="510" width="1094" height="120" rx="10" fill="#0F1B30" stroke="#24344F" />
+  <rect x="88" y="590" width="1046" height="8" rx="4" fill="#22314D" />
+  <rect x="280" y="580" width="10" height="10" rx="1" fill="#FBBF24" />
+  <rect x="590" y="580" width="10" height="10" rx="1" fill="#FBBF24" />
+  <rect x="860" y="580" width="10" height="10" rx="1" fill="#FBBF24" />
+  <rect x="100" y="544" width="66" height="42" rx="4" fill="#16243D" stroke="#2E4062" />
+  <circle cx="133" cy="538" r="3.5" fill="#34D399" />
+  <rect x="196" y="544" width="66" height="42" rx="4" fill="#16243D" stroke="#2E4062" />
+  <circle cx="229" cy="538" r="3.5" fill="#60A5FA" />
+  <rect x="292" y="544" width="66" height="42" rx="4" fill="#16243D" stroke="#2E4062" />
+  <circle cx="325" cy="538" r="3.5" fill="#F87171" />
+  <rect x="388" y="544" width="66" height="42" rx="4" fill="#16243D" stroke="#2E4062" />
+  <circle cx="421" cy="538" r="3.5" fill="#34D399" />
+  <rect x="484" y="544" width="66" height="42" rx="4" fill="#16243D" stroke="#2E4062" />
+  <circle cx="517" cy="538" r="3.5" fill="#60A5FA" />
+  <rect x="580" y="544" width="66" height="42" rx="4" fill="#16243D" stroke="#2E4062" />
+  <circle cx="613" cy="538" r="3.5" fill="#F87171" />
+  <rect x="676" y="544" width="66" height="42" rx="4" fill="#16243D" stroke="#2E4062" />
+  <circle cx="709" cy="538" r="3.5" fill="#34D399" />
+  <rect x="772" y="544" width="66" height="42" rx="4" fill="#16243D" stroke="#2E4062" />
+  <circle cx="805" cy="538" r="3.5" fill="#60A5FA" />
+  <rect x="868" y="544" width="66" height="42" rx="4" fill="#16243D" stroke="#2E4062" />
+  <circle cx="901" cy="538" r="3.5" fill="#F87171" />
+  <rect x="964" y="544" width="66" height="42" rx="4" fill="#16243D" stroke="#2E4062" />
+  <circle cx="997" cy="538" r="3.5" fill="#34D399" />
+  <rect x="1060" y="544" width="66" height="42" rx="4" fill="#16243D" stroke="#2E4062" />
+  <circle cx="1093" cy="538" r="3.5" fill="#60A5FA" />
+
+  <text x="64" y="655" font-size="11" fill="#7C90B0">6C2F19 产线 · 12+ 台设备单排整线 · 滚筒输送线贯穿 · 产品箱循环流动 · 单台模型 150~180 对象 / 500~700 KB</text>
+</svg>

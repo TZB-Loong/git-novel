@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="-apple-system, BlinkMacSystemFont, sans-serif">
+  <defs>
+    <linearGradient id="bgGradTw2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050B14" />
+      <stop offset="50%" stop-color="#0D192E" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+  </defs>
+  <rect width="960" height="540" fill="url(#bgGradTw2)" />
+  <text x="24" y="30" font-size="19" font-weight="600" fill="#EAF1FB">七段式批次划分：laser_machine 全机 180 对象</text>
+  <text x="24" y="52" font-size="10.5" fill="#8FA3C2">run_script 单批 ≤50 新对象是硬边界 —— 分段不是风格选择，而是工具边界倒逼的工程约束</text>
+
+  <rect x="24" y="68" width="560" height="452" rx="10" fill="#0F1B30" stroke="#24344F" />
+  <text x="40" y="92" font-size="12.5" font-weight="600" fill="#E6EDF8">七段批次 · 按语义切分，全部落在安全线内</text>
+
+  <line x1="542" y1="100" x2="542" y2="410" stroke="#F87171" stroke-width="1.2" stroke-dasharray="4,3" />
+  <text x="542" y="95" text-anchor="middle" font-size="9.5" fill="#F87171">≤50 安全线</text>
+
+  <circle cx="44" cy="125" r="11" fill="#0B1526" stroke="#22D3EE" />
+  <text x="44" y="129" text-anchor="middle" font-size="11" fill="#22D3EE">①</text>
+  <text x="66" y="128" font-size="11" fill="#D7E1F2">材质库 + 机壳骨架</text>
+  <rect x="228" y="116" width="119" height="18" rx="4" fill="#22D3EE" opacity="0.85" />
+  <text x="355" y="128" font-size="10.5" fill="#9FB1CE">19</text>
+
+  <circle cx="44" cy="169" r="11" fill="#0B1526" stroke="#60A5FA" />
+  <text x="44" y="173" text-anchor="middle" font-size="11" fill="#60A5FA">②</text>
+  <text x="66" y="172" font-size="11" fill="#D7E1F2">门窗玻璃 · 拉手 · 按钮</text>
+  <rect x="228" y="160" width="270" height="18" rx="4" fill="#60A5FA" opacity="0.85" />
+  <text x="506" y="172" font-size="10.5" fill="#9FB1CE">43</text>
+
+  <circle cx="44" cy="213" r="11" fill="#0B1526" stroke="#A78BFA" />
+  <text x="44" y="217" text-anchor="middle" font-size="11" fill="#A78BFA">③</text>
+  <text x="66" y="216" font-size="11" fill="#D7E1F2">发光腔体 · 料架 · 龙门头</text>
+  <rect x="228" y="204" width="163" height="18" rx="4" fill="#A78BFA" opacity="0.85" />
+  <text x="399" y="216" font-size="10.5" fill="#9FB1CE">26</text>
+
+  <circle cx="44" cy="257" r="11" fill="#0B1526" stroke="#34D399" />
+  <text x="44" y="261" text-anchor="middle" font-size="11" fill="#34D399">④</text>
+  <text x="66" y="260" font-size="11" fill="#D7E1F2">HMI 屏 + 三色塔灯</text>
+  <rect x="228" y="248" width="101" height="18" rx="4" fill="#34D399" opacity="0.85" />
+  <text x="337" y="260" font-size="10.5" fill="#9FB1CE">16</text>
+
+  <circle cx="44" cy="301" r="11" fill="#0B1526" stroke="#FBBF24" />
+  <text x="44" y="305" text-anchor="middle" font-size="11" fill="#FBBF24">⑤</text>
+  <text x="66" y="304" font-size="11" fill="#D7E1F2">侧伸皮带输送线</text>
+  <rect x="228" y="292" width="176" height="18" rx="4" fill="#FBBF24" opacity="0.85" />
+  <text x="412" y="304" font-size="10.5" fill="#9FB1CE">28</text>
+
+  <circle cx="44" cy="345" r="11" fill="#0B1526" stroke="#F87171" />
+  <text x="44" y="349" text-anchor="middle" font-size="11" fill="#F87171">⑥</text>
+  <text x="66" y="348" font-size="11" fill="#D7E1F2">U 型扶手 · 键盘托 · 扫码枪</text>
+  <rect x="228" y="336" width="251" height="18" rx="4" fill="#F87171" opacity="0.85" />
+  <text x="487" y="348" font-size="10.5" fill="#9FB1CE">40</text>
+
+  <circle cx="44" cy="389" r="11" fill="#0B1526" stroke="#E879F9" />
+  <text x="44" y="393" text-anchor="middle" font-size="11" fill="#E879F9">⑦</text>
+  <text x="66" y="392" font-size="11" fill="#D7E1F2">调节地脚 · 相机灯光 · 渲染</text>
+  <rect x="228" y="380" width="50" height="18" rx="4" fill="#E879F9" opacity="0.85" />
+  <text x="286" y="392" font-size="10.5" fill="#9FB1CE">8</text>
+
+  <line x1="40" y1="416" x2="568" y2="416" stroke="#24344F" />
+  <text x="40" y="440" font-size="10.5" fill="#9FB1CE">合计 180 · 平均 25.7 / 段 · 最大 43（②段）—— 七段全部落在安全线内</text>
+  <text x="40" y="462" font-size="10.5" fill="#9FB1CE">每段脚本末尾 print('OBJCOUNT', len(bpy.data.objects)) 与预期增量比对</text>
+  <text x="40" y="484" font-size="10.5" fill="#9FB1CE">新设备建模前：旧前缀对象只藏不删（hide_viewport / hide_render）</text>
+
+  <rect x="608" y="68" width="328" height="452" rx="10" fill="#0F1B30" stroke="#24344F" />
+  <text x="622" y="92" font-size="12.5" font-weight="600" fill="#E6EDF8">每段五条工程约定</text>
+
+  <rect x="622" y="112" width="20" height="20" rx="5" fill="#16243D" stroke="#2E4062" />
+  <text x="632" y="126" text-anchor="middle" font-size="10.5" fill="#60A5FA">1</text>
+  <text x="650" y="126" font-size="11.5" font-weight="600" fill="#E6EDF8">前缀命名 im_ / lm_</text>
+  <text x="650" y="142" font-size="9.5" fill="#9FB1CE">选择、隐藏、导出、排错全靠前缀</text>
+  <text x="650" y="155" font-size="9.5" fill="#9FB1CE">导出 use_selection 只取 lm_* 选区</text>
+
+  <rect x="622" y="170" width="20" height="20" rx="5" fill="#16243D" stroke="#2E4062" />
+  <text x="632" y="184" text-anchor="middle" font-size="10.5" fill="#60A5FA">2</text>
+  <text x="650" y="184" font-size="11.5" font-weight="600" fill="#E6EDF8">材质幂等工厂 M()</text>
+  <text x="650" y="200" font-size="9.5" fill="#9FB1CE">materials.get 命中即复用</text>
+  <text x="650" y="213" font-size="9.5" fill="#9FB1CE">跨批次颜色一致 · 无重复材质</text>
+
+  <rect x="622" y="228" width="20" height="20" rx="5" fill="#16243D" stroke="#2E4062" />
+  <text x="632" y="242" text-anchor="middle" font-size="10.5" fill="#60A5FA">3</text>
+  <text x="650" y="242" font-size="11.5" font-weight="600" fill="#E6EDF8">几何助手 box / cyl / torus</text>
+  <text x="650" y="258" font-size="9.5" fill="#9FB1CE">primitive + transform_apply + bevel</text>
+  <text x="650" y="271" font-size="9.5" fill="#9FB1CE">size=1 + dimensions，防尺度错位</text>
+
+  <rect x="622" y="286" width="20" height="20" rx="5" fill="#16243D" stroke="#2E4062" />
+  <text x="632" y="300" text-anchor="middle" font-size="10.5" fill="#60A5FA">4</text>
+  <text x="650" y="300" font-size="11.5" font-weight="600" fill="#E6EDF8">OBJCOUNT 增量校验</text>
+  <text x="650" y="316" font-size="9.5" fill="#9FB1CE">print('OBJCOUNT', len(objects))</text>
+  <text x="650" y="329" font-size="9.5" fill="#9FB1CE">与预期增量比对 · 不带病进下一段</text>
+
+  <rect x="622" y="344" width="20" height="20" rx="5" fill="#16243D" stroke="#2E4062" />
+  <text x="632" y="358" text-anchor="middle" font-size="10.5" fill="#60A5FA">5</text>
+  <text x="650" y="358" font-size="11.5" font-weight="600" fill="#E6EDF8">旧模型只藏不删</text>
+  <text x="650" y="374" font-size="9.5" fill="#9FB1CE">hide_viewport / hide_render</text>
+  <text x="650" y="387" font-size="9.5" fill="#9FB1CE">保留可回退 · 删除代价远大于隐藏</text>
+
+  <rect x="622" y="414" width="300" height="88" rx="8" fill="#10233B" stroke="#2E4062" />
+  <text x="636" y="436" font-size="10.5" font-weight="600" fill="#34D399">全段通过 → 收尾导出</text>
+  <text x="636" y="456" font-size="10" fill="#D7E1F2">① 曲线转网格 convert MESH</text>
+  <text x="636" y="472" font-size="10" fill="#D7E1F2">② use_selection 导出 GLB</text>
+  <text x="636" y="490" font-size="10" fill="#9FB1CE">laser_machine 673 KB · +Y up</text>
+</svg>

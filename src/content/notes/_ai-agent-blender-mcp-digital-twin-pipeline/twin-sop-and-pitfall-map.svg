@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="-apple-system, BlinkMacSystemFont, sans-serif">
+  <defs>
+    <linearGradient id="bgGradTw5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050B14" />
+      <stop offset="50%" stop-color="#0D192E" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+  </defs>
+  <rect width="960" height="540" fill="url(#bgGradTw5)" />
+  <text x="24" y="30" font-size="19" font-weight="600" fill="#EAF1FB">可复制 SOP：新增一台设备的七步流程与九条避坑地图</text>
+  <text x="24" y="52" font-size="10.5" fill="#8FA3C2">左：流程固化产能（单台 1 次会话 · 7 个分段批次）；右：两个月踩坑换来的边界</text>
+
+  <rect x="24" y="68" width="440" height="452" rx="10" fill="#0F1B30" stroke="#24344F" />
+  <line x1="48" y1="118" x2="48" y2="138" stroke="#2E4062" stroke-width="2" />
+  <circle cx="48" cy="106" r="12" fill="#0B1526" stroke="#60A5FA" />
+  <text x="48" y="110" text-anchor="middle" font-size="11" fill="#60A5FA">1</text>
+  <text x="68" y="104" font-size="11.5" font-weight="600" fill="#E6EDF8">收集参考图</text>
+  <text x="68" y="120" font-size="9.5" fill="#9FB1CE">三视图优先 · 含尺寸标注最佳</text>
+  <line x1="48" y1="174" x2="48" y2="194" stroke="#2E4062" stroke-width="2" />
+  <circle cx="48" cy="162" r="12" fill="#0B1526" stroke="#60A5FA" />
+  <text x="48" y="166" text-anchor="middle" font-size="11" fill="#60A5FA">2</text>
+  <text x="68" y="160" font-size="11.5" font-weight="600" fill="#E6EDF8">Agent 读图</text>
+  <text x="68" y="176" font-size="9.5" fill="#9FB1CE">结构分区 + 比例表 + 七段批次计划</text>
+  <line x1="48" y1="230" x2="48" y2="250" stroke="#2E4062" stroke-width="2" />
+  <circle cx="48" cy="218" r="12" fill="#0B1526" stroke="#60A5FA" />
+  <text x="48" y="222" text-anchor="middle" font-size="11" fill="#60A5FA">3</text>
+  <text x="68" y="216" font-size="11.5" font-weight="600" fill="#E6EDF8">逐段执行 bpy 脚本</text>
+  <text x="68" y="232" font-size="9.5" fill="#9FB1CE">每段 OBJCOUNT 校验 + 渲染抽查</text>
+  <line x1="48" y1="286" x2="48" y2="306" stroke="#2E4062" stroke-width="2" />
+  <circle cx="48" cy="274" r="12" fill="#0B1526" stroke="#FBBF24" />
+  <text x="48" y="278" text-anchor="middle" font-size="11" fill="#FBBF24">4</text>
+  <text x="68" y="272" font-size="11.5" font-weight="600" fill="#E6EDF8">全模型渲染比对</text>
+  <text x="68" y="288" font-size="9.5" fill="#9FB1CE">Eevee 出图 ↔ 参考图 · 位置/比例/配色修正轮</text>
+  <line x1="48" y1="342" x2="48" y2="362" stroke="#2E4062" stroke-width="2" />
+  <circle cx="48" cy="330" r="12" fill="#0B1526" stroke="#60A5FA" />
+  <text x="48" y="334" text-anchor="middle" font-size="11" fill="#60A5FA">5</text>
+  <text x="68" y="328" font-size="11.5" font-weight="600" fill="#E6EDF8">导出 GLB</text>
+  <text x="68" y="344" font-size="9.5" fill="#9FB1CE">convert MESH → use_selection → models/</text>
+  <line x1="48" y1="398" x2="48" y2="418" stroke="#2E4062" stroke-width="2" />
+  <circle cx="48" cy="386" r="12" fill="#0B1526" stroke="#60A5FA" />
+  <text x="48" y="390" text-anchor="middle" font-size="11" fill="#60A5FA">6</text>
+  <text x="68" y="384" font-size="11.5" font-weight="600" fill="#E6EDF8">pickModel 选型接入</text>
+  <text x="68" y="400" font-size="9.5" fill="#9FB1CE">desc 关键字映射 · mock 挂对应工位</text>
+  <circle cx="48" cy="442" r="12" fill="#0B1526" stroke="#34D399" />
+  <text x="48" y="446" text-anchor="middle" font-size="11" fill="#34D399">7</text>
+  <text x="68" y="440" font-size="11.5" font-weight="600" fill="#E6EDF8">/#/line-twin 验收</text>
+  <text x="68" y="456" font-size="9.5" fill="#9FB1CE">选型正确 · 贴地 · 大小统一 · 塔灯联动</text>
+  <line x1="40" y1="474" x2="448" y2="474" stroke="#24344F" />
+  <text x="40" y="496" font-size="10.5" fill="#FBBF24">成本账：单台 1 次会话（7 批次）≈ 当天完成 · 传统路径数天 / 台</text>
+
+  <rect x="484" y="68" width="452" height="232" rx="10" fill="#1A0E12" stroke="#7F1D1D" />
+  <text x="500" y="92" font-size="12" font-weight="600" fill="#F87171">Blender MCP 侧 · 五坑</text>
+  <text x="500" y="116" font-size="10.5" fill="#E6EDF8">① CJK 字体加载直接炸断 MCP 连接</text>
+  <text x="516" y="132" font-size="9.5" fill="#34D399">解法：屏幕文字一律用发光装饰条模拟</text>
+  <text x="500" y="156" font-size="10.5" fill="#E6EDF8">② 单批 &gt;50 → 超时 / CONNECTION_CLOSED</text>
+  <text x="516" y="172" font-size="9.5" fill="#34D399">解法：≤50/批；断连须人工重启 MCP 服务</text>
+  <text x="500" y="196" font-size="10.5" fill="#E6EDF8">③ 渲染图落 Temp 目录 · 交付时找不到</text>
+  <text x="516" y="212" font-size="9.5" fill="#34D399">解法：交付物一律直存桌面</text>
+  <text x="500" y="236" font-size="10.5" fill="#E6EDF8">④ helper size=2 缩放基准错位 · 部件分离</text>
+  <text x="516" y="252" font-size="9.5" fill="#34D399">解法：统一 size=1 + dimensions 赋值</text>
+  <text x="500" y="276" font-size="10.5" fill="#E6EDF8">⑤ 玻璃 / 导向板渲染成实心块</text>
+  <text x="516" y="292" font-size="9.5" fill="#34D399">解法：Alpha&lt;1 + blend_method='BLEND'</text>
+
+  <rect x="484" y="316" width="452" height="204" rx="10" fill="#0F1B30" stroke="#24344F" />
+  <text x="500" y="340" font-size="12" font-weight="600" fill="#F87171">集成侧 · 四坑</text>
+  <text x="500" y="364" font-size="10.5" fill="#E6EDF8">⑥ 删模型残留类型 / 引用 → 编译报错</text>
+  <text x="516" y="380" font-size="9.5" fill="#34D399">解法：实例 · 类型 · 引用一次删全</text>
+  <text x="500" y="404" font-size="10.5" fill="#E6EDF8">⑦ mock 残留冒出 25 台「幽灵设备」</text>
+  <text x="516" y="420" font-size="9.5" fill="#34D399">解法：改设备数量先清旧 mock 再挂工位</text>
+  <text x="500" y="444" font-size="10.5" fill="#E6EDF8">⑧ GLB 自带塔灯与前端状态灯重影</text>
+  <text x="516" y="460" font-size="9.5" fill="#34D399">解法：加载管线按名前缀剥离内置塔灯</text>
+  <text x="500" y="484" font-size="10.5" fill="#E6EDF8">⑨ 3D 页一片空白 · 什么都不画</text>
+  <text x="516" y="500" font-size="9.5" fill="#34D399">解法：先查容器 height:100vh</text>
+</svg>
