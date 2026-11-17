@@ -3,12 +3,11 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import react from '@astrojs/react';
 
-// TODO(user): replace `username` with real GitHub username before first deploy.
-const site = 'https://TZB-Loong.github.io';
+const site = 'https://git-novel.loc.cc';
 
 export default defineConfig({
   site,
-  base: '/git-novel',
+  base: '/',
   trailingSlash: 'always',
   integrations: [
     mdx(),

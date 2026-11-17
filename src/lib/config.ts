@@ -29,8 +29,8 @@ const rawGiscus = {
 };
 
 export const SITE_CONFIG: SiteConfig = {
-  site: 'https://TZB-Loong.github.io',
-  base: '/git-novel',
+  site: 'https://git-novel.loc.cc',
+  base: '/',
   title: '夏目友人懒人帐',
   description: '个人图文知识日志 — AI、工程实践与持续思考',
   author: 'loong',
