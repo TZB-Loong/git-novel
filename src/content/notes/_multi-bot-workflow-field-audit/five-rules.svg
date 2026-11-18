@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="640" viewBox="0 0 960 640">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#040813"/>
+      <stop offset="60%" stop-color="#0a1226"/>
+      <stop offset="100%" stop-color="#02040b"/>
+    </linearGradient>
+    <marker id="arr2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#38bdf8"/>
+    </marker>
+    <style>
+      .t1 { font: 800 17px -apple-system,'Segoe UI',Roboto,sans-serif; fill: #f8fafc; }
+      .t2 { font: 600 12px -apple-system,'Segoe UI',Roboto,sans-serif; fill: #94a3b8; }
+      .num { font: 900 20px -apple-system,'Segoe UI',Roboto,sans-serif; fill: #38bdf8; }
+      .rule { font: 700 13px -apple-system,'Segoe UI',Roboto,sans-serif; fill: #f1f5f9; }
+      .ev  { font: 500 11.5px -apple-system,'Segoe UI',Roboto,sans-serif; fill: #94a3b8; }
+      .data { font: 700 12px -apple-system,'Segoe UI',Roboto,sans-serif; fill: #34d399; }
+      .warn { font: 700 12px -apple-system,'Segoe UI',Roboto,sans-serif; fill: #fbbf24; }
+      .foot { font: 500 11px -apple-system,'Segoe UI',Roboto,sans-serif; fill: #64748b; }
+    </style>
+  </defs>
+  <rect width="960" height="640" rx="14" fill="url(#bg)"/>
+  <text x="480" y="42" text-anchor="middle" class="t1">五条可复制的工作模式守则 · 每条挂在实测数字上</text>
+  <text x="480" y="64" text-anchor="middle" class="t2">12 天台账教训的压缩版 · 守则反着写就是踩坑清单</text>
+
+  <!-- 5 rules -->
+  <g>
+    <rect x="60" y="96" width="840" height="94" rx="10" fill="#0b1526" stroke="#1e3a5f"/>
+    <circle cx="105" cy="143" r="22" fill="#081120" stroke="#38bdf8" stroke-width="2"/>
+    <text x="105" y="150" text-anchor="middle" class="num">1</text>
+    <text x="150" y="128" class="rule">派活单点直派，不群派任务</text>
+    <text x="150" y="150" class="ev">多方知晓走广播通道（不启动回合）；工单结构天然排除网状协作</text>
+    <text x="150" y="172" class="data">实测：223 单里 221 单直派（99.1%），扇出 3 目标仅 2 次</text>
+
+    <rect x="60" y="200" width="840" height="94" rx="10" fill="#0b1526" stroke="#1e3a5f"/>
+    <circle cx="105" cy="247" r="22" fill="#081120" stroke="#38bdf8" stroke-width="2"/>
+    <text x="105" y="254" text-anchor="middle" class="num">2</text>
+    <text x="150" y="232" class="rule">工单必带验收句 done_when</text>
+    <text x="150" y="254" class="ev">写"什么算完成"，一个可判定条件，如"删掉 manifest 后 advance 必须退出码非 0"</text>
+    <text x="150" y="276" class="warn">现状：覆盖仅 60.5%，没写的四成靠事后对齐补成本</text>
+
+    <rect x="60" y="304" width="840" height="94" rx="10" fill="#0b1526" stroke="#1e3a5f"/>
+    <circle cx="105" cy="351" r="22" fill="#081120" stroke="#38bdf8" stroke-width="2"/>
+    <text x="105" y="358" text-anchor="middle" class="num">3</text>
+    <text x="150" y="336" class="rule">返工走 rework + 原线程，不开新单</text>
+    <text x="150" y="358" class="ev">原线程续跑既保上下文又免重复；接活方已完成时框架直接拒绝新单</text>
+    <text x="150" y="380" class="warn">高频失误：65 次重复派活被拒，全库最高频操作失误模式</text>
+
+    <rect x="60" y="408" width="840" height="94" rx="10" fill="#0b1526" stroke="#1e3a5f"/>
+    <circle cx="105" cy="455" r="22" fill="#081120" stroke="#38bdf8" stroke-width="2"/>
+    <text x="105" y="462" text-anchor="middle" class="num">4</text>
+    <text x="150" y="440" class="rule">协同失败率按 25% 量级单独预算</text>
+    <text x="150" y="462" class="ev">协议拒绝是设计成本不是事故；告警分两通道</text>
+    <text x="150" y="484" class="data">实测：护栏拒绝占 85.7%（修状态机） vs 真失败 14.3%（查基建）</text>
+
+    <rect x="60" y="512" width="840" height="94" rx="10" fill="#0b1526" stroke="#f59e0b"/>
+    <circle cx="105" cy="559" r="22" fill="#081120" stroke="#f59e0b" stroke-width="2"/>
+    <text x="105" y="566" text-anchor="middle" class="num" fill="#fbbf24">5</text>
+    <text x="150" y="544" class="rule">人类只出现在闸门上</text>
+    <text x="150" y="566" class="ev">push / 删除 / 花钱 / 方向分叉；其余 98.7% 消息量由席位间自主完成</text>
+    <text x="150" y="588" class="data">实测：人类消息中位 16 字 —— 若人类要写 500 字才能让系统动起来，模式就设计错了</text>
+  </g>
+  <text x="480" y="628" text-anchor="middle" class="foot" opacity="0"> </text>
+</svg>

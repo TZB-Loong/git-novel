@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="600" viewBox="0 0 960 600">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#040813"/>
+      <stop offset="60%" stop-color="#0a1226"/>
+      <stop offset="100%" stop-color="#02040b"/>
+    </linearGradient>
+    <style>
+      .t1 { font: 800 17px -apple-system,'Segoe UI',Roboto,sans-serif; fill: #f8fafc; }
+      .t2 { font: 600 12px -apple-system,'Segoe UI',Roboto,sans-serif; fill: #94a3b8; }
+      .fld { font: 700 14px -apple-system,'Segoe UI',Roboto,sans-serif; fill: #7dd3fc; }
+      .val { font: 600 12.5px -apple-system,'Segoe UI',Roboto,sans-serif; fill: #e2e8f0; }
+      .note { font: 500 11px -apple-system,'Segoe UI',Roboto,sans-serif; fill: #94a3b8; }
+      .big { font: 900 30px -apple-system,'Segoe UI',Roboto,sans-serif; fill: #fbbf24; }
+      .mon { font: 600 11.5px 'SF Mono',Menlo,Consolas,monospace; fill: #cbd5e1; }
+      .foot { font: 500 11px -apple-system,'Segoe UI',Roboto,sans-serif; fill: #64748b; }
+    </style>
+  </defs>
+  <rect width="960" height="600" rx="14" fill="url(#bg)"/>
+  <text x="480" y="42" text-anchor="middle" class="t1">一条真实工单的解剖 · coordinate_bots 六字段</text>
+  <text x="480" y="64" text-anchor="middle" class="t2">223 单可解析统计 · 人类消息中位 16 字 vs 工单中位 1,483 字，93 倍刻度差</text>
+
+  <!-- left: fields -->
+  <g>
+    <rect x="60" y="96" width="420" height="52" rx="8" fill="#0b1526" stroke="#1e3a5f"/>
+    <text x="80" y="118" class="fld">bot_ids</text>
+    <text x="80" y="136" class="val">221 单直派 1 目标 / 2 单扇出 3 目标（99.1%）</text>
+
+    <rect x="60" y="156" width="420" height="52" rx="8" fill="#0b1526" stroke="#1e3a5f"/>
+    <text x="80" y="178" class="fld">message 工单正文</text>
+    <text x="80" y="196" class="val">中位 1,483 字 · 均值 1,496 · p90 2,651 · 上限 4,000</text>
+
+    <rect x="60" y="216" width="420" height="52" rx="8" fill="#0b1526" stroke="#f59e0b"/>
+    <text x="80" y="238" class="fld">done_when 验收句</text>
+    <text x="80" y="256" class="val">覆盖 135/223 = 60.5%，四成工单没写验收标准</text>
+
+    <rect x="60" y="276" width="420" height="52" rx="8" fill="#0b1526" stroke="#1e3a5f"/>
+    <text x="80" y="298" class="fld">rework 返工标记</text>
+    <text x="80" y="316" class="val">113/223 = 50.7%，含「真返工」与「同线程续跑」</text>
+
+    <rect x="60" y="336" width="420" height="52" rx="8" fill="#0b1526" stroke="#1e3a5f"/>
+    <text x="80" y="358" class="fld">thread 线程策略</text>
+    <text x="80" y="376" class="val">standing 123 / new 56 / 复用历史 44</text>
+
+    <rect x="60" y="396" width="420" height="52" rx="8" fill="#0b1526" stroke="#1e3a5f"/>
+    <text x="80" y="418" class="fld">reply 回报策略</text>
+    <text x="80" y="436" class="val">默认 181 / resume 显式续跑 28 / none 单向通知 14</text>
+  </g>
+
+  <!-- right: real order excerpt -->
+  <g>
+    <rect x="510" y="96" width="390" height="352" rx="10" fill="#081120" stroke="#1e3a5f"/>
+    <text x="530" y="124" class="fld">真实工单节选 · 2026-11-17</text>
+    <text x="530" y="152" class="mon">【任务：把 pipeline_stepper.py 的门禁</text>
+    <text x="530" y="170" class="mon">改成真拦截（EP02 即将进 Step 2）】</text>
+    <text x="530" y="196" class="mon">背景：现行 advance 无条件置 PASSED，</text>
+    <text x="530" y="214" class="mon">门禁等于假的，三席闭环没有物理约束。</text>
+    <text x="530" y="240" class="mon">交付物：只改一个文件，必须实现：</text>
+    <text x="530" y="258" class="mon">1. advance 只允许推进当前步</text>
+    <text x="530" y="276" class="mon">2. 置 PASSED 前做门禁核验，缺一项就拒绝</text>
+    <text x="530" y="294" class="mon">3. verify_gate 返回真实退出码</text>
+    <text x="530" y="320" class="mon">验收（自己跑并把输出贴回来）：</text>
+    <text x="530" y="338" class="mon">- EP99 夹具六步全过</text>
+    <text x="530" y="356" class="mon">- 删 gate_a_manifest 后 STEP_2 必须非 0</text>
+    <text x="530" y="374" class="mon">- 非当前步 advance 必须退出码非 0</text>
+    <text x="530" y="400" class="mon">红线：不动 stepper_state 与真实 EP02 状态</text>
+    <text x="530" y="432" class="note">背景 / 交付物 / 逐条验收 / 红线，</text>
+    <text x="530" y="448" class="note">压缩到 1,500 字的完整软件工程工单</text>
+  </g>
+
+  <!-- bottom scale bar -->
+  <g>
+    <rect x="60" y="482" width="100" height="26" rx="6" fill="#134e4a"/>
+    <text x="110" y="500" text-anchor="middle" class="val" fill="#5eead4">16 字</text>
+    <rect x="160" y="482" width="740" height="26" rx="6" fill="#0b1526" stroke="#f59e0b"/>
+    <text x="530" y="500" text-anchor="middle" class="val">1,483 字 · 表达成本系统性转移到机器侧：人给意图，机器交换任务规格</text>
+    <text x="110" y="472" text-anchor="middle" class="note">人类消息中位</text>
+    <text x="530" y="526" text-anchor="middle" class="note">派活工单中位（93 倍）</text>
+  </g>
+  <text x="480" y="576" text-anchor="middle" class="foot">工单长度分布 n=296（含失败调用）· 最大 4,264 字撞 4,000 上限被拒</text>
+</svg>

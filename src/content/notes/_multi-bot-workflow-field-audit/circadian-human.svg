@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="620" viewBox="0 0 960 620">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#040813"/>
+      <stop offset="60%" stop-color="#0a1226"/>
+      <stop offset="100%" stop-color="#02040b"/>
+    </linearGradient>
+    <linearGradient id="bar" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0369a1"/>
+    </linearGradient>
+    <style>
+      .t1 { font: 800 17px -apple-system,'Segoe UI',Roboto,sans-serif; fill: #f8fafc; }
+      .t2 { font: 600 12px -apple-system,'Segoe UI',Roboto,sans-serif; fill: #94a3b8; }
+      .hr { font: 600 11px -apple-system,'Segoe UI',Roboto,sans-serif; fill: #64748b; }
+      .hv { font: 700 11.5px -apple-system,'Segoe UI',Roboto,sans-serif; fill: #7dd3fc; }
+      .note { font: 600 12.5px -apple-system,'Segoe UI',Roboto,sans-serif; fill: #e2e8f0; }
+      .big { font: 900 28px -apple-system,'Segoe UI',Roboto,sans-serif; fill: #fbbf24; }
+      .foot { font: 500 11px -apple-system,'Segoe UI',Roboto,sans-serif; fill: #64748b; }
+    </style>
+  </defs>
+  <rect width="960" height="620" rx="14" fill="url(#bg)"/>
+  <text x="480" y="42" text-anchor="middle" class="t1">昼夜节律与人类在场 · 41,595 次工具调用的时钟分布</text>
+  <text x="480" y="64" text-anchor="middle" class="t2">峰值 16 时 3,179 次 · 谷值凌晨 3 时 335 次 · 夜间 23:00–07:00 占 18.9%</text>
+
+  <!-- chart frame -->
+  <g>
+    <line x1="70" y1="400" x2="880" y2="400" stroke="#334155" stroke-width="1"/>
+    <line x1="70" y1="110" x2="70" y2="400" stroke="#334155" stroke-width="1"/>
+    <!-- bars: x hour 0..23, baseline 400, scale 3179 -> 270px -->
+    <g>
+      <rect x="80"  y="322" width="28" height="78"  fill="url(#bar)"/>
+      <rect x="114" y="338" width="28" height="62"  fill="url(#bar)"/>
+      <rect x="148" y="356" width="28" height="44"  fill="url(#bar)"/>
+      <rect x="182" y="371" width="28" height="29"  fill="url(#bar)"/>
+      <rect x="216" y="352" width="28" height="48"  fill="url(#bar)"/>
+      <rect x="250" y="328" width="28" height="72"  fill="url(#bar)"/>
+      <rect x="284" y="248" width="28" height="152" fill="url(#bar)"/>
+      <rect x="318" y="213" width="28" height="187" fill="url(#bar)"/>
+      <rect x="352" y="249" width="28" height="151" fill="url(#bar)"/>
+      <rect x="386" y="185" width="28" height="215" fill="url(#bar)"/>
+      <rect x="420" y="147" width="28" height="253" fill="url(#bar)"/>
+      <rect x="454" y="186" width="28" height="214" fill="url(#bar)"/>
+      <rect x="488" y="360" width="28" height="40"  fill="url(#bar)"/>
+      <rect x="522" y="328" width="28" height="72"  fill="url(#bar)"/>
+      <rect x="556" y="217" width="28" height="183" fill="url(#bar)"/>
+      <rect x="590" y="196" width="28" height="204" fill="url(#bar)"/>
+      <rect x="624" y="130" width="28" height="270" fill="#f59e0b"/>
+      <rect x="658" y="150" width="28" height="250" fill="url(#bar)"/>
+      <rect x="692" y="275" width="28" height="125" fill="url(#bar)"/>
+      <rect x="726" y="301" width="28" height="99"  fill="url(#bar)"/>
+      <rect x="760" y="313" width="28" height="87"  fill="url(#bar)"/>
+      <rect x="794" y="169" width="28" height="231" fill="url(#bar)"/>
+      <rect x="828" y="141" width="28" height="259" fill="url(#bar)"/>
+      <rect x="862" y="212" width="28" height="188" fill="url(#bar)"/>
+    </g>
+    <!-- hour labels every 2 -->
+    <text x="94"  y="416" text-anchor="middle" class="hr">0</text>
+    <text x="162" y="416" text-anchor="middle" class="hr">2</text>
+    <text x="230" y="416" text-anchor="middle" class="hr">4</text>
+    <text x="298" y="416" text-anchor="middle" class="hr">6</text>
+    <text x="366" y="416" text-anchor="middle" class="hr">8</text>
+    <text x="434" y="416" text-anchor="middle" class="hr">10</text>
+    <text x="502" y="416" text-anchor="middle" class="hr">12</text>
+    <text x="570" y="416" text-anchor="middle" class="hr">14</text>
+    <text x="638" y="416" text-anchor="middle" class="hr">16</text>
+    <text x="706" y="416" text-anchor="middle" class="hr">18</text>
+    <text x="774" y="416" text-anchor="middle" class="hr">20</text>
+    <text x="842" y="416" text-anchor="middle" class="hr">22</text>
+    <text x="876" y="416" text-anchor="middle" class="hr">23</text>
+    <!-- annotations -->
+    <text x="638" y="122" text-anchor="middle" class="hv">峰值 3,179</text>
+    <text x="196" y="340" text-anchor="middle" class="hv">谷值 335</text>
+    <!-- night shading -->
+    <rect x="66" y="110" width="252" height="290" fill="#0f172a" opacity="0.55"/>
+    <rect x="790" y="110" width="96" height="290" fill="#0f172a" opacity="0.55"/>
+    <text x="192" y="130" text-anchor="middle" class="hr" fill="#475569">夜间时段</text>
+  </g>
+
+  <!-- human role cards -->
+  <g>
+    <rect x="70" y="448" width="260" height="120" rx="10" fill="#0b1526" stroke="#f59e0b"/>
+    <text x="200" y="474" text-anchor="middle" class="big">16 字</text>
+    <text x="200" y="496" text-anchor="middle" class="note">人类消息中位长度</text>
+    <text x="200" y="518" text-anchor="middle" class="t2">58.8% 不超过 20 字</text>
+    <text x="200" y="542" text-anchor="middle" class="t2">"上线" "发布" "继续" "候选3"</text>
+
+    <rect x="350" y="448" width="260" height="120" rx="10" fill="#0b1526" stroke="#1e3a5f"/>
+    <text x="480" y="474" text-anchor="middle" class="big">5,664</text>
+    <text x="480" y="496" text-anchor="middle" class="note">决策台账自动批准条数</text>
+    <text x="480" y="518" text-anchor="middle" class="t2">绝大多数机器操作无需人类</text>
+    <text x="480" y="542" text-anchor="middle" class="t2">人类只在不可逆动作上签字</text>
+
+    <rect x="630" y="448" width="260" height="120" rx="10" fill="#0b1526" stroke="#1e3a5f"/>
+    <text x="760" y="474" text-anchor="middle" class="big">3 种</text>
+    <text x="760" y="496" text-anchor="middle" class="note">人类出场身份</text>
+    <text x="760" y="518" text-anchor="middle" class="t2">闸门 · 额度仲裁 · 方向选择</text>
+    <text x="760" y="542" text-anchor="middle" class="t2">1.28% 是设计成立的证明</text>
+  </g>
+  <text x="480" y="600" text-anchor="middle" class="foot">柱状图为台账实测 · 橙色柱为 16 时峰值 · 夜间阴影覆盖 23:00–07:00</text>
+</svg>

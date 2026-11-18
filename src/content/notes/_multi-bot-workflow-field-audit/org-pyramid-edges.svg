@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="640" viewBox="0 0 960 640">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#040813"/>
+      <stop offset="60%" stop-color="#0a1226"/>
+      <stop offset="100%" stop-color="#02040b"/>
+    </linearGradient>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#64748b"/>
+    </marker>
+    <style>
+      .t1 { font: 800 17px -apple-system,'Segoe UI',Roboto,sans-serif; fill: #f8fafc; }
+      .t2 { font: 600 12px -apple-system,'Segoe UI',Roboto,sans-serif; fill: #94a3b8; }
+      .seat { font: 700 14px -apple-system,'Segoe UI',Roboto,sans-serif; fill: #f1f5f9; }
+      .sub  { font: 500 10.5px -apple-system,'Segoe UI',Roboto,sans-serif; fill: #94a3b8; }
+      .w { font: 800 12px -apple-system,'Segoe UI',Roboto,sans-serif; fill: #7dd3fc; }
+      .w2 { font: 800 12px -apple-system,'Segoe UI',Roboto,sans-serif; fill: #fbbf24; }
+      .foot { font: 500 11px -apple-system,'Segoe UI',Roboto,sans-serif; fill: #64748b; }
+      .box { fill: #0b1526; stroke-width: 1.6; }
+    </style>
+  </defs>
+  <rect width="960" height="640" rx="14" fill="url(#bg)"/>
+  <text x="480" y="40" text-anchor="middle" class="t1">18 席三层编制与派活边 · 30 条边承载全部协同</text>
+  <text x="480" y="62" text-anchor="middle" class="t2">边宽按派活次数渲染 · 前 14 条边吃掉 78% 流量</text>
+
+  <!-- L0 human -->
+  <rect x="410" y="88" width="140" height="54" rx="10" class="box" stroke="#f59e0b"/>
+  <text x="480" y="112" text-anchor="middle" class="seat">loong（人类）</text>
+  <text x="480" y="130" text-anchor="middle" class="sub">闸门：push / 删除 / 花钱 / 方向</text>
+
+  <!-- L1 chief -->
+  <rect x="410" y="178" width="140" height="54" rx="10" class="box" stroke="#7dd3fc"/>
+  <text x="480" y="202" text-anchor="middle" class="seat">总管</text>
+  <text x="480" y="220" text-anchor="middle" class="sub">Chief · free 档</text>
+
+  <!-- L2 middle -->
+  <rect x="180" y="268" width="170" height="54" rx="10" class="box" stroke="#a78bfa"/>
+  <text x="265" y="292" text-anchor="middle" class="seat">制作人/导演（席1）</text>
+  <text x="265" y="310" text-anchor="middle" class="sub">opus 档 · 解放项目指挥</text>
+  <rect x="610" y="268" width="170" height="54" rx="10" class="box" stroke="#34d399"/>
+  <text x="695" y="292" text-anchor="middle" class="seat">Tuli（本文作者）</text>
+  <text x="695" y="310" text-anchor="middle" class="sub">free 档 · 图文主线</text>
+
+  <!-- L3 executors -->
+  <rect x="80" y="368" width="160" height="54" rx="10" class="box" stroke="#a78bfa"/>
+  <text x="160" y="392" text-anchor="middle" class="seat">文史编剧（席2）</text>
+  <text x="160" y="410" text-anchor="middle" class="sub">smart-split[1m]</text>
+  <rect x="280" y="368" width="160" height="54" rx="10" class="box" stroke="#a78bfa"/>
+  <text x="360" y="392" text-anchor="middle" class="seat">视听工程师（席3）</text>
+  <text x="360" y="410" text-anchor="middle" class="sub">gpt-6.1-sol+priority</text>
+  <rect x="480" y="368" width="130" height="54" rx="10" class="box" stroke="#a78bfa"/>
+  <text x="545" y="392" text-anchor="middle" class="seat">gpt-sol</text>
+  <text x="545" y="410" text-anchor="middle" class="sub">几何攻坚</text>
+
+  <!-- infra row -->
+  <rect x="650" y="368" width="240" height="54" rx="10" class="box" stroke="#475569"/>
+  <text x="770" y="392" text-anchor="middle" class="seat">基建五席</text>
+  <text x="770" y="410" text-anchor="middle" class="sub">算力调度官 / Kaggle / Colab / 云端沙盒 / 本地模型</text>
+
+  <!-- edges -->
+  <g stroke="#64748b" fill="none" marker-end="url(#arr)">
+    <line x1="480" y1="142" x2="480" y2="176" stroke-width="1.5" stroke-dasharray="4 3"/>
+    <line x1="445" y1="232" x2="300" y2="266" stroke-width="4.5"/>
+    <line x1="470" y1="232" x2="655" y2="266" stroke-width="2"/>
+    <line x1="240" y1="322" x2="180" y2="366" stroke-width="4.5"/>
+    <line x1="295" y1="322" x2="345" y2="366" stroke-width="4.5"/>
+    <line x1="320" y1="322" x2="520" y2="368" stroke-width="1.8"/>
+    <line x1="500" y1="232" x2="740" y2="268" stroke-width="2"/>
+    <line x1="680" y1="322" x2="750" y2="366" stroke-width="1.8"/>
+    <line x1="455" y1="232" x2="115" y2="368" stroke-width="3"/>
+    <line x1="475" y1="232" x2="355" y2="368" stroke-width="2.6"/>
+    <line x1="500" y1="232" x2="545" y2="366" stroke-width="1.6"/>
+    <line x1="510" y1="232" x2="770" y2="368" stroke-width="1.4"/>
+  </g>
+
+  <!-- edge weight labels -->
+  <text x="365" y="246" class="w2">27</text>
+  <text x="150" y="346" class="w">48</text>
+  <text x="330" y="346" class="w">48</text>
+  <text x="430" y="320" class="w">19</text>
+  <text x="600" y="330" class="w">6</text>
+  <text x="252" y="330" class="w">18</text>
+  <text x="404" y="308" class="w">18</text>
+  <text x="700" y="346" class="w">6</text>
+
+  <!-- legend -->
+  <g font-family="-apple-system,'Segoe UI',Roboto,sans-serif" font-size="11">
+    <rect x="90" y="470" width="780" height="118" rx="10" fill="#081120" stroke="#1e3a5f"/>
+    <text x="110" y="496" font-weight="700" fill="#e2e8f0">读法</text>
+    <text x="110" y="518" fill="#94a3b8">· 制作人/导演 → 视听 48 次，是总管 → 视听（18 次）的 2.7 倍：中层真实承重，金字塔不是画的</text>
+    <text x="110" y="538" fill="#94a3b8">· 金字塔允许越层：总管直接派给执行席 18 次，但主流仍逐级派发</text>
+    <text x="110" y="558" fill="#94a3b8">· 223 单可解析派活中 221 单单点直派（99.1%），扇出到 3 目标仅 2 次 —— 网状群聊在台账里不存在</text>
+    <text x="110" y="578" fill="#94a3b8">· 金钱探针 → 云端沙盒 5 次：独立线也有自己的固定边，30 条边几乎条条有名字</text>
+  </g>
+  <text x="480" y="622" text-anchor="middle" class="foot">边权重 = coordinate_bots 成功派活次数 · 快照 2026-11-18 09:38</text>
+</svg>

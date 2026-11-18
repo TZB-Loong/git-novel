@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="620" viewBox="0 0 960 620">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#040813"/>
+      <stop offset="60%" stop-color="#0a1226"/>
+      <stop offset="100%" stop-color="#02040b"/>
+    </linearGradient>
+    <style>
+      .t1 { font: 800 17px -apple-system,'Segoe UI',Roboto,sans-serif; fill: #f8fafc; }
+      .t2 { font: 600 12px -apple-system,'Segoe UI',Roboto,sans-serif; fill: #94a3b8; }
+      .bar { font: 700 12px -apple-system,'Segoe UI',Roboto,sans-serif; fill: #e2e8f0; }
+      .pct { font: 800 13px -apple-system,'Segoe UI',Roboto,sans-serif; fill: #f87171; }
+      .pctg { font: 800 13px -apple-system,'Segoe UI',Roboto,sans-serif; fill: #34d399; }
+      .big { font: 900 26px -apple-system,'Segoe UI',Roboto,sans-serif; }
+      .note { font: 500 11.5px -apple-system,'Segoe UI',Roboto,sans-serif; fill: #94a3b8; }
+      .foot { font: 500 11px -apple-system,'Segoe UI',Roboto,sans-serif; fill: #64748b; }
+    </style>
+  </defs>
+  <rect width="960" height="620" rx="14" fill="url(#bg)"/>
+  <text x="480" y="42" text-anchor="middle" class="t1">25.45% 派活失败率拆解 · 护栏拒绝不是宕机</text>
+  <text x="480" y="64" text-anchor="middle" class="t2">84 次失败逐条聚类 · 85.7% 是协议护栏毫秒级确定性拒绝，不耗下游 token</text>
+
+  <!-- top compare -->
+  <g>
+    <rect x="60" y="92" width="400" height="70" rx="10" fill="#0b1526" stroke="#1e3a5f"/>
+    <text x="260" y="122" text-anchor="middle" class="big" fill="#7dd3fc">4.02%</text>
+    <text x="260" y="146" text-anchor="middle" class="note">全量工具调用失败率 · 41,595 次中失败 1,671 次</text>
+    <rect x="500" y="92" width="400" height="70" rx="10" fill="#0b1526" stroke="#7f1d1d"/>
+    <text x="700" y="122" text-anchor="middle" class="big" fill="#f87171">25.45%</text>
+    <text x="700" y="146" text-anchor="middle" class="note">跨 Bot 派活失败率 · 330 次中失败 84 次（6.3 倍）</text>
+    <text x="480" y="132" text-anchor="middle" class="pct">vs</text>
+  </g>
+
+  <!-- waterfall bars -->
+  <g>
+    <!-- A -->
+    <text x="80" y="206" class="bar">A · 重复派活被拒（活已完成，又派一遍）</text>
+    <rect x="80" y="214" width="649" height="30" rx="5" fill="#7f1d1d"/>
+    <text x="740" y="235" class="pct">65 次 · 77.4%</text>
+    <!-- B -->
+    <text x="80" y="276" class="bar">B · 回派祖先被拒（不能把活派回上级）</text>
+    <rect x="80" y="284" width="60" height="30" rx="5" fill="#9a3412"/>
+    <text x="150" y="305" class="pct">6 次 · 7.1%</text>
+    <!-- C -->
+    <text x="80" y="346" class="bar">C · 未授权（跨部门派活被权限拒绝）</text>
+    <rect x="80" y="354" width="70" height="30" rx="5" fill="#9a3412"/>
+    <text x="160" y="375" class="pct">7 次 · 8.3%</text>
+    <!-- E -->
+    <text x="80" y="416" class="bar">E · 参数不合规（snake_case / 4000 字上限 / 文件缺失）</text>
+    <rect x="80" y="424" width="40" height="30" rx="5" fill="#475569"/>
+    <text x="130" y="445" class="pctg">4 次 · 4.8%</text>
+    <!-- D F -->
+    <text x="80" y="486" class="bar">D · 目标 ID 不存在 ＋ F · 循环等待</text>
+    <rect x="80" y="494" width="20" height="30" rx="5" fill="#475569"/>
+    <text x="110" y="515" class="pctg">2 次 · 2.4%</text>
+  </g>
+
+  <!-- guardrail bracket -->
+  <g>
+    <line x1="860" y1="214" x2="860" y2="524" stroke="#34d399" stroke-width="2" stroke-dasharray="5 4"/>
+    <text x="875" y="290" class="pctg" transform="rotate(90 875 290)">协议护栏 72/84 = 85.7%</text>
+    <text x="875" y="440" class="note" transform="rotate(90 875 440)">入口拦截 · 毫秒级 · 零下游成本</text>
+  </g>
+
+  <text x="480" y="560" text-anchor="middle" class="note" fill="#e2e8f0">正确读法：不是 25% 宕机率，是 25% 的 lint 命中率 —— 挡住的全是派活方的状态管理失误</text>
+  <text x="480" y="592" text-anchor="middle" class="foot">告警设计含义：协同失败率按 25% 量级单独预算，协议拒绝（修状态机）与真失败（查基建）分两通道</text>
+</svg>

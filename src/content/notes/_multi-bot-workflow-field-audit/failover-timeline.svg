@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="560" viewBox="0 0 960 560">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#040813"/>
+      <stop offset="60%" stop-color="#0a1226"/>
+      <stop offset="100%" stop-color="#02040b"/>
+    </linearGradient>
+    <style>
+      .t1 { font: 800 17px -apple-system,'Segoe UI',Roboto,sans-serif; fill: #f8fafc; }
+      .t2 { font: 600 12px -apple-system,'Segoe UI',Roboto,sans-serif; fill: #94a3b8; }
+      .day { font: 700 11.5px -apple-system,'Segoe UI',Roboto,sans-serif; fill: #cbd5e1; }
+      .ev  { font: 600 11.5px -apple-system,'Segoe UI',Roboto,sans-serif; fill: #e2e8f0; }
+      .evt { font: 500 10.5px -apple-system,'Segoe UI',Roboto,sans-serif; fill: #94a3b8; }
+      .big { font: 900 26px -apple-system,'Segoe UI',Roboto,sans-serif; }
+      .card { font: 700 12px -apple-system,'Segoe UI',Roboto,sans-serif; fill: #7dd3fc; }
+      .foot { font: 500 11px -apple-system,'Segoe UI',Roboto,sans-serif; fill: #64748b; }
+    </style>
+  </defs>
+  <rect width="960" height="560" rx="14" fill="url(#bg)"/>
+  <text x="480" y="42" text-anchor="middle" class="t1">12 天韧性运行时间线 · 降级 / 压缩 / 例行任务</text>
+  <text x="480" y="64" text-anchor="middle" class="t2">额度当作一等运维对象：耗尽即降级，重置即切回，任务不中断</text>
+
+  <!-- timeline axis -->
+  <line x1="70" y1="130" x2="890" y2="130" stroke="#334155" stroke-width="2"/>
+  <g text-anchor="middle">
+    <text x="110" y="156" class="day">11-06</text>
+    <text x="230" y="156" class="day">11-08</text>
+    <text x="350" y="156" class="day">11-09</text>
+    <text x="470" y="156" class="day">11-11</text>
+    <text x="590" y="156" class="day">11-13</text>
+    <text x="710" y="156" class="day">11-16</text>
+    <text x="850" y="156" class="day">11-18</text>
+  </g>
+  <g stroke="#475569" stroke-width="1">
+    <line x1="110" y1="124" x2="110" y2="136"/>
+    <line x1="230" y1="124" x2="230" y2="136"/>
+    <line x1="350" y1="124" x2="350" y2="136"/>
+    <line x1="470" y1="124" x2="470" y2="136"/>
+    <line x1="590" y1="124" x2="590" y2="136"/>
+    <line x1="710" y1="124" x2="710" y2="136"/>
+    <line x1="850" y1="124" x2="850" y2="136"/>
+  </g>
+
+  <!-- events -->
+  <g>
+    <line x1="110" y1="130" x2="110" y2="200" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="3 3"/>
+    <circle cx="110" cy="130" r="5" fill="#38bdf8"/>
+    <text x="110" y="196" text-anchor="middle" class="ev">系统上线</text>
+    <text x="110" y="212" text-anchor="middle" class="evt">首日 90 条消息</text>
+
+    <line x1="305" y1="130" x2="305" y2="238" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="3 3"/>
+    <circle cx="305" cy="130" r="6" fill="#fbbf24"/>
+    <text x="305" y="222" text-anchor="middle" class="ev">failover #1</text>
+    <text x="305" y="238" text-anchor="middle" class="evt">11-09 08:29 gpt-6.1-sol → deepseek</text>
+    <text x="305" y="254" text-anchor="middle" class="evt">14:06 重置后切回 · 全程无中断</text>
+
+    <circle cx="410" cy="130" r="5" fill="#34d399"/>
+    <text x="410" y="106" text-anchor="middle" class="ev">日峰值 9,952 条</text>
+    <text x="410" y="90" text-anchor="middle" class="evt">11-09 生产密集期</text>
+
+    <circle cx="560" cy="130" r="5" fill="#34d399"/>
+    <text x="560" y="106" text-anchor="middle" class="ev">日峰值 9,550 条</text>
+    <text x="560" y="90" text-anchor="middle" class="evt">11-13</text>
+
+    <line x1="790" y1="130" x2="790" y2="238" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="3 3"/>
+    <circle cx="790" cy="130" r="6" fill="#fbbf24"/>
+    <text x="790" y="222" text-anchor="middle" class="ev">failover #2 / #3</text>
+    <text x="790" y="238" text-anchor="middle" class="evt">11-18 00:38 与 01:16</text>
+    <text x="790" y="254" text-anchor="middle" class="evt">codex+priority → deepseek · 01:55 重置切回</text>
+  </g>
+
+  <!-- stats cards -->
+  <g>
+    <rect x="70" y="300" width="260" height="150" rx="10" fill="#0b1526" stroke="#1e3a5f"/>
+    <text x="200" y="336" text-anchor="middle" class="big" fill="#34d399">62</text>
+    <text x="200" y="360" text-anchor="middle" class="card">上下文压缩</text>
+    <text x="200" y="384" text-anchor="middle" class="evt">长线程接近极限时自动折叠</text>
+    <text x="200" y="402" text-anchor="middle" class="evt">最长线程 9,471 条消息</text>
+    <text x="200" y="420" text-anchor="middle" class="evt">多次压缩仍保持任务连续</text>
+
+    <rect x="350" y="300" width="260" height="150" rx="10" fill="#0b1526" stroke="#f59e0b"/>
+    <text x="480" y="336" text-anchor="middle" class="big" fill="#fbbf24">3 次</text>
+    <text x="480" y="360" text-anchor="middle" class="card">模型额度降级</text>
+    <text x="480" y="384" text-anchor="middle" class="evt">高成本档耗尽 → 备用引擎续跑</text>
+    <text x="480" y="402" text-anchor="middle" class="evt">重置后自动切回原档</text>
+    <text x="480" y="420" text-anchor="middle" class="evt">接活的 Bot 在新引擎上继续</text>
+
+    <rect x="630" y="300" width="260" height="150" rx="10" fill="#0b1526" stroke="#1e3a5f"/>
+    <text x="760" y="336" text-anchor="middle" class="big" fill="#34d399">17 个</text>
+    <text x="760" y="360" text-anchor="middle" class="card">例行任务过台账</text>
+    <text x="760" y="384" text-anchor="middle" class="evt">定时巡检 / 验收回传 / 监控</text>
+    <text x="760" y="402" text-anchor="middle" class="evt">目标达成后逐个暂停</text>
+    <text x="760" y="420" text-anchor="middle" class="evt">夜间的产线值班员</text>
+  </g>
+
+  <!-- tier note -->
+  <rect x="70" y="470" width="820" height="52" rx="10" fill="#081120" stroke="#1e3a5f"/>
+  <text x="480" y="492" text-anchor="middle" class="evt" fill="#e2e8f0">算力经济学：18 席 8 席免费档，opus / priority 只配关键席位（制作/导演、视听工程师）</text>
+  <text x="480" y="510" text-anchor="middle" class="evt">按岗位风险分级供给，不是"全员最强模型"</text>
+  <text x="480" y="545" text-anchor="middle" class="foot">降级时点来自 limit-failovers.json · 压缩计数来自台账 compaction 消息 · 例行任务来自 routines.ledger.jsonl</text>
+</svg>
