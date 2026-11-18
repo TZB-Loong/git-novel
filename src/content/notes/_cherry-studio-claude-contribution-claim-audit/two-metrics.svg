@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#030713"/>
+      <stop offset="100%" stop-color="#0a1226"/>
+    </linearGradient>
+    <linearGradient id="blue" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0ea5e9"/>
+    </linearGradient>
+    <linearGradient id="amber" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#f97316"/>
+    </linearGradient>
+    <style>
+      .h    { font: 800 26px -apple-system,'PingFang SC',sans-serif; fill: #f1f5f9; }
+      .sub  { font: 600 14px -apple-system,'PingFang SC',sans-serif; fill: #64748b; }
+      .lab  { font: 700 13px -apple-system,'PingFang SC',sans-serif; fill: #94a3b8; }
+      .mono { font: 600 13px 'SF Mono',Menlo,monospace; fill: #cbd5e1; }
+      .val  { font: 900 22px -apple-system,sans-serif; }
+      .tick { font: 600 11.5px 'SF Mono',Menlo,monospace; fill: #64748b; }
+    </style>
+  </defs>
+  <rect width="1200" height="700" fill="url(#bg)"/>
+
+  <text x="60" y="52" class="h">同一批提交，两种口径，两个结论</text>
+  <text x="60" y="80" class="sub">CherryHQ/cherry-studio · 2026-11-18 实测 · 全为 GitHub API 原生分母</text>
+
+  <!-- 左：排行榜口径 -->
+  <g transform="translate(60,120)">
+    <rect x="0" y="0" width="500" height="430" rx="14" fill="#0b1220" stroke="#1e293b" stroke-width="1.4"/>
+    <rect x="0" y="0" width="500" height="46" rx="14" fill="#111c30"/>
+    <rect x="0" y="32" width="500" height="14" fill="#111c30"/>
+    <text x="22" y="30" class="lab" fill="#38bdf8">口径 A · GitHub 贡献者排行榜</text>
+    <text x="478" y="30" text-anchor="end" class="tick">/contributors</text>
+
+    <g transform="translate(22,74)">
+      <text x="0" y="16" class="mono">1  kangfenmao</text>
+      <rect x="170" y="2" width="240" height="18" rx="3" fill="#1e293b"/>
+      <rect x="170" y="2" width="240" height="18" rx="3" fill="url(#blue)"/>
+      <text x="424" y="17" text-anchor="end" class="val" fill="#38bdf8">2455</text>
+
+      <text x="0" y="58" class="mono">2  DeJeune</text>
+      <rect x="170" y="44" width="240" height="18" rx="3" fill="#1e293b"/>
+      <rect x="170" y="44" width="129" height="18" rx="3" fill="url(#blue)"/>
+      <text x="424" y="59" text-anchor="end" class="val" fill="#38bdf8">1314</text>
+
+      <text x="0" y="100" class="mono">3  0xfullex</text>
+      <rect x="170" y="86" width="240" height="18" rx="3" fill="#1e293b"/>
+      <rect x="170" y="86" width="99" height="18" rx="3" fill="url(#blue)"/>
+      <text x="424" y="101" text-anchor="end" class="val" fill="#38bdf8">1014</text>
+
+      <text x="0" y="142" class="mono">4  EurFelux</text>
+      <rect x="170" y="128" width="240" height="18" rx="3" fill="#1e293b"/>
+      <rect x="170" y="128" width="82" height="18" rx="3" fill="url(#blue)"/>
+      <text x="424" y="143" text-anchor="end" class="val" fill="#38bdf8">838</text>
+
+      <text x="0" y="192" class="mono" fill="#f87171">5  Claude</text>
+      <rect x="170" y="178" width="240" height="18" rx="3" fill="#1e293b"/>
+      <text x="178" y="192" class="tick" fill="#f87171">author:claude = 0 · 无此行</text>
+    </g>
+
+    <line x1="22" y1="296" x2="478" y2="296" stroke="#1e293b" stroke-width="1"/>
+    <text x="22" y="324" class="lab">为什么没有这一行？</text>
+    <text x="22" y="350" class="mono" fill="#94a3b8">GitHub 贡献者榜按「提交者账号」聚合，</text>
+    <text x="22" y="372" class="mono" fill="#94a3b8">Co-authored-by 是 trailer，不建账号。</text>
+    <text x="22" y="400" class="mono" fill="#fbbf24">→ 「贡献第一」在 A 口径下不成立</text>
+  </g>
+
+  <!-- 右：co-author 口径 -->
+  <g transform="translate(640,120)">
+    <rect x="0" y="0" width="500" height="430" rx="14" fill="#0b1220" stroke="#334155" stroke-width="1.4"/>
+    <rect x="0" y="0" width="500" height="46" rx="14" fill="#1a1408"/>
+    <rect x="0" y="32" width="500" height="14" fill="#1a1408"/>
+    <text x="22" y="30" class="lab" fill="#fbbf24">口径 B · 提交 trailer 里的副署</text>
+    <text x="478" y="30" text-anchor="end" class="tick">/search/commits</text>
+
+    <text x="22" y="106" class="val" fill="#fbbf24" font-size="46">1,146</text>
+    <text x="152" y="92" class="lab" fill="#e2e8f0">条提交写明</text>
+    <text x="152" y="112" class="mono" fill="#fbbf24">Co-Authored-By: Claude</text>
+
+    <line x1="22" y1="136" x2="478" y2="136" stroke="#1e293b" stroke-width="1"/>
+
+    <text x="22" y="164" class="lab">模型版本横跨</text>
+    <g transform="translate(22,178)">
+      <rect x="0" y="0" width="72" height="26" rx="5" fill="#1e293b"/><text x="36" y="18" text-anchor="middle" class="tick" fill="#e2e8f0">Opus 4.5</text>
+      <rect x="80" y="0" width="72" height="26" rx="5" fill="#1e293b"/><text x="116" y="18" text-anchor="middle" class="tick" fill="#e2e8f0">Opus 4.6</text>
+      <rect x="160" y="0" width="72" height="26" rx="5" fill="#1e293b"/><text x="196" y="18" text-anchor="middle" class="tick" fill="#e2e8f0">Opus 4.8</text>
+      <rect x="240" y="0" width="60" height="26" rx="5" fill="#1e293b"/><text x="270" y="18" text-anchor="middle" class="tick" fill="#e2e8f0">Opus 5</text>
+      <rect x="308" y="0" width="72" height="26" rx="5" fill="#1e293b"/><text x="344" y="18" text-anchor="middle" class="tick" fill="#e2e8f0">Opus 5.5</text>
+      <rect x="388" y="0" width="72" height="26" rx="5" fill="#1e293b"/><text x="424" y="18" text-anchor="middle" class="tick" fill="#e2e8f0">Fable 5</text>
+    </g>
+
+    <text x="22" y="238" class="lab">真人署名者</text>
+    <text x="22" y="272" class="val" fill="#fbbf24">84 位</text>
+    <text x="112" y="270" class="tick">SuYao 246 · Phantom 86 · 槑囿脑袋 63 …</text>
+
+    <text x="22" y="306" class="lab">副署不止 Claude</text>
+    <text x="22" y="330" class="mono" fill="#94a3b8">Copilot 44 次 · GitHub Actions / cherry-coding[bot] 为独立 bot 账号</text>
+
+    <line x1="22" y1="350" x2="478" y2="350" stroke="#1e293b" stroke-width="1"/>
+    <text x="22" y="378" class="mono" fill="#94a3b8">提交形态（实采）：</text>
+    <text x="22" y="402" class="mono" fill="#cbd5e1">Signed-off-by: eurfelux &lt;eurfelux@gmail.com&gt;</text>
+    <text x="22" y="422" class="mono" fill="#fbbf24">Co-authored-by: Claude Opus 5.5 &lt;noreply@anthropic.com&gt;</text>
+  </g>
+
+  <!-- 底部结论 -->
+  <g transform="translate(60,586)">
+    <rect x="0" y="0" width="1080" height="76" rx="12" fill="#0b1220" stroke="#334155" stroke-width="1.2"/>
+    <text x="24" y="30" class="lab" fill="#fbbf24">结论</text>
+    <text x="24" y="56" class="mono" fill="#e2e8f0">数字是真的，标题的口径不是。1,146 是「副署出现次数」，不是「贡献者排名」。</text>
+    <text x="1056" y="43" text-anchor="end" class="tick">数据源：GitHub REST API · 实测 2026-11-18</text>
+  </g>
+</svg>

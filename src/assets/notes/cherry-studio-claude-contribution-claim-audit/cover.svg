@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#030713"/>
+      <stop offset="50%" stop-color="#0a1226"/>
+      <stop offset="100%" stop-color="#02040b"/>
+    </linearGradient>
+    <linearGradient id="tg" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="70%" stop-color="#e2e8f0"/>
+      <stop offset="100%" stop-color="#94a3b8"/>
+    </linearGradient>
+    <linearGradient id="ai" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#f97316"/>
+    </linearGradient>
+    <filter id="sh" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000" flood-opacity="0.55"/>
+    </filter>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <style>
+      .title { font: 900 44px -apple-system,'Segoe UI','PingFang SC',Roboto,sans-serif; fill: url(#tg); }
+      .sub   { font: 600 18px -apple-system,'Segoe UI','PingFang SC',Roboto,sans-serif; fill: #94a3b8; }
+      .lab   { font: 700 13px -apple-system,'Segoe UI','PingFang SC',Roboto,sans-serif; fill: #64748b; }
+      .num   { font: 900 34px -apple-system,'Segoe UI',Roboto,sans-serif; }
+      .numsm { font: 900 26px -apple-system,'Segoe UI',Roboto,sans-serif; }
+      .mono  { font: 600 13px 'SF Mono',Menlo,Consolas,monospace; fill: #94a3b8; }
+      .bar   { font: 700 13px -apple-system,'Segoe UI',Roboto,sans-serif; fill: #e2e8f0; }
+      .tick  { font: 600 11px 'SF Mono',Menlo,Consolas,monospace; fill: #64748b; }
+      .tag   { font: 700 14px -apple-system,'PingFang SC',Roboto,sans-serif; fill: #fbbf24; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <g opacity="0.16" stroke="#334155" stroke-width="1">
+    <path d="M0 130 H1200 M0 260 H1200 M0 390 H1200 M0 520 H1200"/>
+    <path d="M200 0 V630 M400 0 V630 M600 0 V630 M800 0 V630 M1000 0 V630"/>
+  </g>
+
+  <!-- 顶部标签 -->
+  <rect x="60" y="44" width="196" height="34" rx="17" fill="none" stroke="#f59e0b" stroke-width="1.6"/>
+  <text x="158" y="66" text-anchor="middle" class="tag">一手数据实测 · 播客笔记</text>
+
+  <!-- 标题 -->
+  <text x="60" y="132" class="title">"代码贡献第一名是 Claude"</text>
+  <text x="60" y="186" class="title" fill="#fbbf24">站得住吗？</text>
+  <text x="60" y="228" class="sub">拿 Cherry Studio 仓库的 1,146 条 co-author 提交，把这句话拆开验一遍</text>
+
+  <!-- 左侧：排行榜口径 -->
+  <g transform="translate(60,272)">
+    <rect x="0" y="0" width="520" height="286" rx="14" fill="#0b1220" stroke="#1e293b" stroke-width="1.4"/>
+    <text x="22" y="34" class="lab">GitHub 贡献者排行榜（同一分母实测）</text>
+
+    <text x="22" y="70" class="bar">kangfenmao</text>
+    <rect x="180" y="56" width="270" height="20" rx="4" fill="#1e293b"/>
+    <rect x="180" y="56" width="270" height="20" rx="4" fill="#38bdf8"/>
+    <text x="466" y="72" class="numsm" fill="#38bdf8">2455</text>
+
+    <text x="22" y="108" class="bar">DeJeune</text>
+    <rect x="180" y="94" width="270" height="20" rx="4" fill="#1e293b"/>
+    <rect x="180" y="94" width="145" height="20" rx="4" fill="#38bdf8"/>
+    <text x="341" y="110" class="numsm" fill="#38bdf8">1314</text>
+
+    <text x="22" y="146" class="bar">0xfullex</text>
+    <rect x="180" y="132" width="270" height="20" rx="4" fill="#1e293b"/>
+    <rect x="180" y="132" width="112" height="20" rx="4" fill="#38bdf8"/>
+    <text x="308" y="148" class="numsm" fill="#38bdf8">1014</text>
+
+    <text x="22" y="184" class="bar">EurFelux</text>
+    <rect x="180" y="170" width="270" height="20" rx="4" fill="#1e293b"/>
+    <rect x="180" y="170" width="93" height="20" rx="4" fill="#38bdf8"/>
+    <text x="289" y="186" class="numsm" fill="#38bdf8">838</text>
+
+    <text x="22" y="226" class="bar">Claude</text>
+    <rect x="180" y="212" width="270" height="20" rx="4" fill="#1e293b"/>
+    <text x="192" y="228" class="mono" fill="#f87171">author:claude = 0</text>
+
+    <line x1="22" y1="248" x2="498" y2="248" stroke="#1e293b" stroke-width="1"/>
+    <text x="22" y="270" class="tick">Claude 不是 GitHub 账号 → 排行榜里根本没有这一行</text>
+  </g>
+
+  <!-- 右侧：co-author 口径 -->
+  <g transform="translate(620,272)">
+    <rect x="0" y="0" width="520" height="286" rx="14" fill="#0b1220" stroke="#334155" stroke-width="1.4"/>
+    <text x="22" y="34" class="lab">提交里写明 Co-Authored-By: Claude</text>
+
+    <text x="22" y="86" class="num" fill="url(#ai)" filter="url(#glow)">1,146</text>
+    <text x="150" y="70" class="sub">条提交</text>
+    <text x="150" y="90" class="tick">（精确计数 · 全量）</text>
+
+    <line x1="22" y1="108" x2="498" y2="108" stroke="#1e293b" stroke-width="1"/>
+
+    <text x="22" y="136" class="tick">版本横跨</text>
+    <text x="22" y="160" class="mono" fill="#fbbf24">Opus 4.5 / 4.6 / 4.8 / 5 / 5.5 / Fable 5</text>
+
+    <text x="22" y="190" class="tick">真人署名者</text>
+    <text x="22" y="214" class="numsm" fill="#fbbf24">84 位</text>
+    <text x="110" y="214" class="tick">+ 混入 Copilot 副署</text>
+
+    <text x="22" y="244" class="tick">提交形态</text>
+    <text x="22" y="268" class="mono" fill="#94a3b8">Signed-off-by: 真人 · Co-authored-by: Claude</text>
+  </g>
+
+  <!-- 底部数据条 -->
+  <g transform="translate(60,586)">
+    <text x="0" y="0" class="tick">CherryHQ/cherry-studio · 实测 2026-11-18</text>
+    <text x="330" y="0" class="tick">53,623 stars</text>
+    <text x="470" y="0" class="tick">5,234 forks</text>
+    <text x="600" y="0" class="tick">9,238 PR</text>
+    <text x="720" y="0" class="tick">98.5% TypeScript</text>
+    <text x="890" y="0" class="tick">AGPL-3.0</text>
+    <text x="1000" y="0" class="tick">TypeScript 98.5%</text>
+  </g>
+</svg>
