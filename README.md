@@ -6,7 +6,7 @@
 
 ```bash
 npm install
-npm run dev      # http://localhost:4321/git-novel/
+npm run dev      # http://localhost:4321/
 npm run build    # 输出到 dist/
 npm run preview  # 预览构建结果
 npm test         # 运行 Vitest 单测
@@ -35,11 +35,11 @@ cover: notes/my-cover.jpg   # 相对 src/assets/ 的路径
 
 1. 在 GitHub 仓库 Settings → Pages → Source 选择 "GitHub Actions"。
 2. 启用 Discussions（Settings → General → Features → Discussions）。
-3. 在 `astro.config.ts` 中把 `site` 的 `username` 替换为真实 GitHub 用户名。
+3. `astro.config.ts` 的 `site` 已固定为 `https://git-novel.loc.cc`，`base: '/'`；自定义域名由 `public/CNAME` 声明，无需再改用户名。
 4. （可选）配置 Giscus 评论：
    - 访问 https://giscus.app，填入仓库信息生成 `data-repo-id` 与 `data-category-id`。
    - 把得到的值填入 `src/lib/config.ts` 的 `rawGiscus` 对象。
-5. 推送 main 分支，GitHub Actions 自动构建部署到 `https://<username>.github.io/git-novel/`。
+5. 推送 main 分支，GitHub Actions 自动构建部署到 `https://git-novel.loc.cc/`。
 
 ## 测试
 

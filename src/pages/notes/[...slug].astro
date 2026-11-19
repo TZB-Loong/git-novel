@@ -137,35 +137,38 @@ const baseURL = import.meta.env.BASE_URL;
     window.addEventListener('scroll', updateProgress, { passive: true });
     updateProgress();
 
-    import('https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/js/glightbox.min.js').then((mod) => {
-      const GLightbox = mod.default;
-      const prose = document.getElementById('note-content');
-      if (prose) {
-        prose.querySelectorAll('img').forEach((img) => {
-          const link = document.createElement('a');
-          link.href = img.src;
-          link.className = 'glightbox';
-          link.setAttribute('data-gallery', 'note-gallery');
-          img.parentNode.insertBefore(link, img);
-          link.appendChild(img);
+    import('https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/js/glightbox.min.js')
+      .then((mod) => {
+        const GLightbox = (window as any).GLightbox || mod?.default || mod;
+        if (typeof GLightbox !== 'function') return;
+        const prose = document.getElementById('note-content');
+        if (prose) {
+          prose.querySelectorAll('img').forEach((img) => {
+            const link = document.createElement('a');
+            link.href = img.src;
+            link.className = 'glightbox';
+            link.setAttribute('data-gallery', 'note-gallery');
+            img.parentNode?.insertBefore(link, img);
+            link.appendChild(img);
+          });
+        }
+        const lightbox = GLightbox({
+          selector: '.glightbox',
+          touchNavigation: true,
+          closeOnTouch: true,
+          loop: false,
+          onOpen: () => {
+            const checkExist = setInterval(() => {
+              const slideImage = document.querySelector('.gslide-image');
+              if (slideImage) {
+                clearInterval(checkExist);
+                (slideImage as HTMLElement).style.cursor = 'pointer';
+                slideImage.addEventListener('click', () => lightbox.close());
+              }
+            }, 100);
+          },
         });
-      }
-      const lightbox = new GLightbox({
-        selector: '.glightbox',
-        touchNavigation: true,
-        closeOnTouch: true,
-        loop: false,
-        onOpen: () => {
-          const checkExist = setInterval(() => {
-            const slideImage = document.querySelector('.gslide-image');
-            if (slideImage) {
-              clearInterval(checkExist);
-              slideImage.style.cursor = 'pointer';
-              slideImage.addEventListener('click', () => lightbox.close());
-            }
-          }, 100);
-        },
-      });
-    });
+      })
+      .catch(() => {});
   </script>
 </BaseLayout>

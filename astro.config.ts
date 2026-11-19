@@ -13,9 +13,24 @@ export default defineConfig({
     mdx(),
     sitemap({
       filter: (page) => !page.includes('/draft/') && !page.includes('/resume/'),
+      serialize(item) {
+        item.lastmod = new Date();
+        return item;
+      },
     }),
     react(),
   ],
+  vite: {
+    build: {
+      rollupOptions: {
+        output: {
+          sanitizeFileName(name) {
+            return name.replace(/[^a-zA-Z0-9_.-]/g, '_');
+          },
+        },
+      },
+    },
+  },
   markdown: {
     shikiConfig: {
       themes: {

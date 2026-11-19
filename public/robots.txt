@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://git-novel.loc.cc/sitemap-index.xml
+Sitemap: https://git-novel.loc.cc/sitemap.xml

@@ -12,14 +12,20 @@
 
 ## Base Path
 
-- `astro.config.ts` 配置 `site`（完整 GitHub Pages URL）与 `base: '/git-novel'`。
-- 内部链接、静态资源、RSS、sitemap 路径统一带 `/git-novel/` 前缀。
+- `astro.config.ts` 配置 `site = 'https://git-novel.loc.cc'`、`base: '/'`、
+  `trailingSlash: 'always'`；自定义域名由 `public/CNAME` 承载。
+- 内部链接、静态资源、RSS、sitemap 路径一律用根路径（如 `/notes/<slug>/`），
+  **禁止**再带 `/git-novel/` 前缀——站点已不在 `/<repo>/` 子路径下部署。
 - canonical 与 `og:url` 输出绝对 URL（`BaseHead.astro` 基于 `Astro.site` 构造）。
+  注意：HTTPS 证书由 GitHub Pages 侧签发，若 `https_certificate.state` 非
+  `approved`，绝对 URL 会指向浏览器不可达的 https 地址；这是平台侧问题，
+  不要改代码绕过。
 
 ## SEO
 
 - 每个页面输出 `<title>`、`<meta name="description">`、Open Graph 与 Twitter Card。
-- RSS：`/rss.xml` 输出最近 20 篇非 draft 文章。
+- RSS：`src/pages/rss.xml.ts` 手写 XML 输出最近 20 篇非 draft 笔记，
+  `site` 取 `Astro.site`，摘要字段为可选（当前 schema 未强制 `description`）。
 - Sitemap：`@astrojs/sitemap` 生成 `/sitemap-index.xml`，含全部公开页面。
 
 ## 笔记发布流程
