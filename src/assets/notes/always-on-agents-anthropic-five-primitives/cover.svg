@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050810"/>
+      <stop offset="50%" stop-color="#0b1222"/>
+      <stop offset="100%" stop-color="#04060d"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="46%" r="46%">
+      <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#22d3ee" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#67e8f9"/>
+      <stop offset="55%" stop-color="#60a5fa"/>
+      <stop offset="100%" stop-color="#a78bfa"/>
+    </linearGradient>
+    <linearGradient id="ring" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#22d3ee"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1a2438" stroke-width="1" stroke-opacity="0.55"/>
+    </pattern>
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="10" result="b"/>
+      <feComposite in="SourceGraphic" in2="b" operator="over"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <!-- frame -->
+  <rect x="44" y="44" width="1112" height="542" rx="22" fill="none" stroke="#22304a" stroke-width="2" stroke-dasharray="10,7"/>
+
+  <!-- badge -->
+  <rect x="84" y="82" width="286" height="38" rx="8" fill="#0f1a2e" stroke="#31445f"/>
+  <circle cx="106" cy="101" r="6" fill="#22d3ee"/>
+  <text x="122" y="107" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="14" font-weight="700" fill="#9fb3c8" letter-spacing="2">AGENT ARCHITECTURE · 2026</text>
+
+  <!-- title -->
+  <text x="84" y="196" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="58" font-weight="800" fill="url(#titleGrad)" letter-spacing="1">ALWAYS-ON AGENTS</text>
+  <text x="84" y="252" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="30" font-weight="700" fill="#e2e8f0">常驻 Agent 的工程真相</text>
+  <text x="84" y="292" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#94a3b8">Anthropic 五组件架构：收件箱 · 计时器 · 记忆 · 权限 · 发件箱</text>
+
+  <!-- orbit diagram -->
+  <g transform="translate(830, 350)">
+    <circle r="168" fill="none" stroke="#1e2b44" stroke-width="2" stroke-dasharray="6,8"/>
+    <circle r="132" fill="none" stroke="url(#ring)" stroke-width="1.5" stroke-opacity="0.55"/>
+
+    <!-- center -->
+    <circle r="78" fill="#0b1526" stroke="#22d3ee" stroke-width="2" filter="url(#soft)"/>
+    <text x="0" y="-8" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="24" font-weight="800" fill="#e2e8f0">RUN</text>
+    <text x="0" y="18" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#7dd3fc">一次运行</text>
+    <text x="0" y="38" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">wake · act · sleep</text>
+
+    <!-- 5 nodes -->
+    <g font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">
+      <g transform="translate(0,-168)">
+        <rect x="-52" y="-24" width="104" height="48" rx="10" fill="#0f1b2e" stroke="#22d3ee" stroke-width="1.5"/>
+        <text x="0" y="-3" font-size="14" font-weight="700" fill="#67e8f9">INBOX</text>
+        <text x="0" y="14" font-size="10" fill="#7c8fa6">事件收件箱</text>
+      </g>
+      <g transform="translate(160,-52)">
+        <rect x="-52" y="-24" width="104" height="48" rx="10" fill="#0f1b2e" stroke="#f59e0b" stroke-width="1.5"/>
+        <text x="0" y="-3" font-size="14" font-weight="700" fill="#fbbf24">TIMERS</text>
+        <text x="0" y="14" font-size="10" fill="#7c8fa6">计时器</text>
+      </g>
+      <g transform="translate(99,136)">
+        <rect x="-52" y="-24" width="104" height="48" rx="10" fill="#0f1b2e" stroke="#10b981" stroke-width="1.5"/>
+        <text x="0" y="-3" font-size="14" font-weight="700" fill="#34d399">MEMORY</text>
+        <text x="0" y="14" font-size="10" fill="#7c8fa6">记忆</text>
+      </g>
+      <g transform="translate(-99,136)">
+        <rect x="-58" y="-24" width="116" height="48" rx="10" fill="#0f1b2e" stroke="#f43f5e" stroke-width="1.5"/>
+        <text x="0" y="-3" font-size="14" font-weight="700" fill="#fb7185">PERMISSIONS</text>
+        <text x="0" y="14" font-size="10" fill="#7c8fa6">权限</text>
+      </g>
+      <g transform="translate(-160,-52)">
+        <rect x="-52" y="-24" width="104" height="48" rx="10" fill="#0f1b2e" stroke="#a78bfa" stroke-width="1.5"/>
+        <text x="0" y="-3" font-size="14" font-weight="700" fill="#c4b5fd">OUTBOX</text>
+        <text x="0" y="14" font-size="10" fill="#7c8fa6">发件箱</text>
+      </g>
+    </g>
+
+    <!-- orbit arrows -->
+    <g stroke="#2b3d5c" stroke-width="2" fill="none">
+      <path d="M 0 -120 A 120 120 0 0 1 114 -37" marker-end="url(#arrowA)"/>
+      <path d="M 114 37 A 120 120 0 0 1 70 97" marker-end="url(#arrowA)"/>
+      <path d="M 0 120 A 120 120 0 0 1 -70 97" marker-end="url(#arrowA)"/>
+      <path d="M -114 37 A 120 120 0 0 1 -114 -37" marker-end="url(#arrowA)"/>
+      <path d="M -70 -97 A 120 120 0 0 1 0 -120" marker-end="url(#arrowA)"/>
+    </g>
+  </g>
+
+  <defs>
+    <marker id="arrowA" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#3b4f70"/>
+    </marker>
+  </defs>
+
+  <!-- footer -->
+  <text x="84" y="556" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#5f7089">Source: Anthropic · Building always-on agents · William Hu · 2026-11-13</text>
+</svg>

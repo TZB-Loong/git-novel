@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540">
+  <defs>
+    <linearGradient id="bg1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050a14"/>
+      <stop offset="100%" stop-color="#0a1324"/>
+    </linearGradient>
+    <marker id="ar1" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto">
+      <path d="M0,0 L7,3.5 L0,7 Z" fill="#3b5478"/>
+    </marker>
+    <marker id="ar1c" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto">
+      <path d="M0,0 L7,3.5 L0,7 Z" fill="#22d3ee"/>
+    </marker>
+  </defs>
+
+  <rect width="960" height="540" fill="url(#bg1)"/>
+  <text x="36" y="46" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="22" font-weight="800" fill="#e2e8f0">一次运行的闭环：五个组件各管一段</text>
+  <text x="36" y="72" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#7c8fa6">事件进来 → worker 唤醒 → 会话内执行 → 写回记忆 → 结果交付；计时器与用户回复再把循环接上</text>
+
+  <!-- center -->
+  <rect x="330" y="196" width="300" height="140" rx="16" fill="#0b1728" stroke="#22d3ee" stroke-width="2"/>
+  <text x="480" y="230" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="20" font-weight="800" fill="#e2e8f0">RUN · 会话</text>
+  <text x="480" y="256" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#7dd3fc">Agent 核心循环（与普通 Agent 相同）</text>
+  <text x="480" y="280" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#94a3b8">读记忆 → 在权限内行动 → 写回学到的东西</text>
+  <text x="480" y="304" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#5f7089">运行结束：发消息 / 不发 / 延后请求批准</text>
+
+  <!-- inbox -->
+  <g>
+    <rect x="62" y="96" width="210" height="86" rx="12" fill="#0f1b2e" stroke="#22d3ee" stroke-width="1.5"/>
+    <text x="167" y="126" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="16" font-weight="700" fill="#67e8f9">事件收件箱</text>
+    <text x="167" y="148" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#94a3b8">用户消息 / webhook / 后台作业</text>
+    <text x="167" y="166" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">唯一可信来源 · 去重 · 状态机</text>
+  </g>
+  <path d="M 272 150 C 320 160, 330 200, 340 214" stroke="#22d3ee" stroke-width="2" fill="none" marker-end="url(#ar1c)"/>
+  <text x="300" y="176" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#67e8f9">唤醒</text>
+
+  <!-- timers -->
+  <g>
+    <rect x="688" y="96" width="210" height="86" rx="12" fill="#0f1b2e" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="793" y="126" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="16" font-weight="700" fill="#fbbf24">计时器</text>
+    <text x="793" y="148" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#94a3b8">跟进 follow-up / 日程 schedule</text>
+    <text x="793" y="166" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">调度器轮询 → 写一条收件箱事件</text>
+  </g>
+  <path d="M 688 150 C 640 160, 630 200, 620 214" stroke="#f59e0b" stroke-width="2" fill="none" marker-end="url(#ar1)"/>
+  <text x="618" y="176" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#fbbf24">到期事件</text>
+
+  <!-- memory -->
+  <g>
+    <rect x="380" y="420" width="200" height="80" rx="12" fill="#0f1b2e" stroke="#10b981" stroke-width="1.5"/>
+    <text x="480" y="450" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="16" font-weight="700" fill="#34d399">记忆</text>
+    <text x="480" y="472" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#94a3b8">指令 / 笔记 / 已告知 / 任务进度</text>
+    <text x="480" y="489" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#64748b">只存下次查不到的东西</text>
+  </g>
+  <path d="M 480 336 L 480 416" stroke="#10b981" stroke-width="2" fill="none" marker-end="url(#ar1)"/>
+  <path d="M 506 416 L 506 340" stroke="#10b981" stroke-width="1.5" fill="none" marker-end="url(#ar1)" stroke-dasharray="5,4"/>
+  <text x="516" y="382" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#34d399">读 / 写</text>
+
+  <!-- permissions -->
+  <g>
+    <rect x="688" y="380" width="210" height="100" rx="12" fill="#0f1b2e" stroke="#f43f5e" stroke-width="1.5"/>
+    <text x="793" y="410" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="16" font-weight="700" fill="#fb7185">权限闸门</text>
+    <text x="793" y="432" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#94a3b8">凭证代理 · 自动模式分类器</text>
+    <text x="793" y="450" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#94a3b8">延后调用 → 会话暂停保存</text>
+    <text x="793" y="468" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#64748b">无人值守时风险最高的部分</text>
+  </g>
+  <path d="M 630 290 L 684 400" stroke="#f43f5e" stroke-width="2" fill="none" marker-end="url(#ar1)"/>
+  <text x="648" y="356" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#fb7185">每次工具调用</text>
+
+  <!-- outbox -->
+  <g>
+    <rect x="62" y="380" width="210" height="100" rx="12" fill="#0f1b2e" stroke="#a78bfa" stroke-width="1.5"/>
+    <text x="167" y="410" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="16" font-weight="700" fill="#c4b5fd">发件箱</text>
+    <text x="167" y="432" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#94a3b8">待发消息表 + 分发进程</text>
+    <text x="167" y="450" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#94a3b8">控制节奏 · 可恢复发送失败</text>
+    <text x="167" y="468" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#64748b">先少说话，再争取注意力</text>
+  </g>
+  <path d="M 330 290 L 276 400" stroke="#a78bfa" stroke-width="2" fill="none" marker-end="url(#ar1)"/>
+  <text x="268" y="356" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#c4b5fd">结果</text>
+
+  <!-- delivery -->
+  <rect x="36" y="500" width="888" height="1" fill="#1c2a42"/>
+  <text x="36" y="526" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#64748b">注：实线为一次运行内的主路径；虚线为记忆回读。计时器本身不启动运行，它只负责把「到期」写成收件箱事件。</text>
+</svg>

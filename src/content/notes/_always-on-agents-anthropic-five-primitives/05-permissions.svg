@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="960" height="560">
+  <defs>
+    <linearGradient id="bg5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050a14"/>
+      <stop offset="100%" stop-color="#0a1324"/>
+    </linearGradient>
+    <marker id="ar5" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto">
+      <path d="M0,0 L7,3.5 L0,7 Z" fill="#3b5478"/>
+    </marker>
+    <marker id="ar5r" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto">
+      <path d="M0,0 L7,3.5 L0,7 Z" fill="#f43f5e"/>
+    </marker>
+    <marker id="ar5g" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto">
+      <path d="M0,0 L7,3.5 L0,7 Z" fill="#10b981"/>
+    </marker>
+  </defs>
+
+  <rect width="960" height="560" fill="url(#bg5)"/>
+  <text x="36" y="44" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="22" font-weight="800" fill="#e2e8f0">权限：三道闸门，把「无人值守」变成可控风险</text>
+  <text x="36" y="70" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#7c8fa6">一次运行握着用户的访问权限，而它本来就是在没人看着的时候工作</text>
+
+  <!-- band 1 -->
+  <rect x="36" y="90" width="888" height="128" rx="12" fill="#0b1524" stroke="#24314d" stroke-width="1.2"/>
+  <text x="54" y="116" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="700" fill="#67e8f9">① 凭证代理：Agent 不持有真实凭证</text>
+
+  <rect x="60" y="134" width="150" height="60" rx="10" fill="#0f1b2e" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="135" y="158" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="700" fill="#cbd5e1">Agent 运行环境</text>
+  <text x="135" y="178" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#7c8fa6">请求里不带密钥</text>
+
+  <rect x="300" y="134" width="210" height="60" rx="10" fill="#0f1b2e" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="405" y="156" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="700" fill="#fbbf24">凭证代理（环境之外）</text>
+  <text x="405" y="176" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#7c8fa6">注入凭证 + 目标 allowlist</text>
+
+  <rect x="600" y="134" width="170" height="60" rx="10" fill="#0f1b2e" stroke="#3b5478" stroke-width="1.5"/>
+  <text x="685" y="158" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="700" fill="#cbd5e1">外部 API</text>
+  <text x="685" y="178" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#7c8fa6">只认代理带来的凭证</text>
+
+  <path d="M 210 164 L 296 164" stroke="#3b5478" stroke-width="2" fill="none" marker-end="url(#ar5)"/>
+  <path d="M 510 164 L 596 164" stroke="#3b5478" stroke-width="2" fill="none" marker-end="url(#ar5)"/>
+  <text x="790" y="158" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#64748b">爆炸半径：</text>
+  <text x="790" y="176" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#64748b">即使被注入，也拿不到长期密钥</text>
+
+  <!-- band 2 -->
+  <rect x="36" y="232" width="888" height="128" rx="12" fill="#0b1524" stroke="#24314d" stroke-width="1.2"/>
+  <text x="54" y="258" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="700" fill="#fb7185">② 自动模式：分类器换速度，人保留最终决定</text>
+
+  <rect x="60" y="276" width="150" height="60" rx="10" fill="#0f1b2e" stroke="#3b5478" stroke-width="1.5"/>
+  <text x="135" y="300" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="700" fill="#cbd5e1">工具调用</text>
+  <text x="135" y="320" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#7c8fa6">proceed / block / wait</text>
+
+  <rect x="300" y="276" width="200" height="60" rx="10" fill="#0f1b2e" stroke="#f43f5e" stroke-width="1.5"/>
+  <text x="400" y="300" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="700" fill="#fb7185">风险分类器</text>
+  <text x="400" y="320" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#7c8fa6">审查高风险操作</text>
+
+  <path d="M 210 306 L 296 306" stroke="#3b5478" stroke-width="2" fill="none" marker-end="url(#ar5)"/>
+
+  <rect x="590" y="266" width="300" height="34" rx="8" fill="#0a241c" stroke="#10b981"/>
+  <text x="604" y="288" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#34d399">放行 → 继续执行</text>
+
+  <rect x="590" y="308" width="300" height="34" rx="8" fill="#2a1219" stroke="#f43f5e"/>
+  <text x="604" y="330" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#fb7185">拦截 → 模型换一条更稳妥的路</text>
+
+  <path d="M 500 296 C 540 284, 560 283, 586 283" stroke="#10b981" stroke-width="1.5" fill="none" marker-end="url(#ar5g)"/>
+  <path d="M 500 316 C 540 322, 560 324, 586 325" stroke="#f43f5e" stroke-width="1.5" fill="none" marker-end="url(#ar5r)"/>
+  <text x="590" y="258" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#64748b">最重要的决定仍然要人来看</text>
+
+  <!-- band 3 -->
+  <rect x="36" y="374" width="888" height="150" rx="12" fill="#0b1524" stroke="#24314d" stroke-width="1.2"/>
+  <text x="54" y="400" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="700" fill="#c4b5fd">③ 延后执行：把「等人」变成事件，不阻塞循环</text>
+
+  <g font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5">
+    <rect x="56" y="418" width="108" height="48" rx="8" fill="#0f1b2e" stroke="#a78bfa"/>
+    <text x="110" y="438" text-anchor="middle" fill="#c4b5fd">运行中</text>
+    <text x="110" y="455" text-anchor="middle" fill="#7c8fa6">遇到需批准调用</text>
+
+    <rect x="196" y="418" width="112" height="48" rx="8" fill="#0f1b2e" stroke="#a78bfa"/>
+    <text x="252" y="438" text-anchor="middle" fill="#c4b5fd">hook 搁置</text>
+    <text x="252" y="455" text-anchor="middle" fill="#7c8fa6">当前运行结束</text>
+
+    <rect x="340" y="418" width="130" height="48" rx="8" fill="#0f1b2e" stroke="#a78bfa"/>
+    <text x="405" y="438" text-anchor="middle" fill="#c4b5fd">保存会话快照</text>
+    <text x="405" y="455" text-anchor="middle" fill="#7c8fa6">停在调用中途</text>
+
+    <rect x="502" y="418" width="130" height="48" rx="8" fill="#0f1b2e" stroke="#22d3ee"/>
+    <text x="567" y="438" text-anchor="middle" fill="#67e8f9">交互卡片</text>
+    <text x="567" y="455" text-anchor="middle" fill="#7c8fa6">MCP Apps 展示</text>
+
+    <rect x="664" y="418" width="130" height="48" rx="8" fill="#0f1b2e" stroke="#22d3ee"/>
+    <text x="729" y="438" text-anchor="middle" fill="#67e8f9">回答入收件箱</text>
+    <text x="729" y="455" text-anchor="middle" fill="#7c8fa6">作为新事件</text>
+
+    <rect x="826" y="418" width="80" height="48" rx="8" fill="#0f1b2e" stroke="#10b981"/>
+    <text x="866" y="438" text-anchor="middle" fill="#34d399">恢复会话</text>
+    <text x="866" y="455" text-anchor="middle" fill="#7c8fa6">继续执行</text>
+  </g>
+
+  <g stroke="#3b5478" stroke-width="1.8" fill="none">
+    <path d="M 164 442 L 192 442" marker-end="url(#ar5)"/>
+    <path d="M 308 442 L 336 442" marker-end="url(#ar5)"/>
+    <path d="M 470 442 L 498 442" marker-end="url(#ar5)"/>
+    <path d="M 632 442 L 660 442" marker-end="url(#ar5)"/>
+    <path d="M 794 442 L 822 442" marker-end="url(#ar5)"/>
+  </g>
+
+  <rect x="56" y="482" width="850" height="30" rx="8" fill="#0d1a2b" stroke="#1f3550"/>
+  <text x="70" y="502" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#94a3b8">等待期间 worker 照常处理其他事件 —— 这是它比「整个 Agent 挂起等用户点击」更实用的地方。</text>
+</svg>

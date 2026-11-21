@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" width="960" height="430">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050a14"/>
+      <stop offset="100%" stop-color="#0a1324"/>
+    </linearGradient>
+    <marker id="ar2" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto">
+      <path d="M0,0 L7,3.5 L0,7 Z" fill="#3b5478"/>
+    </marker>
+    <marker id="ar2r" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto">
+      <path d="M0,0 L7,3.5 L0,7 Z" fill="#f43f5e"/>
+    </marker>
+  </defs>
+
+  <rect width="960" height="430" fill="url(#bg2)"/>
+  <text x="36" y="46" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="22" font-weight="800" fill="#e2e8f0">收件箱：一张表 + 一个状态机</text>
+  <text x="36" y="72" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#7c8fa6">写入时去重，领取时加租约；running 不是终态，租约过期必须能回到 pending</text>
+
+  <!-- schema card -->
+  <rect x="36" y="96" width="390" height="300" rx="12" fill="#0b1524" stroke="#24314d" stroke-width="1.5"/>
+  <rect x="36" y="96" width="390" height="38" rx="12" fill="#101d33"/>
+  <text x="56" y="121" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="700" fill="#67e8f9">agent_inbox（最小字段）</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11.5" fill="#94a3b8">
+    <text x="56" y="160">id</text><text x="250" y="160" fill="#64748b">bigserial pk</text>
+    <text x="56" y="182">user_id</text><text x="250" y="182" fill="#64748b">bigint</text>
+    <text x="56" y="204">source</text><text x="250" y="204" fill="#64748b">user / webhook / timer</text>
+    <text x="56" y="226">source_event_id</text><text x="250" y="226" fill="#64748b">来源方唯一 ID</text>
+    <text x="56" y="248">session_id</text><text x="250" y="248" fill="#64748b">空则新开会话</text>
+    <text x="56" y="270">status</text><text x="250" y="270" fill="#64748b">pending / running / done</text>
+    <text x="56" y="292">attempts</text><text x="250" y="292" fill="#64748b">重试计数</text>
+    <text x="56" y="314">locked_until</text><text x="250" y="314" fill="#64748b">worker 租约</text>
+  </g>
+  <rect x="56" y="330" width="350" height="46" rx="8" fill="#0d1a2b" stroke="#1f3550"/>
+  <text x="70" y="350" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.5" fill="#34d399">unique (source, source_event_id)</text>
+  <text x="70" y="367" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#64748b">去重键必须带来源，避免不同提供方 ID 撞车</text>
+
+  <!-- state machine -->
+  <g font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif">
+    <rect x="500" y="120" width="150" height="64" rx="12" fill="#0f1b2e" stroke="#22d3ee" stroke-width="1.5"/>
+    <text x="575" y="148" text-anchor="middle" font-size="15" font-weight="700" fill="#67e8f9">pending</text>
+    <text x="575" y="168" text-anchor="middle" font-size="10.5" fill="#7c8fa6">可被领取</text>
+
+    <rect x="740" y="120" width="150" height="64" rx="12" fill="#0f1b2e" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="815" y="148" text-anchor="middle" font-size="15" font-weight="700" fill="#fbbf24">running</text>
+    <text x="815" y="168" text-anchor="middle" font-size="10.5" fill="#7c8fa6">持有租约</text>
+
+    <rect x="740" y="270" width="150" height="64" rx="12" fill="#0f1b2e" stroke="#10b981" stroke-width="1.5"/>
+    <text x="815" y="298" text-anchor="middle" font-size="15" font-weight="700" fill="#34d399">done</text>
+    <text x="815" y="318" text-anchor="middle" font-size="10.5" fill="#7c8fa6">终态</text>
+
+    <rect x="500" y="270" width="150" height="64" rx="12" fill="#0f1b2e" stroke="#f43f5e" stroke-width="1.5"/>
+    <text x="575" y="298" text-anchor="middle" font-size="15" font-weight="700" fill="#fb7185">failed</text>
+    <text x="575" y="318" text-anchor="middle" font-size="10.5" fill="#7c8fa6">可退避重试</text>
+  </g>
+
+  <path d="M 650 152 L 736 152" stroke="#3b5478" stroke-width="2" fill="none" marker-end="url(#ar2)"/>
+  <text x="664" y="142" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#94a3b8">claim</text>
+
+  <path d="M 815 184 L 815 266" stroke="#3b5478" stroke-width="2" fill="none" marker-end="url(#ar2)"/>
+  <text x="824" y="228" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#94a3b8">成功</text>
+
+  <path d="M 740 196 C 700 220, 680 250, 650 274" stroke="#f43f5e" stroke-width="2" fill="none" marker-end="url(#ar2r)"/>
+  <text x="676" y="232" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#fb7185">异常</text>
+
+  <path d="M 740 332 C 690 348, 640 336, 606 250" stroke="#3b5478" stroke-width="1.5" fill="none" stroke-dasharray="5,4" marker-end="url(#ar2)"/>
+  <text x="676" y="346" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#94a3b8">重试</text>
+
+  <path d="M 560 270 L 560 214" stroke="#f43f5e" stroke-width="1.5" fill="none" stroke-dasharray="5,4" marker-end="url(#ar2r)"/>
+  <text x="570" y="248" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#fb7185">租约过期</text>
+
+  <!-- one worker note -->
+  <rect x="500" y="360" width="390" height="40" rx="8" fill="#160d16" stroke="#5c2338"/>
+  <text x="516" y="385" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#fb7185">同一收件箱同一时间只允许一个活跃 worker</text>
+</svg>

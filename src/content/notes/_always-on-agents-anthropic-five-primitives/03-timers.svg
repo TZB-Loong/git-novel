@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" width="960" height="400">
+  <defs>
+    <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050a14"/>
+      <stop offset="100%" stop-color="#0a1324"/>
+    </linearGradient>
+    <marker id="ar3" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto">
+      <path d="M0,0 L7,3.5 L0,7 Z" fill="#f59e0b"/>
+    </marker>
+    <marker id="ar3b" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto">
+      <path d="M0,0 L7,3.5 L0,7 Z" fill="#3b5478"/>
+    </marker>
+  </defs>
+
+  <rect width="960" height="400" fill="url(#bg3)"/>
+  <text x="36" y="44" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="22" font-weight="800" fill="#e2e8f0">两类计时器：跟进是「一次性截止」，日程是「重复节奏」</text>
+  <text x="36" y="70" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#7c8fa6">计时器单独存储，不混进收件箱；到点由调度器写成一条收件箱事件</text>
+
+  <!-- lane 1 -->
+  <text x="40" y="128" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="14" font-weight="700" fill="#fbbf24">跟进</text>
+  <text x="40" y="148" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#7c8fa6">follow-up</text>
+  <line x1="150" y1="140" x2="900" y2="140" stroke="#2b3d5c" stroke-width="2"/>
+  <circle cx="220" cy="140" r="7" fill="#0f1b2e" stroke="#f59e0b" stroke-width="2"/>
+  <circle cx="600" cy="140" r="7" fill="#f59e0b"/>
+  <text x="180" y="118" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#94a3b8">Day 0：发完邮件，设 3 天后检查</text>
+  <text x="566" y="118" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#fbbf24">Day 3：到期，标记完成并唤醒</text>
+
+  <!-- lane 2 -->
+  <text x="40" y="226" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="14" font-weight="700" fill="#67e8f9">日程</text>
+  <text x="40" y="246" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#7c8fa6">schedule</text>
+  <line x1="150" y1="238" x2="900" y2="238" stroke="#2b3d5c" stroke-width="2"/>
+  <g fill="#22d3ee">
+    <circle cx="220" cy="238" r="6"/>
+    <circle cx="380" cy="238" r="6"/>
+    <circle cx="540" cy="238" r="6"/>
+    <circle cx="700" cy="238" r="6"/>
+    <circle cx="860" cy="238" r="6"/>
+  </g>
+  <text x="180" y="216" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#94a3b8">每天 09:00 生成晨报（recurrence = '0 9 * * *'）</text>
+  <text x="180" y="268" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#64748b">每次触发后，把 due_at 推进到下一个确定时间并落库，避免崩溃后节奏漂移</text>
+
+  <!-- scheduler -->
+  <rect x="250" y="312" width="220" height="52" rx="10" fill="#0f1b2e" stroke="#3b5478" stroke-width="1.5"/>
+  <text x="360" y="334" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="700" fill="#cbd5e1">调度器轮询 due_at</text>
+  <text x="360" y="352" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#7c8fa6">固定间隔扫描到期项</text>
+
+  <path d="M 360 312 L 360 280" stroke="#f59e0b" stroke-width="1.5" fill="none" stroke-dasharray="5,4" marker-end="url(#ar3)"/>
+  <text x="370" y="300" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#fbbf24">读取到期项</text>
+
+  <path d="M 470 338 L 636 338" stroke="#3b5478" stroke-width="2" fill="none" marker-end="url(#ar3b)"/>
+  <text x="490" y="328" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#94a3b8">写事件</text>
+
+  <rect x="640" y="312" width="220" height="52" rx="10" fill="#0f1b2e" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="750" y="334" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="700" fill="#67e8f9">收件箱 → 唤醒 worker</text>
+  <text x="750" y="352" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#7c8fa6">计时器本身不启动运行</text>
+</svg>

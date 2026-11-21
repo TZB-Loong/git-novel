@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520">
+  <defs>
+    <linearGradient id="bg4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050a14"/>
+      <stop offset="100%" stop-color="#0a1324"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="960" height="520" fill="url(#bg4)"/>
+  <text x="36" y="44" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="22" font-weight="800" fill="#e2e8f0">记忆目录：四类内容，四种加载时机</text>
+  <text x="36" y="70" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#7c8fa6">只存下次查不到的东西；能指向外部系统的，就不要再抄一份</text>
+
+  <!-- directory card -->
+  <rect x="36" y="94" width="430" height="382" rx="12" fill="#0b1524" stroke="#24314d" stroke-width="1.5"/>
+  <text x="56" y="124" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="700" fill="#34d399">持久化存储（数据库 / 对象存储）</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12.5" fill="#cbd5e1">
+    <text x="60" y="160" fill="#67e8f9">memory/</text>
+    <text x="60" y="190">├─ instructions.md</text>
+    <text x="60" y="220">├─ notes/</text>
+    <text x="60" y="246">│   ├─ index.md</text>
+    <text x="60" y="272">│   └─ &lt;topic&gt;.md</text>
+    <text x="60" y="302">├─ told/</text>
+    <text x="60" y="328">│   └─ log.md</text>
+    <text x="60" y="358">└─ tasks/</text>
+    <text x="60" y="384">    └─ &lt;task_id&gt;.md</text>
+  </g>
+
+  <g font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5">
+    <text x="286" y="190" fill="#fbbf24">每次运行必载</text>
+    <text x="286" y="246" fill="#34d399">先载索引</text>
+    <text x="286" y="272" fill="#94a3b8">按需读取</text>
+    <text x="286" y="328" fill="#94a3b8">避免重复汇报</text>
+    <text x="286" y="384" fill="#34d399">新运行接着做</text>
+  </g>
+
+  <rect x="56" y="410" width="390" height="48" rx="8" fill="#0d1a2b" stroke="#1f3550"/>
+  <text x="72" y="430" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#94a3b8">可选的 dreaming：回看历史会话，清理过时条目，</text>
+  <text x="72" y="447" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#94a3b8">找出只有跨多次运行才能看出来的规律。</text>
+
+  <!-- context budget -->
+  <text x="516" y="124" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="700" fill="#e2e8f0">每次运行都要重付的固定开销</text>
+
+  <g>
+    <rect x="516" y="140" width="120" height="54" fill="#7c3aed"/>
+    <rect x="636" y="140" width="110" height="54" fill="#2563eb"/>
+    <rect x="746" y="140" width="90" height="54" fill="#0e7490"/>
+    <rect x="836" y="140" width="60" height="54" fill="#b45309"/>
+    <text x="576" y="164" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#ede9fe">系统提示</text>
+    <text x="691" y="164" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#dbeafe">工具定义</text>
+    <text x="791" y="164" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#cffafe">记忆索引</text>
+    <text x="866" y="164" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#fef3c7">事件</text>
+    <text x="576" y="182" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9" fill="#c4b5fd">固定</text>
+    <text x="691" y="182" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9" fill="#bfdbfe">固定</text>
+    <text x="791" y="182" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9" fill="#a5f3fc">固定</text>
+    <text x="866" y="182" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9" fill="#fde68a">每次不同</text>
+  </g>
+
+  <text x="516" y="230" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="700" fill="#e2e8f0">已有会话还会不断变长</text>
+
+  <rect x="516" y="246" width="150" height="40" fill="#1d4ed8"/>
+  <rect x="666" y="246" width="110" height="40" fill="#1e40af"/>
+  <rect x="776" y="246" width="120" height="40" fill="#7f1d1d"/>
+  <text x="591" y="271" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#dbeafe">历史消息</text>
+  <text x="721" y="271" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#dbeafe">工具调用</text>
+  <text x="836" y="271" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#fecaca">压缩 / 新会话</text>
+
+  <text x="516" y="318" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#94a3b8">固定开销 × 运行次数 = 常驻 Agent 的隐形账单。</text>
+  <text x="516" y="340" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#94a3b8">假设固定开销 8k token、每天 500 次运行，</text>
+  <text x="516" y="362" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#94a3b8">就是 400 万 token 的纯重复输入。</text>
+
+  <rect x="516" y="384" width="400" height="88" rx="10" fill="#0d1a2b" stroke="#1f3550"/>
+  <text x="532" y="408" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#67e8f9">两条降本手段：</text>
+  <text x="532" y="430" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#94a3b8">1. prompt caching：把固定前缀缓存起来</text>
+  <text x="532" y="452" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#94a3b8">2. 精简记忆与工具：少即是快，也少即是便宜</text>
+  <text x="532" y="468" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#64748b">压缩与新开会话都会丢细节，必须留存的要提前写进记忆</text>
+</svg>
