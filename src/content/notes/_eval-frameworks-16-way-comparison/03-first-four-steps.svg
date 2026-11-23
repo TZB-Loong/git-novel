@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="960" height="420">
+  <defs>
+    <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060912"/>
+      <stop offset="100%" stop-color="#0b1020"/>
+    </linearGradient>
+    <marker id="ar3" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto">
+      <path d="M0,0 L7,3.5 L0,7 Z" fill="#22d3ee"/>
+    </marker>
+  </defs>
+
+  <rect width="960" height="420" fill="url(#bg3)"/>
+  <text x="36" y="44" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="22" font-weight="800" fill="#e8edf5">从零到门禁：四步</text>
+  <text x="36" y="70" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#7c8ca6">顺序不能反，尤其是第 3 步与第 4 步——门禁的可信度建立在判分器可信度之上</text>
+
+  <!-- steps -->
+  <g>
+    <rect x="36" y="100" width="204" height="220" rx="14" fill="#0d1428" stroke="#8b5cf6" stroke-width="1.8"/>
+    <circle cx="72" cy="132" r="19" fill="#8b5cf6"/>
+    <text x="72" y="139" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="17" font-weight="800" fill="#fff">1</text>
+    <text x="102" y="126" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13.5" font-weight="800" fill="#e8edf5">写四件套</text>
+    <text x="102" y="146" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#8fa0b8">先用表格，不写代码</text>
+    <text x="56" y="186" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#cbd5e1">列出：</text>
+    <text x="56" y="206" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#9aa8bd">· 输入样例</text>
+    <text x="56" y="224" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#9aa8bd">· 期望答案（有就写）</text>
+    <text x="56" y="242" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#9aa8bd">· 评哪一层</text>
+    <text x="56" y="260" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#9aa8bd">· 谁来判</text>
+    <text x="56" y="290" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#66758c">这一步决定你</text>
+    <text x="56" y="304" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#66758c">到底需不需要轨迹</text>
+
+    <rect x="264" y="100" width="204" height="220" rx="14" fill="#0d1428" stroke="#6366f1" stroke-width="1.8"/>
+    <circle cx="302" cy="136" r="22" fill="#6366f1"/>
+    <text x="302" y="143" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" font-weight="800" fill="#fff">2</text>
+    <text x="366" y="130" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="14" font-weight="800" fill="#e8edf5">20 条真实流量</text>
+    <text x="366" y="150" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#8fa0b8">不要手编</text>
+    <text x="284" y="194" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#cbd5e1">手编 case 会</text>
+    <text x="284" y="212" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#cbd5e1">系统性避开</text>
+    <text x="284" y="230" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#cbd5e1">系统真正犯的错</text>
+    <text x="284" y="266" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#66758c">来源：线上日志、</text>
+    <text x="284" y="280" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#66758c">用户投诉、失败 trace</text>
+
+    <rect x="492" y="100" width="204" height="220" rx="14" fill="#0d1428" stroke="#0ea5e9" stroke-width="1.8"/>
+    <circle cx="530" cy="136" r="22" fill="#0ea5e9"/>
+    <text x="530" y="143" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" font-weight="800" fill="#fff">3</text>
+    <text x="594" y="130" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="14" font-weight="800" fill="#e8edf5">校准裁判</text>
+    <text x="594" y="150" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#8fa0b8">先测一致率</text>
+    <text x="512" y="194" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#cbd5e1">人工标 20 条</text>
+    <text x="512" y="212" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#cbd5e1">裁判跑一遍</text>
+    <text x="512" y="230" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#cbd5e1">算一致率</text>
+    <text x="512" y="262" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#fb7185">低于 80%？</text>
+    <text x="512" y="280" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#fb7185">先改 rubric，</text>
+    <text x="512" y="296" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#fb7185">别急着扩测试集</text>
+
+    <rect x="720" y="100" width="204" height="220" rx="14" fill="#0d1428" stroke="#22d3ee" stroke-width="1.8"/>
+    <circle cx="756" cy="132" r="19" fill="#22d3ee"/>
+    <text x="756" y="139" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="17" font-weight="800" fill="#062028">4</text>
+    <text x="786" y="126" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13.5" font-weight="800" fill="#e8edf5">再接门禁</text>
+    <text x="786" y="146" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#8fa0b8">第 3 步通过之后</text>
+    <text x="740" y="194" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#cbd5e1">门禁接太早，</text>
+    <text x="740" y="212" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#cbd5e1">团队会因</text>
+    <text x="740" y="230" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#cbd5e1">「老误报」</text>
+    <text x="740" y="248" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#cbd5e1">集体绕过它</text>
+    <text x="740" y="280" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#fbbf24">绕过一旦成习惯，</text>
+    <text x="740" y="294" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#fbbf24">后面收不回来</text>
+  </g>
+
+  <g stroke="#22d3ee" stroke-width="2" fill="none">
+    <path d="M 240 210 L 260 210" marker-end="url(#ar3)"/>
+    <path d="M 468 210 L 488 210" marker-end="url(#ar3)"/>
+    <path d="M 696 210 L 716 210" marker-end="url(#ar3)"/>
+  </g>
+
+  <rect x="36" y="344" width="888" height="52" rx="10" fill="#111827" stroke="#26314b"/>
+  <text x="56" y="368" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" fill="#8fa0b8">核心原则：任何被团队判定为「噪声」的检查，都会在两周内被静音。先让裁判可信，再让门禁生效。</text>
+  <text x="56" y="386" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#5c6b82">顺序：四件套 → 真实流量 → 裁判一致率 → 门禁。第四步不能抢在第三步前面。</text>
+</svg>

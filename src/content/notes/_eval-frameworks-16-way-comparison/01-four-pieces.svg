@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="960" height="560">
+  <defs>
+    <linearGradient id="bg1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060912"/>
+      <stop offset="100%" stop-color="#0b1020"/>
+    </linearGradient>
+    <marker id="ar1" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto">
+      <path d="M0,0 L7,3.5 L0,7 Z" fill="#3d4d6e"/>
+    </marker>
+    <marker id="ar1c" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto">
+      <path d="M0,0 L7,3.5 L0,7 Z" fill="#22d3ee"/>
+    </marker>
+  </defs>
+
+  <rect width="960" height="560" fill="url(#bg1)"/>
+  <text x="36" y="44" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="22" font-weight="800" fill="#e8edf5">评测的四件套，与七个可评测层级</text>
+  <text x="36" y="70" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#7c8ca6">不管什么品牌，几乎都要求你建同样的四样东西；先决定评哪一层，再去看框架</text>
+
+  <!-- four pieces -->
+  <g>
+    <rect x="36" y="94" width="196" height="86" rx="12" fill="#0d1428" stroke="#8b5cf6" stroke-width="1.8"/>
+    <text x="134" y="122" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="15" font-weight="800" fill="#c4b5fd">① Data 数据</text>
+    <text x="134" y="145" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#8fa0b8">输入 + 期望答案 + 上下文</text>
+    <text x="134" y="163" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#66758c">+ 元数据 + 标签</text>
+
+    <rect x="252" y="94" width="196" height="86" rx="12" fill="#0d1428" stroke="#3b82f6" stroke-width="1.8"/>
+    <text x="350" y="122" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="15" font-weight="800" fill="#93c5fd">② Target 被测</text>
+    <text x="350" y="145" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#8fa0b8">模型调用 / 链 / Agent</text>
+    <text x="350" y="163" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#66758c">检索器 / 整条 trace</text>
+
+    <rect x="468" y="94" width="196" height="86" rx="12" fill="#0d1428" stroke="#0ea5e9" stroke-width="1.8"/>
+    <text x="566" y="122" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="15" font-weight="800" fill="#7dd3fc">③ Judgment 判定</text>
+    <text x="566" y="145" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#8fa0b8">代码规则 / 模型裁判</text>
+    <text x="566" y="163" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#66758c">判定模型 / 人工</text>
+
+    <rect x="684" y="94" width="196" height="86" rx="12" fill="#0d1428" stroke="#2dd4bf" stroke-width="1.8"/>
+    <text x="782" y="122" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="15" font-weight="800" fill="#5eead4">④ Run 运行</text>
+    <text x="782" y="145" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#8fa0b8">可保存、可比较的实验</text>
+    <text x="782" y="163" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#66758c">让 B 版 vs A 版可说清</text>
+  </g>
+
+  <g stroke="#3d4d6e" stroke-width="1.8" fill="none">
+    <path d="M 232 137 L 248 137" marker-end="url(#ar1)"/>
+    <path d="M 448 137 L 464 137" marker-end="url(#ar1)"/>
+    <path d="M 664 137 L 680 137" marker-end="url(#ar1)"/>
+  </g>
+
+  <!-- levels ladder -->
+  <text x="36" y="222" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="700" fill="#e8edf5">七个可评测层级：从小到大</text>
+
+  <g font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5">
+    <rect x="36" y="236" width="240" height="34" rx="7" fill="#111a30" stroke="#2a3650"/>
+    <text x="50" y="258" fill="#cbd5e1">1. 单个最终答案 vs 期望答案</text>
+
+    <rect x="292" y="236" width="240" height="34" rx="7" fill="#111a30" stroke="#2a3650"/>
+    <text x="306" y="258" fill="#cbd5e1">2. 运行中的单步（检索/工具）</text>
+
+    <rect x="548" y="236" width="240" height="34" rx="7" fill="#111a30" stroke="#2a3650"/>
+    <text x="562" y="258" fill="#cbd5e1">3. 工具选择本身</text>
+
+    <rect x="804" y="236" width="120" height="34" rx="7" fill="#111a30" stroke="#2a3650"/>
+    <text x="818" y="258" fill="#cbd5e1">4. 整条路径</text>
+
+    <rect x="36" y="282" width="240" height="34" rx="7" fill="#111a30" stroke="#2a3650"/>
+    <text x="50" y="304" fill="#cbd5e1">5. 跨轮次的整段对话</text>
+
+    <rect x="292" y="282" width="240" height="34" rx="7" fill="#111a30" stroke="#2a3650"/>
+    <text x="306" y="304" fill="#cbd5e1">6. 检索与生成分开评</text>
+
+    <rect x="548" y="282" width="376" height="34" rx="7" fill="#111a30" stroke="#2a3650"/>
+    <text x="562" y="304" fill="#cbd5e1">7. 系统账单：成本 / 延迟 / 每次成功的 token</text>
+  </g>
+
+  <!-- warning -->
+  <rect x="36" y="336" width="888" height="72" rx="12" fill="#1a1020" stroke="#6b2440" stroke-width="1.5"/>
+  <text x="56" y="362" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="700" fill="#fb7185">最常见的选型错误</text>
+  <text x="56" y="386" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#c9a8b4">用只看得见最终文本的 harness 去评轨迹，然后困惑为什么改了代码分数不动。</text>
+
+  <!-- trajectory anatomy -->
+  <text x="36" y="444" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="700" fill="#e8edf5">trajectory 的五段结构（每段都是一个 span）</text>
+
+  <g font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5">
+    <rect x="36" y="458" width="150" height="48" rx="9" fill="#0d1428" stroke="#8b5cf6"/>
+    <text x="111" y="480" text-anchor="middle" fill="#c4b5fd">提示词</text>
+    <text x="111" y="496" text-anchor="middle" fill="#66758c">prompts</text>
+
+    <rect x="198" y="458" width="150" height="48" rx="9" fill="#0d1428" stroke="#6366f1"/>
+    <text x="273" y="480" text-anchor="middle" fill="#a5b4fc">模型调用</text>
+    <text x="273" y="496" text-anchor="middle" fill="#66758c">model calls</text>
+
+    <rect x="360" y="458" width="180" height="48" rx="9" fill="#0d1428" stroke="#3b82f6"/>
+    <text x="450" y="480" text-anchor="middle" fill="#93c5fd">工具调用 + 参数</text>
+    <text x="450" y="496" text-anchor="middle" fill="#66758c">tool calls</text>
+
+    <rect x="552" y="458" width="160" height="48" rx="9" fill="#0d1428" stroke="#0ea5e9"/>
+    <text x="632" y="480" text-anchor="middle" fill="#7dd3fc">检索段落</text>
+    <text x="632" y="496" text-anchor="middle" fill="#66758c">retrieved passages</text>
+
+    <rect x="724" y="458" width="200" height="48" rx="9" fill="#0d1428" stroke="#2dd4bf"/>
+    <text x="824" y="480" text-anchor="middle" fill="#5eead4">最终答案</text>
+    <text x="824" y="496" text-anchor="middle" fill="#66758c">final answer</text>
+  </g>
+
+  <g stroke="#3d4d6e" stroke-width="1.6" fill="none">
+    <path d="M 186 482 L 194 482" marker-end="url(#ar1)"/>
+    <path d="M 348 482 L 356 482" marker-end="url(#ar1)"/>
+    <path d="M 540 482 L 548 482" marker-end="url(#ar1)"/>
+    <path d="M 712 482 L 720 482" marker-end="url(#ar1)"/>
+  </g>
+
+  <text x="36" y="536" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#5c6b82">trajectory = 一次 Agent 运行的完整有序记录；span = 其中任意一步。评测能挂在哪一层，取决于你的工具看不看得见这一层。</text>
+</svg>

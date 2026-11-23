@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 660" width="960" height="660">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060912"/>
+      <stop offset="100%" stop-color="#0b1020"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="960" height="660" fill="url(#bg2)"/>
+  <text x="36" y="44" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="22" font-weight="800" fill="#e8edf5">六个层级：每一层回答上一层提出的一个问题</text>
+  <text x="36" y="70" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#7c8ca6">越往下越接近「平台」，越往上越接近「一次脚本」；买错了层级，补不回来的是深度</text>
+
+  <!-- L1 -->
+  <g>
+    <rect x="36" y="90" width="888" height="66" rx="10" fill="#0c1224" stroke="#6d5bd0" stroke-width="1.5"/>
+    <rect x="36" y="90" width="6" height="66" rx="3" fill="#8b5cf6"/>
+    <text x="60" y="118" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="14" font-weight="800" fill="#c4b5fd">L1 共享形状</text>
+    <text x="200" y="118" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#8fa0b8">几乎每个可信工具都要求同样的四件套，只是名字不同</text>
+    <text x="60" y="141" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#66758c">建议：即使自己手搓，也要把 Data + Target + Judgment + Run 建出来</text>
+  </g>
+
+  <!-- L2 -->
+  <g>
+    <rect x="36" y="166" width="888" height="92" rx="10" fill="#0c1224" stroke="#4f6bd8" stroke-width="1.5"/>
+    <rect x="36" y="166" width="6" height="92" rx="3" fill="#6366f1"/>
+    <text x="60" y="194" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="14" font-weight="800" fill="#a5b4fc">L2 代码优先 code-first</text>
+    <text x="256" y="194" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#8fa0b8">评测本身就是 Python 代码，中间层是一个真正的 Agent</text>
+    <text x="60" y="217" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#cbd5e1">Inspect · DeepEval · Pydantic Evals · SkillEvaluator</text>
+    <text x="60" y="240" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#66758c">买到：solver + 沙箱 + 重复运行　　买不到：现成轨迹指标、生产循环</text>
+  </g>
+
+  <!-- L3 -->
+  <g>
+    <rect x="36" y="268" width="888" height="92" rx="10" fill="#0c1224" stroke="#3b82f6" stroke-width="1.5"/>
+    <rect x="36" y="268" width="6" height="92" rx="3" fill="#3b82f6"/>
+    <text x="60" y="296" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="14" font-weight="800" fill="#93c5fd">L3 配置优先 config-first</text>
+    <text x="256" y="296" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#8fa0b8">评测是一个配置文件，runner 负责其余一切</text>
+    <text x="60" y="319" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#cbd5e1">lm-evaluation-harness · Promptfoo · OpenAI Evals（已迁）· HELM（维护模式）</text>
+    <text x="60" y="342" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#66758c">买到：可比性与速度　　买不到：深度——没有轨迹、没有 tracing、没有门禁</text>
+  </g>
+
+  <!-- L4 -->
+  <g>
+    <rect x="36" y="370" width="888" height="92" rx="10" fill="#0c1224" stroke="#0ea5e9" stroke-width="1.5"/>
+    <rect x="36" y="370" width="6" height="92" rx="3" fill="#0ea5e9"/>
+    <text x="60" y="398" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="14" font-weight="800" fill="#7dd3fc">L4 评测优先 eval-first platform</text>
+    <text x="310" y="398" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#8fa0b8">产品是「实验」，不是「指标」</text>
+    <text x="60" y="421" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#cbd5e1">Braintrust（托管）· MLflow GenAI（自托管）</text>
+    <text x="60" y="444" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#66758c">买到：版本化数据 + 并排比较 + 门禁 + 生产回流　　买不到：统计意义上的重复运行</text>
+  </g>
+
+  <!-- L5 -->
+  <g>
+    <rect x="36" y="472" width="888" height="92" rx="10" fill="#0c1224" stroke="#14b8a6" stroke-width="1.5"/>
+    <rect x="36" y="472" width="6" height="92" rx="3" fill="#2dd4bf"/>
+    <text x="60" y="500" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="14" font-weight="800" fill="#5eead4">L5 可观测优先 observability-first</text>
+    <text x="322" y="500" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#8fa0b8">trace 在先，评测挂上去</text>
+    <text x="60" y="523" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#cbd5e1">Langfuse · LangSmith · Phoenix · TruLens · Evidently</text>
+    <text x="60" y="546" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#fbbf24">关键提醒：可观测性告诉你发生了什么，不会告诉你这是不是好的</text>
+  </g>
+
+  <!-- L6 -->
+  <g>
+    <rect x="36" y="582" width="888" height="34" rx="8" fill="#0c1224" stroke="#34d399" stroke-width="1.5"/>
+    <rect x="36" y="582" width="6" height="34" rx="3" fill="#34d399"/>
+    <text x="60" y="604" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12.5" font-weight="800" fill="#6ee7b7">L6 单一用途 · Ragas</text>
+    <text x="230" y="604" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#8fa0b8">只评检索：四个指标，诊断失败位置而不只是质量</text>
+  </g>
+</svg>
