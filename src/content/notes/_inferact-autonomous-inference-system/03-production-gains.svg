@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540">
+  <defs>
+    <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050810"/>
+      <stop offset="100%" stop-color="#0a1020"/>
+    </linearGradient>
+    <linearGradient id="barNew" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#22d3ee"/><stop offset="100%" stop-color="#0e7490"/>
+    </linearGradient>
+    <linearGradient id="barOld" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#475569"/><stop offset="100%" stop-color="#27303f"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="960" height="540" fill="url(#bg3)"/>
+  <text x="36" y="44" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="22" font-weight="800" fill="#e2e8f0">两组生产数据：可核验的收益</text>
+  <text x="36" y="70" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#8fa3bd">左侧为同端点前后对比（可信度较高）；右侧跨六周总量指标（方向性证据）</text>
+
+  <!-- left: MiniMax -->
+  <text x="36" y="112" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="14" font-weight="800" fill="#67e8f9">MiniMax M3.1 Flash</text>
+  <text x="36" y="132" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#6b8299">day-0 双硬件 · 100% 线上流量影子验证</text>
+
+  <g font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif">
+    <!-- TTFT -->
+    <text x="36" y="168" font-size="11" fill="#8fa3bd">p50 首字延迟</text>
+    <rect x="160" y="154" width="120" height="20" rx="4" fill="url(#barOld)"/>
+    <text x="288" y="169" font-size="10.5" fill="#94a3b8">1.5s</text>
+    <rect x="160" y="180" width="64" height="20" rx="4" fill="url(#barNew)"/>
+    <text x="232" y="195" font-size="10.5" font-weight="700" fill="#67e8f9">0.8s</text>
+
+    <!-- EP prefill -->
+    <text x="36" y="228" font-size="11" fill="#8fa3bd">EP prefill 补丁</text>
+    <rect x="160" y="214" width="200" height="20" rx="4" fill="#1e3a4d"/>
+    <rect x="160" y="214" width="130" height="20" rx="4" fill="url(#barNew)"/>
+    <text x="298" y="229" font-size="10.5" font-weight="700" fill="#34d399">TTFT −60~70%</text>
+
+    <!-- AMD -->
+    <text x="36" y="278" font-size="11" fill="#8fa3bd">每张 AMD 卡输出</text>
+    <rect x="160" y="264" width="160" height="20" rx="4" fill="url(#barNew)"/>
+    <text x="328" y="279" font-size="10.5" font-weight="700" fill="#34d399">+56%</text>
+
+    <!-- PP vs TP -->
+    <text x="36" y="328" font-size="11" fill="#8fa3bd">PP vs TP prefill</text>
+    <rect x="160" y="314" width="160" height="20" rx="4" fill="url(#barNew)"/>
+    <text x="328" y="329" font-size="10.5" font-weight="700" fill="#34d399">+19~46%</text>
+  </g>
+
+  <!-- right: Kimi -->
+  <text x="520" y="112" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="14" font-weight="800" fill="#c4b5fd">Agent V on Kimi K3.1</text>
+  <text x="520" y="132" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#6b8299">16 agent 并行排障 · 24~30 小时 hillclimb</text>
+
+  <g font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif">
+    <text x="520" y="168" font-size="11" fill="#8fa3bd">DeepSWE 分数</text>
+    <rect x="650" y="154" width="110" height="20" rx="4" fill="url(#barOld)"/>
+    <text x="768" y="169" font-size="10.5" fill="#94a3b8">0.558</text>
+    <rect x="650" y="180" width="119" height="20" rx="4" fill="#7c3aed"/>
+    <text x="777" y="195" font-size="10.5" font-weight="700" fill="#c4b5fd">0.602</text>
+
+    <text x="520" y="228" font-size="11" fill="#8fa3bd">TTFT @800k</text>
+    <rect x="650" y="214" width="180" height="20" rx="4" fill="#7c3aed"/>
+    <text x="838" y="229" font-size="10.5" font-weight="700" fill="#c4b5fd">2.78×</text>
+
+    <text x="520" y="278" font-size="11" fill="#8fa3bd">p99 每 token</text>
+    <rect x="650" y="264" width="140" height="20" rx="4" fill="#7c3aed"/>
+    <text x="798" y="279" font-size="10.5" font-weight="700" fill="#c4b5fd">−35%</text>
+
+    <text x="520" y="328" font-size="11" fill="#8fa3bd">GB300 每 GPU</text>
+    <rect x="650" y="314" width="180" height="20" rx="4" fill="#7c3aed"/>
+    <text x="838" y="329" font-size="10.5" font-weight="700" fill="#fbbf24">1.8×</text>
+  </g>
+
+  <!-- caution -->
+  <rect x="36" y="364" width="888" height="88" rx="12" fill="#1a1408" stroke="#7a5a2f" stroke-width="1.5"/>
+  <text x="56" y="390" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="800" fill="#fbbf24">口径提醒：1.8× 是跨六周的总量指标</text>
+  <text x="56" y="414" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#c9b08a">9 月中到 10 月底，同期还有 vLLM 自身迭代、模型更新、驱动与 CUDA 版本变化、客户流量形态变化。</text>
+  <text x="56" y="434" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#c9b08a">原文把功劳归给 production hillclimbing，但没有给出对照组。左侧同端点前后对比可信度更高。</text>
+
+  <!-- self-reference -->
+  <rect x="36" y="468" width="888" height="52" rx="10" fill="#0a1324" stroke="#1e3a4d"/>
+  <text x="56" y="492" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#8fa3bd">自指事实：Agent V 约 79% 自然会话、53% 全部 token 来自自家开源权重部署（Kimi K3 + vLLM）</text>
+  <text x="56" y="510" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#fbbf24">→ 系统在优化服务自己的引擎，而评估这些优化的 agent 又跑在同一引擎上</text>
+</svg>

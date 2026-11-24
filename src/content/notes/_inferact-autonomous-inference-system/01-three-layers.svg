@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520">
+  <defs>
+    <linearGradient id="bg1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050810"/>
+      <stop offset="100%" stop-color="#0a1020"/>
+    </linearGradient>
+    <marker id="ar1" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto">
+      <path d="M0,0 L7,3.5 L0,7 Z" fill="#3a5070"/>
+    </marker>
+    <marker id="ar1c" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto">
+      <path d="M0,0 L7,3.5 L0,7 Z" fill="#22d3ee"/>
+    </marker>
+  </defs>
+
+  <rect width="960" height="520" fill="url(#bg1)"/>
+  <text x="36" y="44" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="22" font-weight="800" fill="#e2e8f0">三层关系：公司、基金会、开源引擎</text>
+  <text x="36" y="70" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#8fa3bd">治理权在基金会，不在公司——这是讨论「开源是否被绑架」时最硬的一道闸</text>
+
+  <!-- layer 1: foundation -->
+  <rect x="36" y="92" width="888" height="76" rx="12" fill="#0d1424" stroke="#5b4bd0" stroke-width="1.8"/>
+  <text x="60" y="122" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="14" font-weight="800" fill="#c4b5fd">PyTorch Foundation　托管方</text>
+  <text x="60" y="146" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#8fa3bd">2025 年 5 月由 UC Berkeley 捐入，成为伞形基金会首批托管项目；Governing Board + Technical Advisory Council 治理</text>
+  <text x="836" y="126" text-anchor="end" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#6b8299">治理权</text>
+
+  <!-- layer 2: vLLM -->
+  <rect x="36" y="182" width="888" height="86" rx="12" fill="#0b1a26" stroke="#22d3ee" stroke-width="1.8"/>
+  <text x="60" y="212" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="14" font-weight="800" fill="#67e8f9">vLLM　开源引擎</text>
+  <text x="60" y="236" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#8fa3bd">Apache-2.0 · 不可撤回 · 97,452 星 / 25,215 fork · 2026-11-24 仍有推送</text>
+  <text x="60" y="256" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#34d399">核心设计目标：可组合，让每个优化能叠加、能复利</text>
+
+  <!-- layer 3: Inferact -->
+  <rect x="36" y="282" width="888" height="86" rx="12" fill="#161020" stroke="#a78bfa" stroke-width="1.8"/>
+  <text x="60" y="312" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="14" font-weight="800" fill="#c4b5fd">Inferact　商业公司</text>
+  <text x="60" y="336" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#8fa3bd">由 vLLM 创建者与维护者创立 · CEO Simon Mo · 围绕 vLLM 建自治推理系统（AIS）</text>
+  <text x="60" y="356" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#fbbf24">AIS 本身是否开源：全文未承诺</text>
+
+  <!-- arrows -->
+  <path d="M 480 168 L 480 178" stroke="#3a5070" stroke-width="2" fill="none" marker-end="url(#ar1)"/>
+  <path d="M 480 268 L 480 278" stroke="#3a5070" stroke-width="2" fill="none" marker-end="url(#ar1)"/>
+
+  <!-- upstream arrow -->
+  <path d="M 200 282 L 200 272" stroke="#22d3ee" stroke-width="2" fill="none" marker-end="url(#ar1c)"/>
+  <text x="212" y="278" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#67e8f9">优化上游</text>
+
+  <!-- bottom note -->
+  <rect x="36" y="392" width="888" height="88" rx="12" fill="#0a1324" stroke="#1e3a4d" stroke-width="1.2"/>
+  <text x="56" y="418" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="700" fill="#e2e8f0">三者的分工（原文表述）</text>
+  <text x="56" y="442" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#8fa3bd">① vLLM 在开放中领先，Inferact 持续优化它，每一项性能改进都上游</text>
+  <text x="56" y="462" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#8fa3bd">② Inferact 围绕 vLLM 建自治系统，目标是维护引擎并为每个负载定制</text>
+  <text x="56" y="482" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#8fa3bd">③ 人类设定目标，提供质量标尺和改进想法</text>
+
+  <text x="36" y="508" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#5a6b82">核验来源：pytorch.org 托管公告、GitHub REST API</text>
+</svg>

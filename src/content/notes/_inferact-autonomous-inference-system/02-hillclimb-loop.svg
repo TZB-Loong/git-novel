@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="960" height="560">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050810"/>
+      <stop offset="100%" stop-color="#0a1020"/>
+    </linearGradient>
+    <marker id="ar2" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto">
+      <path d="M0,0 L7,3.5 L0,7 Z" fill="#3a5070"/>
+    </marker>
+    <marker id="ar2y" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto">
+      <path d="M0,0 L7,3.5 L0,7 Z" fill="#fbbf24"/>
+    </marker>
+  </defs>
+
+  <rect width="960" height="560" fill="url(#bg2)"/>
+  <text x="36" y="44" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="22" font-weight="800" fill="#e2e8f0">Hillclimb 的一天：从模型发布到自我改写</text>
+  <text x="36" y="70" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#8fa3bd">关键在最后一步：系统修改的不是引擎，而是产生引擎改动的那些 agent</text>
+
+  <!-- timeline spine -->
+  <line x1="120" y1="108" x2="120" y2="470" stroke="#22314b" stroke-width="2"/>
+
+  <!-- 3am -->
+  <circle cx="120" cy="130" r="9" fill="#0a1020" stroke="#22d3ee" stroke-width="2.5"/>
+  <text x="152" y="124" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="800" fill="#67e8f9">凌晨 3 点</text>
+  <text x="152" y="148" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#cbd5e1">实验室放出新开源模型预览，系统在人醒来前开始 profiling</text>
+  <text x="152" y="168" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#f87171">新注意力变体无调优 kernel → 回落通用路径 → 延迟不达标</text>
+
+  <!-- 4am -->
+  <circle cx="120" cy="212" r="9" fill="#fbbf24"/>
+  <text x="152" y="206" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="800" fill="#fbbf24">凌晨 4 点</text>
+  <text x="152" y="230" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#cbd5e1">系统主动启动一轮 Hillclimb，三类 agent 并行：</text>
+  <text x="152" y="250" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#8fa3bd">· 写 megakernel　· 把新算子融进现有 kernel　· 从头重写引擎</text>
+
+  <!-- overnight -->
+  <circle cx="120" cy="292" r="9" fill="#0a1020" stroke="#3a5070" stroke-width="2.5"/>
+  <text x="152" y="286" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="800" fill="#93a8c4">整夜</text>
+  <text x="152" y="310" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#cbd5e1">多个候选在孤立测试里赢、端到端却输</text>
+  <text x="152" y="330" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#34d399">只有通过完整 serving benchmark 的组合才被推进</text>
+
+  <!-- morning -->
+  <circle cx="120" cy="372" r="9" fill="#0a1020" stroke="#3a5070" stroke-width="2.5"/>
+  <text x="152" y="366" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="800" fill="#93a8c4">早上</text>
+  <text x="152" y="390" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#cbd5e1">胜出组合按各客户负载与芯片架构上线</text>
+  <text x="152" y="410" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#67e8f9">胜出改动回流到 vLLM 上游</text>
+
+  <!-- evening -->
+  <circle cx="120" cy="452" r="10" fill="#fbbf24"/>
+  <text x="152" y="446" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="800" fill="#fbbf24">晚上 ← 自我改写</text>
+  <text x="152" y="470" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#cbd5e1">复盘发现多数失败候选都死在同一个端到端关卡</text>
+  <text x="152" y="490" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#fbbf24">于是重写自己的 agent，让那个检查先跑</text>
+
+  <!-- loop arrow -->
+  <path d="M 120 452 C 60 452, 60 130, 112 130" stroke="#fbbf24" stroke-width="1.6" fill="none" stroke-dasharray="5,4" marker-end="url(#ar2y)"/>
+  <text x="36" y="300" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#fbbf24" transform="rotate(-90 36 300)">第二天继续</text>
+
+  <!-- distinction box -->
+  <rect x="560" y="108" width="364" height="118" rx="12" fill="#0d1424" stroke="#5b4bd0" stroke-width="1.5"/>
+  <text x="582" y="136" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="800" fill="#c4b5fd">自治 vs 自动化脚本</text>
+  <line x1="582" y1="148" x2="902" y2="148" stroke="#22314b" stroke-width="1"/>
+  <text x="582" y="170" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#8fa3bd">脚本：执行固定流程</text>
+  <text x="582" y="192" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#cbd5e1">自治：连「怎么产生改动」这件事</text>
+  <text x="582" y="210" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#cbd5e1">本身也在被改写</text>
+
+  <!-- north star note -->
+  <rect x="560" y="242" width="364" height="96" rx="12" fill="#1a1408" stroke="#7a5a2f" stroke-width="1.5"/>
+  <text x="582" y="268" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="800" fill="#fbbf24">原文的诚实之处</text>
+  <text x="582" y="292" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#c9b08a">「AIS 是北极星，我们还没到」</text>
+  <text x="582" y="314" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#c9b08a">算力仍稀缺，反馈回路仍然很窄</text>
+</svg>

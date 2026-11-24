@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050810"/>
+      <stop offset="50%" stop-color="#0a1020"/>
+      <stop offset="100%" stop-color="#04060d"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="72%" cy="48%" r="44%">
+      <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#22d3ee" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#67e8f9"/>
+      <stop offset="55%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#a78bfa"/>
+    </linearGradient>
+    <linearGradient id="barA" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0891b2"/><stop offset="100%" stop-color="#22d3ee"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#16203a" stroke-width="1" stroke-opacity="0.6"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <rect x="44" y="44" width="1112" height="542" rx="22" fill="none" stroke="#1f2b45" stroke-width="2" stroke-dasharray="10,7"/>
+
+  <rect x="84" y="82" width="330" height="38" rx="8" fill="#0d1628" stroke="#2c3d5e"/>
+  <circle cx="106" cy="101" r="6" fill="#22d3ee"/>
+  <text x="122" y="107" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="14" font-weight="700" fill="#93a8c4" letter-spacing="2">INFERENCE INFRASTRUCTURE</text>
+
+  <text x="84" y="196" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="62" font-weight="800" fill="url(#titleGrad)">AUTONOMOUS</text>
+  <text x="84" y="248" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="62" font-weight="800" fill="url(#titleGrad)">INFERENCE</text>
+  <text x="84" y="300" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="26" font-weight="700" fill="#e2e8f0">推理引擎开始自己改自己</text>
+  <text x="84" y="332" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="15" fill="#8fa3bd">Inferact 与 vLLM：引擎开源，造引擎的工厂闭源</text>
+
+  <!-- metric cards -->
+  <g transform="translate(84, 376)">
+    <rect x="0" y="0" width="196" height="82" rx="12" fill="#0a1324" stroke="#1e3a4d" stroke-width="1.5"/>
+    <text x="20" y="28" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#6b8299" letter-spacing="1">TTFT (p50)</text>
+    <text x="20" y="58" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="20" font-weight="800" fill="#67e8f9">1.5s → 0.8s</text>
+
+    <rect x="212" y="0" width="196" height="82" rx="12" fill="#0a1324" stroke="#1e3a4d" stroke-width="1.5"/>
+    <text x="232" y="28" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#6b8299" letter-spacing="1">GB300 吞吐</text>
+    <text x="232" y="58" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="20" font-weight="800" fill="#34d399">1.8×</text>
+
+    <rect x="424" y="0" width="196" height="82" rx="12" fill="#0a1324" stroke="#1e3a4d" stroke-width="1.5"/>
+    <text x="444" y="28" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#6b8299" letter-spacing="1">vLLM STARS</text>
+    <text x="444" y="58" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="20" font-weight="800" fill="#c4b5fd">97,452</text>
+  </g>
+
+  <!-- right panel -->
+  <g transform="translate(676, 366)">
+    <rect x="0" y="0" width="444" height="150" rx="14" fill="#080f1e" stroke="#22314b" stroke-width="1.5"/>
+    <text x="24" y="32" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="700" fill="#6b8299" letter-spacing="1.5">THE OPEN-SOURCE BOUNDARY</text>
+    <text x="24" y="66" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="17" font-weight="800" fill="#e2e8f0">引擎开源，造引擎的工厂闭源</text>
+    <line x1="24" y1="82" x2="420" y2="82" stroke="#182338" stroke-width="1"/>
+    <text x="24" y="106" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#8fa3bd">vLLM · Apache-2.0 · PyTorch Foundation 托管</text>
+    <text x="24" y="128" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#fbbf24">自治系统本身：全文未承诺开源</text>
+  </g>
+
+  <text x="84" y="556" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#5a6b82">Source: Simon Mo · Inferact · 2026-11-18　|　仓库数据经 GitHub API 核验</text>
+</svg>
