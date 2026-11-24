@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520">
+  <defs>
+    <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0508"/>
+      <stop offset="100%" stop-color="#130a10"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="960" height="520" fill="url(#bg3)"/>
+  <text x="36" y="44" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="22" font-weight="800" fill="#f5e8ec">诊断清单：每步的信号与下一步动作</text>
+  <text x="36" y="70" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#a88f9b">遇到「站点打不开」，按这个顺序走，不要跳步</text>
+
+  <g font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif">
+    <!-- 1 -->
+    <circle cx="60" cy="110" r="15" fill="#f59e0b"/>
+    <text x="60" y="116" text-anchor="middle" font-size="13" font-weight="800" fill="#2a1a0a">1</text>
+    <text x="88" y="106" font-size="12.5" font-weight="700" fill="#fbbf24">分清内容问题还是传输问题</text>
+    <text x="88" y="126" font-size="10.5" fill="#c9b0ba">curl http 通、curl https 不通 → 传输层</text>
+
+    <!-- 2 -->
+    <circle cx="60" cy="170" r="15" fill="#f59e0b"/>
+    <text x="60" y="176" text-anchor="middle" font-size="13" font-weight="800" fill="#2a1a0a">2</text>
+    <text x="88" y="166" font-size="12.5" font-weight="700" fill="#fbbf24">确认本机 DNS 是否可信</text>
+    <text x="88" y="186" font-size="10.5" fill="#c9b0ba">多个解析器返回同一非常规地址 → 有本地代理拦截，换外部工具</text>
+
+    <!-- 3 -->
+    <circle cx="60" cy="230" r="15" fill="#fb7185"/>
+    <text x="60" y="236" text-anchor="middle" font-size="13" font-weight="800" fill="#2a0d14">3</text>
+    <text x="88" y="226" font-size="12.5" font-weight="700" fill="#fb7185">看服务端实际返回的证书</text>
+    <text x="88" y="246" font-size="10.5" fill="#c9b0ba">openssl s_client 的 subject 字段直接说明证书签给了谁</text>
+
+    <!-- 4 -->
+    <circle cx="60" cy="290" r="15" fill="#22d3ee"/>
+    <text x="60" y="296" text-anchor="middle" font-size="13" font-weight="800" fill="#062028">4</text>
+    <text x="88" y="286" font-size="12.5" font-weight="700" fill="#67e8f9">按五层顺序逐层排除</text>
+    <text x="88" y="306" font-size="10.5" fill="#c9b0ba">DNS → CAA → DNSSEC → 域名验证 → 证书状态</text>
+
+    <!-- 5 -->
+    <circle cx="60" cy="350" r="15" fill="#fb7185"/>
+    <text x="60" y="356" text-anchor="middle" font-size="13" font-weight="800" fill="#2a0d14">5</text>
+    <text x="88" y="346" font-size="12.5" font-weight="700" fill="#fb7185">不要先试「删了重加」</text>
+    <text x="88" y="366" font-size="10.5" fill="#c9b0ba">对 bad_authz 无效，只会浪费一轮等待</text>
+
+    <!-- 6 -->
+    <circle cx="60" cy="410" r="15" fill="#f59e0b"/>
+    <text x="60" y="416" text-anchor="middle" font-size="13" font-weight="800" fill="#2a1a0a">6</text>
+    <text x="88" y="406" font-size="12.5" font-weight="700" fill="#fbbf24">修复期间确认 https_enforced 是关的</text>
+    <text x="88" y="426" font-size="10.5" fill="#c9b0ba">否则 HTTP 也会被跳转到坏掉的 HTTPS，故障面翻倍</text>
+
+    <!-- 7 -->
+    <circle cx="60" cy="470" r="15" fill="#34d399"/>
+    <text x="60" y="476" text-anchor="middle" font-size="13" font-weight="800" fill="#052018">7</text>
+    <text x="88" y="466" font-size="12.5" font-weight="700" fill="#6ee7b7">回退前检查 base 路径与 CNAME 文件</text>
+    <text x="88" y="486" font-size="10.5" fill="#c9b0ba">project 站点回退时最容易漏的两处</text>
+  </g>
+
+  <!-- right long-term box -->
+  <rect x="620" y="96" width="304" height="150" rx="12" fill="#0d0910" stroke="#3d2530" stroke-width="1.5"/>
+  <text x="642" y="124" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11.5" font-weight="700" fill="#8f7480" letter-spacing="1">长期方案只有两条</text>
+  <text x="642" y="156" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#c9b0ba">① 提 GitHub Support 工单</text>
+  <text x="658" y="174" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#8f7480">要求重置该域名的 ACME 授权</text>
+  <text x="642" y="202" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#c9b0ba">② 换成自己可控证书的域名</text>
+  <text x="658" y="220" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#8f7480">免费二级域名通常两边都没权限</text>
+</svg>

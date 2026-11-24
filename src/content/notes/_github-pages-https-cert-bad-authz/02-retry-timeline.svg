@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="960" height="420">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0508"/>
+      <stop offset="100%" stop-color="#130a10"/>
+    </linearGradient>
+    <marker id="ar2" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto">
+      <path d="M0,0 L7,3.5 L0,7 Z" fill="#5a3a48"/>
+    </marker>
+  </defs>
+
+  <rect width="960" height="420" fill="url(#bg2)"/>
+  <text x="36" y="44" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="22" font-weight="800" fill="#f5e8ec">重设域名：清空成功，重绑即回坏状态</text>
+  <text x="36" y="70" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#a88f9b">网上多数教程说「删了重加就行」——本次实测对这个状态无效</text>
+
+  <!-- step 1 -->
+  <g>
+    <rect x="36" y="96" width="200" height="100" rx="12" fill="#0e1410" stroke="#2f5a3f" stroke-width="1.5"/>
+    <text x="56" y="122" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="700" fill="#6ee7b7">① 清空 cname</text>
+    <text x="56" y="146" font-family="ui-monospace, Menlo, monospace" font-size="10" fill="#b8c9bf">gh api -X PUT ...</text>
+    <text x="56" y="162" font-family="ui-monospace, Menlo, monospace" font-size="10" fill="#b8c9bf">  -f cname=</text>
+    <text x="56" y="184" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#34d399">→ cname: null　证书归零</text>
+  </g>
+
+  <!-- step 2 -->
+  <g>
+    <rect x="270" y="96" width="200" height="100" rx="12" fill="#0e1410" stroke="#2f5a3f" stroke-width="1.5"/>
+    <text x="290" y="122" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="700" fill="#6ee7b7">② 重新绑定</text>
+    <text x="290" y="146" font-family="ui-monospace, Menlo, monospace" font-size="10" fill="#b8c9bf">gh api -X PUT ...</text>
+    <text x="290" y="162" font-family="ui-monospace, Menlo, monospace" font-size="10" fill="#b8c9bf">  -f cname=git-novel.loc.cc</text>
+    <text x="290" y="184" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#fb7185">→ 立刻回到 bad_authz</text>
+  </g>
+
+  <!-- step 3 -->
+  <g>
+    <rect x="504" y="96" width="200" height="100" rx="12" fill="#1a0d13" stroke="#8f2f45" stroke-width="1.5"/>
+    <text x="524" y="122" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="700" fill="#fb7185">③ 等待 20 分钟</text>
+    <text x="524" y="146" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#c9b0ba">每分钟采样一次</text>
+    <text x="524" y="164" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#c9b0ba">共 21 次</text>
+    <text x="524" y="186" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#fb7185">→ 状态纹丝不动</text>
+  </g>
+
+  <!-- step 4 -->
+  <g>
+    <rect x="738" y="96" width="186" height="100" rx="12" fill="#141018" stroke="#7a5a2f" stroke-width="1.5"/>
+    <text x="758" y="122" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="700" fill="#fbbf24">④ 结论</text>
+    <text x="758" y="148" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#c9b0ba">坏状态在 GitHub</text>
+    <text x="758" y="166" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#c9b0ba">后端，不在仓库</text>
+    <text x="758" y="186" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#fbbf24">配置里</text>
+  </g>
+
+  <g stroke="#5a3a48" stroke-width="2" fill="none">
+    <path d="M 240 146 L 266 146" marker-end="url(#ar2)"/>
+    <path d="M 474 146 L 500 146" marker-end="url(#ar2)"/>
+    <path d="M 708 146 L 734 146" marker-end="url(#ar2)"/>
+  </g>
+
+  <!-- timeline -->
+  <text x="36" y="248" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="700" fill="#f5e8ec">轮询记录（每分钟一次，节选）</text>
+  <rect x="36" y="262" width="888" height="106" rx="10" fill="#0d0910" stroke="#2a1a22"/>
+  <g font-family="ui-monospace, Menlo, monospace" font-size="10.5" fill="#c9b0ba">
+    <text x="56" y="286">14:39:43  bad_authz</text>
+    <text x="256" y="286">14:44:52  bad_authz</text>
+    <text x="456" y="286">14:49:56  bad_authz</text>
+    <text x="656" y="286">14:54:00  bad_authz</text>
+    <text x="56" y="308">14:40:43  bad_authz</text>
+    <text x="256" y="308">14:45:53  bad_authz</text>
+    <text x="456" y="308">14:50:57  bad_authz</text>
+    <text x="656" y="308">14:56:08  (空值，API 抖动)</text>
+    <text x="56" y="330">14:41:44  bad_authz</text>
+    <text x="256" y="330">14:46:54  bad_authz</text>
+    <text x="456" y="330">14:51:58  bad_authz</text>
+    <text x="656" y="330">14:57:09  bad_authz</text>
+    <text x="56" y="352">14:42:46  bad_authz</text>
+    <text x="256" y="352">14:47:54  bad_authz</text>
+    <text x="456" y="352">14:52:59  bad_authz</text>
+    <text x="656" y="352">14:59:15  bad_authz</text>
+  </g>
+
+  <rect x="36" y="386" width="888" height="1" fill="#2a1a22"/>
+</svg>

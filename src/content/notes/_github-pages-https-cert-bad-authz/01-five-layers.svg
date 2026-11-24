@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="960" height="560">
+  <defs>
+    <linearGradient id="bg1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0508"/>
+      <stop offset="100%" stop-color="#130a10"/>
+    </linearGradient>
+    <marker id="ar1" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto">
+      <path d="M0,0 L7,3.5 L0,7 Z" fill="#5a3a48"/>
+    </marker>
+  </defs>
+
+  <rect width="960" height="560" fill="url(#bg1)"/>
+  <text x="36" y="44" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="22" font-weight="800" fill="#f5e8ec">五层排查：从外到内，每层一个确定信号</text>
+  <text x="36" y="70" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#a88f9b">不要跳步，也不要靠猜；每排除一层，剩下的可能性就少一半</text>
+
+  <!-- layer rows -->
+  <g font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif">
+    <!-- L0 -->
+    <rect x="36" y="90" width="888" height="66" rx="10" fill="#141018" stroke="#7a5a2f" stroke-width="1.5"/>
+    <rect x="36" y="90" width="6" height="66" rx="3" fill="#f59e0b"/>
+    <text x="60" y="118" font-size="13" font-weight="800" fill="#fbbf24">第 0 层　本机 DNS 是否可信</text>
+    <text x="330" y="118" font-size="11" fill="#a88f9b">dig @1.1.1.1 vs @8.8.8.8</text>
+    <text x="60" y="141" font-size="10.5" fill="#c9b0ba">三个解析器全部返回 198.18.3.60 → 本地代理 fake-IP 劫持，本机结果不可信</text>
+
+    <!-- L1 -->
+    <rect x="36" y="166" width="888" height="66" rx="10" fill="#0e1410" stroke="#2f5a3f" stroke-width="1.5"/>
+    <rect x="36" y="166" width="6" height="66" rx="3" fill="#34d399"/>
+    <text x="60" y="194" font-size="13" font-weight="800" fill="#6ee7b7">第 1 层　A 记录是否指向 GitHub</text>
+    <text x="360" y="194" font-size="11" fill="#a88f9b">whatsmydns 全球节点</text>
+    <text x="60" y="217" font-size="10.5" fill="#b8c9bf">185.199.108-111.153 四地址全球一致 → ✅ 正常</text>
+
+    <!-- L2 -->
+    <rect x="36" y="242" width="888" height="66" rx="10" fill="#0e1410" stroke="#2f5a3f" stroke-width="1.5"/>
+    <rect x="36" y="242" width="6" height="66" rx="3" fill="#34d399"/>
+    <text x="60" y="270" font-size="13" font-weight="800" fill="#6ee7b7">第 2 层　CAA 是否拦住 Let's Encrypt</text>
+    <text x="400" y="270" font-size="11" fill="#a88f9b">dig CAA（三级）</text>
+    <text x="60" y="293" font-size="10.5" fill="#b8c9bf">git-novel.loc.cc / loc.cc / cc 全空 → ✅ 无限制，任何 CA 可签</text>
+
+    <!-- L3 -->
+    <rect x="36" y="318" width="888" height="66" rx="10" fill="#0e1410" stroke="#2f5a3f" stroke-width="1.5"/>
+    <rect x="36" y="318" width="6" height="66" rx="3" fill="#34d399"/>
+    <text x="60" y="346" font-size="13" font-weight="800" fill="#6ee7b7">第 3 层　DNSSEC 链是否完好</text>
+    <text x="330" y="346" font-size="11" fill="#a88f9b">dig +dnssec</text>
+    <text x="60" y="369" font-size="10.5" fill="#b8c9bf">ad（Authenticated Data）标志存在 → ✅ 验证通过</text>
+
+    <!-- L4 -->
+    <rect x="36" y="394" width="888" height="66" rx="10" fill="#0e1410" stroke="#2f5a3f" stroke-width="1.5"/>
+    <rect x="36" y="394" width="6" height="66" rx="3" fill="#34d399"/>
+    <text x="60" y="422" font-size="13" font-weight="800" fill="#6ee7b7">第 4 层　域名是否被 GitHub 认可</text>
+    <text x="380" y="422" font-size="11" fill="#a88f9b">Pages API</text>
+    <text x="60" y="445" font-size="10.5" fill="#b8c9bf">pending_domain_unverified_at = null → ✅ 所有权验证已通过</text>
+
+    <!-- L5 -->
+    <rect x="36" y="470" width="888" height="66" rx="10" fill="#1a0d13" stroke="#8f2f45" stroke-width="2"/>
+    <rect x="36" y="470" width="6" height="66" rx="3" fill="#f43f5e"/>
+    <text x="60" y="498" font-size="13" font-weight="800" fill="#fb7185">第 5 层　证书状态 ← 故障点</text>
+    <text x="340" y="498" font-size="11" fill="#a88f9b">https_certificate.state</text>
+    <text x="60" y="521" font-size="10.5" fill="#f0b8c4">bad_authz —「The ACME authorization is in a bad state. We need to start over.」</text>
+  </g>
+
+  <text x="36" y="552" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#6b565f">注：第 0 层的发现说明，任何基于本机 dig 的判断在动手前都要先证伪一次。</text>
+</svg>

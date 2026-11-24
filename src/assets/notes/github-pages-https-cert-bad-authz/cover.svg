@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0508"/>
+      <stop offset="50%" stop-color="#140a12"/>
+      <stop offset="100%" stop-color="#060407"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="70%" cy="45%" r="45%">
+      <stop offset="0%" stop-color="#f43f5e" stop-opacity="0.16"/>
+      <stop offset="100%" stop-color="#f43f5e" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#fda4af"/>
+      <stop offset="55%" stop-color="#fb7185"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#2a1a22" stroke-width="1" stroke-opacity="0.6"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <rect x="44" y="44" width="1112" height="542" rx="22" fill="none" stroke="#3d2530" stroke-width="2" stroke-dasharray="10,7"/>
+
+  <rect x="84" y="82" width="330" height="38" rx="8" fill="#1c1018" stroke="#5a3242"/>
+  <circle cx="106" cy="101" r="6" fill="#f43f5e"/>
+  <text x="122" y="107" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="14" font-weight="700" fill="#c4a8b4" letter-spacing="2">INCIDENT REPORT · GITHUB PAGES</text>
+
+  <text x="84" y="200" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="64" font-weight="800" fill="url(#titleGrad)">BAD_AUTHZ</text>
+  <text x="84" y="252" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="29" font-weight="700" fill="#f5e8ec">免费域名撞上 HTTPS 死锁</text>
+  <text x="84" y="292" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="17" fill="#a88f9b">HTTP 活着 · 证书死在签发这一步 · 五层排查与回退实录</text>
+
+  <!-- status cards -->
+  <g transform="translate(84, 340)">
+    <rect x="0" y="0" width="200" height="86" rx="12" fill="#0f0a0d" stroke="#2f4a3a" stroke-width="1.5"/>
+    <text x="20" y="30" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#7d9488" letter-spacing="1">HTTP</text>
+    <text x="20" y="62" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="21" font-weight="800" fill="#34d399">200 OK</text>
+
+    <rect x="216" y="0" width="200" height="86" rx="12" fill="#0f0a0d" stroke="#4a2f2f" stroke-width="1.5"/>
+    <text x="236" y="30" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#9a7f7f" letter-spacing="1">HTTPS</text>
+    <text x="236" y="62" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="21" font-weight="800" fill="#fb7185">000 FAIL</text>
+
+    <rect x="432" y="0" width="200" height="86" rx="12" fill="#0f0a0d" stroke="#4a3f2f" stroke-width="1.5"/>
+    <text x="452" y="30" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#9a8f7f" letter-spacing="1">CERT SUBJECT</text>
+    <text x="452" y="62" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="19" font-weight="800" fill="#fbbf24">*.github.io</text>
+  </g>
+
+  <!-- right panel -->
+  <g transform="translate(748, 336)">
+    <rect x="0" y="0" width="372" height="150" rx="14" fill="#0f0a12" stroke="#3d2530" stroke-width="1.5"/>
+    <text x="22" y="32" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="700" fill="#8f7480" letter-spacing="1.5">ACME STATE</text>
+    <text x="22" y="72" font-family="ui-monospace, Menlo, monospace" font-size="26" font-weight="700" fill="#fb7185">bad_authz</text>
+    <line x1="22" y1="88" x2="350" y2="88" stroke="#2a1a22" stroke-width="1"/>
+    <text x="22" y="112" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#b09aa4">DNS ✅　CAA ✅　DNSSEC ✅</text>
+    <text x="22" y="134" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" fill="#b09aa4">域名验证 ✅　部署 ✅　证书 ❌</text>
+  </g>
+
+  <text x="84" y="556" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#6b565f">本文全部命令与输出来自 2026-11-23 至 11-24 本机实跑记录</text>
+</svg>
