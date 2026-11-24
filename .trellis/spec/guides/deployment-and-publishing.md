@@ -12,7 +12,7 @@
 
 ## Base Path
 
-- `astro.config.ts` 配置 `site = 'https://git-novel.loc.cc'`、`base: '/'`、
+- `astro.config.ts` 配置 `site = 'https://tzb-loong.github.io/git-novel'`、`base: '/'`、
   `trailingSlash: 'always'`；自定义域名由 `public/CNAME` 承载。
 - 内部链接、静态资源、RSS、sitemap 路径一律用根路径（如 `/notes/<slug>/`），
   **禁止**再带 `/git-novel/` 前缀——站点已不在 `/<repo>/` 子路径下部署。
