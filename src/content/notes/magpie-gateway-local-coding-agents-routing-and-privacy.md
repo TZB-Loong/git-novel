@@ -13,7 +13,7 @@ draft: false
 > 2. **机密源码裸奔与合规红线**：项目中的 `.env` 密匙、内部数据库连接串和自研核心算法，在未经过滤的情况下源源不断上传至公有云供应商；
 > 3. **429 速率限制与单点崩溃**：一旦官方 API 偶发抖动或限流，整个本地终端流水线瞬间挂起瘫痪。
 >
-> 为此，在本地部署轻量透明代理中枢（**Magpie Gateway**）的架构模式正在成为顶尖工程师的标配。通过在本地环回端口（`127.0.0.1`）劫持标准 API 流量，实现**“AST 语法感知脱敏 + 毫秒级语义意图分流 + 跨模型弹性降级”**，不仅将综合 Token 支出砍掉 70% 以上，更构筑起了机密源码零出境的绝对安全边界。本文将全面拆解这一中枢架构的通信机理、逆向回填状态机与工程实测优劣。
+> 为此，在本地部署轻量透明代理中枢（**Magpie Gateway**）的架构模式正在成为顶尖工程师的标配。通过在本地环回端口（`127.0.0.1`）劫持标准 API 流量，实现**“占位符级隐私脱敏 + 语义意图分流 + 跨模型弹性降级”**，不仅将综合 Token 支出砍掉 70% 以上，更构筑起了机密源码零出境的绝对安全边界。本文将全面拆解这一中枢架构的通信机理、逆向回填状态机与工程实测优劣。
 
 ---
 
@@ -47,12 +47,12 @@ Completion: 120 Tokens (单一 Git Diff)
 
 解决上述困境的最优解，绝不是去魔改 Aider 或 Claude Code 的源码——这会导致后续完全无法跟随官方版本升级。
 
-**Magpie Gateway 的精髓在于“零侵入客户端（Zero-Invasive Client Intercept）”**：它作为一个极轻量的本地守护进程，监听在 `http://127.0.0.1:8080`，利用标准环境变量无缝接管上行与下行流量。
+**Magpie Gateway 的精髓在于“零侵入客户端（Zero-Invasive Client Intercept）”**：它作为一个极轻量的本地守护进程，监听在 `http://127.0.0.1:3425`，利用标准环境变量无缝接管上行与下行流量。
 
 ```bash
 # 零改动代码！仅需注入标准环境基准地址
-export ANTHROPIC_BASE_URL="http://127.0.0.1:8080"
-export OPENAI_BASE_URL="http://127.0.0.1:8080/v1"
+export ANTHROPIC_BASE_URL="http://127.0.0.1:3425"
+export OPENAI_BASE_URL="http://127.0.0.1:3425/v1"
 ```
 
 ![Magpie Gateway 全双工本地透明代理与拦截架构](./_magpie-gateway-local-coding-agents-routing-and-privacy/magpie-gateway-transparent-intercept-architecture.svg)
@@ -60,56 +60,75 @@ export OPENAI_BASE_URL="http://127.0.0.1:8080/v1"
 ### 核心分层流水线
 1. **协议标准化（Protocol Adapter）**：
    无论客户端使用的是 Anthropic 的 `/v1/messages` 还是 OpenAI 的 `/v1/chat/completions`，网关首先将其解包归一化为内部统一的 `AgentContextMessage` 对象，抽取出前缀系统指令、上下文代码文件列表、用户 Prompt 与 Tool 声明。
-2. **AST 语法级隐私脱敏引擎（Redaction Vault）**：
-   对请求中携带的所有代码块进行静态 AST 解析与信息熵扫描，将高危数据物理置换为可逆的占位符。
+2. **隐私脱敏层（内置插件 `redact`）**：
+   在 `Settings → Privacy` 打开后，请求里的密钥、密码、邮箱等被替换成 `{{API_KEY_…}}` 形式的占位符再发往上游；具体机制与边界见第三节。
 3. **动态意图分流器（Intent Router）**：
    采用轻量级启发式特征与端侧嵌入分类器，在 15 毫秒内判断任务复杂度，决定请求是下发给本地离线算力（Local Ollama）、极低成本公有云（DeepSeek-V3），还是必须放行至顶级商业模型（Claude 3.5 Sonnet）。
-4. **逆向回填还原与双向熔断（De-redactor & Circuit Breaker）**：
-   在模型返回 Git Diff 或代码补丁时，流式拦截补丁文本，精准查阅本地会话密室将占位符还原为真实凭据，并将最终结果无缝透传给客户端落盘。
+4. **回填还原与转发（De-redactor）**：
+   回复中的占位符换回真值，流式文本与工具调用参数都覆盖，再把结果透传给客户端。
 
 ---
 
-## 三、 AST 语法树级隐私脱敏与机密防火墙机制
+## 三、 隐私脱敏的真实机制：占位符替换，以及它的边界
 
-很多开发者尝试用简单的正则表达式（如匹配 `sk-[a-zA-Z0-9]{32}`）来做脱敏，但在生产代码环境中，**单纯靠正则表达式几乎注定失败**：
-* **漏报率极高**：非标准命名的私钥、自定义的内部网关鉴权头、数据库连接串（`postgres://user:pass@host`）格式千奇百怪；
-* **误杀率极高**：哈希计算函数、测试用的固定十六进制常量或随机种子，经常被正则错误识别并破坏代码原本逻辑。
+> **2026-11-26 更正**：本节此前写作「Tree-sitter AST 语法节点解析 + 香农熵」的双重防御架构，并给出了熵阈值与 `<MAGPIE_VAULT_...>` 标签。经逐字核对官方 README 与 reference（4,824 行），检索 `tree-sitter`、`treesitter`、`shannon`、`entropy` 四个词，**命中均为 0**。官方描述的实际机制是内置插件 `redact` 的占位符替换。以下为更正后的内容，旧插图一并替换。
 
-Magpie Gateway 采用了 **“Tree-sitter AST 语法节点解析 + 香农熵（Shannon Entropy）”** 的双重防御架构。
+### 1. 它是什么：一个默认关闭的内置插件
 
-![Tree-sitter AST 语法脱敏与双向机密回填工作流](./_magpie-gateway-local-coding-agents-routing-and-privacy/ast-privacy-redaction-and-secret-firewall.svg)
+Magpie 的隐私脱敏不是一个独立的「脱敏引擎」，而是内置插件 **`redact`**。它只在 `Settings → Privacy` 里打开任意一项脱敏之后才工作——**默认是关的**。
 
-### 1. 语法节点提取与高熵判定
-网关内置了多语言 Tree-sitter 解析器。当代码进入管道时，只针对具备赋值语义的节点进行定向检查：
-* `variable_declarator` 中的初始值表达式；
-* `pair` 结构中的属性赋值（如 `.json` 或 `.yaml` 的键值对）；
-* 环境变量赋值语句。
+打开之后的行为是字符串替换：
 
-随后对字符串字元计算香农信息熵：
-$$H(X) = -\sum_{i=1}^{n} P(x_i) \log_2 P(x_i)$$
+1. 请求里的密钥、密码、邮箱等被替换成 `{{API_KEY_…}}` 这样的占位符；
+2. 占位符随请求发往供应商；
+3. 回复里的占位符换回真值——**流式文本和工具调用参数都覆盖**，所以 Agent 真正执行的命令拿到的是真实凭据。
 
-对于长度超过 16 个字符、且 $H(X) \ge 4.5$ bits/char 的高随机度字元，系统判定其极大概率属于加密密钥或访问 Token。
+![隐私脱敏的真实工作流：占位符替换与回填](./_magpie-gateway-local-coding-agents-routing-and-privacy/privacy-masking-placeholder-flow.svg)
 
-### 2. 双向确定性密室（Deterministic Local Vault）
-一旦检测到敏感凭证，网关会在当前请求上下文中生成全局唯一的确定性占位符：
+### 2. 官方列出的四条保证
+
+| 保证 | 具体含义 |
+|---|---|
+| **换回全覆盖** | 流式文本与工具调用参数都还原，Agent 执行时拿到真值 |
+| **确定性** | 同一个值每次得到同一个占位符，对话、prompt cache、thinking 签名都保持有效 |
+| **不落盘** | 值只在内存中；记录只保留类型、长度和前几个字符；如果脱敏该跑却跑不了，请求直接 **503**，绝不原样发出 |
+| **可核查** | `Insights › Masking` 列出每个被改写的请求，可与供应商实际收到的内容并排对照 |
+
+### 3. 规则粒度
+
+不再是「一个熵阈值决定一切」，而是分类开关：
+
+- **密钥**与**个人数据**各自独立开关；
+- 更细的类型可单独控制：护照、IBAN、MAC 地址、公网 IP 等；
+- 支持自定义词与自定义模式；
+- 每种命中可选 **Mask**（替换）、**Warn**（只警告）、**Block**（拦截）；
+- `example.com`、`.test`、`.invalid` 下的示例邮箱保持原样，避免把文档示例也改写。
+
+### 4. 代价：这是取舍，不是「开了就安全」
+
+官方把代价写得很直白：
+
+> 模型看到的是 `{{API_KEY_…}}` 而不是密钥，所以**关于这个值本身的任务做不了**（比如「为什么这个 token 被拒了」）。这类值要放进 **Never mask**。
+
+这意味着脱敏不是无条件的增强。排查鉴权问题、让模型分析一段密钥格式时，脱敏恰恰会让任务无法完成。另外官方也承认「规则偶尔会出错」，并指向 Masking 页面让用户自己检查。
+
+### 5. 一个实际例子
+
+假设代码里有这样一段：
+
 ```typescript
-// 原始敏感代码：
-const dbClient = new Pool({
-  connectionString: "postgresql://postgres:p@ssW0rd9912!@10.0.1.55:5432/core_db"
-});
-
-// 经 Magpie Gateway 脱敏后上行发往公网模型：
-const dbClient = new Pool({
-  connectionString: "<MAGPIE_VAULT_SECRET_DB_0x7F2A>"
-});
+const apiKey = process.env.DEEPSEEK_API_KEY;
 ```
 
-真正的敏感字符串被封存在本地守护进程的只读内存字典中，并绑定唯一会话 UUID。任何外发给外部模型的 Payload 中，均只有安全的占位标识符。
+打开脱敏后，供应商收到的是占位符形式：
 
-### 3. 下行 Git Patch 的无损还原
-当大模型完成推理，向客户端返回形如 `@@ -1,5 +1,6 @@` 的代码补丁时，Magpie Gateway 的流式解析器会捕捉返回文本中的 `<MAGPIE_VAULT_...>` 标签，以字符级精准度将其逆向回填为真实的原始凭据。
+```typescript
+const apiKey = "{{API_KEY_…}}";
+```
 
-整个过程对上层的 Claude Code / Aider 完全透明——**公网模型见不到真密匙，本地磁盘得到的是立即可运行的代码，零泄密，零返工。**
+模型基于占位符完成推理，返回的补丁里若出现该占位符，Magpie 在回传时换回 `process.env.DEEPSEEK_API_KEY` 对应的真实值——Agent 落盘或执行时不受影响。
+
+**边界很清楚：值本身不被送出，但对值的「分析类任务」也不成立。**
 
 ---
 
@@ -148,7 +167,7 @@ const dbClient = new Pool({
 
 ### 1. 核心优势（PROS）
 * **零侵入与解耦性**：完全不破坏原有 CLI 工具生态，只需配置 `BASE_URL`，换工具或工具升级完全不受影响；
-* **确定性安全物理边界**：核心企业级密钥与隐私变量根本不离开本地环回网络，彻底打消安全合规团队对公共 AI 编程助手的疑虑；
+* **可选的脱敏边界**：打开 `Settings → Privacy` 后，密钥、密码、邮箱等会以占位符形式上行，真实值留在本机内存；但**默认是关闭的**，不开就没有这层保护，且它对「分析密钥本身」的任务不适用；
 * **高可用与熔断保障**：当公网发生 429、500 或网络阻断时，网关内置的重试与降级引擎可以在 200 毫秒内透明切换到备用模型，保证终端开发永不阻塞。
 
 ### 2. 工程局限与技术劣势（CONS）
@@ -161,78 +180,59 @@ const dbClient = new Pool({
 
 ---
 
-## 六、 生产级配置与本地落地指南
+## 六、 本地落地：没有 YAML 配置文件
 
-想要在本地搭建一套完整的 Magpie Gateway，可以使用极简的配置即刻运行。
+> **2026-11-26 更正**：本节此前给出了一份 `magpie.config.yaml` 模板和 `magpie-gateway --config ...` 启动命令。经核对官方文档，**Magpie 不存在这样的配置文件，也没有这个命令**。以下为实际的三层配置方式。
 
-### 1. 网关配置模板 (`magpie.config.yaml`)
-```yaml
-server:
-  host: "127.0.0.1"
-  port: 8080
-  timeout_ms: 60000
+### 1. 配置分三层，各管各的
 
-privacy:
-  enabled: true
-  entropy_threshold: 4.5
-  min_secret_len: 16
-  custom_regex_patterns:
-    - name: "Internal-API-Key"
-      pattern: "corp_[a-zA-Z0-9_]{24}"
+| 层 | 位置 | 怎么改 |
+|---|---|---|
+| 应用设置 | `~/.config/magpie/settings.json` | 界面，或 `magpie settings set` |
+| Provider 与路由组 | Magpie 自己的存储 | CLI 或界面 |
+| 各 Agent 的配置 | `~/.claude/settings.json`、`~/.codex/config.toml`、`opencode.jsonc` 等 | Magpie 只改需要的那一个键 |
 
-routing:
-  default_tier: "tier2"
-  rules:
-    - match_type: "regex"
-      pattern: "(?i)(typo|format|docstring|lint|git commit|test骨架)"
-      target_tier: "tier1"
-    - match_type: "file_count"
-      max_files: 1
-      target_tier: "tier1"
-    - match_type: "regex"
-      pattern: "(?i)(architect|refactor system|redesign|deadlock|concurrency)"
-      target_tier: "tier3"
+第三层值得单独说：官方强调它是「外科手术式」的——注释、顺序、缩进都保留，写入是原子的。这也是它能和其他工具安全共存的原因。
 
-backends:
-  tier1:
-    provider: "openai-compatible"
-    base_url: "http://127.0.0.1:11434/v1" # Local Ollama
-    model: "qwen2.5-coder:14b-instruct"
-    api_key: "ollama"
-
-  tier2:
-    provider: "openai-compatible"
-    base_url: "https://api.deepseek.com/v1"
-    model: "deepseek-chat"
-    api_key: "env:DEEPSEEK_API_KEY"
-
-  tier3:
-    provider: "anthropic"
-    base_url: "https://api.anthropic.com"
-    model: "claude-3-5-sonnet-20241022"
-    api_key: "env:ANTHROPIC_API_KEY"
-
-fallback:
-  on_rate_limit: true
-  circuit_breaker_threshold: 3
-  fallback_mapping:
-    tier3: "tier2"
-    tier2: "tier1"
-```
-
-### 2. 终端无缝接入
-在你的 shell 配置文件（`~/.zshrc` 或 `~/.bashrc`）中配置别名与环境：
+### 2. 常用命令
 
 ```bash
-# 1. 启动 Magpie 本地透明网关守护进程
-magpie-gateway --config ~/.config/magpie/magpie.config.yaml &
+# 加 provider（预设只需 key）
+magpie provider add deepseek sk-…
 
-# 2. 为你的 Coding Agent 配置透明拦截基址
-alias claude="ANTHROPIC_BASE_URL=http://127.0.0.1:8080 claude"
-alias aider="OPENAI_BASE_URL=http://127.0.0.1:8080/v1 aider --model deepseek/deepseek-chat"
+# 把某个 Agent 切到某个模型
+magpie claude deepseek/deepseek-v4-pro
+magpie codex moonshot/kimi-k2.5
+
+# 建路由组并让 Agent 使用
+magpie group add "opus-anywhere" \
+  models=claude/claude-opus-5-5,copilot/claude-opus-5.5 \
+  routing=smart
+magpie claude group/opus-anywhere
+
+# 看每个套餐还剩多少
+magpie quota
 ```
 
-完成上述配置后，终端中的任何 Agent 命令都会自动受到 Magpie Gateway 的实时守护：**敏感密匙本地自动隐形，高频平庸请求端侧极速消化，唯有真正硬核的系统级代码思考才调用云端顶级模型。**
+### 3. 隐私脱敏怎么开
+
+在 `Settings → Privacy` 里打开。命令行可以设置其他项，但脱敏本身建议在界面确认——因为打开后哪些类型被替换，需要逐项看过再决定（见第三节的取舍说明）。
+
+### 4. 手工接入未内置的工具
+
+Magpie 会自己改写它支持的 43 个 Agent 的配置。如果你的工具不在列表里，只要它接受自定义 base URL，也可以直接指向网关：
+
+```bash
+# OpenAI 兼容协议
+export OPENAI_BASE_URL="http://127.0.0.1:3425/v1"
+
+# Anthropic 协议
+export ANTHROPIC_BASE_URL="http://127.0.0.1:3425"
+```
+
+注意网关监听在 **3425**，不是某些文章里写的 8080。
+
+完成之后，Agent 的请求会经过网关：协议翻译、路由切换、可选的脱敏都在这一层完成。
 
 ---
 
