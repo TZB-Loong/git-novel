@@ -23,7 +23,7 @@
 | **图片** | glightbox（灯箱效果） |
 | **测试** | Vitest + coverage-v8 |
 | **CI/CD** | GitHub Actions（自动构建部署） |
-| **部署** | GitHub Pages + 自定义域名 → `https://tzb-loong.github.io/git-novel/` |
+| **部署** | GitHub Pages + 自定义域名 → `https://git-novel.loc.cc/` |
 
 ---
 

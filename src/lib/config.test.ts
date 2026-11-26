@@ -4,8 +4,8 @@ import { SITE_CONFIG, isGiscusConfigured } from './config';
 
 describe('SITE_CONFIG', () => {
   it('exposes site and base matching astro.config.ts', () => {
-    expect(SITE_CONFIG.site).toBe('https://tzb-loong.github.io/git-novel');
-    expect(SITE_CONFIG.base).toBe('/git-novel');
+    expect(SITE_CONFIG.site).toBe('https://git-novel.loc.cc');
+    expect(SITE_CONFIG.base).toBe('/');
   });
 
   it('exposes title, description, author strings', () => {

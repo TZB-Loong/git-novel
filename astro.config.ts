@@ -3,11 +3,11 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import react from '@astrojs/react';
 
-const site = 'https://tzb-loong.github.io/git-novel';
+const site = 'https://git-novel.loc.cc';
 
 export default defineConfig({
   site,
-  base: '/git-novel',
+  base: '/',
   trailingSlash: 'always',
   integrations: [
     mdx(),

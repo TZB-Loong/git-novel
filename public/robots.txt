@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://tzb-loong.github.io/git-novel/sitemap-index.xml
-Sitemap: https://tzb-loong.github.io/git-novel/sitemap.xml
+Sitemap: https://git-novel.loc.cc/sitemap-index.xml
+Sitemap: https://git-novel.loc.cc/sitemap.xml
