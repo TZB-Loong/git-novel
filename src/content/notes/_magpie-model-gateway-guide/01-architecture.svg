@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520">
+  <defs>
+    <linearGradient id="bg1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06080f"/>
+      <stop offset="100%" stop-color="#0c1220"/>
+    </linearGradient>
+    <marker id="ar1" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto">
+      <path d="M0,0 L7,3.5 L0,7 Z" fill="#38bdf8"/>
+    </marker>
+    <marker id="ar1g" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto">
+      <path d="M0,0 L7,3.5 L0,7 Z" fill="#3d5068"/>
+    </marker>
+  </defs>
+
+  <rect width="960" height="520" fill="url(#bg1)"/>
+  <text x="36" y="44" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="22" font-weight="800" fill="#e2e8f0">一个网关，三种协议，多个上游</text>
+  <text x="36" y="70" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#8fa3bd">Agent 只认一个地址，协议翻译与额度切换都在网关内部完成</text>
+
+  <!-- agents column -->
+  <text x="36" y="106" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="700" fill="#6b8299" letter-spacing="1">AGENTS（43 个中的一部分）</text>
+  <g font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11">
+    <rect x="36" y="118" width="150" height="34" rx="8" fill="#0f1a2c" stroke="#2e4260"/>
+    <text x="52" y="140" fill="#cbd5e1">Claude Code</text>
+    <rect x="36" y="160" width="150" height="34" rx="8" fill="#0f1a2c" stroke="#2e4260"/>
+    <text x="52" y="182" fill="#cbd5e1">Codex</text>
+    <rect x="36" y="202" width="150" height="34" rx="8" fill="#0f1a2c" stroke="#2e4260"/>
+    <text x="52" y="224" fill="#cbd5e1">Gemini CLI</text>
+    <rect x="36" y="244" width="150" height="34" rx="8" fill="#0f1a2c" stroke="#2e4260"/>
+    <text x="52" y="266" fill="#cbd5e1">Cursor CLI</text>
+    <rect x="36" y="286" width="150" height="34" rx="8" fill="#0f1a2c" stroke="#2e4260"/>
+    <text x="52" y="308" fill="#cbd5e1">Copilot CLI</text>
+    <rect x="36" y="328" width="150" height="34" rx="8" fill="#0f1a2c" stroke="#2e4260"/>
+    <text x="52" y="350" fill="#6b8299">+ 其余 38 个</text>
+  </g>
+
+  <!-- gateway -->
+  <rect x="240" y="130" width="260" height="240" rx="14" fill="#0b1a2b" stroke="#38bdf8" stroke-width="2"/>
+  <text x="370" y="160" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="14" font-weight="800" fill="#7dd3fc">本地网关</text>
+  <text x="370" y="180" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="11" fill="#5a9fc4">127.0.0.1:3425</text>
+  <line x1="260" y1="194" x2="480" y2="194" stroke="#1e3a4d" stroke-width="1"/>
+
+  <g font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5">
+    <text x="260" y="216" fill="#8fa3bd">协议翻译</text>
+    <text x="332" y="216" fill="#cbd5e1">Chat / Responses / Messages</text>
+    <text x="260" y="240" fill="#8fa3bd">路由组</text>
+    <text x="332" y="240" fill="#cbd5e1">7 种策略</text>
+    <text x="260" y="264" fill="#8fa3bd">脱敏</text>
+    <text x="332" y="264" fill="#cbd5e1">redact 插件</text>
+    <text x="260" y="288" fill="#8fa3bd">订阅共享</text>
+    <text x="332" y="288" fill="#cbd5e1">读已有登录态</text>
+    <text x="260" y="312" fill="#8fa3bd">配置改写</text>
+    <text x="332" y="312" fill="#cbd5e1">外科手术式</text>
+  </g>
+  <rect x="260" y="326" width="220" height="28" rx="6" fill="#0a1520" stroke="#1d5c6b"/>
+  <text x="370" y="345" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#67e8f9">单一进程 = 单点</text>
+
+  <!-- providers -->
+  <text x="556" y="106" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="700" fill="#6b8299" letter-spacing="1">UPSTREAM</text>
+  <g font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11">
+    <rect x="556" y="118" width="368" height="42" rx="8" fill="#0a1520" stroke="#1d5c6b"/>
+    <text x="574" y="144" fill="#67e8f9">订阅：Claude / ChatGPT / Copilot / Gemini</text>
+
+    <rect x="556" y="170" width="368" height="42" rx="8" fill="#0a1520" stroke="#1d5c6b"/>
+    <text x="574" y="196" fill="#67e8f9">API Key：DeepSeek / Kimi / GLM / Groq…</text>
+
+    <rect x="556" y="222" width="368" height="42" rx="8" fill="#0a1520" stroke="#1d5c6b"/>
+    <text x="574" y="248" fill="#67e8f9">本地模型：Ollama / LM Studio</text>
+
+    <rect x="556" y="274" width="368" height="42" rx="8" fill="#0a1520" stroke="#1d5c6b"/>
+    <text x="574" y="300" fill="#67e8f9">插件 provider：13 个已装（本机实测）</text>
+  </g>
+
+  <!-- arrows -->
+  <g stroke="#3d5068" stroke-width="1.6" fill="none">
+    <path d="M 186 135 C 214 135, 224 150, 236 156"/>
+    <path d="M 186 177 C 214 177, 224 190, 236 194"/>
+    <path d="M 186 219 C 214 219, 224 226, 236 232"/>
+    <path d="M 186 261 C 214 261, 224 266, 236 270"/>
+    <path d="M 186 303 C 214 303, 224 306, 236 308"/>
+    <path d="M 186 345 C 214 345, 224 346, 236 346"/>
+  </g>
+  <g stroke="#38bdf8" stroke-width="1.8" fill="none">
+    <path d="M 500 175 L 552 145" marker-end="url(#ar1)"/>
+    <path d="M 500 215 L 552 195" marker-end="url(#ar1)"/>
+    <path d="M 500 255 L 552 245" marker-end="url(#ar1)"/>
+    <path d="M 500 305 L 552 297" marker-end="url(#ar1)"/>
+  </g>
+
+  <!-- footer -->
+  <rect x="36" y="392" width="888" height="92" rx="12" fill="#0a1220" stroke="#1e3a4d"/>
+  <text x="56" y="418" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="700" fill="#e2e8f0">关键点：不开路由组，Magpie 只是协议转换器</text>
+  <text x="56" y="442" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#8fa3bd">官方原文：「只有一个账号、没有组的时候，没有别的地方可以切换，错误就直接抛给 Agent 了。」</text>
+  <text x="56" y="466" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#fbbf24">→ 额度自动切换需要至少两个可切换对象（账号 / provider / 模型）</text>
+</svg>
