@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="960" height="560">
+  <defs>
+    <linearGradient id="bg1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#05070c"/>
+      <stop offset="100%" stop-color="#0b101a"/>
+    </linearGradient>
+    <marker id="ar1" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto">
+      <path d="M0,0 L7,3.5 L0,7 Z" fill="#3a5470"/>
+    </marker>
+  </defs>
+
+  <rect width="960" height="560" fill="url(#bg1)"/>
+  <text x="36" y="44" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="22" font-weight="800" fill="#e2e8f0">三层分级：质量期望随层级上升</text>
+  <text x="36" y="70" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#8ea3b8">低门槛保证数量，高门槛保证默认体验；「毕业」要跑评测</text>
+
+  <!-- tiers -->
+  <g font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif">
+    <rect x="36" y="92" width="420" height="96" rx="12" fill="#0a1a18" stroke="#0e7490" stroke-width="1.6"/>
+    <text x="58" y="120" font-size="14" font-weight="800" fill="#6ee7b7">Always-on</text>
+    <text x="58" y="144" font-size="10.5" fill="#9fb5c4">约 100 个 · 对所有人默认开启</text>
+    <text x="58" y="164" font-size="10.5" fill="#6b8299">PR / 代码评审 / 工具访问 / 数据分析 / 聊天</text>
+    <text x="58" y="180" font-size="9.5" fill="#6ee7b7">门槛最高：平台团队维护</text>
+
+    <rect x="36" y="200" width="420" height="96" rx="12" fill="#0a1424" stroke="#2563eb" stroke-width="1.6"/>
+    <text x="58" y="228" font-size="14" font-weight="800" fill="#93c5fd">Core</text>
+    <text x="58" y="252" font-size="10.5" fill="#9fb5c4">广泛使用的 skill 上移</text>
+    <text x="58" y="272" font-size="10.5" fill="#6b8299">团队推荐、测试、维护</text>
+    <text x="58" y="288" font-size="9.5" fill="#93c5fd">平台团队审每一处改动</text>
+
+    <rect x="36" y="308" width="420" height="96" rx="12" fill="#12101c" stroke="#7c3aed" stroke-width="1.6"/>
+    <text x="58" y="336" font-size="14" font-weight="800" fill="#c4b5fd">Domain</text>
+    <text x="58" y="360" font-size="10.5" fill="#9fb5c4">任何团队自建区域</text>
+    <text x="58" y="380" font-size="10.5" fill="#6b8299">指定 reviewer，发布只需</text>
+    <text x="58" y="396" font-size="9.5" fill="#c4b5fd">1 个同事批准 + CI 检查</text>
+  </g>
+
+  <g stroke="#3a5470" stroke-width="1.8" fill="none">
+    <path d="M 246 308 L 246 300" marker-end="url(#ar1)"/>
+    <path d="M 246 200 L 246 192" marker-end="url(#ar1)"/>
+  </g>
+  <text x="258" y="300" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#6b8299">毕业：跑评测 + 质量检查</text>
+
+  <!-- loading -->
+  <text x="492" y="106" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="700" fill="#e2e8f0">三段式加载</text>
+  <g font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif">
+    <rect x="492" y="120" width="432" height="60" rx="10" fill="#0a1220" stroke="#1e3a4d"/>
+    <text x="510" y="144" font-size="11" font-weight="700" fill="#6ee7b7">始终加载</text>
+    <text x="600" y="144" font-size="10.5" fill="#9fb5c4">名字 + 描述</text>
+    <text x="906" y="144" text-anchor="end" font-size="10.5" fill="#6b8299">~100 token</text>
+    <text x="510" y="166" font-size="9.5" fill="#6b8299">agent 靠它判断这个 skill 适不适用</text>
+
+    <rect x="492" y="190" width="432" height="60" rx="10" fill="#0a1220" stroke="#1e3a4d"/>
+    <text x="510" y="214" font-size="11" font-weight="700" fill="#93c5fd">运行时加载</text>
+    <text x="600" y="214" font-size="10.5" fill="#9fb5c4">正文</text>
+    <text x="906" y="214" text-anchor="end" font-size="10.5" fill="#6b8299">&lt; 500 行</text>
+    <text x="510" y="236" font-size="9.5" fill="#6b8299">只有决定使用之后才读</text>
+
+    <rect x="492" y="260" width="432" height="60" rx="10" fill="#0a1220" stroke="#1e3a4d"/>
+    <text x="510" y="284" font-size="11" font-weight="700" fill="#c4b5fd">按需加载</text>
+    <text x="600" y="284" font-size="10.5" fill="#9fb5c4">脚本与参考文件</text>
+    <text x="906" y="284" text-anchor="end" font-size="10.5" fill="#6b8299">用到才读</text>
+    <text x="510" y="306" font-size="9.5" fill="#6b8299">5000 个 skill 的固定成本 = 5000 × 100 token</text>
+  </g>
+
+  <!-- config layers -->
+  <text x="492" y="356" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" font-weight="700" fill="#e2e8f0">aifx 六层配置合并</text>
+  <g font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10">
+    <rect x="492" y="370" width="64" height="30" rx="6" fill="#0f1a2c" stroke="#2e4260"/>
+    <text x="524" y="389" text-anchor="middle" fill="#9fb5c4">公司</text>
+    <rect x="562" y="370" width="64" height="30" rx="6" fill="#0f1a2c" stroke="#2e4260"/>
+    <text x="594" y="389" text-anchor="middle" fill="#9fb5c4">团队</text>
+    <rect x="632" y="370" width="64" height="30" rx="6" fill="#0f1a2c" stroke="#2e4260"/>
+    <text x="664" y="389" text-anchor="middle" fill="#9fb5c4">仓库</text>
+    <rect x="702" y="370" width="64" height="30" rx="6" fill="#0f1a2c" stroke="#2e4260"/>
+    <text x="734" y="389" text-anchor="middle" fill="#9fb5c4">目录</text>
+    <rect x="772" y="370" width="64" height="30" rx="6" fill="#0f1a2c" stroke="#2e4260"/>
+    <text x="804" y="389" text-anchor="middle" fill="#9fb5c4">用户</text>
+    <rect x="842" y="370" width="82" height="30" rx="6" fill="#0f1a2c" stroke="#2e4260"/>
+    <text x="883" y="389" text-anchor="middle" fill="#9fb5c4">本地覆盖</text>
+  </g>
+  <text x="492" y="424" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="9.5" fill="#fbbf24">规则：后面的层只能增加 plugin，不能删除</text>
+
+  <!-- bottom note -->
+  <rect x="36" y="436" width="888" height="96" rx="12" fill="#0a1220" stroke="#1e3a4d"/>
+  <text x="56" y="462" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" font-weight="700" fill="#e2e8f0">为什么这个分层能撑住规模</text>
+  <text x="56" y="486" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#9fb5c4">Domain 层低门槛 → 数量能长起来；Always-on 高门槛 → 新人第一天就有能用的默认集。</text>
+  <text x="56" y="506" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#9fb5c4">中间的「毕业」机制用评测把两者连起来：想进 Core，先证明自己。</text>
+  <text x="56" y="524" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#6b8299">注：5000 个 skill 的质量分布，原文没有给出。</text>
+</svg>

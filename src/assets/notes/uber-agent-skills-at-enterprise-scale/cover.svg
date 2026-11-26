@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#05070c"/>
+      <stop offset="50%" stop-color="#0b101a"/>
+      <stop offset="100%" stop-color="#04050a"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="70%" cy="42%" r="45%">
+      <stop offset="0%" stop-color="#34d399" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#34d399" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6ee7b7"/>
+      <stop offset="55%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#141c2a" stroke-width="1" stroke-opacity="0.6"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <rect x="44" y="44" width="1112" height="542" rx="22" fill="none" stroke="#1d2a3d" stroke-width="2" stroke-dasharray="10,7"/>
+
+  <rect x="84" y="82" width="356" height="38" rx="8" fill="#0b1520" stroke="#2a4a44"/>
+  <circle cx="106" cy="101" r="6" fill="#34d399"/>
+  <text x="122" y="107" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="14" font-weight="700" fill="#9fb5c4" letter-spacing="2">UBER ENGINEERING · SKILLS AT SCALE</text>
+
+  <text x="84" y="192" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="54" font-weight="800" fill="url(#titleGrad)">5000 SKILLS</text>
+  <text x="84" y="240" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="54" font-weight="800" fill="url(#titleGrad)">1M CALLS / MONTH</text>
+  <text x="84" y="288" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="25" font-weight="700" fill="#e2e8f0">Uber 把企业级 Agent 评测做成了什么样</text>
+  <text x="84" y="320" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="15" fill="#8ea3b8">三层分级 · 六层配置 · 5/80/15 用例配比 · agent 自己报 bug</text>
+
+  <!-- stats -->
+  <g transform="translate(84, 356)">
+    <rect x="0" y="0" width="180" height="84" rx="12" fill="#0a1220" stroke="#1e3a4d" stroke-width="1.5"/>
+    <text x="20" y="28" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#6b8299" letter-spacing="1">SKILLS · 1 YEAR</text>
+    <text x="20" y="60" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="21" font-weight="800" fill="#6ee7b7">1 → 5300+</text>
+
+    <rect x="196" y="0" width="180" height="84" rx="12" fill="#0a1220" stroke="#1e3a4d" stroke-width="1.5"/>
+    <text x="216" y="28" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#6b8299" letter-spacing="1">ALWAYS-ON</text>
+    <text x="216" y="60" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="21" font-weight="800" fill="#7dd3fc">~100</text>
+
+    <rect x="392" y="0" width="180" height="84" rx="12" fill="#0a1220" stroke="#1e3a4d" stroke-width="1.5"/>
+    <text x="412" y="28" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10" fill="#6b8299" letter-spacing="1">PAPERCUTS · 3 MO</text>
+    <text x="412" y="60" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="21" font-weight="800" fill="#fbbf24">数千条</text>
+  </g>
+
+  <!-- right panel -->
+  <g transform="translate(680, 352)">
+    <rect x="0" y="0" width="440" height="164" rx="14" fill="#080f18" stroke="#22314b" stroke-width="1.5"/>
+    <text x="24" y="32" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11" font-weight="700" fill="#6b8299" letter-spacing="1.5">EVAL SUITE</text>
+    <g font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="11">
+      <text x="24" y="62" fill="#8ea3b8">Golden cases</text>
+      <text x="396" y="62" text-anchor="end" fill="#6ee7b7" font-weight="800">5%</text>
+      <text x="24" y="90" fill="#8ea3b8">真实 prompt · 轨迹评分</text>
+      <text x="396" y="90" text-anchor="end" fill="#6ee7b7" font-weight="800">80%</text>
+      <text x="24" y="118" fill="#8ea3b8">作者判定</text>
+      <text x="396" y="118" text-anchor="end" fill="#6ee7b7" font-weight="800">15%</text>
+    </g>
+    <line x1="24" y1="132" x2="416" y2="132" stroke="#182338" stroke-width="1"/>
+    <text x="24" y="152" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="10.5" fill="#fbbf24">70–90% 通过率，比 100% 更有用</text>
+  </g>
+
+  <text x="84" y="556" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13" fill="#5a6b82">来源：Uber Engineering 博客 + X 长文，数字经两处交叉核对</text>
+</svg>
